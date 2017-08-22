@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 17 Agu 2017 pada 01.16
--- Versi Server: 10.1.25-MariaDB
+-- Generation Time: Aug 22, 2017 at 06:27 AM
+-- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,49 +25,65 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admins`
+-- Table structure for table `admins`
 --
 
 CREATE TABLE `admins` (
   `id` int(10) UNSIGNED NOT NULL,
   `codecategoryadmin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codeadmin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `codecategoryadmin`, `codeadmin`, `phone`, `email`, `password`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(25, '1', '1', '087820033395', 'navagiaginasta@gmail.com', '10051995', '14446.jpg', 'Y', '2017-08-21 06:51:02', '2017-08-21 06:51:02');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `adminspartnership`
+-- Table structure for table `adminspartnerships`
 --
 
-CREATE TABLE `adminspartnership` (
+CREATE TABLE `adminspartnerships` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecompanypartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codeadminpartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lastlogin` datetime NOT NULL,
   `registerdate` datetime NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `adminspartnerships`
+--
+
+INSERT INTO `adminspartnerships` (`id`, `name`, `codecompanypartnership`, `codeadminpartnership`, `email`, `phone`, `password`, `image`, `address`, `lastlogin`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'nava', '124', '2', 'navagiaginasta@gmail.com', '087820033395', '2', '2', 'Bandung', '2017-08-13 00:00:00', '2017-08-20 00:00:00', 'N', '2017-08-19 17:00:00', '2017-08-19 17:00:00'),
+(4, 'andrey3', '13', '13', 'andrey@gmail.com3', '0181993', '13', 'F:\\xampp\\tmp\\php1C8A.tmp', 'garut3', '2017-08-21 11:58:24', '2017-08-21 11:58:24', 'N', '2017-08-20 22:51:22', '2017-08-21 04:58:24'),
+(5, 'Nava Gia', '1', '1', 'navagiaginasta@gmail.com', '87820033395', '1', '65443.PNG', 'Cianjur', '2017-08-21 11:57:28', '2017-08-21 11:57:28', 'Y', '2017-08-21 04:57:28', '2017-08-21 04:57:28');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `billingcompanyservices`
+-- Table structure for table `billingcompanyservices`
 --
 
 CREATE TABLE `billingcompanyservices` (
@@ -91,7 +107,7 @@ CREATE TABLE `billingcompanyservices` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bookingspace`
+-- Table structure for table `bookingspace`
 --
 
 CREATE TABLE `bookingspace` (
@@ -125,7 +141,7 @@ CREATE TABLE `bookingspace` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `categoryadmins`
+-- Table structure for table `categoryadmins`
 --
 
 CREATE TABLE `categoryadmins` (
@@ -133,15 +149,22 @@ CREATE TABLE `categoryadmins` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecategoryadmin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `categoryadmins`
+--
+
+INSERT INTO `categoryadmins` (`id`, `name`, `codecategoryadmin`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Admin Control2', '1', '12', 'Y', '2017-08-20 17:00:00', '2017-08-21 00:03:53');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `categoryevents`
+-- Table structure for table `categoryevents`
 --
 
 CREATE TABLE `categoryevents` (
@@ -157,7 +180,7 @@ CREATE TABLE `categoryevents` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `categorymedia`
+-- Table structure for table `categorymedia`
 --
 
 CREATE TABLE `categorymedia` (
@@ -173,7 +196,7 @@ CREATE TABLE `categorymedia` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `categorypaymentmethode`
+-- Table structure for table `categorypaymentmethode`
 --
 
 CREATE TABLE `categorypaymentmethode` (
@@ -190,7 +213,7 @@ CREATE TABLE `categorypaymentmethode` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `categoryservices`
+-- Table structure for table `categoryservices`
 --
 
 CREATE TABLE `categoryservices` (
@@ -207,7 +230,7 @@ CREATE TABLE `categoryservices` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `city`
+-- Table structure for table `city`
 --
 
 CREATE TABLE `city` (
@@ -224,7 +247,7 @@ CREATE TABLE `city` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `companies`
+-- Table structure for table `companies`
 --
 
 CREATE TABLE `companies` (
@@ -251,7 +274,7 @@ CREATE TABLE `companies` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `companypartnership`
+-- Table structure for table `companypartnership`
 --
 
 CREATE TABLE `companypartnership` (
@@ -283,7 +306,7 @@ CREATE TABLE `companypartnership` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `companyservices`
+-- Table structure for table `companyservices`
 --
 
 CREATE TABLE `companyservices` (
@@ -305,7 +328,7 @@ CREATE TABLE `companyservices` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `country`
+-- Table structure for table `country`
 --
 
 CREATE TABLE `country` (
@@ -322,7 +345,7 @@ CREATE TABLE `country` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `events`
+-- Table structure for table `events`
 --
 
 CREATE TABLE `events` (
@@ -344,7 +367,7 @@ CREATE TABLE `events` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `historybillingcompany`
+-- Table structure for table `historybillingcompany`
 --
 
 CREATE TABLE `historybillingcompany` (
@@ -369,7 +392,7 @@ CREATE TABLE `historybillingcompany` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `historybookingspace`
+-- Table structure for table `historybookingspace`
 --
 
 CREATE TABLE `historybookingspace` (
@@ -402,7 +425,7 @@ CREATE TABLE `historybookingspace` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `informasicompanies`
+-- Table structure for table `informasicompanies`
 --
 
 CREATE TABLE `informasicompanies` (
@@ -419,7 +442,7 @@ CREATE TABLE `informasicompanies` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `media`
+-- Table structure for table `media`
 --
 
 CREATE TABLE `media` (
@@ -431,15 +454,22 @@ CREATE TABLE `media` (
   `date` datetime NOT NULL,
   `writer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `media`
+--
+
+INSERT INTO `media` (`id`, `name`, `codecategorymedia`, `codemedia`, `url`, `date`, `writer`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'media abc', '1', '1', 'www.facebook.com', '2017-08-21 00:00:00', '1', '64944.PNG', 'Y', '2017-08-20 17:00:00', '2017-08-21 06:38:48');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `member`
+-- Table structure for table `member`
 --
 
 CREATE TABLE `member` (
@@ -468,7 +498,7 @@ CREATE TABLE `member` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `message`
+-- Table structure for table `message`
 --
 
 CREATE TABLE `message` (
@@ -485,7 +515,7 @@ CREATE TABLE `message` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -495,7 +525,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -535,7 +565,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `paymentmethode`
+-- Table structure for table `paymentmethode`
 --
 
 CREATE TABLE `paymentmethode` (
@@ -555,7 +585,7 @@ CREATE TABLE `paymentmethode` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `services`
+-- Table structure for table `services`
 --
 
 CREATE TABLE `services` (
@@ -572,7 +602,7 @@ CREATE TABLE `services` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sosialmedia`
+-- Table structure for table `sosialmedia`
 --
 
 CREATE TABLE `sosialmedia` (
@@ -588,7 +618,7 @@ CREATE TABLE `sosialmedia` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `subscriber`
+-- Table structure for table `subscriber`
 --
 
 CREATE TABLE `subscriber` (
@@ -603,7 +633,7 @@ CREATE TABLE `subscriber` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tagservices`
+-- Table structure for table `tagservices`
 --
 
 CREATE TABLE `tagservices` (
@@ -619,7 +649,7 @@ CREATE TABLE `tagservices` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `team`
+-- Table structure for table `team`
 --
 
 CREATE TABLE `team` (
@@ -636,7 +666,7 @@ CREATE TABLE `team` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `testimonial`
+-- Table structure for table `testimonial`
 --
 
 CREATE TABLE `testimonial` (
@@ -649,6 +679,29 @@ CREATE TABLE `testimonial` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(3, 'nava gia', 'navagiaginasta@gmail.com', '$2y$10$wnEhcBgMsVXUz8hyw/uZ3Ot6Br2ggdo6hGCzFmARKAJqkjeA3us02', 'VT5OEWWl0puzEsXJ3tqu9tFDI9a5x85nAT3HnYWz5iweHQqKlrZP9s7guWmG', '2017-08-19 05:52:17', '2017-08-19 05:52:17');
+
 --
 -- Indexes for dumped tables
 --
@@ -660,9 +713,9 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `adminspartnership`
+-- Indexes for table `adminspartnerships`
 --
-ALTER TABLE `adminspartnership`
+ALTER TABLE `adminspartnerships`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -828,6 +881,12 @@ ALTER TABLE `testimonial`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -835,12 +894,12 @@ ALTER TABLE `testimonial`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
--- AUTO_INCREMENT for table `adminspartnership`
+-- AUTO_INCREMENT for table `adminspartnerships`
 --
-ALTER TABLE `adminspartnership`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `adminspartnerships`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `billingcompanyservices`
 --
@@ -855,7 +914,7 @@ ALTER TABLE `bookingspace`
 -- AUTO_INCREMENT for table `categoryadmins`
 --
 ALTER TABLE `categoryadmins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `categoryevents`
 --
@@ -925,7 +984,7 @@ ALTER TABLE `informasicompanies`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `member`
 --
@@ -975,7 +1034,12 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `testimonial`
 --
 ALTER TABLE `testimonial`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
