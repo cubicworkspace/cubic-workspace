@@ -18,7 +18,17 @@ Route::get('about','WebsiteController@about');
 Route::get('event','WebsiteController@event');
 Route::get('contact','WebsiteController@contact');
 
+
+
 /* page admin */
 Route::get('internal','Controller@internal');
-Route::get('admin','AdminController@index');
+Route::get('dashboard','InternalController@dashboard');
+Route::resource('admin','AdminController'); 
+Route::resource('categoryadmin','CategoryAdminController'); 
+Route::resource('adminpartnership','AdminPartnershipController'); 
+Route::resource('media','MediaController'); 
+Route::resource('categorymedia','CategoryMediaController'); 
+
+//Auth::routes();
+
 

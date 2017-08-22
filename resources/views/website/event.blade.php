@@ -1,4 +1,4 @@
-@extends('layout.website')
+@extends('layouts.website')
 @section('content')
 	<!-- start end Page title -->
 			<div class="page-title" style="background-image:url('{{ asset('frontend/images/hero-header/breadcrumb.jpg') }}');">

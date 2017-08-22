@@ -1,4 +1,4 @@
-@extends('layout.website')
+@extends('layouts.website')
 @section('content')
 
 	<div id="introLoader" class="introLoading"></div>
