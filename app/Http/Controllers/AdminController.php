@@ -19,17 +19,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-            
-        $number = DB::select('SELECT max(codeadmin) as idMaks FROM admins');
-        foreach($number as $n){ }
-            $nomor = $n->idMaks; 
-                    $noUrut = (int) substr($n->idMaks, 0, 3);
-                    $noUrut++;  
-                    $char = "";
-                    $app =  sprintf("%03s", $noUrut);
         $no = 1;
         $view = admins::all();
-        return view('internal.admin.view', compact('view'), compact('app'));
+        return view('internal.admin.view', compact('view'));
     }
 
     /**
