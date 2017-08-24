@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminPartnershipController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +24,7 @@ class AdminPartnershipController extends Controller
     public function index()
     {
         $no = 1;
-        $view = adminspartnerships::orderBy('created_at', 'desc')->paginate(10);
+        $view = adminspartnerships::all();
         return view('internal.adminpartnership.view', compact('view'));
     }
 
@@ -52,23 +56,15 @@ class AdminPartnershipController extends Controller
 
         $this->validate($request, [
              'codecompanypartnership' => 'required',
-             'codeadminpartnership' => 'required',
              'phone' => 'required',
-             'email' => 'required',
-             'name'  => 'required',
-             'address' => 'required',
-             'password' => 'required']);
+             'codeuser' => 'required',
+             'address' => 'required']);
         $adminpartnership->codecompanypartnership = $request->codecompanypartnership;
-        $adminpartnership->codeadminpartnership = $request->codeadminpartnership;
         $adminpartnership->phone = $request->phone;
-        $adminpartnership->name = $request->name;
         $adminpartnership->address = $request->address;
-        $adminpartnership->email = $request->email;
-        $adminpartnership->password = $request->password;
+        $adminpartnership->codeuser = $request->codeuser;
         $adminpartnership->image = $filename;
         $adminpartnership->status = $request->status;
-        $adminpartnership->lastlogin = date('Y-m-d H:i:s');
-        $adminpartnership->registerdate = date('Y-m-d H:i:s');
         $adminpartnership->save();
         \Session::flash('success', 'Admin Partnership data has been successfully added!,');
         return redirect('/adminpartnership');
@@ -118,23 +114,15 @@ class AdminPartnershipController extends Controller
             );
                 $this->validate($request, [
                      'codecompanypartnership' => 'required',
-                     'codeadminpartnership' => 'required',
                      'phone' => 'required',
-                     'email' => 'required',
-                     'name'  => 'required',
-                     'address' => 'required',
-                     'password' => 'required']);
+                     'codeuser' => 'required',
+                     'address' => 'required']);
                 $adminpartnership->codecompanypartnership = $request->codecompanypartnership;
-                $adminpartnership->codeadminpartnership = $request->codeadminpartnership;
                 $adminpartnership->phone = $request->phone;
-                $adminpartnership->name = $request->name;
                 $adminpartnership->address = $request->address;
-                $adminpartnership->email = $request->email;
-                $adminpartnership->password = $request->password;
+                $adminpartnership->codeuser = $request->codeuser;
                 $adminpartnership->image = $filename;
                 $adminpartnership->status = $request->status;
-                $adminpartnership->lastlogin = date('Y-m-d H:i:s');
-                $adminpartnership->registerdate = date('Y-m-d H:i:s');
                 $adminpartnership->save();
                 \Session::flash('success', 'Admin Partnership data has been edited successfully!,');
                 return redirect('/adminpartnership');
@@ -144,22 +132,14 @@ class AdminPartnershipController extends Controller
                 $image = Input::file('image');
                 $this->validate($request, [
                      'codecompanypartnership' => 'required',
-                     'codeadminpartnership' => 'required',
                      'phone' => 'required',
-                     'email' => 'required',
-                     'name'  => 'required',
-                     'address' => 'required',
-                     'password' => 'required']);
+                     'codeuser' => 'required',
+                     'address' => 'required']);
                 $adminpartnership->codecompanypartnership = $request->codecompanypartnership;
-                $adminpartnership->codeadminpartnership = $request->codeadminpartnership;
                 $adminpartnership->phone = $request->phone;
-                $adminpartnership->name = $request->name;
                 $adminpartnership->address = $request->address;
-                $adminpartnership->email = $request->email;
-                $adminpartnership->password = $request->password;
+                $adminpartnership->codeuser = $request->codeuser;
                 $adminpartnership->status = $request->status;
-                $adminpartnership->lastlogin = date('Y-m-d H:i:s');
-                $adminpartnership->registerdate = date('Y-m-d H:i:s');
                 $adminpartnership->save();
                 \Session::flash('success', 'Admin Partnership data has been edited successfully!,');
                 return redirect('/adminpartnership');

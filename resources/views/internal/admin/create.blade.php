@@ -49,20 +49,20 @@
 									{{csrf_field()}}
 									<div class="table-responsive">
 						              <table class="table">
-						              <tr>
-										<td>Email</td>
+									<tr>
+										<td>Codeadmin</td>
 										<td>:</td>
-										<td><input type="email" name="email"  class="form-control" ></td>
+										<td><input type="text" value="{{ $no }}" name="codeadmin"  class="form-control" ></td>
+									</tr>
+						              <tr>
+										<td>Code user</td>
+										<td>:</td>
+										<td><input type="codeuser" name="codeuser"  class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Phone</td>
 										<td>:</td>
 										<td><input type="text" name="phone"  class="form-control" ></td>
-									</tr>
-									<tr>
-										<td>Password</td>
-										<td>:</td>
-										<td><input type="password" name="password"  class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Image</td>
@@ -83,11 +83,6 @@
 										<td>Codecategoryadmin</td>
 										<td>:</td>
 										<td><input type="text" name="codecategoryadmin"  class="form-control" ></td>
-									</tr>
-									<tr>
-										<td>Codeadmin</td>
-										<td>:</td>
-										<td><input type="text" name="codeadmin" class="form-control" ></td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

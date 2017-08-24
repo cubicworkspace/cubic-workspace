@@ -50,29 +50,19 @@
 									<div class="table-responsive">
 						              <table class="table">
 						            <tr>
-										<td>Name</td>
+										<td>Code User</td>
 										<td>:</td>
-										<td><input type="text" name="name"  class="form-control" ></td>
+										<td><input type="codeuser" name="codeuser"  class="form-control" ></td>
 									</tr>
 						            <tr>
 										<td>Address</td>
 										<td>:</td>
 										<td><textarea name="address"  class="form-control"></textarea></td>
 									</tr>
-						            <tr>
-										<td>Email</td>
-										<td>:</td>
-										<td><input type="email" name="email"  class="form-control" ></td>
-									</tr>
 									<tr>
 										<td>Phone</td>
 										<td>:</td>
 										<td><input type="text" name="phone"  class="form-control" ></td>
-									</tr>
-									<tr>
-										<td>Password</td>
-										<td>:</td>
-										<td><input type="password" name="password"  class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Image</td>
@@ -88,11 +78,6 @@
 						                     <label class="radio-inline"> 
 						                     <input type="radio"  name="status" id="N" class="icheck" value="N"> N
 						                   </label> </td>
-									</tr>
-									<tr>
-										<td>Code Admin Patnership</td>
-										<td>:</td>
-										<td><input type="text" name="codeadminpartnership"  class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Code Company partnership</td>

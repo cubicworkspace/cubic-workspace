@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,12 @@ Route::get('contact','WebsiteController@contact');
 
 
 /* page admin */
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('internal','Controller@internal');
 Route::get('dashboard','InternalController@dashboard');
 Route::resource('admin','AdminController'); 
@@ -28,7 +35,16 @@ Route::resource('categoryadmin','CategoryAdminController');
 Route::resource('adminpartnership','AdminPartnershipController'); 
 Route::resource('media','MediaController'); 
 Route::resource('categorymedia','CategoryMediaController'); 
-
-//Auth::routes();
-
+Route::resource('companies','CompaniesController');
+Route::resource('informasicompanies','InformasiCompaniesController');  
+Route::resource('companypartnership','CompanyPartnershipController'); 
+Route::resource('country','CountryController'); 
+Route::resource('city','CityController'); 
+Route::resource('user','UserController'); 
+Route::resource('companyservices','CompanyServicesController'); 
+Route::resource('tagservices','TagServicesController'); 
+Route::resource('services','ServicesController'); 
+Route::resource('categoryservices','CategoryServicesController'); 
+Route::resource('billingcompanyservices','BillingCompanyServicesController'); 
+Route::resource('historybilling','HistoryBillingController'); 
 

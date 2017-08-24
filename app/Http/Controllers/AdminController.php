@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +35,14 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('internal.admin.create');
+        $admins = DB::select('select max(codeadmin) as idMaks from admins');
+        foreach($admins as $row3){}
+        $nomor  = $row3->idMaks; 
+        $noRand = (int) substr($row3->idMaks, 3, 3);
+        $noRand++;  
+        $char   = "ADM";
+        $no   =  $char . sprintf("%03s", $noRand);
+        return view('internal.admin.create', compact('no'));
     }
 
     /**
@@ -53,14 +64,11 @@ class AdminController extends Controller
         $this->validate($request, [
              'codecategoryadmin' => 'required',
              'codeadmin' => 'required',
-             'phone' => 'required',
-             'email' => 'required',
-             'password' => 'required']);
+             'phone' => 'required']);
         $admin->codecategoryadmin = $request->codecategoryadmin;
         $admin->codeadmin = $request->codeadmin;
         $admin->phone = $request->phone;
-        $admin->email = $request->email;
-        $admin->password = $request->password;
+        $admin->codeuser = $request->codeuser;
         $admin->image = $filename;
         $admin->status = $request->status;
         $admin->save();
@@ -112,15 +120,10 @@ class AdminController extends Controller
 
             $this->validate($request, [
                  'codecategoryadmin' => 'required',
-                 'codeadmin' => 'required',
-                 'phone' => 'required',
-                 'email' => 'required',
-                 'password' => 'required']);
+                 'phone' => 'required']);
             $admin->codecategoryadmin = $request->codecategoryadmin;
-            $admin->codeadmin = $request->codeadmin;
             $admin->phone = $request->phone;
-            $admin->email = $request->email;
-            $admin->password = $request->password;
+            $admin->codeuser = $request->codeuser;
             $admin->image = $filename;
             $admin->status = $request->status;
             $admin->save();
@@ -130,15 +133,10 @@ class AdminController extends Controller
             $admin = admins::find($id);
             $this->validate($request, [
                  'codecategoryadmin' => 'required',
-                 'codeadmin' => 'required',
-                 'phone' => 'required',
-                 'email' => 'required',
-                 'password' => 'required']);
+                 'phone' => 'required']);
             $admin->codecategoryadmin = $request->codecategoryadmin;
-            $admin->codeadmin = $request->codeadmin;
             $admin->phone = $request->phone;
-            $admin->email = $request->email;
-            $admin->password = $request->password;
+            $admin->codeuser = $request->codeuser;
             $admin->image = $request->image;
             $admin->status = $request->status;
             $admin->save();

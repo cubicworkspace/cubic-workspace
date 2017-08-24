@@ -10,6 +10,7 @@
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #1 for statistics, charts, recent events and reports" name="description" />
         <meta content="" name="author" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/global/plugins/font-awesome/css/font-awesome.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/global/plugins/simple-line-icons/simple-line-icons.min.css') }}">
@@ -63,7 +64,7 @@
                             <li class="dropdown dropdown-user">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <img alt="" class="img-circle" src="{{ asset('internal/layouts/layout/img/avatar3_small.jpg') }}" />
-                                    <span class="username username-hide-on-mobile"> Nick </span>
+                                    <span class="username username-hide-on-mobile">{{ Auth::user()->name }}  </span>
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
@@ -93,8 +94,13 @@
                                             <i class="icon-lock"></i> Lock Screen </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('logout') }}">
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                                             <i class="icon-key"></i> Log Out </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                                     </li>
                                 </ul>
                             </li>

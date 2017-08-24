@@ -50,20 +50,20 @@
 									{{ method_field('PUT') }}
 									<div class="table-responsive">
 						              <table class="table">
-						              <tr>
-										<td>Email</td>
+									<tr>
+										<td>Codeadmin</td>
 										<td>:</td>
-										<td><input type="email" name="email"  value="{{ $edit->email }}" class="form-control" ></td>
+										<td><b>{{ $edit->codeadmin }}</b></td>
+									</tr>
+						              <tr>
+										<td>Code User</td>
+										<td>:</td>
+										<td><input type="codeuser" name="codeuser"  value="{{ $edit->codeuser }}" class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Phone</td>
 										<td>:</td>
 										<td><input type="text" name="phone"  value="{{ $edit->phone }}" class="form-control" ></td>
-									</tr>
-									<tr>
-										<td>Password</td>
-										<td>:</td>
-										<td><input type="password" name="password" value="{{ $edit->password }}" class="form-control" ></td>
 									</tr>
 								@if ($edit->image)
 									<tr>
@@ -97,11 +97,6 @@
 										<td>Codecategoryadmin</td>
 										<td>:</td>
 										<td><input type="text" name="codecategoryadmin" value="{{ $edit->codecategoryadmin }}" class="form-control" ></td>
-									</tr>
-									<tr>
-										<td>Codeadmin</td>
-										<td>:</td>
-										<td><input type="text" name="codeadmin"  value="{{ $edit->codeadmin }}" class="form-control" ></td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

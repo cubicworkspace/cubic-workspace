@@ -85,7 +85,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Email</th>
+                                                    <th>Code</th>
+                                                    <th>Code User</th>
                                                     <th>Phone</th>
                                                     <th>Status</th>
                                                     <th>Admin Patnership</th>
@@ -96,7 +97,8 @@
                                             @foreach ($view as $no => $row)
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
-                                                    <td>{{ $row->email }}</td>
+                                                    <td>{{ $row->codeadmin }}</td>
+                                                    <td>{{ $row->codeuser }}</td>
                                                     <td>{{ $row->phone }}</td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>{{ $row->name }}</td>

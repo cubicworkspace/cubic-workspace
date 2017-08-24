@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class CategoryadminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,7 @@ class CategoryadminController extends Controller
     public function index()
     {
         $no = 1;
-        $view = categoryadmins::orderBy('created_at', 'desc')->paginate(10);
+        $view = categoryadmins::all();
         return view('internal.categoryadmin.view', compact('view'));
     }
 
@@ -28,7 +32,14 @@ class CategoryadminController extends Controller
      */
     public function create()
     {
-        return view('internal.categoryadmin.create');
+        $categoryadmins = DB::select('select max(codecategoryadmin) as idMaks from categoryadmins');
+        foreach($categoryadmins as $row3){}
+        $nomor  = $row3->idMaks; 
+        $noRand = (int) substr($row3->idMaks, 3, 3);
+        $noRand++;  
+        $char   = "CTA";
+        $no   =  $char . sprintf("%03s", $noRand);
+        return view('internal.categoryadmin.create', compact('no'));
     }
 
     /**
@@ -87,15 +98,13 @@ class CategoryadminController extends Controller
     {
         $categoryadmin = categoryadmins::find($id);
         $this->validate($request, [
-             'codecategoryadmin' => 'required',
              'name' => 'required',
              'description' => 'required']);
-        $categoryadmin->codecategoryadmin = $request->codecategoryadmin;
         $categoryadmin->name = $request->name;
         $categoryadmin->description = $request->description;
         $categoryadmin->status = $request->status;
         $categoryadmin->save();
-        \Session::flash('success', 'Category Admin data has been successfully added!,');
+        \Session::flash('success', 'Category Admin data has been edited successfully!,');
         return redirect('/categoryadmin');
     }
 
@@ -107,7 +116,6 @@ class CategoryadminController extends Controller
      */
     public function destroy($id)
     {
-        
         $categoryadmin = categoryadmins::find($id);
         $categoryadmin->delete();
          \Session::flash('warning', 'Category Admin data has been successfully deleted!,');

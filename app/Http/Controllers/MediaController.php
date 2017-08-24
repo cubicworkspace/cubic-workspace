@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Storage;
 
 class MediaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -32,8 +36,14 @@ class MediaController extends Controller
      */
     public function create()
     {
-       
-        return view('internal.media.create');
+        $media = DB::select('select max(codemedia) as idMaks from media');
+        foreach($media as $row3){}
+        $nomor  = $row3->idMaks; 
+        $noRand = (int) substr($row3->idMaks, 3, 3);
+        $noRand++;  
+        $char   = "MED";
+        $no   =  $char . sprintf("%03s", $noRand);
+        return view('internal.media.create', compact('no'));
     }
 
     /**
@@ -66,7 +76,7 @@ class MediaController extends Controller
         $media->image       = $filename;
         $media->status      = $request->status;
         $media->save();
-        \Session::flash('success', 'media data has been successfully added!,');
+        \Session::flash('success', 'Media data has been successfully added!,');
         return redirect('/media');
     }
 
@@ -113,12 +123,8 @@ class MediaController extends Controller
             );
 
             $this->validate($request, [
-                 'codecategorymedia' => 'required',
-                 'codemedia' => 'required',
                  'name' => 'required',
                  'url' => 'required']);
-            $media->codecategorymedia= $request->codecategorymedia;
-            $media->codemedia   = $request->codemedia;
             $media->name        = $request->name;
             $media->url         = $request->url;
             $media->date        = $request->date;
@@ -132,11 +138,9 @@ class MediaController extends Controller
 
             $this->validate($request, [
                  'codecategorymedia' => 'required',
-                 'codemedia' => 'required',
                  'name' => 'required',
                  'url' => 'required']);
             $media->codecategorymedia= $request->codecategorymedia;
-            $media->codemedia   = $request->codemedia;
             $media->name        = $request->name;
             $media->url         = $request->url;
             $media->date        = $request->date;

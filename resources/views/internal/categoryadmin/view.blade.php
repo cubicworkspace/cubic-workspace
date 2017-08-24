@@ -85,6 +85,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
+                                                    <th>Code</th>
                                                     <th>Name</th>
                                                     <th>Description</th>
                                                     <th>Status</th>
@@ -95,6 +96,7 @@
                                             @foreach ($view as $no => $row)
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
+                                                    <td>{{ $row->codecategoryadmin }}</td>
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->description }}</td>
                                                     <td>{{ $row->status }}</td>

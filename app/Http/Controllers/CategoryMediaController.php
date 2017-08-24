@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\categorymedia;
+
 use Illuminate\Http\Request;
 
 class CategoryMediaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,9 @@ class CategoryMediaController extends Controller
      */
     public function index()
     {
-        //
+        $no = 1;
+        $view = categorymedia::all();
+        return view('internal.categorymedia.view', compact('view'));
     }
 
     /**
@@ -23,7 +32,14 @@ class CategoryMediaController extends Controller
      */
     public function create()
     {
-        //
+        $categorymedia = DB::select('select max(codecategorymedia) as idMaks from categorymedia');
+        foreach($categorymedia as $row3){}
+        $nomor  = $row3->idMaks; 
+        $noRand = (int) substr($row3->idMaks, 3, 3);
+        $noRand++;  
+        $char   = "CTM";
+        $no   =  $char . sprintf("%03s", $noRand);
+        return view('internal.categorymedia.create', compact('no'));
     }
 
     /**
@@ -34,7 +50,18 @@ class CategoryMediaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categorymedia = new categorymedia;
+        $this->validate($request, [
+             'codecategorymedia' => 'required',
+             'name' => 'required',
+             'description' => 'required']);
+        $categorymedia->codecategorymedia = $request->codecategorymedia;
+        $categorymedia->name = $request->name;
+        $categorymedia->description = $request->description;
+        $categorymedia->status = $request->status;
+        $categorymedia->save();
+        \Session::flash('success', 'Category Media data has been successfully added!,');
+        return redirect('/categorymedia');
     }
 
     /**
@@ -45,7 +72,6 @@ class CategoryMediaController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -55,8 +81,9 @@ class CategoryMediaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {        
+        $edit = categorymedia::find($id);
+        return view('internal.categorymedia.edit', compact('edit'));
     }
 
     /**
@@ -68,7 +95,16 @@ class CategoryMediaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $categorymedia = categorymedia::find($id);
+        $this->validate($request, [
+             'name' => 'required',
+             'description' => 'required']);
+        $categorymedia->name = $request->name;
+        $categorymedia->description = $request->description;
+        $categorymedia->status = $request->status;
+        $categorymedia->save();
+        \Session::flash('success', 'Category Media data has been edited successfully!,');
+        return redirect('/categorymedia');
     }
 
     /**
@@ -79,6 +115,9 @@ class CategoryMediaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categorymedia = categorymedia::find($id);
+        $categorymedia->delete();
+         \Session::flash('warning', 'Category Media data has been successfully deleted!,');
+        return redirect('/categorymedia');
     }
 }

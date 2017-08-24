@@ -51,9 +51,9 @@
 									<div class="table-responsive">
 						            <table class="table">
 						            <tr>
-										<td>Name</td>
+										<td>Code User</td>
 										<td>:</td>
-										<td><input type="text" name="name" value="{{ $edit->name }}" class="form-control" ></td>
+										<td><input type="codeuser" name="codeuser"  value="{{ $edit->codeuser }}" class="form-control" ></td>
 									</tr>
 						            <tr>
 										<td>Address</td>
@@ -61,19 +61,14 @@
 										<td><textarea name="address" class="form-control">{{ $edit->address }}</textarea></td>
 									</tr>
 						            <tr>
-										<td>Email</td>
+										<td>Code User</td>
 										<td>:</td>
-										<td><input type="email" name="email"  value="{{ $edit->email }}" class="form-control" ></td>
+										<td><input type="codeuser" name="codeuser"  value="{{ $edit->codeuser }}" class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Phone</td>
 										<td>:</td>
 										<td><input type="text" name="phone" value="{{ $edit->phone }}" class="form-control" ></td>
-									</tr>
-									<tr>
-										<td>Password</td>
-										<td>:</td>
-										<td><input type="password" name="password" value="{{ $edit->password }}" class="form-control" ></td>
 									</tr>
 									@if ($edit->image)
 									<tr>
@@ -102,11 +97,6 @@
 						                     <label class="radio-inline"> 
 						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
 						                   </label></td>
-									</tr>
-									<tr>
-										<td>Code Admin Patnership</td>
-										<td>:</td>
-										<td><input type="text" name="codeadminpartnership" value="{{ $edit->codeadminpartnership }}"  class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Code Company partnership</td>

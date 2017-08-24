@@ -50,6 +50,11 @@
 									{{ method_field('PUT') }}
 									<div class="table-responsive">
 						             <table class="table">
+									<tr>
+										<td>Code Category Admin</td>
+										<td>:</td>
+										<td><b>{{ $edit->codecategoryadmin }}</b></td>
+									</tr>
 						            <tr>
 										<td>Name</td>
 										<td>:</td>
@@ -69,11 +74,6 @@
 						                     <label class="radio-inline"> 
 						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
 						                   </label></td>
-									</tr>
-									<tr>
-										<td>Code Category Admin</td>
-										<td>:</td>
-										<td><input type="text" name="codecategoryadmin" value="{{ $edit->codecategoryadmin }}" class="form-control" ></td>
 									</tr>
 									<tr>
 									<tr>

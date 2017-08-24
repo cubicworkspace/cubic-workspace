@@ -51,6 +51,11 @@
 									{{ method_field('PUT') }}
 									<div class="table-responsive">
 						              <table class="table">
+									<tr>
+										<td>Code Media</td>
+										<td>:</td>
+										<td><b>{{ $edit->codemedia }}</b></td>
+									</tr>
 						            <tr>
 										<td>Name</td>
 										<td>:</td>
@@ -103,11 +108,6 @@
 										<td>Code Category Media</td>
 										<td>:</td>
 										<td><input type="text" value="{{ $edit->codecategorymedia }}" name="codecategorymedia"  class="form-control" ></td>
-									</tr>
-									<tr>
-										<td>Code Media</td>
-										<td>:</td>
-										<td><input type="text" name="codemedia" value="{{ $edit->codemedia }}" class="form-control" ></td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

@@ -85,6 +85,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
+                                                    <th>Code</th>
                                                     <th>Name</th>
                                                     <th>Url</th>
                                                     <th>Image</th>
@@ -96,6 +97,7 @@
                                             @foreach ($view as $no => $row)
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
+                                                    <td>{{ $row->codemedia }}</td>
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->url }}</td>
                                                     <td><img src="{{ asset('upload/media') }}/{{ $row->image }}" width="120"></td>

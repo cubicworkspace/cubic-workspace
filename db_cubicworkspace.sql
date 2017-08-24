@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2017 at 06:27 AM
+-- Generation Time: Aug 24, 2017 at 08:58 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -30,11 +30,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admins` (
   `id` int(10) UNSIGNED NOT NULL,
+  `codeuser` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecategoryadmin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codeadmin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` enum('Y','N') COLLATE utf8mb4_unicode_ci DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -45,8 +44,8 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `codecategoryadmin`, `codeadmin`, `phone`, `email`, `password`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(25, '1', '1', '087820033395', 'navagiaginasta@gmail.com', '10051995', '14446.jpg', 'Y', '2017-08-21 06:51:02', '2017-08-21 06:51:02');
+INSERT INTO `admins` (`id`, `codeuser`, `codecategoryadmin`, `codeadmin`, `phone`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(29, '2', '1', 'ADM004', '1', '81597.jpg', 'Y', '2017-08-22 23:56:50', '2017-08-22 23:56:50');
 
 -- --------------------------------------------------------
 
@@ -56,16 +55,11 @@ INSERT INTO `admins` (`id`, `codecategoryadmin`, `codeadmin`, `phone`, `email`, 
 
 CREATE TABLE `adminspartnerships` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecompanypartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codeadminpartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codeuser` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lastlogin` datetime NOT NULL,
-  `registerdate` datetime NOT NULL,
   `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -75,10 +69,9 @@ CREATE TABLE `adminspartnerships` (
 -- Dumping data for table `adminspartnerships`
 --
 
-INSERT INTO `adminspartnerships` (`id`, `name`, `codecompanypartnership`, `codeadminpartnership`, `email`, `phone`, `password`, `image`, `address`, `lastlogin`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'nava', '124', '2', 'navagiaginasta@gmail.com', '087820033395', '2', '2', 'Bandung', '2017-08-13 00:00:00', '2017-08-20 00:00:00', 'N', '2017-08-19 17:00:00', '2017-08-19 17:00:00'),
-(4, 'andrey3', '13', '13', 'andrey@gmail.com3', '0181993', '13', 'F:\\xampp\\tmp\\php1C8A.tmp', 'garut3', '2017-08-21 11:58:24', '2017-08-21 11:58:24', 'N', '2017-08-20 22:51:22', '2017-08-21 04:58:24'),
-(5, 'Nava Gia', '1', '1', 'navagiaginasta@gmail.com', '87820033395', '1', '65443.PNG', 'Cianjur', '2017-08-21 11:57:28', '2017-08-21 11:57:28', 'Y', '2017-08-21 04:57:28', '2017-08-21 04:57:28');
+INSERT INTO `adminspartnerships` (`id`, `codecompanypartnership`, `codeuser`, `phone`, `image`, `address`, `status`, `created_at`, `updated_at`) VALUES
+(6, '1', '2', '1', '40625.jpg', '1', 'Y', '2017-08-22 11:23:43', '2017-08-23 00:06:59'),
+(8, '1', '122', '1', '97366.png', '1', 'Y', '2017-08-23 00:05:41', '2017-08-23 00:06:33');
 
 -- --------------------------------------------------------
 
@@ -89,7 +82,7 @@ INSERT INTO `adminspartnerships` (`id`, `name`, `codecompanypartnership`, `codea
 CREATE TABLE `billingcompanyservices` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codeservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codecompanyservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecompanypartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codebilling` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quota` int(11) NOT NULL,
@@ -99,10 +92,18 @@ CREATE TABLE `billingcompanyservices` (
   `nowquotauser` int(11) NOT NULL,
   `information` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `registerdate` datetime NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `billingcompanyservices`
+--
+
+INSERT INTO `billingcompanyservices` (`id`, `name`, `codecompanyservices`, `codecompanypartnership`, `codebilling`, `quota`, `currentquota`, `usedquota`, `currentquotauser`, `nowquotauser`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'Nava1', '211', '111', 'BIL001', 101, 201, 301, 401, 111, '11', '2017-08-24 06:22:13', 'N', '2017-08-23 23:13:30', '2017-08-23 23:22:13'),
+(3, '1', '11', '11', 'BIL002', 1, 1, 1, 1, 1, '1', '2017-08-24 06:16:59', 'N', '2017-08-23 23:16:59', '2017-08-23 23:16:59');
 
 -- --------------------------------------------------------
 
@@ -159,7 +160,8 @@ CREATE TABLE `categoryadmins` (
 --
 
 INSERT INTO `categoryadmins` (`id`, `name`, `codecategoryadmin`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin Control2', '1', '12', 'Y', '2017-08-20 17:00:00', '2017-08-21 00:03:53');
+(2, 'Nava Gia', 'CTA001', '2', 'N', '2017-08-22 10:50:07', '2017-08-22 10:50:07'),
+(3, 'Nava Gia3', 'CTA002', '113', 'Y', '2017-08-22 10:50:57', '2017-08-22 10:52:23');
 
 -- --------------------------------------------------------
 
@@ -188,10 +190,18 @@ CREATE TABLE `categorymedia` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecategorymedia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categorymedia`
+--
+
+INSERT INTO `categorymedia` (`id`, `name`, `codecategorymedia`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(2, '33', 'CTM001', '33', 'Y', '2017-08-22 11:04:20', '2017-08-22 11:07:37'),
+(3, 'Nava Gia', 'CTM002', '2', 'Y', '2017-08-22 11:05:38', '2017-08-22 11:05:38');
 
 -- --------------------------------------------------------
 
@@ -222,27 +232,41 @@ CREATE TABLE `categoryservices` (
   `codecategoryservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codeservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `categoryservices`
+--
+
+INSERT INTO `categoryservices` (`id`, `name`, `codecategoryservices`, `codeservices`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(3, '22', 'CTS002', '2', '2', 'Y', '2017-08-23 22:22:23', '2017-08-23 22:22:23');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `city`
+-- Table structure for table `citys`
 --
 
-CREATE TABLE `city` (
+CREATE TABLE `citys` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecountry` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecity` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `citys`
+--
+
+INSERT INTO `citys` (`id`, `name`, `codecountry`, `codecity`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'Cianjur', 'COU001', 'CIT001', 'Cianjur', 'Y', '2017-08-22 11:44:40', '2017-08-22 11:46:18');
 
 -- --------------------------------------------------------
 
@@ -256,52 +280,67 @@ CREATE TABLE `companies` (
   `favicon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` int(11) NOT NULL,
-  `fax` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fax` char(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `maps` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `profile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `history` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `vision` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mision` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vision` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mision` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `registerdate` datetime NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `companies`
+--
+
+INSERT INTO `companies` (`id`, `name`, `favicon`, `logo`, `email`, `phone`, `fax`, `address`, `maps`, `profile`, `history`, `description`, `vision`, `mision`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'PT. NAVA WEB SOLUTION', '1', '1', 'navagiaginasta@gmail.com', '087820033395', '02233312999', 'Bandung', 'maps', 'profil', 'bandugn', '1', '1', '1', '2017-08-22 00:00:00', 'Y', '2017-08-21 17:00:00', '2017-08-21 17:00:00'),
+(2, 'nava', '41721.PNG', '32242.jpg', 'navagiaginasta@gmail.com2', '87820033395', '87820033395', '2', 'Cianjur', '2', '2', '2', '2', '2', '2017-08-22 05:51:15', 'N', '2017-08-21 22:13:58', '2017-08-21 22:51:15');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `companypartnership`
+-- Table structure for table `companypartnerships`
 --
 
-CREATE TABLE `companypartnership` (
+CREATE TABLE `companypartnerships` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecompanypartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `favicon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` int(11) NOT NULL,
-  `fax` int(11) NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fax` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `maps` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecountry` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecity` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `profile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `history` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `vision` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mision` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vision` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mision` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `faq` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `information` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `registerdate` datetime NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `companypartnerships`
+--
+
+INSERT INTO `companypartnerships` (`id`, `name`, `codecompanypartnership`, `favicon`, `logo`, `email`, `phone`, `fax`, `address`, `maps`, `codecountry`, `codecity`, `profile`, `history`, `description`, `vision`, `mision`, `faq`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
+(5, '1', 'COP001', '51362.png', '27255.png', 'navagiaginasta@gmail.com', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '2017-08-23 09:19:17', 'Y', '2017-08-23 02:19:17', '2017-08-23 02:19:17');
 
 -- --------------------------------------------------------
 
@@ -312,35 +351,51 @@ CREATE TABLE `companypartnership` (
 CREATE TABLE `companyservices` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codeservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codecompanyservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecompanypartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codetagservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codeservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quota` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `quotauser` int(11) NOT NULL,
   `information` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `registerdate` datetime NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `companyservices`
+--
+
+INSERT INTO `companyservices` (`id`, `name`, `codecompanyservices`, `codecompanypartnership`, `codetagservices`, `codeservices`, `quota`, `price`, `quotauser`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
+(3, '1', 'COS001', '1', '1', '', 1, 1, 1, '1', '2017-08-23 09:19:35', 'Y', '2017-08-23 02:19:35', '2017-08-23 02:19:35'),
+(5, 'Nava Gia', 'COS002', '1', '1', '1', 1, 1, 1, '1', '2017-08-24 04:49:27', 'Y', '2017-08-23 21:49:27', '2017-08-23 21:49:27');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `country`
+-- Table structure for table `countrys`
 --
 
-CREATE TABLE `country` (
+CREATE TABLE `countrys` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecountry` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `flag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `countrys`
+--
+
+INSERT INTO `countrys` (`id`, `name`, `codecountry`, `flag`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(2, '12', 'COU001', '70344.PNG', '12', 'N', '2017-08-22 11:40:21', '2017-08-22 11:41:16');
 
 -- --------------------------------------------------------
 
@@ -367,13 +422,13 @@ CREATE TABLE `events` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `historybillingcompany`
+-- Table structure for table `historybillingcompanyservices`
 --
 
-CREATE TABLE `historybillingcompany` (
+CREATE TABLE `historybillingcompanyservices` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codeservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codecompanyservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecompanypartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codebilling` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quota` int(11) NOT NULL,
@@ -384,10 +439,17 @@ CREATE TABLE `historybillingcompany` (
   `nowquotauser` int(11) NOT NULL,
   `information` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `datetime` datetime NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `historybillingcompanyservices`
+--
+
+INSERT INTO `historybillingcompanyservices` (`id`, `name`, `codecompanyservices`, `codecompanypartnership`, `codebilling`, `quota`, `currentquota`, `usedquota`, `price`, `currentquotauser`, `nowquotauser`, `information`, `datetime`, `status`, `created_at`, `updated_at`) VALUES
+(1, '2', '11', '10', '1', 3, 4, 5, 8, 6, 7, '9', '2017-08-24 06:55:53', 'N', '2017-08-23 17:00:00', '2017-08-23 23:55:53');
 
 -- --------------------------------------------------------
 
@@ -432,12 +494,20 @@ CREATE TABLE `informasicompanies` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `icon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `informasicompanies`
+--
+
+INSERT INTO `informasicompanies` (`id`, `name`, `title`, `description`, `icon`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'nava gia ginasta', 'nava', 'nava', 'nava', 'Y', '2017-08-21 17:00:00', '2017-08-21 17:00:00'),
+(2, '2', '2', '2', '74220.PNG', 'N', '2017-08-21 23:12:35', '2017-08-21 23:25:42');
 
 -- --------------------------------------------------------
 
@@ -464,7 +534,7 @@ CREATE TABLE `media` (
 --
 
 INSERT INTO `media` (`id`, `name`, `codecategorymedia`, `codemedia`, `url`, `date`, `writer`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'media abc', '1', '1', 'www.facebook.com', '2017-08-21 00:00:00', '1', '64944.PNG', 'Y', '2017-08-20 17:00:00', '2017-08-21 06:38:48');
+(2, 'Nava Giar', '1', 'MED001', 'www.tvone.com', '2017-08-23 00:00:00', '1', '12267.jpg', 'Y', '2017-08-22 10:56:58', '2017-08-22 11:00:49');
 
 -- --------------------------------------------------------
 
@@ -474,19 +544,13 @@ INSERT INTO `media` (`id`, `name`, `codecategorymedia`, `codemedia`, `url`, `dat
 
 CREATE TABLE `member` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codemember` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `userid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codeuser` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `institution` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `birthday` date NOT NULL,
   `phone` int(11) NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `providerid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `provider` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `information` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `registerdate` datetime NOT NULL,
   `lastlogin` datetime NOT NULL,
@@ -498,10 +562,10 @@ CREATE TABLE `member` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `message`
+-- Table structure for table `messages`
 --
 
-CREATE TABLE `message` (
+CREATE TABLE `messages` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -594,18 +658,27 @@ CREATE TABLE `services` (
   `codecategoryservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codeservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `name`, `codecategoryservices`, `codeservices`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(1, '1', '11', '1', '1', 'N', '2017-08-23 17:00:00', '2017-08-23 17:00:00'),
+(2, '123', '123', 'SER001', '123', 'Y', '2017-08-23 22:07:48', '2017-08-23 22:09:43'),
+(3, '2', '2', 'SER002', '2', 'N', '2017-08-23 22:07:58', '2017-08-23 22:07:58');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sosialmedia`
+-- Table structure for table `sosialmedias`
 --
 
-CREATE TABLE `sosialmedia` (
+CREATE TABLE `sosialmedias` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -618,10 +691,10 @@ CREATE TABLE `sosialmedia` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subscriber`
+-- Table structure for table `subscribers`
 --
 
-CREATE TABLE `subscriber` (
+CREATE TABLE `subscribers` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -629,6 +702,13 @@ CREATE TABLE `subscriber` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `subscribers`
+--
+
+INSERT INTO `subscribers` (`id`, `name`, `email`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Adi', '95@gmail.com', 'Y', '2017-08-22 23:35:50', '2017-08-22 23:35:50');
 
 -- --------------------------------------------------------
 
@@ -641,18 +721,26 @@ CREATE TABLE `tagservices` (
   `codetagservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codeservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `tagservices`
+--
+
+INSERT INTO `tagservices` (`id`, `codetagservices`, `codeservices`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'CTS001', '1', '11', 'Y', '2017-08-23 02:47:57', '2017-08-23 02:47:57'),
+(3, 'CTS002', '3', '3', 'N', '2017-08-23 02:48:08', '2017-08-23 02:48:08');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `team`
+-- Table structure for table `teams`
 --
 
-CREATE TABLE `team` (
+CREATE TABLE `teams` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -663,13 +751,20 @@ CREATE TABLE `team` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `teams`
+--
+
+INSERT INTO `teams` (`id`, `name`, `image`, `job`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Ketut', '36274.JPG', 'It Support', 'dfdfdfdfd', 'Y', '2017-08-22 23:13:39', '2017-08-22 23:13:39');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `testimonial`
+-- Table structure for table `testimonials`
 --
 
-CREATE TABLE `testimonial` (
+CREATE TABLE `testimonials` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -688,9 +783,15 @@ CREATE TABLE `testimonial` (
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codeuser` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('USER','ADMIN PARTNERSHIP','ADMIN') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'USER',
+  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `provider_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastlogin` datetime NOT NULL,
+  `registerdate` datetime NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -699,8 +800,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(3, 'nava gia', 'navagiaginasta@gmail.com', '$2y$10$wnEhcBgMsVXUz8hyw/uZ3Ot6Br2ggdo6hGCzFmARKAJqkjeA3us02', 'VT5OEWWl0puzEsXJ3tqu9tFDI9a5x85nAT3HnYWz5iweHQqKlrZP9s7guWmG', '2017-08-19 05:52:17', '2017-08-19 05:52:17');
+INSERT INTO `users` (`id`, `name`, `codeuser`, `email`, `password`, `remember_token`, `status`, `user_id`, `provider_id`, `lastlogin`, `registerdate`, `created_at`, `updated_at`) VALUES
+(3, 'nava gia', 'USR001', 'navagiaginasta@gmail.com', '$2y$10$wnEhcBgMsVXUz8hyw/uZ3Ot6Br2ggdo6hGCzFmARKAJqkjeA3us02', 'Pftf4stqCJHKheVwFvpKv26y5PQHESSHi5D8HOgNpxE5ojMTO05Poxo7NluL', 'ADMIN', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2017-08-19 05:52:17', '2017-08-19 05:52:17'),
+(10, 'admin@cubic.co.id', 'USR002', 'admin@cubic.co.id', '$2y$10$ev0UedpfRk70xwGZdNUeluRhJEoX6rbtTWROPQF92gqbo9YJ2k9Ny', 'uhAhwkkjdHasiMm9VdWrQFVL6CuBNpIg5Amg80bJRCd1OX9NILIx9jZJDg1s', 'ADMIN', '', '', '2017-08-23 08:33:23', '2017-08-23 08:33:23', '2017-08-23 01:20:18', '2017-08-23 01:33:24'),
+(12, 'Ketut', 'USR003', 'ketut@gmail.com', '$2y$10$G342Xd8opqgaRKw.XGzCC.3wbI.l6thrg16HqT229tuIOzZ/9CYfW', NULL, 'ADMIN', '', '', '2017-08-23 09:19:57', '2017-08-23 09:19:57', '2017-08-23 02:19:58', '2017-08-23 02:19:58');
 
 --
 -- Indexes for dumped tables
@@ -761,9 +864,9 @@ ALTER TABLE `categoryservices`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `city`
+-- Indexes for table `citys`
 --
-ALTER TABLE `city`
+ALTER TABLE `citys`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -773,9 +876,9 @@ ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `companypartnership`
+-- Indexes for table `companypartnerships`
 --
-ALTER TABLE `companypartnership`
+ALTER TABLE `companypartnerships`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -785,9 +888,9 @@ ALTER TABLE `companyservices`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `country`
+-- Indexes for table `countrys`
 --
-ALTER TABLE `country`
+ALTER TABLE `countrys`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -797,9 +900,9 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `historybillingcompany`
+-- Indexes for table `historybillingcompanyservices`
 --
-ALTER TABLE `historybillingcompany`
+ALTER TABLE `historybillingcompanyservices`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -827,9 +930,9 @@ ALTER TABLE `member`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `message`
+-- Indexes for table `messages`
 --
-ALTER TABLE `message`
+ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -851,15 +954,15 @@ ALTER TABLE `services`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `sosialmedia`
+-- Indexes for table `sosialmedias`
 --
-ALTER TABLE `sosialmedia`
+ALTER TABLE `sosialmedias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `subscriber`
+-- Indexes for table `subscribers`
 --
-ALTER TABLE `subscriber`
+ALTER TABLE `subscribers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -869,15 +972,15 @@ ALTER TABLE `tagservices`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `team`
+-- Indexes for table `teams`
 --
-ALTER TABLE `team`
+ALTER TABLE `teams`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `testimonial`
+-- Indexes for table `testimonials`
 --
-ALTER TABLE `testimonial`
+ALTER TABLE `testimonials`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -894,17 +997,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `adminspartnerships`
 --
 ALTER TABLE `adminspartnerships`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `billingcompanyservices`
 --
 ALTER TABLE `billingcompanyservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `bookingspace`
 --
@@ -914,7 +1017,7 @@ ALTER TABLE `bookingspace`
 -- AUTO_INCREMENT for table `categoryadmins`
 --
 ALTER TABLE `categoryadmins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `categoryevents`
 --
@@ -924,7 +1027,7 @@ ALTER TABLE `categoryevents`
 -- AUTO_INCREMENT for table `categorymedia`
 --
 ALTER TABLE `categorymedia`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `categorypaymentmethode`
 --
@@ -934,42 +1037,42 @@ ALTER TABLE `categorypaymentmethode`
 -- AUTO_INCREMENT for table `categoryservices`
 --
 ALTER TABLE `categoryservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `city`
+-- AUTO_INCREMENT for table `citys`
 --
-ALTER TABLE `city`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `citys`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `companypartnership`
+-- AUTO_INCREMENT for table `companypartnerships`
 --
-ALTER TABLE `companypartnership`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `companypartnerships`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `companyservices`
 --
 ALTER TABLE `companyservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `country`
+-- AUTO_INCREMENT for table `countrys`
 --
-ALTER TABLE `country`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `countrys`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `historybillingcompany`
+-- AUTO_INCREMENT for table `historybillingcompanyservices`
 --
-ALTER TABLE `historybillingcompany`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `historybillingcompanyservices`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `historybookingspace`
 --
@@ -979,21 +1082,21 @@ ALTER TABLE `historybookingspace`
 -- AUTO_INCREMENT for table `informasicompanies`
 --
 ALTER TABLE `informasicompanies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `message`
+-- AUTO_INCREMENT for table `messages`
 --
-ALTER TABLE `message`
+ALTER TABLE `messages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1009,37 +1112,37 @@ ALTER TABLE `paymentmethode`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `sosialmedias`
+--
+ALTER TABLE `sosialmedias`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `sosialmedia`
+-- AUTO_INCREMENT for table `subscribers`
 --
-ALTER TABLE `sosialmedia`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `subscriber`
---
-ALTER TABLE `subscriber`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `subscribers`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tagservices`
 --
 ALTER TABLE `tagservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `team`
+-- AUTO_INCREMENT for table `teams`
 --
-ALTER TABLE `team`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `teams`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `testimonial`
+-- AUTO_INCREMENT for table `testimonials`
 --
-ALTER TABLE `testimonial`
+ALTER TABLE `testimonials`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
