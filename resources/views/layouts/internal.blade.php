@@ -31,11 +31,12 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/global/css/plugins.min.css') }}">
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('backend/layouts/layout/css/layout.min.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('backend/layouts/layout/css/layout.css') }}"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/layouts/layout/css/themes/darkblue.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/layouts/layout/css/custom.min.css') }}">
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <link rel="shortcut icon" href="{{ asset('faviconcubic.png') }}" />
+     </head>
     <!-- END HEAD -->
      <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
         <div class="page-wrapper">

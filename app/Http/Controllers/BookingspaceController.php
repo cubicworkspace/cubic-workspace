@@ -1,0 +1,165 @@
+<?php
+
+namespace App\Http\Controllers;
+use DB;
+use App\bookingspaces;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+
+class BookingspaceController extends Controller
+{
+  
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $no = 1;
+        $view = bookingspaces::all();
+        return view('internal.bookingspace.view', compact('view'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $bookingspaces = DB::select('select max(codebookingspace) as idMaks from bookingspaces');
+        foreach($bookingspaces as $row3){}
+        $nomor  = $row3->idMaks; 
+        $noRand = (int) substr($row3->idMaks, 3, 3);
+        $noRand++;  
+        $char   = "CBS";
+        $no   =  $char . sprintf("%03s", $noRand);
+        return view('internal.bookingspace.create', compact('no'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $bookingspace = new bookingspaces;
+
+        $this->validate($request, [
+             'name' => 'required',
+             'quota' => 'required',
+             'phone' => 'required']);
+        $bookingspace->codebookingspace = $request->codebookingspace;
+        $bookingspace->codecompanypartnership = $request->codecompanypartnership;
+        $bookingspace->codebilling = $request->codebilling;
+        $bookingspace->codeservice = $request->codeservice;
+        $bookingspace->codemember = $request->codemember;
+        $bookingspace->codepaymentmethode = $request->codepaymentmethode;
+        $bookingspace->invoice = $request->invoice;
+        $bookingspace->name = $request->name;
+        $bookingspace->email = $request->email;
+        $bookingspace->phone = $request->phone;
+        $bookingspace->address = $request->address;
+        $bookingspace->quota = $request->quota;
+        $bookingspace->quotauser = $request->quotauser;
+        $bookingspace->price = $request->price;
+        $bookingspace->totalprice = $request->totalprice;
+        $bookingspace->datein = date('Y-m-d H:i:s');
+        $bookingspace->dateout = date('Y-m-d H:i:s');
+        $bookingspace->currentquotauser = $request->currentquotauser;
+        $bookingspace->nowquotauser = $request->nowquotauser;
+        $bookingspace->information = $request->information;
+        $bookingspace->dateregister = date('Y-m-d H:i:s');
+        $bookingspace->status = $request->status;
+        $bookingspace->save();
+        \Session::flash('success', 'Booking Space data has been successfully added!,');
+        return redirect('/bookingspace');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $edit = bookingspaces::find($id);
+        return view('internal.bookingspace.edit', compact('edit'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        
+            $bookingspace = bookingspaces::find($id);
+            $this->validate($request, [
+                'name' => 'required',
+             'phone' => 'required',
+             'quota' => 'required']);
+       // $event->codeevent = $request->codeevent;
+        //$bookingspace->codebookingspace = $request->codebookingspace;
+        $bookingspace->codecompanypartnership = $request->codecompanypartnership;
+        $bookingspace->codebilling = $request->codebilling;
+        $bookingspace->codeservice = $request->codeservice;
+        $bookingspace->codemember = $request->codemember;
+        $bookingspace->codepaymentmethode = $request->codepaymentmethode;
+        $bookingspace->invoice = $request->invoice;
+        $bookingspace->name = $request->name;
+        $bookingspace->email = $request->email;
+        $bookingspace->phone = $request->phone;
+        $bookingspace->address = $request->address;
+        $bookingspace->quota = $request->quota;
+        $bookingspace->quotauser = $request->quotauser;
+        $bookingspace->price = $request->price;
+        $bookingspace->totalprice = $request->totalprice;
+        $bookingspace->datein = date('Y-m-d H:i:s');
+        $bookingspace->dateout = date('Y-m-d H:i:s');
+        $bookingspace->currentquotauser = $request->currentquotauser;
+        $bookingspace->nowquotauser = $request->nowquotauser;
+        $bookingspace->information = $request->information;
+        $bookingspace->dateregister = date('Y-m-d H:i:s');
+        $bookingspace->status = $request->status;
+        $bookingspace->save();
+            \Session::flash('success', 'Booking Space data has been edited successfully!,');
+            return redirect('/bookingspace');
+
+        
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+         $bookingspace = bookingspaces::find($id);
+        $bookingspace->delete();
+        \Session::flash('warning', 'Booking Space data has been successfully deleted!,');
+        return redirect('/bookingspace');
+    }
+}

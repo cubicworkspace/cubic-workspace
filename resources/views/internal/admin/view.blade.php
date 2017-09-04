@@ -89,7 +89,6 @@
                                                     <th>Code User</th>
                                                     <th>Phone</th>
                                                     <th>Status</th>
-                                                    <th>Admin Patnership</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -98,10 +97,9 @@
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->codeadmin }}</td>
-                                                    <td>{{ $row->codeuser }}</td>
+                                                    <td>{{ $d->name }}</td>
                                                     <td>{{ $row->phone }}</td>
                                                     <td>{{ $row->status }}</td>
-                                                    <td>{{ $row->name }}</td>
                                                     <td>                      
 								                      <form action="/admin/{{$row->id}}" method="POST">
 								                      <a href="/admin/{{$row->id}}/edit" class="btn btn-warning"><i class="fa fa-pencil" ></i> Edit</a> 

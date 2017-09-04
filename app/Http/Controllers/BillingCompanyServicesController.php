@@ -8,12 +8,7 @@ use App\billingcompanyservices;
 use Illuminate\Http\Request;
 
 class BillingCompanyServicesController extends Controller
-{
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    /**
+{    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

@@ -54,10 +54,15 @@
 										<td>:</td>
 										<td><input type="text" value="{{ $no }}" name="codeadmin"  class="form-control" ></td>
 									</tr>
-						              <tr>
-										<td>Code user</td>
+									<tr>
+										<td>User</td>
 										<td>:</td>
-										<td><input type="codeuser" name="codeuser"  class="form-control" ></td>
+										<td><select name="codeuser" class="form-control" >
+                                            @foreach ($users as $row)
+											  <option value="{{ $row->codeuser }}">{{ $row->name }}</option>
+											 @endforeach
+											</select>
+									</td>
 									</tr>
 									<tr>
 										<td>Phone</td>

@@ -218,7 +218,7 @@
 										<li><a href="{{ url('') }}">Home</a></li>
 										<li><a href="{{ url('/package_list') }}">Package</a></li>
 										<li><a href="{{ url('/about') }}">About Us</a></li>
-										<li><a href="{{ url('/event') }}">Event</a></li>
+										<li><a href="{{ url('/event_site') }}">Event</a></li>
 										<li><a href="{{ url('/contact') }}">Contact us</a></li>
 									</ul>
 								</div><!--/.nav-collapse -->

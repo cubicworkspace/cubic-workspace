@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\admins;
+use App\users;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -12,10 +13,11 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct(){
+    //     $this->middleware('auth');
+    //     $this->middleware('admin');
+    // }
+    
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +26,9 @@ class AdminController extends Controller
     public function index()
     {
         $no = 1;
+        $d = users::find(1);
         $view = admins::all();
-        return view('internal.admin.view', compact('view'));
+        return view('internal.admin.view', compact('view'), compact('d'));
     }
 
     /**
@@ -42,7 +45,10 @@ class AdminController extends Controller
         $noRand++;  
         $char   = "ADM";
         $no   =  $char . sprintf("%03s", $noRand);
-        return view('internal.admin.create', compact('no'));
+
+        $ds = users::all();
+
+        return view('internal.admin.create', compact('no'), compact('users'));
     }
 
     /**
@@ -95,8 +101,9 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
+        $users = users::all();
         $edit = admins::find($id);
-        return view('internal.admin.edit', compact('edit'));
+        return view('internal.admin.edit', compact('edit'), compact('users'));
     }
 
     /**

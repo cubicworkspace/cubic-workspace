@@ -16,7 +16,16 @@
                         <h1 class="page-title"> @yield('title')</h1>
                         <!-- END PAGE TITLE-->
                         <!-- END PAGE HEADER-->
+                        <div class="note note-info">
+                            <p> Hello <strong>{{ Auth::user()->name }} [{{ Auth::user()->status }}]</strong>, Welcome to the administrator page of Cubic Workspace </p>
+                        </div>
                         <!-- BEGIN DASHBOARD STATS 1-->
+                        <div class="row">
+                            
+
+
+
+                        </div>
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <a class="dashboard-stat dashboard-stat-v2 blue" href="#">

@@ -23,11 +23,12 @@
         <link href="{{ asset('backend/global/css/plugins.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="{{ asset('backend/pages/css/login.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/pages/css/login.css') }}" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <link rel="shortcut icon" href="{{ asset('faviconcubic.png') }}" /> 
+    </head>
     <!-- END HEAD -->
 
     <body class=" login">
@@ -40,7 +41,7 @@
         <!-- BEGIN LOGIN -->
         <div class="content">
             <!-- BEGIN LOGIN FORM -->
-            <form class="login-form"  method="POST" action="{{ route('login') }}">
+            <form class="login-form"  method="POST" action="{{ url('internal') }}">
                         {{ csrf_field() }}        
                 <h3 class="form-title font-green">Sign In</h3>
                          @if ($errors->has('email'))
