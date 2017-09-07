@@ -30,6 +30,17 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/global/css/components.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/global/css/plugins.min.css') }}">
         <!-- END THEME GLOBAL STYLES -->
+
+
+        <!-- DATEPICKER GLOBAL STYLES -->
+        <link href="{{ asset('backend/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/global/plugins/clockface/css/clockface.css') }}" rel="stylesheet" type="text/css" />
+
+
+
         <!-- BEGIN THEME LAYOUT STYLES -->
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/layouts/layout/css/layout.css') }}"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/layouts/layout/css/themes/darkblue.min.css') }}">
@@ -215,7 +226,18 @@
         <script src="{{ asset('backend/pages/scripts/dashboard.min.js') }}"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
         <script src="{{ asset('backend/pages/scripts/table-datatables-managed.min.js') }}" type="text/javascript"></script>
-        <!-- END PAGE LEVEL SCRIPTS -->
+
+
+        <!-- BEGIN DATEPICKER LEVEL PLUGINS -->
+        <script src="{{ asset('backend/pages/scripts/components-date-time-pickers.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('backend/global/plugins/moment.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('backend/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('backend/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('backend/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('backend/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('backend/global/plugins/clockface/js/clockface.js') }}" type="text/javascript"></script>
+        <!-- END DATEPICKER LEVEL SCRIPTS -->
+
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <script src="{{ asset('backend/layouts/layout/scripts/layout.min.js') }}"></script>
         <script src="{{ asset('backend/layouts/layout/scripts/demo.min.js') }}"></script>

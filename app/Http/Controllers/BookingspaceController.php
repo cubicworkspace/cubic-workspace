@@ -1,8 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use DB;
 use App\bookingspaces;
+use App\services;
+use App\companypartnership;
+use App\billingcompanyservices;
+use App\users;
+use App\paymentmethodes;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
@@ -37,7 +45,14 @@ class BookingspaceController extends Controller
         $noRand++;  
         $char   = "CBS";
         $no   =  $char . sprintf("%03s", $noRand);
-        return view('internal.bookingspace.create', compact('no'));
+
+        $companypartnership     = companypartnership::pluck('name', 'id');
+        $services               = services::pluck('name', 'id');
+        $billingcompanyservices = billingcompanyservices::pluck('name', 'id');
+        $users                  = users::pluck('name', 'id');
+        $paymentmethodes         = paymentmethodes::pluck('name', 'id');
+
+        return view('internal.bookingspace.create', compact('no','companypartnership','services','billingcompanyservices','users','paymentmethodes'));
     }
 
     /**
@@ -57,8 +72,8 @@ class BookingspaceController extends Controller
         $bookingspace->codebookingspace = $request->codebookingspace;
         $bookingspace->codecompanypartnership = $request->codecompanypartnership;
         $bookingspace->codebilling = $request->codebilling;
-        $bookingspace->codeservice = $request->codeservice;
-        $bookingspace->codemember = $request->codemember;
+        $bookingspace->codeservices = $request->codeservices;
+        $bookingspace->codeuser = $request->codeuser;
         $bookingspace->codepaymentmethode = $request->codepaymentmethode;
         $bookingspace->invoice = $request->invoice;
         $bookingspace->name = $request->name;
@@ -100,8 +115,14 @@ class BookingspaceController extends Controller
      */
     public function edit($id)
     {
+        $companypartnership     = companypartnership::pluck('name', 'id');
+        $services               = services::pluck('name', 'id');
+        $billingcompanyservices = billingcompanyservices::pluck('name', 'id');
+        $users                  = users::pluck('name', 'id');
+        $paymentmethodes         = paymentmethodes::pluck('name', 'id');
+
         $edit = bookingspaces::find($id);
-        return view('internal.bookingspace.edit', compact('edit'));
+        return view('internal.bookingspace.edit', compact('edit','companypartnership','services','billingcompanyservices','users','paymentmethodes'));
     }
 
     /**
@@ -123,8 +144,8 @@ class BookingspaceController extends Controller
         //$bookingspace->codebookingspace = $request->codebookingspace;
         $bookingspace->codecompanypartnership = $request->codecompanypartnership;
         $bookingspace->codebilling = $request->codebilling;
-        $bookingspace->codeservice = $request->codeservice;
-        $bookingspace->codemember = $request->codemember;
+        $bookingspace->codeservices = $request->codeservices;
+        $bookingspace->codeuser = $request->codeuser;
         $bookingspace->codepaymentmethode = $request->codepaymentmethode;
         $bookingspace->invoice = $request->invoice;
         $bookingspace->name = $request->name;

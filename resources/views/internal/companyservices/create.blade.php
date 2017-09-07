@@ -90,19 +90,31 @@
 						                   </label> </td>
 									</tr>
 						            <tr>
-										<td>Code Company Partnership</td>
+										<td>Company Partnership</td>
 										<td>:</td>
-										<td><input type="text" name="codecompanypartnership"  class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecompanypartnership', $companypartnership, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Company Partnership --'
+	   								 ]) !!}</td>
 									</tr>
 						            <tr>
 										<td>Code Tag Service</td>
 										<td>:</td>
-										<td><input type="text" name="codetagservices"  class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codetagservices', $tagservices, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Tag Services --'
+	   								 ]) !!}</td>
 									</tr>
 									<tr>
-										<td>Code Service</td>
+										<td>Service</td>
 										<td>:</td>
-										<td><input type="text" name="codeservices"  class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codeservices', $services, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Services --'
+	   								 ]) !!}</td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

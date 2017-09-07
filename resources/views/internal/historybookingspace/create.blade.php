@@ -54,25 +54,43 @@
 										<td>:</td>
 										<td><input type="text" name="codebookingspace"  class="form-control" ></td>
 									</tr>
-						              <tr>
-										<td>Code Service</td>
+									<tr>
+										<td>Services</td>
 										<td>:</td>
-										<td><input type="text" name="codeservice"  class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codeservices', $services, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Services --'
+	   								 ]) !!}
+									</td>
 									</tr>
 									<tr>
-										<td>Code Company Partnership</td>
+										<td>Company Partnership</td>
 										<td>:</td>
-										<td><input type="text" name="codecompanypartnership" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecompanypartnership', $companypartnership, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Company Partnership --'
+	   								 ]) !!}
 									</tr>
 									<tr>
-										<td>Code Billing</td>
+										<td>Billing Company Services</td>
 										<td>:</td>
-										<td><input type="text" name="codebilling" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codebilling', $billingcompanyservices, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Billing Company Services --'
+	   								 ]) !!}
 									</tr>
 									<tr>
-										<td>Code Member</td>
+										<td>User</td>
 										<td>:</td>
-										<td><input type="text" name="codemember" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codeuser', $users, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Users --'
+	   								 ]) !!}
+									</td>
 									</tr>
 									<tr>
 										<td>Invoice</td>
@@ -87,7 +105,7 @@
 									<tr>
 										<td>Email</td>
 										<td>:</td>
-										<td><input type="text" name="email" class="form-control" ></td>
+										<td><input type="email" name="email" class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Phone</td>

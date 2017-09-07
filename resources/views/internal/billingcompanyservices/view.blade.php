@@ -88,9 +88,9 @@
                                                     <th>Code</th>
                                                     <th>Name</th>
                                                     <th>Information</th>
+                                                    <th>Company Partnership</th>
+                                                    <th>Company Services</th>
                                                     <th>Quota</th>
-                                                    <th>Current Quota</th>
-                                                    <th>Used Quota</th>
                                                     <th>Status</th>
                                                     <th>Actions</th>
                                                 </tr>
@@ -102,9 +102,9 @@
                                                     <td>{{ $row->codebilling }}</td>
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->information }}</td>
+                                                    <td>{{ !empty($row->companypartnership->name) ? $row->companypartnership->name : '-' }} </td>
+                                                    <td>{{ !empty($row->companyservice->name) ? $row->companyservice->name : '-' }} </td>
                                                     <td>{{ $row->quota }}</td>
-                                                    <td>{{ $row->currentquota }}</td>
-                                                    <td>{{ $row->usedquota }}</td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      
 								                      <form action="/billingcompanyservices/{{$row->id}}" method="POST">

@@ -1,8 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use DB;
 use App\historybookingspaces;
+use App\services;
+use App\companypartnership;
+use App\billingcompanyservices;
+use App\users;
+use App\paymentmethodes;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
@@ -30,7 +37,14 @@ class HistorybookingspaceController extends Controller
      */
     public function create()
     {
-        return view('internal.historybookingspace.create');
+
+        $companypartnership     = companypartnership::pluck('name', 'id');
+        $services               = services::pluck('name', 'id');
+        $billingcompanyservices = billingcompanyservices::pluck('name', 'id');
+        $users                  = users::pluck('name', 'id');
+        $paymentmethodes         = paymentmethodes::pluck('name', 'id');
+
+        return view('internal.historybookingspace.create', compact('companypartnership','services','billingcompanyservices','users','paymentmethodes'));
     }
 
     /**
@@ -50,8 +64,8 @@ class HistorybookingspaceController extends Controller
         $historybookingspace->codebookingspace = $request->codebookingspace;
         $historybookingspace->codecompanypartnership = $request->codecompanypartnership;
         $historybookingspace->codebilling = $request->codebilling;
-        $historybookingspace->codeservice = $request->codeservice;
-        $historybookingspace->codemember = $request->codemember;
+        $historybookingspace->codeservices = $request->codeservices;
+        $historybookingspace->codeuser = $request->codeuser;
         $historybookingspace->invoice = $request->invoice;
         $historybookingspace->name = $request->name;
         $historybookingspace->email = $request->email;
@@ -92,8 +106,14 @@ class HistorybookingspaceController extends Controller
      */
     public function edit($id)
     {
+        $companypartnership     = companypartnership::pluck('name', 'id');
+        $services               = services::pluck('name', 'id');
+        $billingcompanyservices = billingcompanyservices::pluck('name', 'id');
+        $users                  = users::pluck('name', 'id');
+        $paymentmethodes         = paymentmethodes::pluck('name', 'id');
+
         $edit = historybookingspaces::find($id);
-        return view('internal.historybookingspace.edit', compact('edit'));
+        return view('internal.historybookingspace.edit', compact('edit','companypartnership','services','billingcompanyservices','users','paymentmethodes'));
     }
 
     /**
@@ -114,8 +134,8 @@ class HistorybookingspaceController extends Controller
         $historybookingspace->codebookingspace = $request->codebookingspace;
         $historybookingspace->codecompanypartnership = $request->codecompanypartnership;
         $historybookingspace->codebilling = $request->codebilling;
-        $historybookingspace->codeservice = $request->codeservice;
-        $historybookingspace->codemember = $request->codemember;
+        $historybookingspace->codeservices = $request->codeservices;
+        $historybookingspace->codeuser = $request->codeuser;
         $historybookingspace->invoice = $request->invoice;
         $historybookingspace->name = $request->name;
         $historybookingspace->email = $request->email;

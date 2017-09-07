@@ -55,9 +55,14 @@
 										<td><input type="text" value="{{ $no }}" name="codepaymentmethode"  class="form-control" ></td>
 									</tr>
 									<tr>
-										<td>Coode Category Payment Methode</td>
+										<td>Category Payment Methode</td>
 										<td>:</td>
-										<td><input type="text" name="codecategorypaymentmethode"  class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecategorypaymentmethode', $categorypaymentmethodes, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Category Payment Methode --'
+	   								 ]) !!}
+									</td>
 									</tr>
 						              <tr>
 										<td>Name</td>

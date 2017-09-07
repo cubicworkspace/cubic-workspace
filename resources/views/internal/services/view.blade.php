@@ -87,6 +87,7 @@
                                                     <th>#</th>
                                                     <th>Code</th>
                                                     <th>Name</th>
+                                                    <th>Category Services</th>
                                                     <th>Description</th>
                                                     <th>Status</th>
                                                     <th>Actions</th>
@@ -98,6 +99,7 @@
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->codeservices }}</td>
                                                     <td>{{ $row->name }}</td>
+                                                    <td>{{ !empty($row->categoryservice->name) ? $row->categoryservice->name : '-' }} </td>
                                                     <td>{{ $row->description }}</td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      

@@ -90,24 +90,34 @@
 						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
 						                   </label></td>
 									</tr>
+						            
 						            <tr>
-										<td>Code Company Partnership</td>
+										<td>Company Partnership</td>
 										<td>:</td>
-										<td><input type="text" name="codecompanypartnership" value="{{ $edit->codecompanypartnership }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecompanypartnership', $companypartnership, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}</td>
 									</tr>
 						            <tr>
 										<td>Code Tag Service</td>
 										<td>:</td>
-										<td><input type="text" name="codetagservices" value="{{ $edit->codetagservices }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codetagservices', $tagservices, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}</td>
 									</tr>
-						            <tr>
-										<td>Code Service</td>
+									<tr>
+										<td>Service</td>
 										<td>:</td>
-										<td><input type="text" name="codeservices" value="{{ $edit->codeservices }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codeservices', $services, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								 ]) !!}</td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>
-									    <input class="btn btn-default" type="reset" name="batal" value="Cancel" onclick="location.href='/companypartnership/'"/></td>
+									    <input class="btn btn-default" type="reset" name="batal" value="Cancel" onclick="location.href='/companyservices/'"/></td>
 									</tr>
 									</table>
 									</div>

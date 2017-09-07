@@ -52,7 +52,6 @@ class CategoryServicesController extends Controller
              'name' => 'required',
              'description' => 'required']);
         $service->codecategoryservices = $request->codecategoryservices;
-        $service->codeservices = $request->codeservices;
         $service->name = $request->name;
         $service->description = $request->description;
         $service->status = $request->status;
@@ -99,7 +98,6 @@ class CategoryServicesController extends Controller
              'description' => 'required']);
         $service->name = $request->name;
         $service->description = $request->description;
-        $service->codeservices = $request->codeservices;
         $service->status = $request->status;
         $service->save();
         \Session::flash('success', 'Category Services data has been edited successfully!,');

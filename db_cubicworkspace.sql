@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 24, 2017 at 08:58 AM
+-- Generation Time: Sep 07, 2017 at 10:16 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `codeuser` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(10) NOT NULL,
+  `codeuser` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecategoryadmin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codeadmin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -45,7 +45,11 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `codeuser`, `codecategoryadmin`, `codeadmin`, `phone`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(29, '2', '1', 'ADM004', '1', '81597.jpg', 'Y', '2017-08-22 23:56:50', '2017-08-22 23:56:50');
+(3, '3', '2', 'ADM004', '1', '51633.PNG', 'Y', '2017-08-22 23:56:50', '2017-08-24 00:41:13'),
+(31, '10', '2', 'ADM006', '11', '39684.PNG', 'Y', '2017-08-24 01:21:45', '2017-08-24 01:21:45'),
+(33, '12', '2', 'ADM007', '1', '66095.jpg', 'Y', '2017-09-06 00:52:23', '2017-09-06 00:52:23'),
+(35, '3', '3', 'ADM009', '1234', '56275.PNG', 'Y', '2017-09-06 21:27:00', '2017-09-06 21:39:44'),
+(37, '3', '3', 'ADM010', '10200202', '58106.jpg', 'Y', '2017-09-06 21:48:27', '2017-09-06 21:48:27');
 
 -- --------------------------------------------------------
 
@@ -102,27 +106,27 @@ CREATE TABLE `billingcompanyservices` (
 --
 
 INSERT INTO `billingcompanyservices` (`id`, `name`, `codecompanyservices`, `codecompanypartnership`, `codebilling`, `quota`, `currentquota`, `usedquota`, `currentquotauser`, `nowquotauser`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Nava1', '211', '111', 'BIL001', 101, 201, 301, 401, 111, '11', '2017-08-24 06:22:13', 'N', '2017-08-23 23:13:30', '2017-08-23 23:22:13'),
-(3, '1', '11', '11', 'BIL002', 1, 1, 1, 1, 1, '1', '2017-08-24 06:16:59', 'N', '2017-08-23 23:16:59', '2017-08-23 23:16:59');
+(2, 'Nava1', '5', '6', 'BIL001', 101, 201, 301, 401, 111, '11', '2017-09-07 07:07:20', 'N', '2017-08-23 23:13:30', '2017-09-07 00:07:20'),
+(4, 'Billing Company Services', '5', '5', 'BIL003', 111, 1, 1, 1, 1, '11', '2017-09-07 07:02:51', 'Y', '2017-09-07 00:02:51', '2017-09-07 00:02:51');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bookingspace`
+-- Table structure for table `bookingspaces`
 --
 
-CREATE TABLE `bookingspace` (
+CREATE TABLE `bookingspaces` (
   `id` int(10) UNSIGNED NOT NULL,
   `codebookingspace` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecompanypartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codebilling` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codeservice` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codemember` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codeservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codeuser` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codepaymentmethode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `invoice` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quota` int(11) NOT NULL,
   `quotauser` int(11) NOT NULL,
@@ -138,6 +142,13 @@ CREATE TABLE `bookingspace` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `bookingspaces`
+--
+
+INSERT INTO `bookingspaces` (`id`, `codebookingspace`, `codecompanypartnership`, `codebilling`, `codeservices`, `codeuser`, `codepaymentmethode`, `invoice`, `name`, `email`, `phone`, `address`, `quota`, `quotauser`, `price`, `totalprice`, `datein`, `dateout`, `currentquotauser`, `nowquotauser`, `information`, `dateregister`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'CBS002', '5', '2', '4', '12', '1', '11', '1', '1', '1', '1', 11, 1, 1, 1, '2017-09-07 07:44:38', '2017-09-07 07:44:38', 1, 11, '1', '2017-09-07 07:44:38', 'Y', '2017-09-07 00:36:31', '2017-09-07 00:44:38');
 
 -- --------------------------------------------------------
 
@@ -160,8 +171,8 @@ CREATE TABLE `categoryadmins` (
 --
 
 INSERT INTO `categoryadmins` (`id`, `name`, `codecategoryadmin`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Nava Gia', 'CTA001', '2', 'N', '2017-08-22 10:50:07', '2017-08-22 10:50:07'),
-(3, 'Nava Gia3', 'CTA002', '113', 'Y', '2017-08-22 10:50:57', '2017-08-22 10:52:23');
+(2, 'ADMIN ALL ACCESS', 'CTA001', '2', 'N', '2017-08-22 10:50:07', '2017-08-22 10:50:07'),
+(3, 'ADMIN ALL 4', 'CTA002', '113', 'Y', '2017-08-22 10:50:57', '2017-08-22 10:52:23');
 
 -- --------------------------------------------------------
 
@@ -178,6 +189,13 @@ CREATE TABLE `categoryevents` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categoryevents`
+--
+
+INSERT INTO `categoryevents` (`id`, `name`, `codecategoryevent`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'Nava Gia', 'CTE001', '2', 'Y', '2017-08-28 04:56:59', '2017-08-28 04:56:59');
 
 -- --------------------------------------------------------
 
@@ -200,25 +218,33 @@ CREATE TABLE `categorymedia` (
 --
 
 INSERT INTO `categorymedia` (`id`, `name`, `codecategorymedia`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(2, '33', 'CTM001', '33', 'Y', '2017-08-22 11:04:20', '2017-08-22 11:07:37'),
-(3, 'Nava Gia', 'CTM002', '2', 'Y', '2017-08-22 11:05:38', '2017-08-22 11:05:38');
+(1, 'Facebook', 'CTM001', '33', 'Y', '2017-08-22 11:04:20', '2017-08-22 11:07:37'),
+(3, 'TV', 'CTM002', '2', 'Y', '2017-08-22 11:05:38', '2017-08-22 11:05:38'),
+(4, 'NET TV', 'CTM003', 'NET TV', 'Y', '2017-09-06 22:01:20', '2017-09-06 22:01:20');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorypaymentmethode`
+-- Table structure for table `categorypaymentmethodes`
 --
 
-CREATE TABLE `categorypaymentmethode` (
+CREATE TABLE `categorypaymentmethodes` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `categorypaymentmethode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecategorypaymentmethode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categorypaymentmethodes`
+--
+
+INSERT INTO `categorypaymentmethodes` (`id`, `name`, `codecategorypaymentmethode`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Category Payment Methode1', 'CPM001', 'Category Payment Methode1', 'N', '2017-08-28 05:39:22', '2017-09-07 01:13:38'),
+(2, 'Category Payment Methode2', 'CPM002', 'Category Payment Methode2', 'Y', '2017-08-28 09:15:25', '2017-09-07 01:13:47');
 
 -- --------------------------------------------------------
 
@@ -230,7 +256,6 @@ CREATE TABLE `categoryservices` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecategoryservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codeservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -241,8 +266,9 @@ CREATE TABLE `categoryservices` (
 -- Dumping data for table `categoryservices`
 --
 
-INSERT INTO `categoryservices` (`id`, `name`, `codecategoryservices`, `codeservices`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(3, '22', 'CTS002', '2', '2', 'Y', '2017-08-23 22:22:23', '2017-08-23 22:22:23');
+INSERT INTO `categoryservices` (`id`, `name`, `codecategoryservices`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(3, 'Category Services1', 'CTS002', '2', 'Y', '2017-08-23 22:22:23', '2017-09-06 23:20:12'),
+(4, 'Category Services2', 'CTS003', 'Category Services2', 'Y', '2017-09-06 23:20:51', '2017-09-06 23:20:51');
 
 -- --------------------------------------------------------
 
@@ -340,7 +366,8 @@ CREATE TABLE `companypartnerships` (
 --
 
 INSERT INTO `companypartnerships` (`id`, `name`, `codecompanypartnership`, `favicon`, `logo`, `email`, `phone`, `fax`, `address`, `maps`, `codecountry`, `codecity`, `profile`, `history`, `description`, `vision`, `mision`, `faq`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
-(5, '1', 'COP001', '51362.png', '27255.png', 'navagiaginasta@gmail.com', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '2017-08-23 09:19:17', 'Y', '2017-08-23 02:19:17', '2017-08-23 02:19:17');
+(5, 'CUBIC INC', 'COP001', '51362.png', '27255.png', 'navagiaginasta@gmail.com', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '2017-09-07 05:49:32', 'Y', '2017-08-23 02:19:17', '2017-09-06 22:49:32'),
+(6, 'BDV', 'COP002', '51433.PNG', '42861.jpg', 'navagiaginasta@gmail.com', '87820033395', '87820033395', 'Cianjur', 'Cianjur', 'Indonesia', '43283', 'Cianjur', '-', '-', '-', '-', '-', '-', '2017-09-07 06:00:53', 'Y', '2017-09-06 23:00:53', '2017-09-06 23:00:53');
 
 -- --------------------------------------------------------
 
@@ -370,8 +397,9 @@ CREATE TABLE `companyservices` (
 --
 
 INSERT INTO `companyservices` (`id`, `name`, `codecompanyservices`, `codecompanypartnership`, `codetagservices`, `codeservices`, `quota`, `price`, `quotauser`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
-(3, '1', 'COS001', '1', '1', '', 1, 1, 1, '1', '2017-08-23 09:19:35', 'Y', '2017-08-23 02:19:35', '2017-08-23 02:19:35'),
-(5, 'Nava Gia', 'COS002', '1', '1', '1', 1, 1, 1, '1', '2017-08-24 04:49:27', 'Y', '2017-08-23 21:49:27', '2017-08-23 21:49:27');
+(5, 'Company Services1', 'COS002', '5', '2', '2', 1, 1, 1, '1', '2017-09-07 07:01:55', 'Y', '2017-08-23 21:49:27', '2017-09-07 00:01:55'),
+(6, 'Company Services2', 'COS003', '5', '2', '2', 2, 2, 2, '2', '2017-09-07 07:02:04', 'Y', '2017-09-06 22:47:25', '2017-09-07 00:02:04'),
+(7, 'Company Services3', 'COS004', '5', '2', '2', 111, 131, 111, '1', '2017-09-07 07:02:16', 'Y', '2017-09-06 22:53:18', '2017-09-07 00:02:16');
 
 -- --------------------------------------------------------
 
@@ -419,6 +447,13 @@ CREATE TABLE `events` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `title`, `codecategoryevent`, `codeevent`, `url`, `description`, `datetime`, `quota`, `image`, `address`, `status`, `created_at`, `updated_at`) VALUES
+(1, '2', '1', 'EVT001', '1', '1', '2017-08-28 11:51:23', 1, '34302.PNG', '1', 'Y', '2017-08-28 04:51:23', '2017-08-28 04:51:23');
+
 -- --------------------------------------------------------
 
 --
@@ -454,20 +489,20 @@ INSERT INTO `historybillingcompanyservices` (`id`, `name`, `codecompanyservices`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `historybookingspace`
+-- Table structure for table `historybookingspaces`
 --
 
-CREATE TABLE `historybookingspace` (
+CREATE TABLE `historybookingspaces` (
   `id` int(10) UNSIGNED NOT NULL,
   `codebookingspace` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecompanypartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codebilling` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codeservice` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codemember` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codeservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codeuser` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `invoice` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quota` int(11) NOT NULL,
   `quotauser` int(11) NOT NULL,
@@ -483,6 +518,14 @@ CREATE TABLE `historybookingspace` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `historybookingspaces`
+--
+
+INSERT INTO `historybookingspaces` (`id`, `codebookingspace`, `codecompanypartnership`, `codebilling`, `codeservices`, `codeuser`, `invoice`, `name`, `email`, `phone`, `address`, `quota`, `quotauser`, `price`, `totalprice`, `datein`, `dateout`, `currentquotauser`, `nowquotauser`, `information`, `datetime`, `status`, `created_at`, `updated_at`) VALUES
+(1, '11', '5', '4', '2', '51', '61', 'Nava Gia', 'navagiaginasta@gmail.com', '87820033395', 'Cianjur', 111, 121, 131, 141, '2017-09-07 07:52:49', '2017-09-07 07:52:49', 151, 161, '171', '2017-09-07 07:52:49', 'N', '2017-08-28 05:13:31', '2017-09-07 00:52:49'),
+(2, '1', '5', '2', '2', '3', '1', '1', 'navagiaginasta@gmail.com', '1', '1', 1, 1, 11, 1, '2017-09-07 07:56:13', '2017-09-07 07:56:13', 1, 1, '1', '2017-09-07 07:56:13', 'Y', '2017-09-07 00:56:13', '2017-09-07 00:56:13');
 
 -- --------------------------------------------------------
 
@@ -521,7 +564,7 @@ CREATE TABLE `media` (
   `codecategorymedia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codemedia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` datetime NOT NULL,
+  `date` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `writer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
@@ -534,20 +577,21 @@ CREATE TABLE `media` (
 --
 
 INSERT INTO `media` (`id`, `name`, `codecategorymedia`, `codemedia`, `url`, `date`, `writer`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Nava Giar', '1', 'MED001', 'www.tvone.com', '2017-08-23 00:00:00', '1', '12267.jpg', 'Y', '2017-08-22 10:56:58', '2017-08-22 11:00:49');
+(2, 'Nava Giar', '3', 'MED001', 'www.tvone.com', '2017-08-23 00:00:00', '1', '12267.jpg', 'Y', '2017-08-22 10:56:58', '2017-08-22 11:00:49'),
+(3, 'T', '1', 'MED002', 'www.tvone.com', '07 September 2017 - 10:50', '2313', '28633.PNG', 'Y', '2017-09-06 22:02:13', '2017-09-06 22:20:49');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `member`
+-- Table structure for table `members`
 --
 
-CREATE TABLE `member` (
+CREATE TABLE `members` (
   `id` int(10) UNSIGNED NOT NULL,
   `codeuser` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `institution` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `birthday` date NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -559,6 +603,13 @@ CREATE TABLE `member` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `members`
+--
+
+INSERT INTO `members` (`id`, `codeuser`, `institution`, `birthday`, `phone`, `address`, `image`, `description`, `information`, `registerdate`, `lastlogin`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'CMB001', '11', '2017-08-01', '21', '31', '94527.jpg', '41', '51', '2017-08-28 12:27:23', '2017-08-28 12:27:23', 'Y', '2017-08-28 05:26:46', '2017-08-28 05:27:23');
+
 -- --------------------------------------------------------
 
 --
@@ -569,12 +620,20 @@ CREATE TABLE `messages` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `name`, `email`, `phone`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(2, '2', 'navagiaginasta@gmail.com', '2', '2', 'Y', '2017-08-28 05:31:39', '2017-08-28 05:31:39'),
+(3, 'wqdqeqf111', 'qefqefef@gmail.com1111', '234234', 'dfsdfsdfds1111', 'Y', '2017-08-28 09:27:14', '2017-08-28 09:27:46');
 
 -- --------------------------------------------------------
 
@@ -588,51 +647,13 @@ CREATE TABLE `migrations` (
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2017_08_16_185407_create_admins_tables', 1),
-(2, '2017_08_16_185940_create_categoryadmins_tables', 2),
-(3, '2017_08_16_190245_create_events_table', 3),
-(4, '2017_08_16_190726_create_categoryevents_table', 4),
-(5, '2017_08_16_190941_create_companies_table', 5),
-(6, '2017_08_16_191626_create_companies_tables', 6),
-(7, '2017_08_16_191846_create_events_tables', 7),
-(8, '2017_08_16_192203_create_informasicompanies_tables', 8),
-(9, '2017_08_16_192436_create_media_tables', 9),
-(10, '2017_08_16_192716_create_categorymedia_tables', 10),
-(11, '2017_08_16_192948_create_sosialmedia_tables', 11),
-(12, '2017_08_16_193135_create_message_tables', 12),
-(13, '2017_08_16_193319_create_team_tables', 13),
-(14, '2017_08_16_193616_create_subscriber_tables', 14),
-(15, '2017_08_16_193752_create_testimonial_tables', 15),
-(16, '2017_08_16_210911_create_categoryservices_tables', 16),
-(17, '2017_08_16_211137_create_tagservices_tables', 17),
-(18, '2017_08_16_211316_create_services_tables', 18),
-(19, '2017_08_16_211438_create_country_tables', 19),
-(20, '2017_08_16_211556_create_city_tables', 20),
-(21, '2017_08_16_211857_create_categorypaymentmethode_tables', 21),
-(22, '2017_08_16_215004_create_companypartnership_tables', 22),
-(23, '2017_08_16_220046_create_adminspartnership_tables', 23),
-(24, '2017_08_16_221307_create_adminspartnership_table', 24),
-(25, '2017_08_16_221656_create_historybillingcompany_tables', 25),
-(26, '2017_08_16_222028_create_companyservices_tables', 26),
-(27, '2017_08_16_222659_create_tagservices_table', 27),
-(28, '2017_08_16_222811_create_billingcompanyservices_tables', 28),
-(29, '2017_08_16_225012_create_paymentmethode_table', 29),
-(30, '2017_08_16_225454_create_historybookingspace_tables', 30),
-(31, '2017_08_16_230347_create_bookingspace_tables', 31),
-(32, '2017_08_16_231107_create_member_tables', 32);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paymentmethode`
+-- Table structure for table `paymentmethodes`
 --
 
-CREATE TABLE `paymentmethode` (
+CREATE TABLE `paymentmethodes` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecategorypaymentmethode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -645,6 +666,14 @@ CREATE TABLE `paymentmethode` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `paymentmethodes`
+--
+
+INSERT INTO `paymentmethodes` (`id`, `name`, `codecategorypaymentmethode`, `codepaymentmethode`, `nameuser`, `nouser`, `description`, `logo`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Payment Methodes1', '2', 'PAM001', '31', 41, '51', '23881.PNG', 'N', '2017-08-28 05:38:01', '2017-09-07 01:15:02'),
+(2, 'Payment Methode2', '1', 'PAM002', '1', 1, '1', '79874.PNG', 'Y', '2017-09-07 01:09:35', '2017-09-07 01:15:15');
 
 -- --------------------------------------------------------
 
@@ -668,9 +697,8 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `name`, `codecategoryservices`, `codeservices`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, '1', '11', '1', '1', 'N', '2017-08-23 17:00:00', '2017-08-23 17:00:00'),
-(2, '123', '123', 'SER001', '123', 'Y', '2017-08-23 22:07:48', '2017-08-23 22:09:43'),
-(3, '2', '2', 'SER002', '2', 'N', '2017-08-23 22:07:58', '2017-08-23 22:07:58');
+(2, 'SERVICE2', '3', 'SER001', '123', 'Y', '2017-08-23 22:07:48', '2017-09-06 23:19:04'),
+(4, 'SERVICE4', '3', 'SER003', '22', 'N', '2017-09-06 23:17:37', '2017-09-06 23:17:58');
 
 -- --------------------------------------------------------
 
@@ -687,6 +715,13 @@ CREATE TABLE `sosialmedias` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sosialmedias`
+--
+
+INSERT INTO `sosialmedias` (`id`, `name`, `url`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'FB1', 'www.fb.com1', '11', 'Y', '2017-08-28 05:32:50', '2017-08-28 05:33:03');
 
 -- --------------------------------------------------------
 
@@ -708,7 +743,7 @@ CREATE TABLE `subscribers` (
 --
 
 INSERT INTO `subscribers` (`id`, `name`, `email`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Adi', '95@gmail.com', 'Y', '2017-08-22 23:35:50', '2017-08-22 23:35:50');
+(2, '22', 'navagiaginasta@gmail.com', 'N', '2017-08-28 05:30:18', '2017-08-28 05:30:18');
 
 -- --------------------------------------------------------
 
@@ -732,7 +767,8 @@ CREATE TABLE `tagservices` (
 
 INSERT INTO `tagservices` (`id`, `codetagservices`, `codeservices`, `description`, `status`, `created_at`, `updated_at`) VALUES
 (2, 'CTS001', '1', '11', 'Y', '2017-08-23 02:47:57', '2017-08-23 02:47:57'),
-(3, 'CTS002', '3', '3', 'N', '2017-08-23 02:48:08', '2017-08-23 02:48:08');
+(3, 'CTS002', '3', '3', 'N', '2017-08-23 02:48:08', '2017-08-23 02:48:08'),
+(4, 'CTS003', '3', '2', 'Y', '2017-09-06 23:07:43', '2017-09-06 23:08:29');
 
 -- --------------------------------------------------------
 
@@ -756,7 +792,7 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `name`, `image`, `job`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Ketut', '36274.JPG', 'It Support', 'dfdfdfdfd', 'Y', '2017-08-22 23:13:39', '2017-08-22 23:13:39');
+(2, '2', '55210.jpg', '2', '2', 'N', '2017-08-28 05:21:34', '2017-08-28 05:21:57');
 
 -- --------------------------------------------------------
 
@@ -774,6 +810,13 @@ CREATE TABLE `testimonials` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `testimonials`
+--
+
+INSERT INTO `testimonials` (`id`, `name`, `description`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, '11', '21', '27097.jpg', 'N', '2017-08-28 05:31:55', '2017-08-28 05:32:33');
+
 -- --------------------------------------------------------
 
 --
@@ -781,7 +824,7 @@ CREATE TABLE `testimonials` (
 --
 
 CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codeuser` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -801,9 +844,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `codeuser`, `email`, `password`, `remember_token`, `status`, `user_id`, `provider_id`, `lastlogin`, `registerdate`, `created_at`, `updated_at`) VALUES
-(3, 'nava gia', 'USR001', 'navagiaginasta@gmail.com', '$2y$10$wnEhcBgMsVXUz8hyw/uZ3Ot6Br2ggdo6hGCzFmARKAJqkjeA3us02', 'Pftf4stqCJHKheVwFvpKv26y5PQHESSHi5D8HOgNpxE5ojMTO05Poxo7NluL', 'ADMIN', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2017-08-19 05:52:17', '2017-08-19 05:52:17'),
-(10, 'admin@cubic.co.id', 'USR002', 'admin@cubic.co.id', '$2y$10$ev0UedpfRk70xwGZdNUeluRhJEoX6rbtTWROPQF92gqbo9YJ2k9Ny', 'uhAhwkkjdHasiMm9VdWrQFVL6CuBNpIg5Amg80bJRCd1OX9NILIx9jZJDg1s', 'ADMIN', '', '', '2017-08-23 08:33:23', '2017-08-23 08:33:23', '2017-08-23 01:20:18', '2017-08-23 01:33:24'),
-(12, 'Ketut', 'USR003', 'ketut@gmail.com', '$2y$10$G342Xd8opqgaRKw.XGzCC.3wbI.l6thrg16HqT229tuIOzZ/9CYfW', NULL, 'ADMIN', '', '', '2017-08-23 09:19:57', '2017-08-23 09:19:57', '2017-08-23 02:19:58', '2017-08-23 02:19:58');
+(3, 'Nava Gia Ginasta', 'USR001', 'navagiaginasta@gmail.com', '$2y$10$wnEhcBgMsVXUz8hyw/uZ3Ot6Br2ggdo6hGCzFmARKAJqkjeA3us02', 'rYdqeDADiRNJDY5ZdaZ6igj6xHAoLzenoB2llPxpQ6xUDvMZIJTFaSu5vQKE', 'ADMIN', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2017-08-19 05:52:17', '2017-08-19 05:52:17'),
+(10, 'admin@cubic.co.id', 'USR002', 'admin@cubic.co.id', '$2y$10$p5BM.1OpC08eews3rBFJEuuS46ifZ/2Ez1q7Ofkko3H/XNEb5el/2', 'LwlflPD1uq86fXbMo0hLo5xT0Qdb6In01v6bPpEuKT14B4YOi06EnG67c3p5', 'ADMIN', '', '', '2017-09-01 15:06:49', '2017-09-01 15:06:49', '2017-08-23 01:20:18', '2017-09-01 08:06:49'),
+(12, 'Ketut', 'USR003', 'ketut@gmail.com', '$2y$10$VVC1BynwwOBdggGvlBwUouSG1EGLdqL/U/c7wBdgCR4YEDycaTAcq', 'AF6mHZVoTbzlfUpAqR2fxouCn1aKMMgsM4f2aqId1v8bsPgaGFyb8AcWq3Ks', 'ADMIN PARTNERSHIP', '', '', '2017-09-01 16:23:40', '2017-09-01 16:23:40', '2017-08-23 02:19:58', '2017-09-01 09:23:41'),
+(13, 'user', 'USR004', 'user@gmail.com', '$2y$10$6eo7DNUnVkVvAm5rUAcweOnkHiL9qSVcFL2jFn4m22FheL6AitaCe', 'yQvDXJb7JW8RDF66WXcrOQxoGmPBYYfwD9pWiDbs8y4RFAtc6sw97cRomfz8', 'USER', '', '', '2017-09-01 16:14:09', '2017-09-01 16:14:09', '2017-09-01 09:14:09', '2017-09-01 09:14:09');
 
 --
 -- Indexes for dumped tables
@@ -813,7 +857,9 @@ INSERT INTO `users` (`id`, `name`, `codeuser`, `email`, `password`, `remember_to
 -- Indexes for table `admins`
 --
 ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `codeuser` (`codeuser`),
+  ADD KEY `codeuser_2` (`codeuser`);
 
 --
 -- Indexes for table `adminspartnerships`
@@ -828,9 +874,9 @@ ALTER TABLE `billingcompanyservices`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `bookingspace`
+-- Indexes for table `bookingspaces`
 --
-ALTER TABLE `bookingspace`
+ALTER TABLE `bookingspaces`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -852,9 +898,9 @@ ALTER TABLE `categorymedia`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categorypaymentmethode`
+-- Indexes for table `categorypaymentmethodes`
 --
-ALTER TABLE `categorypaymentmethode`
+ALTER TABLE `categorypaymentmethodes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -906,9 +952,9 @@ ALTER TABLE `historybillingcompanyservices`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `historybookingspace`
+-- Indexes for table `historybookingspaces`
 --
-ALTER TABLE `historybookingspace`
+ALTER TABLE `historybookingspaces`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -924,9 +970,9 @@ ALTER TABLE `media`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `member`
+-- Indexes for table `members`
 --
-ALTER TABLE `member`
+ALTER TABLE `members`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -942,9 +988,9 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `paymentmethode`
+-- Indexes for table `paymentmethodes`
 --
-ALTER TABLE `paymentmethode`
+ALTER TABLE `paymentmethodes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -987,7 +1033,12 @@ ALTER TABLE `testimonials`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `name` (`name`(191)),
+  ADD KEY `codeuser` (`codeuser`(191)),
+  ADD KEY `id_2` (`id`),
+  ADD KEY `name_2` (`name`(191)),
+  ADD KEY `id_3` (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -997,7 +1048,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `adminspartnerships`
 --
@@ -1007,12 +1058,12 @@ ALTER TABLE `adminspartnerships`
 -- AUTO_INCREMENT for table `billingcompanyservices`
 --
 ALTER TABLE `billingcompanyservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `bookingspace`
+-- AUTO_INCREMENT for table `bookingspaces`
 --
-ALTER TABLE `bookingspace`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `bookingspaces`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `categoryadmins`
 --
@@ -1022,22 +1073,22 @@ ALTER TABLE `categoryadmins`
 -- AUTO_INCREMENT for table `categoryevents`
 --
 ALTER TABLE `categoryevents`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `categorymedia`
 --
 ALTER TABLE `categorymedia`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `categorypaymentmethode`
+-- AUTO_INCREMENT for table `categorypaymentmethodes`
 --
-ALTER TABLE `categorypaymentmethode`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `categorypaymentmethodes`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `categoryservices`
 --
 ALTER TABLE `categoryservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `citys`
 --
@@ -1052,12 +1103,12 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `companypartnerships`
 --
 ALTER TABLE `companypartnerships`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `companyservices`
 --
 ALTER TABLE `companyservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `countrys`
 --
@@ -1067,17 +1118,17 @@ ALTER TABLE `countrys`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `historybillingcompanyservices`
 --
 ALTER TABLE `historybillingcompanyservices`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `historybookingspaces`
+--
+ALTER TABLE `historybookingspaces`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `historybookingspace`
---
-ALTER TABLE `historybookingspace`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `informasicompanies`
 --
@@ -1087,62 +1138,62 @@ ALTER TABLE `informasicompanies`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `member`
+-- AUTO_INCREMENT for table `members`
 --
-ALTER TABLE `member`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `members`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
---
--- AUTO_INCREMENT for table `paymentmethode`
---
-ALTER TABLE `paymentmethode`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `paymentmethodes`
+--
+ALTER TABLE `paymentmethodes`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `sosialmedias`
 --
 ALTER TABLE `sosialmedias`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tagservices`
 --
 ALTER TABLE `tagservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `testimonials`
 --
 ALTER TABLE `testimonials`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;COMMIT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

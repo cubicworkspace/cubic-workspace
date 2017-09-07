@@ -86,7 +86,6 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Code</th>
-                                                    <th>Category Payment Methode</th>
                                                     <th>Name</th>
                                                     <th>Description</th>
                                                     <th>Status</th>
@@ -98,7 +97,6 @@
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->codecategorypaymentmethode }}</td>
-                                                     <td>{{ $row->categorypaymentmethode }}</td>
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->description }}</td>
                                                     <td>{{ $row->status }}</td>

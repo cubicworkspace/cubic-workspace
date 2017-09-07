@@ -167,6 +167,16 @@
 										<td><input type="text" name="information" value="{{ $edit->information }}" class="form-control" ></td>
 									</tr>
 									<tr>
+										<td>Status</td>
+										<td>:</td>
+										<td><label class="radio-inline"> 
+						                     <input type="radio" name="status" id="Y" value="Y" {{ $y = ($edit->status=='Y')?'checked':''}}> Y
+						                    </label> 
+						                     <label class="radio-inline"> 
+						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
+						                   </label></td>
+									</tr>
+									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>
 									    <input class="btn btn-default" type="reset" name="batal" value="Cancel" onclick="location.href='/companypartnership/'"/></td>
 									</tr>

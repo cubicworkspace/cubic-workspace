@@ -88,6 +88,7 @@
                                                     <th>Code</th>
                                                     <th>Name</th>
                                                     <th>Url</th>
+                                                    <th>Category Media</th>
                                                     <th>Image</th>
                                                     <th>Status</th>
                                                     <th>Actions</th>
@@ -100,6 +101,7 @@
                                                     <td>{{ $row->codemedia }}</td>
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->url }}</td>
+                                                    <td>{{ !empty($row->categorymedia->name) ? $row->categorymedia->name : '-' }} </td>
                                                     <td><img src="{{ asset('upload/media') }}/{{ $row->image }}" width="120"></td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      

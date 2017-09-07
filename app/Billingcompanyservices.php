@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Billingcompanyservices extends Model
 {
-    //
+   	public function companypartnership() {
+    	return $this->belongsTo('App\Companypartnership', 'codecompanypartnership');
+    }
+   	public function companyservice() {
+    	return $this->belongsTo('App\Companyservices', 'codecompanyservices');
+    }
 }

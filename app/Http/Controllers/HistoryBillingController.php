@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\historybillingcompanyservices;
+use App\companyservices;
+use App\companypartnership;
+
 
 use Illuminate\Http\Request;
 
@@ -30,7 +33,9 @@ class HistoryBillingController extends Controller
      */
     public function create()
     {
-        return view('internal.historybilling.create');
+        $companypartnership = companypartnership::pluck('name', 'id');
+        $companyservices = companyservices::pluck('name', 'id');
+        return view('internal.historybilling.create', compact('companypartnership','companyservices'));
     }
 
     /**
@@ -81,8 +86,10 @@ class HistoryBillingController extends Controller
      */
     public function edit($id)
     {
+        $companypartnership = companypartnership::pluck('name', 'id');
+        $companyservices = companyservices::pluck('name', 'id');
         $edit = historybillingcompanyservices::find($id);
-        return view('internal.historybilling.edit', compact('edit'));
+        return view('internal.historybilling.edit', compact('edit','companypartnership','companyservices'));
     }
 
     /**

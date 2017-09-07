@@ -70,10 +70,13 @@
 						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
 						                   </label></td>
 									</tr>
-						            <tr>
-										<td>Code Services</td>
+									<tr>
+										<td>Service</td>
 										<td>:</td>
-										<td><input type="text" name="codeservices" value="{{ $edit->codeservices }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codeservices', $services, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}</td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

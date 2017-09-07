@@ -86,7 +86,7 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Code</th>
-                                                    <th>Code Service</th>
+                                                    <th>Services</th>
                                                     <th>Description</th>
                                                     <th>Status</th>
                                                     <th>Actions</th>
@@ -97,7 +97,7 @@
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->codetagservices }}</td>
-                                                    <td>{{ $row->codeservices }}</td>
+                                                    <td>{{ !empty($row->service->name) ? $row->service->name : '-' }} </td>
                                                     <td>{{ $row->description }}</td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      

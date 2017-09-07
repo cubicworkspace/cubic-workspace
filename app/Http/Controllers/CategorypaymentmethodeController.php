@@ -55,7 +55,6 @@ class CategorypaymentmethodeController extends Controller
              'description' => 'required']);
         $categorypaymentmethode->name = $request->name;
         $categorypaymentmethode->codecategorypaymentmethode = $request->codecategorypaymentmethode;
-        $categorypaymentmethode->categorypaymentmethode = $request->categorypaymentmethode;
         $categorypaymentmethode->description = $request->description;
         $categorypaymentmethode->status = $request->status;
         $categorypaymentmethode->save();
@@ -100,7 +99,6 @@ class CategorypaymentmethodeController extends Controller
                  'name' => 'required']);
             $categorypaymentmethode->name = $request->name;
            // $categorypaymentmethode->codecategorypaymentmethode = $request->codecategorypaymentmethode;
-            $categorypaymentmethode->categorypaymentmethode = $request->categorypaymentmethode;
             $categorypaymentmethode->description = $request->description;
             $categorypaymentmethode->status = $request->status;
             $categorypaymentmethode->save();

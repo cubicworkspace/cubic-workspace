@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\companyservices;
+use App\tagservices;
+use App\companypartnership;
+use App\services;
+
 
 use Illuminate\Http\Request;
 
@@ -38,7 +42,10 @@ class CompanyServicesController extends Controller
         $noRand++;  
         $char   = "COS";
         $no   =  $char . sprintf("%03s", $noRand);
-        return view('internal.companyservices.create', compact('no'));
+        $tagservices = tagservices::pluck('codetagservices', 'id');
+        $companypartnership = companypartnership::pluck('name', 'id');
+        $services = services::pluck('name', 'id');
+        return view('internal.companyservices.create', compact('no','tagservices','companypartnership','services'));
     }
 
     /**
@@ -88,8 +95,11 @@ class CompanyServicesController extends Controller
      */
     public function edit($id)
     {
+        $tagservices = tagservices::pluck('codetagservices', 'id');
+        $companypartnership = companypartnership::pluck('name', 'id');
+        $services = services::pluck('name', 'id');
         $edit = companyservices::find($id);
-        return view('internal.companyservices.edit', compact('edit'));
+        return view('internal.companyservices.edit', compact('edit','tagservices','companypartnership','services'));
     }
 
     /**

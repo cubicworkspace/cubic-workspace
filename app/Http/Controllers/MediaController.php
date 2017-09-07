@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\media;
+use App\categorymedia;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -40,7 +41,8 @@ class MediaController extends Controller
         $noRand++;  
         $char   = "MED";
         $no   =  $char . sprintf("%03s", $noRand);
-        return view('internal.media.create', compact('no'));
+        $categorymedia = categorymedia::pluck('name', 'id');
+        return view('internal.media.create', compact('no','categorymedia'));
     }
 
     /**
@@ -96,8 +98,9 @@ class MediaController extends Controller
      */
     public function edit($id)
     {
+        $categorymedia = categorymedia::pluck('name', 'id');
         $edit = media::find($id);
-        return view('internal.media.edit', compact('edit'));
+        return view('internal.media.edit', compact('edit','categorymedia'));
     }
 
     /**

@@ -37,7 +37,7 @@
                                     </div>
                                     @if (count($errors)>0)
 										<div class="alert alert-danger alert-dismissible">
-						                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						                <button type="button" class="close" data-dismiss="alert" aria-hcodeadminden="true">&times;</button>
 						                <h4><i class="icon fa fa-ban"></i> Error!</h4>
 											@foreach ($errors->all() as $error)
 							 				{{$error}}
@@ -56,9 +56,12 @@
 										<td><b>{{ $edit->codeadmin }}</b></td>
 									</tr>
 						              <tr>
-										<td>Code User</td>
+										<td>User</td>
 										<td>:</td>
-										<td><input type="codeuser" name="codeuser"  value="{{ $edit->codeuser }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codeuser', $user, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}
 									</tr>
 									<tr>
 										<td>Phone</td>
@@ -69,7 +72,7 @@
 									<tr>
 										<td>Image</td>
 										<td>:</td>
-										<td><img src="{{ asset('upload/adminpartnership') }}/{{ $edit->image }}" width="80"></td>
+										<td><img src="{{ asset('upload/admin') }}/{{ $edit->image }}" width="80"></td>
 									</tr>
 									<tr>
 										<td>Edit Image</td>
@@ -87,16 +90,20 @@
 										<td>Status</td>
 										<td>:</td>
 										<td><label class="radio-inline"> 
-						                     <input type="radio" name="status" id="Y" value="Y" {{ $y = ($edit->status=='Y')?'checked':''}}> Y
+						                     <input type="radio" name="status" codeadmin="Y" value="Y" {{ $y = ($edit->status=='Y')?'checked':''}}> Y
 						                    </label> 
 						                     <label class="radio-inline"> 
-						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
+						                     <input type="radio"  name="status" codeadmin="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
 						                   </label></td>
 									</tr>
 									<tr>
-										<td>Codecategoryadmin</td>
+										<td>Category Admin</td>
 										<td>:</td>
-										<td><input type="text" name="codecategoryadmin" value="{{ $edit->codecategoryadmin }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecategoryadmin', $categoryadmin, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}
+									</td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

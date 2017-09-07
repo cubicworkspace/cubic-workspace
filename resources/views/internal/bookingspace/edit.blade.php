@@ -55,30 +55,47 @@
 										<td>:</td>
 										<td><b>{{ $edit->codebookingspace }}</b></td>
 									</tr>
-						              <tr>
-										<td>Code Service</td>
+						            <tr>
+										<td>Services</td>
 										<td>:</td>
-										<td><input type="text" name="codeservice"  value="{{ $edit->codeservice }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codeservices', $services, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}
+									</td>
 									</tr>
 									<tr>
-										<td>Code Company Partnership</td>
+										<td>Company Partnership</td>
 										<td>:</td>
-										<td><input type="text" name="codecompanypartnership"  value="{{ $edit->codecompanypartnership }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecompanypartnership', $companypartnership, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}
 									</tr>
 									<tr>
-										<td>Code Billing</td>
+										<td>Billing Company Services</td>
 										<td>:</td>
-										<td><input type="text" name="codebilling"  value="{{ $edit->codebilling }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codebilling', $billingcompanyservices, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}
 									</tr>
 									<tr>
-										<td>Code Member</td>
+										<td>User</td>
 										<td>:</td>
-										<td><input type="text" name="codemember"  value="{{ $edit->codemember }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codeuser', $users, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}
+									</td>
 									</tr>
 									<tr>
-										<td>Code Payment Methode</td>
+										<td>Payment Methode</td>
 										<td>:</td>
-										<td><input type="text" name="codepaymentmethode"  value="{{ $edit->codepaymentmethode }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codepaymentmethode', $paymentmethodes, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}</td>
 									</tr>
 									<tr>
 										<td>Invoice</td>
@@ -93,7 +110,7 @@
 									<tr>
 										<td>Email</td>
 										<td>:</td>
-										<td><input type="text" name="email"  value="{{ $edit->email }}" class="form-control" ></td>
+										<td><input type="email" name="email"  value="{{ $edit->email }}" class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Phone</td>

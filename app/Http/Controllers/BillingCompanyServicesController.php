@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\billingcompanyservices;
+use App\companyservices;
+use App\companypartnership;
 
 use Illuminate\Http\Request;
 
@@ -34,7 +36,9 @@ class BillingCompanyServicesController extends Controller
         $noRand++;  
         $char   = "BIL";
         $no   =  $char . sprintf("%03s", $noRand);
-        return view('internal.billingcompanyservices.create', compact('no'));
+        $companypartnership = companypartnership::pluck('name', 'id');
+        $companyservices = companyservices::pluck('name', 'id');
+        return view('internal.billingcompanyservices.create', compact('no','companypartnership','companyservices'));
     }
 
     /**
@@ -83,8 +87,10 @@ class BillingCompanyServicesController extends Controller
      */
     public function edit($id)
     {
+        $companypartnership = companypartnership::pluck('name', 'id');
+        $companyservices = companyservices::pluck('name', 'id');
         $edit = billingcompanyservices::find($id);
-        return view('internal.billingcompanyservices.edit', compact('edit'));
+        return view('internal.billingcompanyservices.edit', compact('edit','companypartnership','companyservices'));
     }
 
     /**

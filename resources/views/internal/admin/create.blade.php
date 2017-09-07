@@ -57,11 +57,11 @@
 									<tr>
 										<td>User</td>
 										<td>:</td>
-										<td><select name="codeuser" class="form-control" >
-                                            @foreach ($users as $row)
-											  <option value="{{ $row->codeuser }}">{{ $row->name }}</option>
-											 @endforeach
-											</select>
+										<td>
+	   								 {!! Form::select('codeuser', $user, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Users --'
+	   								 ]) !!}
 									</td>
 									</tr>
 									<tr>
@@ -72,7 +72,7 @@
 									<tr>
 										<td>Image</td>
 										<td>:</td>
-										<td><input type="file" name="image"  class="form-control" ></td>
+										<td><input type="file" name="image" required  class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Status</td>
@@ -85,9 +85,14 @@
 						                   </label> </td>
 									</tr>
 									<tr>
-										<td>Codecategoryadmin</td>
+										<td>Category Admin</td>
 										<td>:</td>
-										<td><input type="text" name="codecategoryadmin"  class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecategoryadmin', $categoryadmin, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Category Admin --'
+	   								 ]) !!}
+									</td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

@@ -88,6 +88,8 @@
                                                     <th>Code</th>
                                                     <th>Name</th>
                                                     <th>Infromation</th>
+                                                    <th>Company Partnership</th>
+                                                    <th>Services</th>
                                                     <th>Status</th>
                                                     <th>Actions</th>
                                                 </tr>
@@ -99,6 +101,8 @@
                                                     <td>{{ $row->codecompanyservices }}</td>
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->information }}</td>
+                                                    <td>{{ !empty($row->companypartnership->name) ? $row->companypartnership->name : '-' }} </td>
+                                                    <td>{{ !empty($row->service->name) ? $row->service->name : '-' }} </td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      
 								                      <form action="/companyservices/{{$row->id}}" method="POST">

@@ -86,7 +86,7 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Code</th>
-                                                    <th>Code Service</th>
+                                                    <th>Service</th>
                                                     <th>Invoice</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
@@ -100,7 +100,7 @@
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->codebookingspace }}</td>
-                                                    <td>{{ $row->codeservice }}</td>
+                                                    <td>{{ !empty($row->service->name) ? $row->service->name : '-' }}</td>
                                                     <td>{{ $row->invoice }}</td>
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->email }}</td>

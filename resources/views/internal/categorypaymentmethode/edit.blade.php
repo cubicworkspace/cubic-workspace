@@ -56,11 +56,6 @@
 										<td><b>{{ $edit->codecategorypaymentmethode }}</b></td>
 									</tr>
 									<tr>
-										<td>Category Payment Methode</td>
-										<td>:</td>
-										<td><input type="text" value="{{ $edit->categorypaymentmethode }}" name="categorypaymentmethode"  class="form-control" ></td>
-									</tr>
-									<tr>
 										<td>Name</td>
 										<td>:</td>
 										<td><input type="text" value="{{ $edit->name }}" name="name"  class="form-control" ></td>

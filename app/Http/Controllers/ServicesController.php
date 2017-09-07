@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\services;
+use App\categoryservices;
 
 use Illuminate\Http\Request;
 
@@ -35,7 +36,8 @@ class ServicesController extends Controller
         $noRand++;  
         $char   = "SER";
         $no   =  $char . sprintf("%03s", $noRand);
-        return view('internal.services.create', compact('no'));
+        $categoryservice = categoryservices::pluck('name', 'id');
+        return view('internal.services.create', compact('no','categoryservice'));
     }
 
     /**
@@ -79,8 +81,9 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
+        $categoryservice = categoryservices::pluck('name', 'id');
         $edit = services::find($id);
-        return view('internal.services.edit', compact('edit'));
+        return view('internal.services.edit', compact('edit','categoryservice'));
     }
 
     /**

@@ -105,15 +105,21 @@
 						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
 						                   </label></td>
 									</tr>
-						            <tr>
-										<td>Code Company Partnership</td>
+									<tr>
+										<td>Company Partnership</td>
 										<td>:</td>
-										<td><input type="text" name="codecompanypartnership" value="{{ $edit->codecompanypartnership }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecompanypartnership', $companypartnership, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}</td>
 									</tr>
 									<tr>
-										<td>Code Company Service</td>
+										<td>Company Service</td>
 										<td>:</td>
-										<td><input type="text" name="codecompanyservices" value="{{ $edit->codecompanyservices }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecompanyservices', $companyservices, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}</td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

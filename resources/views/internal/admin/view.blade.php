@@ -86,7 +86,8 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Code</th>
-                                                    <th>Code User</th>
+                                                    <th>Name User</th>
+                                                    <th>Category Admin</th>
                                                     <th>Phone</th>
                                                     <th>Status</th>
                                                     <th>Actions</th>
@@ -97,7 +98,8 @@
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->codeadmin }}</td>
-                                                    <td>{{ $d->name }}</td>
+                                                    <td>{{ !empty($row->user->name) ? $row->user->name : '-' }} </td>
+                                                    <td>{{ !empty($row->categoryadmin->name) ? $row->categoryadmin->name : '-' }} </td>
                                                     <td>{{ $row->phone }}</td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      

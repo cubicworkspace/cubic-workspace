@@ -54,11 +54,6 @@
 										<td>:</td>
 										<td><input type="text" value="{{ $no }}" name="codecategorypaymentmethode"  class="form-control" ></td>
 									</tr>
-									<tr>
-										<td>Category Payment Methode</td>
-										<td>:</td>
-										<td><input type="text" name="categorypaymentmethode"  class="form-control" ></td>
-									</tr>
 						              <tr>
 										<td>Name</td>
 										<td>:</td>

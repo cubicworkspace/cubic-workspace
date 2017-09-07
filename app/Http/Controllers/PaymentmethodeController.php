@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use DB;
 use App\paymentmethodes;
+use App\categorypaymentmethodes;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
@@ -37,7 +40,11 @@ class PaymentmethodeController extends Controller
         $noRand++;  
         $char   = "PAM";
         $no   =  $char . sprintf("%03s", $noRand);
-        return view('internal.paymentmethode.create', compact('no'));
+
+
+        $categorypaymentmethodes        = categorypaymentmethodes::pluck('name', 'id');
+
+        return view('internal.paymentmethode.create', compact('no','categorypaymentmethodes'));
     }
 
     /**
@@ -93,8 +100,10 @@ class PaymentmethodeController extends Controller
      */
     public function edit($id)
     {
+        $categorypaymentmethodes        = categorypaymentmethodes::pluck('name', 'id');
+
          $edit = paymentmethodes::find($id);
-        return view('internal.paymentmethode.edit', compact('edit'));
+        return view('internal.paymentmethode.edit', compact('edit','categorypaymentmethodes'));
     }
 
     /**
@@ -122,7 +131,7 @@ class PaymentmethodeController extends Controller
              'nameuser' => 'required',
              'nouser' => 'required']);
        // $event->codeevent = $request->codeevent;
-        //$paymentmethode->codecategorypaymentmethode = $request->codecategorypaymentmethode;
+        $paymentmethode->codecategorypaymentmethode = $request->codecategorypaymentmethode;
         $paymentmethode->name = $request->name;
         $paymentmethode->nameuser = $request->nameuser;
         $paymentmethode->nouser = $request->nouser;
@@ -141,7 +150,7 @@ class PaymentmethodeController extends Controller
              'nouser' => 'required']);
        // $event->codeevent = $request->codeevent;
         //$paymentmethode->codepaymentmethode = $request->codepaymentmethode;
-        //$paymentmethode->codecategorypaymentmethode = $request->codecategorypaymentmethode;
+        $paymentmethode->codecategorypaymentmethode = $request->codecategorypaymentmethode;
         $paymentmethode->name = $request->name;
         $paymentmethode->nameuser = $request->nameuser;
         $paymentmethode->nouser = $request->nouser;

@@ -67,7 +67,14 @@
 									<tr>
 										<td>Date</td>
 										<td>:</td>
-										<td><input type="date" name="date"  class="form-control" ></td>
+										<td><div class="input-group date form_datetime form_datetime bs-datetime">
+                                                            <input type="text" name="date" class="form-control">
+                                                            <span class="input-group-addon">
+                                                                <button class="btn default date-set" type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div></td>
 									</tr>
 									<tr>
 										<td>Write</td>
@@ -90,10 +97,14 @@
 						                   </label> </td>
 									</tr>
 									<tr>
-										<td>Code Category Media</td>
+										<td>Category Media</td>
 										<td>:</td>
-										<td><input type="text" name="codecategorymedia"  class="form-control" ></td>
-									</tr>
+										<td>
+	   								 {!! Form::select('codecategorymedia', $categorymedia, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Category Media --'
+	   								 ]) !!}
+									</td>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>
 									    <input class="btn btn-default" type="reset" name="batal" value="Cancel" onclick="location.href='/media/'"/></td>

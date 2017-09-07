@@ -55,10 +55,15 @@
 										<td>:</td>
 										<td><b>{{ $edit->codepaymentmethode }}</b></td>
 									</tr>
-						              <tr>
-										<td>Code Category Payment Methode</td>
+						             
+									<tr>
+										<td>Category Payment Methode</td>
 										<td>:</td>
-										<td><input type="codecategorypaymentmethode" name="codecategorypaymentmethode"  value="{{ $edit->codecategorypaymentmethode }}" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecategorypaymentmethode', $categorypaymentmethodes, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
+	   								 ]) !!}
+									</td>
 									</tr>
 									<tr>
 										<td>Name</td>

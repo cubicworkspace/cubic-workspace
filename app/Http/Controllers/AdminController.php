@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\admins;
 use App\users;
+use App\categoryadmins;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -26,9 +27,8 @@ class AdminController extends Controller
     public function index()
     {
         $no = 1;
-        $d = users::find(1);
-        $view = admins::all();
-        return view('internal.admin.view', compact('view'), compact('d'));
+        $view = Admins::all();
+        return view('internal.admin.view', compact('view'));
     }
 
     /**
@@ -45,10 +45,9 @@ class AdminController extends Controller
         $noRand++;  
         $char   = "ADM";
         $no   =  $char . sprintf("%03s", $noRand);
-
-        $ds = users::all();
-
-        return view('internal.admin.create', compact('no'), compact('users'));
+        $user = users::pluck('name', 'id');
+        $categoryadmin = categoryadmins::pluck('name', 'id');
+        return view('internal.admin.create', compact('no','user','categoryadmin'));
     }
 
     /**
@@ -101,9 +100,10 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $users = users::all();
+        $user = users::pluck('name', 'id');
+        $categoryadmin = categoryadmins::pluck('name', 'id');
         $edit = admins::find($id);
-        return view('internal.admin.edit', compact('edit'), compact('users'));
+        return view('internal.admin.edit', compact('edit','user','categoryadmin'));
     }
 
     /**
@@ -144,7 +144,6 @@ class AdminController extends Controller
             $admin->codecategoryadmin = $request->codecategoryadmin;
             $admin->phone = $request->phone;
             $admin->codeuser = $request->codeuser;
-            $admin->image = $request->image;
             $admin->status = $request->status;
             $admin->save();
             \Session::flash('success', 'Admin data has been edited successfully!,');

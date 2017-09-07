@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\tagservices;
+use App\services;
 
 use Illuminate\Http\Request;
 
@@ -38,7 +39,8 @@ class TagServicesController extends Controller
         $noRand++;  
         $char   = "CTS";
         $no   =  $char . sprintf("%03s", $noRand);
-        return view('internal.tagservices.create', compact('no'));
+        $services = services::pluck('name', 'id');
+        return view('internal.tagservices.create', compact('no','services'));
     }
 
     /**
@@ -81,8 +83,9 @@ class TagServicesController extends Controller
      */
     public function edit($id)
     {
+        $services = services::pluck('name', 'id');
         $edit = tagservices::find($id);
-        return view('internal.tagservices.edit', compact('edit'));
+        return view('internal.tagservices.edit', compact('edit','services'));
     }
 
     /**
