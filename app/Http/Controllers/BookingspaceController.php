@@ -115,11 +115,11 @@ class BookingspaceController extends Controller
      */
     public function edit($id)
     {
-        $companypartnership     = companypartnership::pluck('name', 'id');
-        $services               = services::pluck('name', 'id');
-        $billingcompanyservices = billingcompanyservices::pluck('name', 'id');
-        $users                  = users::pluck('name', 'id');
-        $paymentmethodes         = paymentmethodes::pluck('name', 'id');
+        $companypartnership     = companypartnership::all();
+        $services               = services::all();
+        $billingcompanyservices = billingcompanyservices::all();
+        $users                  = users::all();
+        $paymentmethodes         = paymentmethodes::all();
 
         $edit = bookingspaces::find($id);
         return view('internal.bookingspace.edit', compact('edit','companypartnership','services','billingcompanyservices','users','paymentmethodes'));

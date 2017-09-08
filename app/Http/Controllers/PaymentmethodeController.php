@@ -100,7 +100,7 @@ class PaymentmethodeController extends Controller
      */
     public function edit($id)
     {
-        $categorypaymentmethodes        = categorypaymentmethodes::pluck('name', 'id');
+        $categorypaymentmethodes        = categorypaymentmethodes::all();
 
          $edit = paymentmethodes::find($id);
         return view('internal.paymentmethode.edit', compact('edit','categorypaymentmethodes'));

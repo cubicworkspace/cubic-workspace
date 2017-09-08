@@ -103,18 +103,24 @@
 						          <tr>
 										<td>Company Partnership</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codecompanypartnership', $companypartnership, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}</td>
+										<td> <select class="form-control" id="id" value="name" name="codecompanypartnership">
+	   								 				<option value="{{ $edit->companypartnership->id }}">{{ $edit->companypartnership->name }}</option>
+	   												 @foreach($companypartnership as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td>Company Service</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codecompanyservices', $companyservices, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}</td>
+										<td> <select class="form-control" id="id" value="name" name="codecompanyservice">
+	   								 				<option value="{{ $edit->companyservice->id }}">{{ $edit->companyservice->name }}</option>
+	   												 @foreach($companyservice as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

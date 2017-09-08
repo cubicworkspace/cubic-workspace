@@ -83,7 +83,7 @@ class TagServicesController extends Controller
      */
     public function edit($id)
     {
-        $services = services::pluck('name', 'id');
+        $services = services::all();
         $edit = tagservices::find($id);
         return view('internal.tagservices.edit', compact('edit','services'));
     }

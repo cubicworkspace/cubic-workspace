@@ -100,8 +100,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $user = users::pluck('name', 'id');
-        $categoryadmin = categoryadmins::pluck('name', 'id');
+        $user = users::all();
+        $categoryadmin = categoryadmins::all();
         $edit = admins::find($id);
         return view('internal.admin.edit', compact('edit','user','categoryadmin'));
     }

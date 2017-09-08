@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\companypartnership;
+use App\countrys;
+use App\citys;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -40,7 +42,9 @@ class CompanyPartnershipController extends Controller
         $noRand++;  
         $char   = "COP";
         $no   =  $char . sprintf("%03s", $noRand);
-        return view('internal.companypartnership.create', compact('no'));
+        $city = citys::pluck('name', 'id');
+         $country = countrys::pluck('name', 'id');
+        return view('internal.companypartnership.create', compact('no','country','city'));
     }
 
     /**
@@ -113,8 +117,10 @@ class CompanyPartnershipController extends Controller
     public function edit($id)
     {
         
+       $country = countrys::all();
+         $city = citys::all();
         $edit = companypartnership::find($id);
-        return view('internal.companypartnership.edit', compact('edit'));
+        return view('internal.companypartnership.edit', compact('edit','country','city'));
     }
 
     /**

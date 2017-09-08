@@ -56,46 +56,59 @@
 										<td><b>{{ $edit->codebookingspace }}</b></td>
 									</tr>
 						            <tr>
-										<td>Services</td>
+										<td>Service</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codeservices', $services, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}
-									</td>
+										<td> <select class="form-control" id="id" value="name" name="codeservice">
+	   								 				<option value="{{ $edit->service->id }}">{{ $edit->service->name }}</option>
+	   												 @foreach($service as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td>Company Partnership</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codecompanypartnership', $companypartnership, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}
+										<td> <select class="form-control" id="id" value="name" name="codecompanypartnership">
+	   								 				<option value="{{ $edit->companypartnership->id }}">{{ $edit->companypartnership->name }}</option>
+	   												 @foreach($companypartnership as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
-										<td>Billing Company Services</td>
+										<td>Billing Company Service</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codebilling', $billingcompanyservices, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}
+										<td> <select class="form-control" id="id" value="name" name="codebillingcompanyservice">
+	   								 				<option value="{{ $edit->billingcompanyservice->id }}">{{ $edit->billingcompanyservice->name }}</option>
+	   												 @foreach($billingcompanyservice as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td>User</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codeuser', $users, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}
-									</td>
+										<td> <select class="form-control" id="id" value="name" name="codeuser">
+	   								 				<option value="{{ $edit->user->id }}">{{ $edit->user->name }}</option>
+	   												 @foreach($user as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td>Payment Methode</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codepaymentmethode', $paymentmethodes, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}</td>
+										<td> <select class="form-control" id="id" value="name" name="codepaymentmethode">
+	   								 				<option value="{{ $edit->paymentmethode->id }}">{{ $edit->paymentmethode->name }}</option>
+	   												 @foreach($paymentmethode as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td>Invoice</td>

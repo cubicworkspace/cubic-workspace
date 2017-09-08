@@ -56,9 +56,15 @@
 										<td><b>{{ $edit->codeevent }}</b></td>
 									</tr>
 						              <tr>
-										<td>Code Category Event</td>
+										<td>Category Event</td>
 										<td>:</td>
-										<td><input type="codecategoryevent" name="codecategoryevent"  value="{{ $edit->codecategoryevent }}" class="form-control" ></td>
+										<td> <select class="form-control" id="id" value="name" name="codecategoryevent">
+	   								 				<option value="{{ $edit->categoryevent->id }}">{{ $edit->categoryevent->name }}</option>
+	   												 @foreach($categoryevent as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td>Title</td>

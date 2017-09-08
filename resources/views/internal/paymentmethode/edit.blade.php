@@ -59,11 +59,13 @@
 									<tr>
 										<td>Category Payment Methode</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codecategorypaymentmethode', $categorypaymentmethodes, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}
-									</td>
+										<td> <select class="form-control" id="id" value="name" name="codecategorypaymentmethode">
+	   								 				<option value="{{ $edit->categorypaymentmethode->id }}">{{ $edit->categorypaymentmethode->name }}</option>
+	   												 @foreach($categorypaymentmethode as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td>Name</td>

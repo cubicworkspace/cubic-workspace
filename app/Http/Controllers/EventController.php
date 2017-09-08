@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\events;
+use App\categoryevents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
@@ -37,7 +38,8 @@ class EventController extends Controller
         $noRand++;  
         $char   = "EVT";
         $no   =  $char . sprintf("%03s", $noRand);
-        return view('internal.event.create', compact('no'));
+        $categoryevent = categoryevents::pluck('name', 'id');
+        return view('internal.event.create', compact('no','categoryevent'));
     }
 
     /**
@@ -97,7 +99,8 @@ class EventController extends Controller
     public function edit($id)
     {
         $edit = events::find($id);
-        return view('internal.event.edit', compact('edit'));
+        $categoryevent = categoryevents::all();
+        return view('internal.event.edit', compact('edit','categoryevent'));
     }
 
     /**

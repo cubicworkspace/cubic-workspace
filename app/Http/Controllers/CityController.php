@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\citys;
+use App\countrys;
 
 use Illuminate\Http\Request;
 
@@ -37,7 +38,8 @@ class CityController extends Controller
         $noRand++;  
         $char   = "CIT";
         $no   =  $char . sprintf("%03s", $noRand);
-        return view('internal.city.create', compact('no'));
+        $country = countrys::pluck('name', 'id');
+        return view('internal.city.create', compact('no','country'));
     }
 
     /**
@@ -81,9 +83,9 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        
+        $country = countrys::all();
         $edit = citys::find($id);
-        return view('internal.city.edit', compact('edit'));
+        return view('internal.city.edit', compact('edit','country'));
     }
 
     /**

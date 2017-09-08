@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\adminspartnerships;
+use App\companypartnership;
+use App\users;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -32,7 +34,9 @@ class AdminPartnershipController extends Controller
      */
     public function create()
     {
-        return view('internal.adminpartnership.create');
+        $user = users::pluck('name', 'id');
+         $companypartnership = companypartnership::pluck('name', 'id');
+        return view('internal.adminpartnership.create', compact('no','user','companypartnership'));
     }
 
     /**
@@ -87,8 +91,10 @@ class AdminPartnershipController extends Controller
     public function edit($id)
     {
         
+        $user = users::all();
+         $companypartnership = companypartnership::all();
         $edit = adminspartnerships::find($id);
-        return view('internal.adminpartnership.edit', compact('edit'));
+        return view('internal.adminpartnership.edit', compact('edit','user','companypartnership'));
     }
 
     /**

@@ -87,6 +87,8 @@
                                                     <th>#</th>
                                                     <th>Code</th>
                                                     <th>Name</th>
+                                                    <th>Country</th>
+                                                    <th>City</th>
                                                     <th>Description</th>
                                                     <th>Status</th>
                                                     <th>Actions</th>
@@ -98,6 +100,8 @@
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->codecompanypartnership }}</td>
                                                     <td>{{ $row->name }}</td>
+                                                    <td>{{ !empty($row->country->name) ? $row->country->name : '-' }} </td>
+                                                    <td>{{ !empty($row->city->name) ? $row->city->name : '-' }} </td>
                                                     <td>{{ $row->description }}</td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      

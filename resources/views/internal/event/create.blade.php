@@ -60,9 +60,14 @@
 										<td><input type="title" name="title"  class="form-control" ></td>
 									</tr>
 									<tr>
-										<td>Code Category Event</td>
+										<td>Category Event</td>
 										<td>:</td>
-										<td><input type="text" name="codecategoryevent"  class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecategoryevent', $categoryevent, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Category Event --'
+	   								 ]) !!}
+									</td>
 									</tr>
 									<tr>
 										<td>Url</td>

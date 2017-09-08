@@ -121,15 +121,27 @@
 										<td>:</td>
 										<td><input type="text" name="maps" value="{{ $edit->maps }}" class="form-control" ></td>
 									</tr>
+									
 									<tr>
-										<td>Code Country</td>
+										<td>City</td>
 										<td>:</td>
-										<td><input type="text" name="codecountry" value="{{ $edit->codecountry }}" class="form-control" ></td>
-									</tr>
-									<tr>
-										<td>Code City</td>
+										<td> <select class="form-control" id="id" value="name" name="codecity">
+	   								 				<option value="{{ $edit->city->id }}">{{ $edit->city->name }}</option>
+	   												 @foreach($city as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
+									</tr><tr>
+										<td>Country</td>
 										<td>:</td>
-										<td><input type="text" name="codecity" value="{{ $edit->codecity }}" class="form-control" ></td>
+										<td> <select class="form-control" id="id" value="name" name="codecountry">
+	   								 				<option value="{{ $edit->country->id }}">{{ $edit->country->name }}</option>
+	   												 @foreach($country as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td>Profile</td>

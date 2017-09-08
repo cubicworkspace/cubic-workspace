@@ -95,9 +95,9 @@ class CompanyServicesController extends Controller
      */
     public function edit($id)
     {
-        $tagservices = tagservices::pluck('codetagservices', 'id');
-        $companypartnership = companypartnership::pluck('name', 'id');
-        $services = services::pluck('name', 'id');
+        $tagservices = tagservices::all();
+        $companypartnership = companypartnership::all();
+        $services = services::all();
         $edit = companyservices::find($id);
         return view('internal.companyservices.edit', compact('edit','tagservices','companypartnership','services'));
     }

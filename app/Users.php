@@ -14,4 +14,7 @@ class Users extends Model
     public function admin() {
     	return $this->hasOne('App\Admins', 'codeuser');
     }
+    public function adminspartnership() {
+    	return $this->hasOne('App\Adminspartnership', 'codeuser');
+    }
 }

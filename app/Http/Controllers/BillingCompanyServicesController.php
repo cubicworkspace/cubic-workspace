@@ -87,8 +87,8 @@ class BillingCompanyServicesController extends Controller
      */
     public function edit($id)
     {
-        $companypartnership = companypartnership::pluck('name', 'id');
-        $companyservices = companyservices::pluck('name', 'id');
+        $companypartnership = companypartnership::all();
+        $companyservices = companyservices::all();
         $edit = billingcompanyservices::find($id);
         return view('internal.billingcompanyservices.edit', compact('edit','companypartnership','companyservices'));
     }

@@ -86,8 +86,8 @@ class HistoryBillingController extends Controller
      */
     public function edit($id)
     {
-        $companypartnership = companypartnership::pluck('name', 'id');
-        $companyservices = companyservices::pluck('name', 'id');
+        $companypartnership = companypartnership::all();
+        $companyservices = companyservices::all();
         $edit = historybillingcompanyservices::find($id);
         return view('internal.historybilling.edit', compact('edit','companypartnership','companyservices'));
     }

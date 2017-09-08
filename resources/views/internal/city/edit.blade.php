@@ -76,9 +76,15 @@
 						                   </label></td>
 									</tr>
 									<tr>
-										<td>Code Coutry</td>
+										<td>Country</td>
 										<td>:</td>
-										<td><input type="text" name="codecountry" value="{{ $edit->codecountry }}" class="form-control" ></td>
+										<td> <select class="form-control" id="id" value="name" name="codecountry">
+	   								 				<option value="{{ $edit->country->id }}">{{ $edit->country->name }}</option>
+	   												 @foreach($country as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

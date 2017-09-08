@@ -114,12 +114,14 @@
 									<tr>
 										<td>Category Media</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codecategorymedia', $categorymedia, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}
-									</td>
-									<tr>
+										<td> <select class="form-control" id="id" value="name" name="codecategorymedia">
+	   								 				<option value="{{ $edit->categorymedia->id }}">{{ $edit->categorymedia->name }}</option>
+	   												 @foreach($categorymedia as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
+									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>
 									    <input class="btn btn-default" type="reset" name="batal" value="Cancel" onclick="location.href='/media/'"/></td>

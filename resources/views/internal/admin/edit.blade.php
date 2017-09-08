@@ -58,10 +58,13 @@
 						              <tr>
 										<td>User</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codeuser', $user, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}
+										<td> <select class="form-control" id="id" value="name" name="codeuser">
+	   								 				<option value="{{ $edit->user->id }}">{{ $edit->user->name }}</option>
+	   												 @foreach($user as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td>Phone</td>
@@ -96,14 +99,16 @@
 						                     <input type="radio"  name="status" codeadmin="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
 						                   </label></td>
 									</tr>
-									<tr>
+						              <tr>
 										<td>Category Admin</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codecategoryadmin', $categoryadmin, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}
-									</td>
+										<td> <select class="form-control" id="id"  name="codecategoryadmin">
+	   								 				<option value="{{ $edit->categoryadmin->id }}">{{ $edit->categoryadmin->name }}</option>
+	   												 @foreach($categoryadmin as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

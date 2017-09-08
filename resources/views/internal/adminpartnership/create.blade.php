@@ -50,9 +50,14 @@
 									<div class="table-responsive">
 						              <table class="table">
 						            <tr>
-										<td>Code User</td>
+										<td>User</td>
 										<td>:</td>
-										<td><input type="codeuser" name="codeuser"  class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codeuser', $user, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Users --'
+	   								 ]) !!}
+									</td>
 									</tr>
 						            <tr>
 										<td>Address</td>
@@ -80,9 +85,14 @@
 						                   </label> </td>
 									</tr>
 									<tr>
-										<td>Code Company partnership</td>
+										<td>Company Partnership</td>
 										<td>:</td>
-										<td><input type="text" name="codecompanypartnership" class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecompanypartnership', $companypartnership, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Company Partnership --'
+	   								 ]) !!}
+									</td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

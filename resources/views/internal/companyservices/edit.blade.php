@@ -94,26 +94,35 @@
 						            <tr>
 										<td>Company Partnership</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codecompanypartnership', $companypartnership, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}</td>
+										<td> <select class="form-control" id="id" value="name" name="codecompanypartnership">
+	   								 				<option value="{{ $edit->companypartnership->id }}">{{ $edit->companypartnership->name }}</option>
+	   												 @foreach($companypartnership as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 						            <tr>
-										<td>Code Tag Service</td>
+										<td>Tag Service</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codetagservices', $tagservices, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}</td>
+										<td> <select class="form-control" id="id" value="name" name="codetagservice">
+	   								 				<option value="{{ $edit->tagservice->id }}">{{ $edit->tagservice->name }}</option>
+	   												 @foreach($tagservice as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td>Service</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codeservices', $services, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
-	   								 ]) !!}</td>
+										<td> <select class="form-control" id="id" value="name" name="codeservice">
+	   								 				<option value="{{ $edit->service->id }}">{{ $edit->service->name }}</option>
+	   												 @foreach($service as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

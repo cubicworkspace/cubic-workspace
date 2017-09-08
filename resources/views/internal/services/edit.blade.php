@@ -78,10 +78,13 @@
 									<tr>
 										<td>Category Service</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codecategoryservices', $categoryservice, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name'
-	   								 ]) !!}</td>
+										<td> <select class="form-control" id="id" value="name" name="codecategoryservice">
+	   								 				<option value="{{ $edit->categoryservice->id }}">{{ $edit->categoryservice->name }}</option>
+	   												 @foreach($categoryservice as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

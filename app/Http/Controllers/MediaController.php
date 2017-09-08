@@ -98,7 +98,7 @@ class MediaController extends Controller
      */
     public function edit($id)
     {
-        $categorymedia = categorymedia::pluck('name', 'id');
+        $categorymedia = categorymedia::all();
         $edit = media::find($id);
         return view('internal.media.edit', compact('edit','categorymedia'));
     }

@@ -86,7 +86,7 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Code</th>
-                                                    <th>Code Category Event</th>
+                                                    <th>Category Event</th>
                                                     <th>Title</th>
                                                     <th>Url</th>
                                                     <th>Quota</th>
@@ -100,7 +100,7 @@
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->codeevent }}</td>
-                                                    <td>{{ $row->codecategoryevent }}</td>
+                                                    <td>{{ !empty($row->categoryevent->name) ? $row->categoryevent->name : '-' }} </td>
                                                     <td>{{ $row->title }}</td>
                                                     <td>{{ $row->url }}</td>
                                                     <td>{{ $row->quota }}</td>

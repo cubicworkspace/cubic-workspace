@@ -104,8 +104,15 @@
                                  </ul>
                             </li>
 
+
+                            <li class="nav-item">
+                                <a href="{{ url('/companyservices') }}" class="nav-link nav-toggle">
+                                    <i class="icon-layers"></i>
+                                    <span class="title">Company Services</span>
+                                </a>
+                            </li> 
+
                             <li class="nav-item 
-                            {{ Request::segment(1) === 'companyservices' ? 'active' : null }}
                             {{ Request::segment(1) === 'tagservices' ? 'active' : null }}
                             {{ Request::segment(1) === 'services' ? 'active' : null }}
                             {{ Request::segment(1) === 'categoryservices' ? 'active' : null }}">
@@ -115,11 +122,6 @@
                                     <span class="arrow"></span>
                                 </a>
                                 <ul class="sub-menu">
-                                    <li class="nav-item ">
-                                        <a href="{{ url('/companyservices') }}" class="nav-link ">
-                                            <span class="title">Company Services</span>
-                                        </a>
-                                    </li>
                                     <li class="nav-item ">
                                         <a href="{{ url('/tagservices') }}" class="nav-link ">
                                             <span class="title">Tag Services</span>
@@ -143,8 +145,6 @@
                             {{ Request::segment(1) === 'historybilling' ? 'active' : null }}
                             {{ Request::segment(1) === 'bookingspace' ? 'active' : null }}
                             {{ Request::segment(1) === 'historybookingspace' ? 'active' : null }}
-
-
                             ">
                                 <a href="javascript:;" class="nav-link nav-toggle">
                                     <i class="icon-bulb"></i>

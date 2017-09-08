@@ -81,7 +81,7 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
-        $categoryservice = categoryservices::pluck('name', 'id');
+        $categoryservice = categoryservices::all();
         $edit = services::find($id);
         return view('internal.services.edit', compact('edit','categoryservice'));
     }

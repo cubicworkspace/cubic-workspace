@@ -106,11 +106,11 @@ class HistorybookingspaceController extends Controller
      */
     public function edit($id)
     {
-        $companypartnership     = companypartnership::pluck('name', 'id');
-        $services               = services::pluck('name', 'id');
-        $billingcompanyservices = billingcompanyservices::pluck('name', 'id');
-        $users                  = users::pluck('name', 'id');
-        $paymentmethodes         = paymentmethodes::pluck('name', 'id');
+        $companypartnership     = companypartnership::all();
+        $services               = services::all();
+        $billingcompanyservices = billingcompanyservices::all();
+        $users                  = users::all();
+        $paymentmethodes         = paymentmethodes::all();
 
         $edit = historybookingspaces::find($id);
         return view('internal.historybookingspace.edit', compact('edit','companypartnership','services','billingcompanyservices','users','paymentmethodes'));

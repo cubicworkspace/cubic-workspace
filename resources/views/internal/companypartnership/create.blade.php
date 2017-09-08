@@ -95,14 +95,24 @@
 										<td><input type="text" name="maps"  class="form-control" ></td>
 									</tr>
 									<tr>
-										<td>Code Country</td>
+										<td>Country</td>
 										<td>:</td>
-										<td><input type="text" name="codecountry"  class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecountry', $country, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Country --'
+	   								 ]) !!}
+									</td>
 									</tr>
 									<tr>
-										<td>Code City</td>
+										<td>City</td>
 										<td>:</td>
-										<td><input type="text" name="codecity"  class="form-control" ></td>
+										<td>
+	   								 {!! Form::select('codecity', $city, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select City --'
+	   								 ]) !!}
+									</td>
 									</tr>
 									<tr>
 										<td>Profile</td>
