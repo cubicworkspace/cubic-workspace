@@ -8,7 +8,6 @@ use App\services;
 use App\companypartnership;
 use App\billingcompanyservices;
 use App\users;
-use App\paymentmethodes;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -26,7 +25,7 @@ class HistorybookingspaceController extends Controller
     public function index()
     {
         $no = 1;
-        $view = historybookingspaces::all();
+        $view = historybookingspaces::orderBy('id', 'DESC')->get();
         return view('internal.historybookingspace.view', compact('view'));
     }
 
@@ -42,9 +41,8 @@ class HistorybookingspaceController extends Controller
         $services               = services::pluck('name', 'id');
         $billingcompanyservices = billingcompanyservices::pluck('name', 'id');
         $users                  = users::pluck('name', 'id');
-        $paymentmethodes         = paymentmethodes::pluck('name', 'id');
 
-        return view('internal.historybookingspace.create', compact('companypartnership','services','billingcompanyservices','users','paymentmethodes'));
+        return view('internal.historybookingspace.create', compact('companypartnership','services','billingcompanyservices','users'));
     }
 
     /**
@@ -110,10 +108,9 @@ class HistorybookingspaceController extends Controller
         $services               = services::all();
         $billingcompanyservices = billingcompanyservices::all();
         $users                  = users::all();
-        $paymentmethodes         = paymentmethodes::all();
 
         $edit = historybookingspaces::find($id);
-        return view('internal.historybookingspace.edit', compact('edit','companypartnership','services','billingcompanyservices','users','paymentmethodes'));
+        return view('internal.historybookingspace.edit', compact('edit','companypartnership','services','billingcompanyservices','users'));
     }
 
     /**

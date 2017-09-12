@@ -91,6 +91,8 @@
                                                     <th>Used Quota</th>
                                                     <th>Price</th>
                                                     <th>Status</th>
+                                                    <th>Company Partnership</th>
+                                                    <th>Company Service</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -104,12 +106,14 @@
                                                     <td>{{ $row->usedquota }}</td>
                                                     <td>{{ $row->price }}</td>
                                                     <td>{{ $row->status }}</td>
+                                                    <td>{{ !empty($row->companypartnership->name) ? $row->companypartnership->name : '-' }} </td>
+                                                    <td>{{ !empty($row->companyservices->name) ? $row->companyservices->name : '-' }} </td>
                                                     <td>                      
 								                      <form action="/historybilling/{{$row->id}}" method="POST">
 								                      <a href="/historybilling/{{$row->id}}/edit" class="btn btn-warning"><i class="fa fa-pencil" ></i> Edit</a> 
 								                      {{ csrf_field() }}
 								                      {{ method_field('DELETE') }}
-								                      <button type="submit" class="btn btn-danger"><i class="fa fa-trash" ></i> Delete</button>
+								                      <button type="submit" class="btn btn-danger"  onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fa fa-trash" ></i> Delete</button>
 								                      </form>
 								                    </td>
                                                 </tr>

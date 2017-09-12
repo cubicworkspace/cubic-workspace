@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tagservices extends Model
 {
-    public function service() {
+    public function services() {
     	return $this->belongsTo('App\Services', 'codeservices');
     }
 }

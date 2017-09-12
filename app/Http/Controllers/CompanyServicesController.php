@@ -23,7 +23,7 @@ class CompanyServicesController extends Controller
     {
         
         $no = 1;
-        $view = companyservices::all();
+        $view = companyservices::orderBy('id', 'DESC')->get();
         return view('internal.companyservices.view', compact('view'));
     }
 

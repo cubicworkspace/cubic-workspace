@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #1 for statistics, charts, recent events and reports" name="description" />
-        <meta content="" name="author" />
+        <meta content="https://www.facebook.com/navagiaginasta" name="author" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/global/plugins/font-awesome/css/font-awesome.min.css') }}">
@@ -49,7 +49,7 @@
         <link rel="shortcut icon" href="{{ asset('faviconcubic.png') }}" />
      </head>
     <!-- END HEAD -->
-     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+    <body class="page-header-fixed page-footer-fixed page-sidebar-closed-hide-logo page-content-white">
         <div class="page-wrapper">
             <!-- BEGIN HEADER -->
             <div class="page-header navbar navbar-fixed-top">
@@ -226,7 +226,9 @@
         <script src="{{ asset('backend/pages/scripts/dashboard.min.js') }}"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
         <script src="{{ asset('backend/pages/scripts/table-datatables-managed.min.js') }}" type="text/javascript"></script>
-
+        
+        <script src="{{ asset('backend/global/plugins/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+        
 
         <!-- BEGIN DATEPICKER LEVEL PLUGINS -->
         <script src="{{ asset('backend/pages/scripts/components-date-time-pickers.min.js') }}" type="text/javascript"></script>

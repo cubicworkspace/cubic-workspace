@@ -58,9 +58,9 @@
 						            <tr>
 										<td>Service</td>
 										<td>:</td>
-										<td> <select class="form-control" id="id" value="name" name="codeservice">
-	   								 				<option value="{{ $edit->service->id }}">{{ $edit->service->name }}</option>
-	   												 @foreach($service as $row)
+										<td> <select class="form-control" id="id" value="name" name="codeservices">
+	   								 				<option value="{{ !empty($edit->services->id) ? $edit->services->id : '' }}">{{ !empty($edit->services->name) ? $edit->services->name : '-- Select Services --' }} </option>
+	   												 @foreach($services as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
 	   								 		</select>
@@ -70,7 +70,7 @@
 										<td>Company Partnership</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codecompanypartnership">
-	   								 				<option value="{{ $edit->companypartnership->id }}">{{ $edit->companypartnership->name }}</option>
+	   								 				<option value="{{ !empty($edit->companypartnership->id) ? $edit->companypartnership->id : '' }}">{{ !empty($edit->companypartnership->name) ? $edit->companypartnership->name : '-- Select Company Partnership --' }} </option>
 	   												 @foreach($companypartnership as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
@@ -80,9 +80,9 @@
 									<tr>
 										<td>Billing Company Service</td>
 										<td>:</td>
-										<td> <select class="form-control" id="id" value="name" name="codebillingcompanyservice">
-	   								 				<option value="{{ $edit->billingcompanyservice->id }}">{{ $edit->billingcompanyservice->name }}</option>
-	   												 @foreach($billingcompanyservice as $row)
+										<td> <select class="form-control" id="id" value="name" name="codebillingcompanyservices">
+	   								 				<option value="{{ !empty($edit->billingcompanyservices->id) ? $edit->billingcompanyservices->id : '' }}">{{ !empty($edit->billingcompanyservices->name) ? $edit->billingcompanyservices->name : '-- Select Billing Company Service --' }} </option>
+	   												 @foreach($billingcompanyservices as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
 	   								 		</select>
@@ -92,8 +92,8 @@
 										<td>User</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codeuser">
-	   								 				<option value="{{ $edit->user->id }}">{{ $edit->user->name }}</option>
-	   												 @foreach($user as $row)
+	   								 				<option value="{{ !empty($edit->user->id) ? $edit->user->id : '' }}">{{ !empty($edit->user->name) ? $edit->user->name : '-- Select Users --' }} </option>
+	   												 @foreach($users as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
 	   								 		</select>
@@ -103,8 +103,8 @@
 										<td>Payment Methode</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codepaymentmethode">
-	   								 				<option value="{{ $edit->paymentmethode->id }}">{{ $edit->paymentmethode->name }}</option>
-	   												 @foreach($paymentmethode as $row)
+	   								 				<option value="{{ !empty($edit->paymentmethodes->id) ? $edit->paymentmethodes->id : '' }}">{{ !empty($edit->paymentmethodes->name) ? $edit->paymentmethodes->name : '-- Select Payment Methode --' }} </option>
+	   												 @foreach($paymentmethodes as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
 	   								 		</select>

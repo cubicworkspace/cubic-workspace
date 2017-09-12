@@ -9,7 +9,10 @@ class Companyservices extends Model
     public function companypartnership() {
     	return $this->belongsTo('App\Companypartnership', 'codecompanypartnership');
     }
-    public function service() {
+    public function services() {
     	return $this->belongsTo('App\Services', 'codeservices');
+    }
+    public function tagservices() {
+    	return $this->belongsTo('App\Tagservices', 'codetagservices');
     }
 }

@@ -103,7 +103,7 @@
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->information }}</td>
                                                     <td>{{ !empty($row->companypartnership->name) ? $row->companypartnership->name : '-' }} </td>
-                                                    <td>{{ !empty($row->companyservice->name) ? $row->companyservice->name : '-' }} </td>
+                                                    <td>{{ !empty($row->companyservices->name) ? $row->companyservices->name : '-' }} </td>
                                                     <td>{{ $row->quota }}</td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      
@@ -111,7 +111,7 @@
 								                      <a href="/billingcompanyservices/{{$row->id}}/edit" class="btn btn-warning"><i class="fa fa-pencil" ></i> Edit</a> 
 								                      {{ csrf_field() }}
 								                      {{ method_field('DELETE') }}
-								                      <button type="submit" class="btn btn-danger"><i class="fa fa-trash" ></i> Delete</button>
+								                      <button type="submit" class="btn btn-danger"  onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fa fa-trash" ></i> Delete</button>
 								                      </form>
 								                    </td>
                                                 </tr>

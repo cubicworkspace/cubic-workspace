@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Services extends Model
 {
-    public function categoryservice() {
+    public function categoryservices() {
     	return $this->belongsTo('App\Categoryservices', 'codecategoryservices');
     }
 }

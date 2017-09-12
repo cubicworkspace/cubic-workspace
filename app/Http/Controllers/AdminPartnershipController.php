@@ -23,7 +23,7 @@ class AdminPartnershipController extends Controller
     public function index()
     {
         $no = 1;
-        $view = adminspartnerships::all();
+        $view = adminspartnerships::orderBy('id', 'DESC')->get();
         return view('internal.adminpartnership.view', compact('view'));
     }
 

@@ -99,7 +99,7 @@
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->codeservices }}</td>
                                                     <td>{{ $row->name }}</td>
-                                                    <td>{{ !empty($row->categoryservice->name) ? $row->categoryservice->name : '-' }} </td>
+                                                    <td>{{ !empty($row->categoryservices->name) ? $row->categoryservices->name : '-' }} </td>
                                                     <td>{{ $row->description }}</td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      
@@ -107,7 +107,7 @@
                                                       <a href="/services/{{$row->id}}/edit" class="btn btn-warning"><i class="fa fa-pencil" ></i> Edit</a> 
                                                       {{ csrf_field() }}
                                                       {{ method_field('DELETE') }}
-                                                      <button type="submit" class="btn btn-danger"><i class="fa fa-trash" ></i> Delete</button>
+                                                      <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fa fa-trash" ></i> Delete</button>
                                                       </form>
                                                     </td>
                                                 </tr>

@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\media;
+use App\categorymedia;
+use App\informasicompanies;
+
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
@@ -13,7 +18,11 @@ class WebsiteController extends Controller
      */
     public function index()
     {
-         return view('website.index');
+        // $media = media::where('codecategorymedia','5')->get();
+        $media = media::find('4');
+        $informasicompanies = informasicompanies::where('categoryinfromasi', '=', 'HEADER')
+                                                 ->where('status', '=', 'Y')->limit(3)->get();;
+        return view('website.index', compact('media','informasicompanies'));
     }
 
     public function package_list()

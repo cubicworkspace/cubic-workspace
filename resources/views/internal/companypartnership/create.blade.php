@@ -62,12 +62,12 @@
 									<tr>
 										<td>Favicon</td>
 										<td>:</td>
-										<td><input type="file" name="favicon"  class="form-control" ></td>
+										<td><input type="file" name="favicon" required  class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Logo</td>
 										<td>:</td>
-										<td><input type="file" name="logo"  class="form-control" ></td>
+										<td><input type="file" name="logo" required  class="form-control" ></td>
 									</tr>
 						            <tr>
 										<td>Email</td>
@@ -142,7 +142,7 @@
 									<tr>
 										<td>Faq</td>
 										<td>:</td>
-										<td><input type="text" name="faq"  class="form-control" ></td>
+										<td><textarea class="ckeditor form-control" name="faq" rows="6" data-error-container="#editor2_error"></textarea></td>
 									</tr>
 									<tr>
 										<td>Information</td>

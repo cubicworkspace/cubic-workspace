@@ -3,23 +3,20 @@
 
 	<div id="introLoader" class="introLoading"></div>
 <!-- start hero-header with windows height -->
-			<div class="hero" style="background-image:url('{{ asset('frontend/images/hero-header/01.jpg') }}');">
-				
+			<div class="hero" style="background-image:url('{{ asset('upload/media') }}/{{ $media->image }}');">
+			
 				<div class="container">
 				
 					<div class="row">
 					
 						<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 						
-							<h1 class="hero-title">WORKSPACE FOR
-ESCAPING THE GRIND</h1>
-							<p class="lead">WORK FROM HOME, ABROAD OR ANOTHER LOCATION,
-YET MAINTAIN THE SUPPORT AND PRESENCE OF A PROFESSIONAL OFFICE.</p>
+							<h1 class="hero-title">{{ $media->name}}</h1>
+							<p class="lead">{{ $media->writer }}</p>
 
 						</div>
 						
 					</div>
-					
 					<div class="main-search-wrapper full-width">
 					
 						<div class="inner">
@@ -92,35 +89,19 @@ YET MAINTAIN THE SUPPORT AND PRESENCE OF A PROFESSIONAL OFFICE.</p>
 					
 					<div class="row">
 					
+						<!-- informasicompanies -->
+						@foreach($informasicompanies as $row)
 						<div class="col-sm-4">
 							<div class="featured-count clearfix">
-								<div class="icon"><i class="pe-7s-map-marker"></i></div>
+								<div class="icon"><img src="{{ asset('upload/informasicompanies') }}/{{ $row->icon }}" /></div>
 								<div class="content">
-									<h6>300+ Basecamp</h6>
-									<span>Tastes giving in passed direct me valley supply.</span>
+									<h6>{{ $row->name }}</h6>
+									<span>{{ $row->description }}</span>
 								</div>
 							</div>
 						</div>
-						
-						<div class="col-sm-4">
-							<div class="featured-count clearfix">
-								<div class="icon"> <i class="pe-7s-user"></i></div>
-								<div class="content">
-									<h6>100+ Partnership</h6>
-									<span>Prepared do an dissuade whatever steepest.</span>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-sm-4">
-							<div class="featured-count clearfix">
-								<div class="icon"> <i class="pe-7s-smile"></i></div>
-								<div class="content">
-									<h6>20000+ Happy Customers</h6>
-									<span>Devonshire invitation discovered indulgence.</span>
-								</div>
-							</div>
-						</div>
+						@endforeach
+						<!-- end informasicompanies -->
 						
 					</div>
 					
@@ -148,19 +129,19 @@ YET MAINTAIN THE SUPPORT AND PRESENCE OF A PROFESSIONAL OFFICE.</p>
 					
 					<div class="grid destination-grid-wrapper">
 			
-						<div class="grid-item" data-colspan="10" data-rowspan="10">
-							<a href="index.html" class="top-destination-image-bg" style="background-image:url('{{ asset('frontend/images/destination-grid/01.jpg') }}');">
+					<div class="grid-item" data-colspan="5" data-rowspan="6">
+							<a href="index.html" class="top-destination-image-bg" style="background-image:url('{{ asset('frontend/images/destination-grid/03.jpg') }}');">
 								<div class="relative">
-									<h4>Postcard</h4>
-									<span> Bandung - Indonesia</span>
+									<h4>Co&Co</h4>
+									<span>Bandung - Indonesia</span>
 								</div>
 							</a>
 						</div>
 						
-						<div class="grid-item" data-colspan="10" data-rowspan="4">
-							<a href="index.html" class="top-destination-image-bg" style="background-image:url('{{ asset('frontend/images/destination-grid/02.jpg') }}');">
+						<div class="grid-item" data-colspan="5" data-rowspan="6">
+							<a href="index.html" class="top-destination-image-bg" style="background-image:url('{{ asset('frontend/images/destination-grid/04.jpg') }}');">
 								<div class="relative">
-									<h4>manami </h4>
+									<h4>Freenovation</h4>
 									<span>Bandung - Indonesia</span>
 								</div>
 							</a>

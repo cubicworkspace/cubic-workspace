@@ -23,7 +23,7 @@ class InformasiCompaniesController extends Controller
     {
         
         $no = 1;
-        $view = informasicompanies::all();
+        $view = informasicompanies::orderBy('id', 'DESC')->get();
         return view('internal.informasicompanies.view', compact('view'));
     }
 
@@ -60,6 +60,7 @@ class InformasiCompaniesController extends Controller
         $informasicompanies->title = $request->title;
         $informasicompanies->description = $request->description;
         $informasicompanies->icon = $filename;
+        $informasicompanies->categoryinfromasi= $request->categoryinfromasi;
         $informasicompanies->status = $request->status;
         $informasicompanies->save();
         \Session::flash('success', 'Informasi Companies data has been successfully added!,');
@@ -114,6 +115,7 @@ class InformasiCompaniesController extends Controller
             $informasicompanies->title = $request->title;
             $informasicompanies->description = $request->description;
             $informasicompanies->icon = $filename;
+            $informasicompanies->categoryinfromasi = $request->categoryinfromasi;
             $informasicompanies->status = $request->status;
             $informasicompanies->save();
             \Session::flash('success', 'Informasi Companies data has been edited successfully!,');
@@ -125,6 +127,7 @@ class InformasiCompaniesController extends Controller
             $informasicompanies->name = $request->name;
             $informasicompanies->title = $request->title;
             $informasicompanies->description = $request->description;
+            $informasicompanies->categoryinfromasi= $request->categoryinfromasi;
             $informasicompanies->status = $request->status;
             $informasicompanies->save();
             \Session::flash('success', 'Informasi Companies data has been edited successfully!,');
@@ -141,6 +144,7 @@ class InformasiCompaniesController extends Controller
     public function destroy($id)
     {
         $informasicompanies = informasicompanies::find($id);
+        $informasicompanies->delete();
         \Session::flash('warning', 'Informasi Companies data has been successfully deleted!,');
         return redirect('/informasicompanies');
     }

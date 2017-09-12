@@ -67,7 +67,24 @@
 									<tr>
 										<td>Icon</td>
 										<td>:</td>
-										<td><input type="file" name="icon"  class="form-control" ></td>
+										<td><input type="file" name="icon" required class="form-control" ></td>
+									</tr>
+									<tr>
+										<td>Category Informasi</td>
+										<td>:</td>
+										<td> <label class="radio-inline"> 
+						                     <input type="radio" checked="" name="categoryinfromasi" class="icheck" value="HEADER"> HEDAER
+						                   	 </label> 
+						                     <label class="radio-inline"> 
+						                     <input type="radio"  name="categoryinfromasi" class="icheck" value="BOOKING"> BOOKING
+						                  	 </label> 
+						                     <label class="radio-inline"> 
+						                     <input type="radio"  name="categoryinfromasi" class="icheck" value="SERVICES"> SERVICES
+						                  	 </label> 
+						                     <label class="radio-inline"> 
+						                     <input type="radio"  name="categoryinfromasi" class="icheck" value="OFFICE"> OFFICE
+						                  	 </label> 
+										</td>
 									</tr>
 									<tr>
 										<td>Status</td>

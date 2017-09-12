@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         
         $no = 1;
-        $view = users::all();
+        $view = users::orderBy('id', 'DESC')->get();
         return view('internal.user.view', compact('view'));
     }
 

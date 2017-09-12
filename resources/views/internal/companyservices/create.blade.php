@@ -1,5 +1,5 @@
 @extends('layouts.internal')
-@section('title','Create Company Partnership')
+@section('title','Create Company Service')
 @section('content')  
  <!-- BEGIN CONTENT BODY -->
                     <div class="page-content">
@@ -12,7 +12,7 @@
                                     <i class="fa fa-circle"></i>
                                 </li>
                                 <li>
-                                    <a href="{{ url('/companyservices') }}">Company Partnership</a>
+                                    <a href="{{ url('/companyservices') }}">Company Service</a>
                                     <i class="fa fa-circle"></i>
                                 </li>
                                 <li>

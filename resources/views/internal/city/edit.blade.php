@@ -79,7 +79,7 @@
 										<td>Country</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codecountry">
-	   								 				<option value="{{ $edit->country->id }}">{{ $edit->country->name }}</option>
+										<option value="{{ !empty($edit->country->id) ? $edit->country->id : '' }}">{{ !empty($edit->country->name) ? $edit->country->name : '-- Select Country --' }} </option>
 	   												 @foreach($country as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach

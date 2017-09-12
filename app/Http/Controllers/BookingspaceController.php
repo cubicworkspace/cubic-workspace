@@ -27,7 +27,7 @@ class BookingspaceController extends Controller
     public function index()
     {
         $no = 1;
-        $view = bookingspaces::all();
+        $view = bookingspaces::orderBy('id', 'DESC')->get();
         return view('internal.bookingspace.view', compact('view'));
     }
 
@@ -143,9 +143,9 @@ class BookingspaceController extends Controller
        // $event->codeevent = $request->codeevent;
         //$bookingspace->codebookingspace = $request->codebookingspace;
         $bookingspace->codecompanypartnership = $request->codecompanypartnership;
-        $bookingspace->codebilling = $request->codebilling;
+        //$bookingspace->codebilling = $request->codebilling;
         $bookingspace->codeservices = $request->codeservices;
-        $bookingspace->codeuser = $request->codeuser;
+        //$bookingspace->codeuser = $request->codeuser;
         $bookingspace->codepaymentmethode = $request->codepaymentmethode;
         $bookingspace->invoice = $request->invoice;
         $bookingspace->name = $request->name;

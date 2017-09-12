@@ -16,7 +16,7 @@ class MessageController extends Controller
     public function index()
     {
          $no = 1;
-        $view = messages::all();
+        $view = messages::orderBy('id', 'DESC')->get();
         return view('internal.message.view', compact('view'));
     }
 

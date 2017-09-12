@@ -18,7 +18,7 @@ class ServicesController extends Controller
     public function index()
     {
         $no = 1;
-        $view = services::all();
+        $view = services::orderBy('id', 'DESC')->get();
         return view('internal.services.view', compact('view'));
     }
 
@@ -29,15 +29,15 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        $service = DB::select('select max(codeservices) as idMaks from services');
-        foreach($service as $row3){}
+        $services = DB::select('select max(codeservices) as idMaks from services');
+        foreach($services as $row3){}
         $nomor  = $row3->idMaks; 
         $noRand = (int) substr($row3->idMaks, 3, 3);
         $noRand++;  
         $char   = "SER";
         $no   =  $char . sprintf("%03s", $noRand);
-        $categoryservice = categoryservices::pluck('name', 'id');
-        return view('internal.services.create', compact('no','categoryservice'));
+        $categoryservices = categoryservices::pluck('name', 'id');
+        return view('internal.services.create', compact('no','categoryservices'));
     }
 
     /**
@@ -48,16 +48,16 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        $service = new services;
+        $services = new services;
         $this->validate($request, [
              'name' => 'required',
              'description' => 'required']);
-        $service->codeservices = $request->codeservices;
-        $service->codecategoryservices = $request->codecategoryservices;
-        $service->name = $request->name;
-        $service->description = $request->description;
-        $service->status = $request->status;
-        $service->save();
+        $services->codeservices = $request->codeservices;
+        $services->codecategoryservices = $request->codecategoryservices;
+        $services->name = $request->name;
+        $services->description = $request->description;
+        $services->status = $request->status;
+        $services->save();
         \Session::flash('success', 'Services data has been successfully added!,');
         return redirect('/services');
     }
@@ -81,9 +81,9 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
-        $categoryservice = categoryservices::all();
+        $categoryservices = categoryservices::all();
         $edit = services::find($id);
-        return view('internal.services.edit', compact('edit','categoryservice'));
+        return view('internal.services.edit', compact('edit','categoryservices'));
     }
 
     /**
@@ -95,15 +95,15 @@ class ServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $service = services::find($id);
+         $services = services::find($id);
         $this->validate($request, [
              'name' => 'required',
              'description' => 'required']);
-        $service->name = $request->name;
-        $service->description = $request->description;
-        $service->codecategoryservices = $request->codecategoryservices;
-        $service->status = $request->status;
-        $service->save();
+        $services->name = $request->name;
+        $services->description = $request->description;
+        $services->codecategoryservices = $request->codecategoryservices;
+        $services->status = $request->status;
+        $services->save();
         \Session::flash('success', 'Services data has been edited successfully!,');
         return redirect('/services');
     }
@@ -116,8 +116,8 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        $service = services::find($id);
-        $service->delete();
+        $services = services::find($id);
+        $services->delete();
          \Session::flash('warning', 'Services data has been successfully deleted!,');
         return redirect('/services');
     }

@@ -27,7 +27,7 @@ class AdminController extends Controller
     public function index()
     {
         $no = 1;
-        $view = Admins::all();
+        $view = Admins::orderBy('id', 'DESC')->get();
         return view('internal.admin.view', compact('view'));
     }
 

@@ -100,7 +100,7 @@
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->codebookingspace }}</td>
-                                                    <td>{{ !empty($row->service->name) ? $row->service->name : '-' }}</td>
+                                                    <td>{{ !empty($row->services->name) ? $row->services->name : '-' }}</td>
                                                     <td>{{ $row->invoice }}</td>
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->email }}</td>
@@ -111,7 +111,7 @@
 								                      <a href="/bookingspace/{{$row->id}}/edit" class="btn btn-warning"><i class="fa fa-pencil" ></i> Edit</a> 
 								                      {{ csrf_field() }}
 								                      {{ method_field('DELETE') }}
-								                      <button type="submit" class="btn btn-danger"><i class="fa fa-trash" ></i> Delete</button>
+								                      <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fa fa-trash" ></i> Delete</button>
 								                      </form>
 								                    </td>
                                                 </tr>

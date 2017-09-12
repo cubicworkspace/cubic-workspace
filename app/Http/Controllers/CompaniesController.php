@@ -22,7 +22,7 @@ class CompaniesController extends Controller
     {
         
         $no = 1;
-        $view = companies::all();
+        $view = companies::orderBy('id', 'DESC')->get();
         return view('internal.companies.view', compact('view'));
     }
 
@@ -125,7 +125,7 @@ class CompaniesController extends Controller
                 $extention2 = Input::file('favicon')->getClientOriginalExtension();
                 $favicon = rand(11111,99999).'.'. $extention2;
                 $request->file('favicon')->move(
-                    base_path() . '/public/upload/favicon/', $favicon
+                    base_path() . '/public/upload/companies/', $favicon
                 );
 
                 $this->validate($request, [            
@@ -150,7 +150,7 @@ class CompaniesController extends Controller
                 $companies->status = $request->status;
                 $companies->save();
                 \Session::flash('success', 'Companies data has been edited successfully!,');
-                return redirect('/companies');
+                return redirect('/companies/1/edit');
         } else {
                 $this->validate($request, [            
                      'name' => 'required',           
@@ -172,7 +172,7 @@ class CompaniesController extends Controller
                 $companies->status = $request->status;
                 $companies->save();
                 \Session::flash('success', 'Companies data has been edited successfully!,');
-                return redirect('/companies');
+                return redirect('/companies/1/edit');
         }
     }
 

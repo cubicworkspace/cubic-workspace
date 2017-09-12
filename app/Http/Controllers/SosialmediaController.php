@@ -21,7 +21,7 @@ class SosialmediaController extends Controller
     public function index()
     {
         $no = 1;
-        $view = sosialmedias::all();
+        $view = sosialmedias::orderBy('id', 'DESC')->get();
         return view('internal.sosialmedia.view', compact('view'));
     }
 

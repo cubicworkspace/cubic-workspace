@@ -114,7 +114,7 @@
 										<td>
 	   								 {!! Form::select('codecompanyservices', $companyservices, null,
 	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
-	   								  	'placeholder' => '-- Select Services --'
+	   								  	'placeholder' => '-- Select Company Services --'
 	   								 ]) !!}</td>
 									</tr>
 									<tr>

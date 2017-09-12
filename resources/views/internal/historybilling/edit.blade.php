@@ -105,11 +105,11 @@
 						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
 						                   </label></td>
 									</tr>
-									<tr>
+									  <tr>
 										<td>Company Partnership</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codecompanypartnership">
-	   								 				<option value="{{ $edit->companypartnership->id }}">{{ $edit->companypartnership->name }}</option>
+	   								 				<option value="{{ !empty($edit->companypartnership->id) ? $edit->companypartnership->id : '' }}">{{ !empty($edit->companypartnership->name) ? $edit->companypartnership->name : '-- Select Company Partnership --' }} </option>
 	   												 @foreach($companypartnership as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
@@ -119,9 +119,9 @@
 									<tr>
 										<td>Company Service</td>
 										<td>:</td>
-										<td> <select class="form-control" id="id" value="name" name="codecompanyservice">
-	   								 				<option value="{{ $edit->companyservice->id }}">{{ $edit->companyservice->name }}</option>
-	   												 @foreach($companyservice as $row)
+										<td> <select class="form-control" id="id" value="name" name="codecompanyservices">
+	   								 				<option value="{{ !empty($edit->companyservices->id) ? $edit->companyservices->id : '' }}">{{ !empty($edit->companyservices->name) ? $edit->companyservices->name : '-- Select Company Services --' }} </option>
+	   												 @foreach($companyservices as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
 	   								 		</select>

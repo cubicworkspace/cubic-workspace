@@ -85,7 +85,6 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Code user</th>
                                                     <th>Name User</th>
                                                     <th>Name Company</th>
                                                     <th>Phone</th>
@@ -98,7 +97,6 @@
                                             @foreach ($view as $no => $row)
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
-                                                    <td>{{ $row->codeuser }}</td>
                                                     <td>{{ !empty($row->user->name) ? $row->user->name : '-' }} </td>
                                                     <td>{{ !empty($row->companypartnership->name) ? $row->companypartnership->name : '-' }} </td>
                                                     <td>{{ $row->phone }}</td>
@@ -109,7 +107,7 @@
 								                      <a href="/adminpartnership/{{$row->id}}/edit" class="btn btn-warning"><i class="fa fa-pencil" ></i> Edit</a> 
 								                      {{ csrf_field() }}
 								                      {{ method_field('DELETE') }}
-								                      <button type="submit" class="btn btn-danger"><i class="fa fa-trash" ></i> Delete</button>
+								                      <button type="submit" class="btn btn-danger"  onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fa fa-trash" ></i> Delete</button>
 								                      </form>
 								                    </td>
                                                 </tr>

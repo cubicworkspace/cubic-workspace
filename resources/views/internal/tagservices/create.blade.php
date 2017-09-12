@@ -60,6 +60,16 @@
 										<td><textarea name="description"  class="form-control"></textarea></td>
 									</tr>
 									<tr>
+										<td>Choose Tag Services</td>
+										<td>:</td>
+										<td> <label class="radio-inline"> 
+						                     <input type="radio" checked="" name="choosetagservices" class="icheck" value="PARTNERSHIP"> PARTNERSHIP
+						                    </label> 
+						                     <label class="radio-inline"> 
+						                     <input type="radio"  name="choosetagservices" class="icheck" value="COMPANY SERVICES"> COMPANY SERVICES
+						                   </label> </td>
+									</tr>
+									<tr>
 										<td>Status</td>
 										<td>:</td>
 										<td> <label class="radio-inline"> 
