@@ -12,7 +12,7 @@
                                     <i class="fa fa-circle"></i>
                                 </li>
                                 <li>
-                                    <a href="{{ url('/tagservices') }}"> Category Media </a>
+                                    <a href="{{ url('/tagservices') }}"> Tag Services </a>
                                     <i class="fa fa-circle"></i>
                                 </li>
                                 <li>
@@ -53,6 +53,11 @@
 										<td>Code Tag Services</td>
 										<td>:</td>
 										<td><input type="text" name="codetagservices" value="{{ $no }}" class="form-control" ></td>
+									</tr>
+									<tr>
+										<td>Name</td>
+										<td>:</td>
+										<td><input type="text" name="name" class="form-control" ></td>
 									</tr>
 						            <tr>
 										<td>Description</td>

@@ -14,41 +14,31 @@ use Illuminate\Http\Request;
 
 /* page user */
 Route::get('/','WebsiteController@index');
-Route::get('package_list','WebsiteController@package_list');
+Route::get('package','WebsiteController@package_list');
 Route::get('about','WebsiteController@about');
-Route::get('event_site','WebsiteController@event');
+Route::get('events','WebsiteController@event');
 Route::get('contact','WebsiteController@contact');
-
+Route::post('subscriber/tambah','WebsiteController@subscriber');
+Route::get('newsletter','WebsiteController@newsletter');
+Route::get('detail_company_partnership','WebsiteController@detail_company_partnership');
+/* end page user */
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('internal','Controller@internal');
-Route::post('internal','Controller@login');
-Route::get('dashboard','InternalController@dashboard');
 
  Route::group(['middleware' => 'web'], function() {
 	Route::auth();
  });
 
-// Route::group(['middleware' => ['web','auth']], function() {
-	
-// 	Route::get('/home', 'HomeController@index');
-// 	Route::get('/', function(){
-// 		if(Auth::user()->status == 'ADMIN') {
-// 			return "Admin";
-// 		} else {
-// 			return "user";
-// 		}
-// 	});
-// });
-
-Route::group(['middleware' => 'member','auth','web','nocache'], function() {
 
 
+Route::group(['middleware' => ['member','auth','web','nocache']], function() {
 	Route::resource('login','LoginController'); 
 });
 
 /* PAGE ADMINISTRATOR  */
+Route::get('internal','Controller@internal');
+Route::post('internal','Controller@login');
+Route::get('dashboard','InternalController@dashboard');
 Route::group(['middleware' => ['admin','auth','web','nocache']], function() {
 	Route::resource('admin','AdminController'); 
 	Route::resource('categoryadmin','CategoryAdminController'); 

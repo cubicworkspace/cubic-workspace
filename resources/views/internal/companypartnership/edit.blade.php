@@ -179,6 +179,17 @@
 										<td><input type="text" name="information" value="{{ $edit->information }}" class="form-control" ></td>
 									</tr>
 									<tr>
+										<td>Tag Service</td>
+										<td>:</td>
+										<td>
+										<div class="mt-checkbox-list">
+										@foreach($tagservices as $key => $value)
+												<label class="mt-checkbox mt-checkbox-outline">{!! Form::checkbox('codetagservices[]', $key, null) !!} {{ $value }}
+										<span></span></label>
+										@endforeach
+	   									</div>
+	   								</td>
+									<tr>
 										<td>Status</td>
 										<td>:</td>
 										<td><label class="radio-inline"> 

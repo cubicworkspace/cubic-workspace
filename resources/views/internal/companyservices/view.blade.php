@@ -103,7 +103,10 @@
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->information }}</td>
                                                     <td>{{ !empty($row->companypartnership->name) ? $row->companypartnership->name : '-' }} </td>
-                                                     <td>{{ !empty($row->tagservices->codetagservices) ? $row->tagservices->codetagservices : '-' }} </td>
+                                                    <td>
+                                                        @foreach($row->tagservices as $item)
+                    <strong><span>{{ !empty($item->codetagservices) ? $item->codetagservices : '-'  }}</span></strong>,
+                    @endforeach</td>
                                                     <td>{{ !empty($row->services->name) ? $row->services->name : '-' }} </td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      

@@ -78,7 +78,7 @@
 										<td>Category Service</td>
 										<td>:</td>
 										<td>
-	   								 {!! Form::select('codecategoryservices', $categoryservice, null,
+	   								 {!! Form::select('codecategoryservices', $categoryservices, null,
 	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
 	   								  	'placeholder' => '-- Select Category Services --'
 	   								 ]) !!}</td>

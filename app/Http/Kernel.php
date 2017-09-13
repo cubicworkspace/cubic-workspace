@@ -59,6 +59,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\IsAdmin::class,
         'member' => \App\Http\Middleware\IsMember::class,
         'AdminPatnership' => \App\Http\Middleware\IsAdminPatnership::class,
-        'nocache'=>\App\Http\Middleware\NoCacheMiddleware::class,
+        'nocache'=>\App\Http\Middleware\NoCacheMiddleware::class
     ];
 }

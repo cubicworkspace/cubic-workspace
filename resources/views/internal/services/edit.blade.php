@@ -79,7 +79,7 @@
 										<td>Category Service</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codecategoryservices">
-<option value="{{ !empty($edit->categoryservices->id) ? $edit->categoryservices->id : '' }}">{{ !empty($edit->companypartnership->name) ? $edit->companypartnership->name : '-- Select Category Services --' }} </option>
+										<option value="{{ !empty($edit->categoryservices->id) ? $edit->categoryservices->id : '' }}">{{ !empty($edit->categoryservices->name) ? $edit->categoryservices->name : '-- Select Category Services --' }} </option>
 	   												 @foreach($categoryservices as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach

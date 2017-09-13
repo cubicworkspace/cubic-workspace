@@ -55,6 +55,11 @@
 										<td>:</td>
 										<td><b>{{ $edit->codetagservices }} </b></td>
 									</tr>
+									<tr>
+										<td>Name</td>
+										<td>:</td>
+										<td><input type="text" name="name" value="{{ $edit->name }}" class="form-control" ></td>
+									</tr>
 						            <tr>
 										<td>Description</td>
 										<td>:</td>

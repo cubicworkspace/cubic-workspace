@@ -90,7 +90,7 @@
 					<div class="row">
 					
 						<!-- informasicompanies -->
-						@foreach($informasicompanies as $row)
+						@foreach($header as $row)
 						<div class="col-sm-4">
 							<div class="featured-count clearfix">
 								<div class="icon"><img src="{{ asset('upload/informasicompanies') }}/{{ $row->icon }}" /></div>
@@ -128,42 +128,19 @@
 					</div>
 					
 					<div class="grid destination-grid-wrapper">
-			
+
+					<!-- top basecamp -->
+					@foreach($topbasecamp as $row)
 					<div class="grid-item" data-colspan="5" data-rowspan="6">
-							<a href="index.html" class="top-destination-image-bg" style="background-image:url('{{ asset('frontend/images/destination-grid/03.jpg') }}');">
+							<a href="{{ url ('detail_company_partnership') }}/{{ $row->id }}" class="top-destination-image-bg" style="background-image:url('{{ asset('upload/companypartnership') }}/{{ $row->favicon }}');">
 								<div class="relative">
-									<h4>Co&Co</h4>
-									<span>Bandung - Indonesia</span>
+									<h4>{{ $row->name }}</h4>
+									<span>{{ $row->city->name }} - {{ $row->country->name }}</span>
 								</div>
 							</a>
 						</div>
-						
-						<div class="grid-item" data-colspan="5" data-rowspan="6">
-							<a href="index.html" class="top-destination-image-bg" style="background-image:url('{{ asset('frontend/images/destination-grid/04.jpg') }}');">
-								<div class="relative">
-									<h4>Freenovation</h4>
-									<span>Bandung - Indonesia</span>
-								</div>
-							</a>
-						</div>
-						
-						<div class="grid-item" data-colspan="5" data-rowspan="6">
-							<a href="index.html" class="top-destination-image-bg" style="background-image:url('{{ asset('frontend/images/destination-grid/03.jpg') }}');">
-								<div class="relative">
-									<h4>Co&Co</h4>
-									<span>Bandung - Indonesia</span>
-								</div>
-							</a>
-						</div>
-						
-						<div class="grid-item" data-colspan="5" data-rowspan="6">
-							<a href="index.html" class="top-destination-image-bg" style="background-image:url('{{ asset('frontend/images/destination-grid/04.jpg') }}');">
-								<div class="relative">
-									<h4>Freenovation</h4>
-									<span>Bandung - Indonesia</span>
-								</div>
-							</a>
-						</div>
+						@endforeach
+					<!-- end top basecamp -->
 						
 					</div>
 					
@@ -194,80 +171,34 @@
 						
 						<div class="GridLex-grid-noGutter-equalHeight">
 						
+						<!-- end specialpackages -->
+							@foreach($specialpackages as $row)
 							<div class="GridLex-col-4_sm-6_xs-12 mb-30">
 								<div class="package-grid-item"> 
 									<a href="index.html">
 										<div class="image">
-											<img src="{{ asset('frontend/images/tour-package/01.jpg') }}" alt="Tour Package" />
+											<img src="{{ asset('upload/companypartnership') }}/{{ $row->companypartnership->favicon }}" alt="Tour Package" />
 											<div class="absolute-in-image">
-												<div class="duration"><span>CoWork - 240 Jam</span></div>
+												<div class="duration"><span>{{ $row->companypartnership->name }}  - {{ $row->quota }}</span></div>
 											</div>
 										</div>
 										<div class="content clearfix">
-											<h5>Post Card</h5>
+											<h5>{{ $row->name }}</h5>
 											<div class="rating-wrapper">
 												<div class="raty-wrapper">
-													Lokasi : Jl. Supratman <span> / 7 review</span>
+													Lokasi : {{ $row->companypartnership->address }} <span> / 7 review</span>
 												</div>
 											</div>
 											<div class="absolute-in-content">
 												<span class="btn"><i class="fa fa-heart-o"></i></span>
-												<div class="price">Rp 1,5 Juta/ Mounth</div>
+												<div class="price">Rp {{ $row->price }}</div>
 											</div>
 										</div>
 									</a>
 								</div>
 							</div>
-							
-							<div class="GridLex-col-4_sm-6_xs-12 mb-30">
-								<div class="package-grid-item"> 
-									<a href="index.html">
-										<div class="image">
-											<img src="{{ asset('frontend/images/tour-package/02.jpg') }}" alt="Tour Package" />
-											<div class="absolute-in-image">
-												<div class="duration"><span>Startup Package </span></div>
-											</div>
-										</div>
-										<div class="content clearfix">
-											<h5>Post Card</h5>
-											<div class="rating-wrapper">
-												<div class="raty-wrapper">
-													Lokasi : Jl. Supratman <span> / 7 review</span>
-												</div>
-											</div>
-											<div class="absolute-in-content">
-												<span class="btn"><i class="fa fa-heart-o"></i></span>
-												<div class="price">Rp 3 Jt/ Mounth</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="GridLex-col-4_sm-6_xs-12 mb-30">
-								<div class="package-grid-item"> 
-									<a href="index.html">
-										<div class="image">
-											<img src="{{ asset('frontend/images/tour-package/02.jpg') }}" alt="Tour Package" />
-											<div class="absolute-in-image">
-												<div class="duration"><span>Meeting Package </span></div>
-											</div>
-										</div>
-										<div class="content clearfix">
-											<h5>Post Card</h5>
-											<div class="rating-wrapper">
-												<div class="raty-wrapper">
-													Lokasi : Jl. Supratman <span> / 7 review</span>
-												</div>
-											</div>
-											<div class="absolute-in-content">
-												<span class="btn"><i class="fa fa-heart-o"></i></span>
-												<div class="price">Rp 1 Jt/ Mounth</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-							
+						@endforeach
+						<!-- end specialpackages -->
 						</div>
 					
 					</div>
@@ -291,51 +222,19 @@
 								
 							</div>
 							
+						<!-- informasicompanies -->
+						@foreach($services as $row)
 							<div class="featured-item">
-							
-								<h4>Easy to Booking </h4>
-								
+								<h4>{{ $row->name }}</h4>
 								<div class="content clearfix">
-								
 									<div class="icon">
-										<i class="pe-7s-users"></i>
+										<i class="{{ $row->title }}"></i>
 									</div>
-									
-									<p>Blind would equal while oh mr lain led and fact none. One preferred sportsmen resolving the happiness continued. High at of in loud rich true.</p>
-									
+									<p>{{ $row->description }}</p>
 								</div>
 							</div>
-							
-							<div class="featured-item">
-							
-								<h4>Quality Facilities</h4>
-								
-								<div class="content clearfix">
-								
-									<div class="icon">
-										<i class="pe-7s-home"></i>
-									</div>
-									
-									<p>Admiration stimulated cultivated reasonable be projection possession of. Real no near room ye bred sake if some. Is arranging furnished knowledge.</p>
-									
-								</div>
-							</div>
-							
-							
-							<div class="featured-item">
-							
-								<h4>Comfortable Room</h4>
-								
-								<div class="content clearfix">
-								
-									<div class="icon">
-										<i class="pe-7s-car"></i>
-									</div>
-									
-									<p>Effect twenty indeed beyond for not had county. The use him without greatly can private. Increasing it unpleasant no of contrasted no continuing.</p>
-									
-								</div>
-							</div>
+						@endforeach
+						<!-- end informasicompanies -->
 							
 						</div>
 						
@@ -371,32 +270,22 @@
 					
 						<div class="row">
 							
+						<!-- testimonial -->
+						@foreach($testimonial as $row)
 							<div class="col-xs-12 col-sm-12 col-md-6">
 								<div class="testimonial-item clearfix">
 									<div class="image">
-										<img src="{{ asset('frontend/images/man/01.jpg') }}" alt="Man" />
+										<img src="{{ asset('upload/testimonial') }}/{{ $row->image }}" alt="Man" />
 									</div>
 									<div class="content">
-										<h4>Antony Robert</h4>
-										<h6>From Spain</h6>
-										<p>"Fast response, friendly, and I am really happy with the service of Workspace. I've tried to find an office by myself and it didn't work."</p>
+										<h4>{{ $row->name}}</h4>
+										<p>"{{ $row->description }}"</p>
 									</div>
 								</div>
 							</div>
-							
-							<div class="col-xs-12 col-sm-12 col-md-6">
-								<div class="testimonial-item clearfix">
-									<div class="image">
-										<img src="{{ asset('frontend/images/man/02.jpg') }}" alt="Man" />
-									</div>
-									<div class="content">
-										<h4>Mohammed Salem</h4>
-										<h6>From Turkey</h6>
-										<p>"Excellent service. Workspace has deep understanding in office market and a structured way in organizing the information that make it easy for customers to quickly assess options. I like the fast response on all our requests. I really appreciate the personal touch of service - even accomodated last minute request from me.".</p>
-									</div>
-								</div>
-							</div>
-							
+						@endforeach
+						<!-- end testimonial -->
+
 						</div>
 						
 					</div>
@@ -425,11 +314,12 @@
 						
 						<div class="flex-columns flex-sm-12">
 							<div class="newsletter-form">
-								<form class="">
+								<form action="/subscriber/tambah" method="POST">
+									{{csrf_field()}}
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Search for...">
+										<input type="email" required class="form-control" name="email" placeholder="Newsletter..">
 										<span class="input-group-btn">
-											<button class="btn btn-primary" type="button">Signup <i class="fa fa-long-arrow-right"></i></button>
+											<input type="submit" class="btn btn-primary" type="button" value="Signup"> <i class="fa fa-long-arrow-right"></i>
 										</span>
 									</div>
 								</form>

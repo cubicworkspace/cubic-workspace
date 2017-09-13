@@ -10,6 +10,7 @@ use App\services;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class CompanyServicesController extends Controller
 {
@@ -42,7 +43,7 @@ class CompanyServicesController extends Controller
         $noRand++;  
         $char   = "COS";
         $no   =  $char . sprintf("%03s", $noRand);
-        $tagservices = tagservices::pluck('codetagservices', 'id');
+        $tagservices = tagservices::where('choosetagservices', '=', 'COMPANY SERVICES')->pluck('name', 'id');
         $companypartnership = companypartnership::pluck('name', 'id');
         $services = services::pluck('name', 'id');
         return view('internal.companyservices.create', compact('no','tagservices','companypartnership','services'));
@@ -56,6 +57,7 @@ class CompanyServicesController extends Controller
      */
     public function store(Request $request)
     {
+        $input = $request->all();
         $companyservices = new companyservices;
         $this->validate($request, [            
              'name' => 'required']);
@@ -63,7 +65,7 @@ class CompanyServicesController extends Controller
         $companyservices->codecompanyservices = $request->codecompanyservices;
         $companyservices->codeservices = $request->codeservices;
         $companyservices->codecompanypartnership = $request->codecompanypartnership;
-        $companyservices->codetagservices = $request->codetagservices;
+        $companyservices->codetagservices = implode($request->codetagservices, ',');
         $companyservices->information = $request->information;
         $companyservices->quota = $request->quota;
         $companyservices->price = $request->price;
@@ -72,6 +74,7 @@ class CompanyServicesController extends Controller
         $companyservices->registerdate = date('Y-m-d H:i:s');
         $companyservices->status = $request->status;
         $companyservices->save();
+        //$companyservices->tagservices()->attach($request->input('codetagservices'));
         \Session::flash('success', 'Company Services data has been successfully added!,');
         return redirect('/companyservices');
     }
@@ -95,11 +98,11 @@ class CompanyServicesController extends Controller
      */
     public function edit($id)
     {
-        $tagservices = tagservices::all();
+        $tagservices = tagservices::where('choosetagservices', '=', 'COMPANY SERVICES')->pluck('name', 'id');
         $companypartnership = companypartnership::all();
         $services = services::all();
         $edit = companyservices::find($id);
-        return view('internal.companyservices.edit', compact('edit','tagservices','companypartnership','services'));
+        return view('internal.companyservices.edit', compact('edit','tagservices','companypartnership','services','ceked'));
     }
 
     /**
@@ -111,14 +114,14 @@ class CompanyServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $input = $request->all();
         $companyservices = companyservices::find($id);
         $this->validate($request, [            
              'name' => 'required']);
         $companyservices->name = $request->name;
         $companyservices->codeservices = $request->codeservices;
         $companyservices->codecompanypartnership = $request->codecompanypartnership;
-        $companyservices->codetagservices = $request->codetagservices;
+        $companyservices->codetagservices = implode($request->codetagservices, ',');
         $companyservices->information = $request->information;
         $companyservices->quota = $request->quota;
         $companyservices->price = $request->price;

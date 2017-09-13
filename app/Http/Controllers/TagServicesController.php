@@ -58,6 +58,7 @@ class TagServicesController extends Controller
              'description' => 'required']);
         $tagservices->codetagservices = $request->codetagservices;
         $tagservices->codeservices = $request->codeservices;
+        $tagservices->name = $request->name;
         $tagservices->description = $request->description;
         $tagservices->choosetagservices = $request->choosetagservices;
         $tagservices->status = $request->status;
@@ -103,6 +104,7 @@ class TagServicesController extends Controller
              'codeservices' => 'required',
              'description' => 'required']);
         $tagservices->codeservices = $request->codeservices;
+        $tagservices->name = $request->name;
         $tagservices->description = $request->description;
         $tagservices->choosetagservices = $request->choosetagservices;
         $tagservices->status = $request->status;

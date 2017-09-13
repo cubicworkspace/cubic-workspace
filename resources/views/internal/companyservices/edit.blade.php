@@ -102,17 +102,17 @@
 	   								 		</select>
 	   								 </td>
 									</tr>
-						            <tr>
-										<td>Code Tag Service</td>
+									<tr>
+										<td>Tag Service</td>
 										<td>:</td>
-										<td> <select class="form-control" id="id" name="codetagservices">
-													<option value="{{ !empty($edit->tagservices->id) ? $edit->tagservices->id : '' }}">{{ !empty($edit->tagservices->name) ? $edit->tagservices->name : '-- Select Tag Services --' }} </option>
-	   								 				<option value="{{ $edit->tagservices->id }}">{{ $edit->tagservices->codetagservices }}</option>
-	   												 @foreach($tagservices as $row)
-	   								 						<option value="{{ $row->id }}">{{ $row->codetagservices }}</option>
-	   												 @endforeach
-	   								 		</select>
-	   								 </td>
+										<td>
+										<div class="mt-checkbox-list">
+										@foreach($tagservices as $key => $value)
+												<label class="mt-checkbox mt-checkbox-outline">{!! Form::checkbox('codetagservices[]', $key,null) !!} {{ $value }}
+										<span></span></label>
+										@endforeach
+	   									</div>
+	   								</td>
 									</tr>
 									<tr>
 										<td>Service</td>

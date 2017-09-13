@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2017 at 03:36 PM
+-- Generation Time: Sep 13, 2017 at 06:08 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -332,6 +332,7 @@ CREATE TABLE `companypartnerships` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecompanypartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codetagservices` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `favicon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -358,9 +359,11 @@ CREATE TABLE `companypartnerships` (
 -- Dumping data for table `companypartnerships`
 --
 
-INSERT INTO `companypartnerships` (`id`, `name`, `codecompanypartnership`, `favicon`, `logo`, `email`, `phone`, `fax`, `address`, `maps`, `codecountry`, `codecity`, `profile`, `history`, `description`, `vision`, `mision`, `faq`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
-(7, 'CO&CO', 'COP001', '99608.png', '19779.png', 'navagiaginasta@gmail.com', '87820033395', '87820033395', 'Cianjur', '-', '2', '3', '-', '1', '1', '1', '1', '<p>1</p>', '1', '2017-09-12 13:30:44', 'Y', '2017-09-12 00:37:53', '2017-09-12 06:30:44'),
-(8, 'FREENOVATION', 'COP002', '11552.jpg', '36521.jpg', 'fvdfvfdv@gmail.com', '087820033395', '87820033395', '-', '-', '2', '3', '-', '-', '-', '-', '-', '<p>-</p>', '-', '2017-09-12 13:32:41', 'Y', '2017-09-12 06:32:41', '2017-09-12 06:32:41');
+INSERT INTO `companypartnerships` (`id`, `name`, `codecompanypartnership`, `codetagservices`, `favicon`, `logo`, `email`, `phone`, `fax`, `address`, `maps`, `codecountry`, `codecity`, `profile`, `history`, `description`, `vision`, `mision`, `faq`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
+(7, 'CO&CO', 'COP001', '3', '80994.jpg', '98118.jpg', 'navagiaginasta@gmail.com', '87820033395', '87820033395', 'Cianjur', '-', '2', '3', '-', '1', '1', '1', '1', '<p>1</p>', '1', '2017-09-13 12:38:46', 'Y', '2017-09-12 00:37:53', '2017-09-13 05:38:46'),
+(8, 'FREENOVATION', 'COP002', '3', '83540.jpg', '20336.jpg', 'fvdfvfdv@gmail.com', '087820033395', '87820033395', '-', '-', '2', '2', '-', '-', '-', '-', '-', '<p>-</p>', '-', '2017-09-13 12:39:12', 'Y', '2017-09-12 06:32:41', '2017-09-13 05:39:12'),
+(9, 'Bandung Digital Valley', 'COP003', '3', '85158.jpg', '46376.jpg', 'bdv@gmail.com', '0', '0', '-', '-', '2', '3', '-', '-', '-', '-', '-', '<p>-</p>', '-', '2017-09-13 12:39:37', 'Y', '2017-09-13 05:34:43', '2017-09-13 05:39:37'),
+(10, 'PT.DYCODE INDONESIA', 'COP004', '3', '66913.jpg', '37513.jpg', 'dycode@gmail.com', '0', '0', 'Jl.Sari Asih no.54', '-', '2', '3', '-', '-', '-', '-', '-', '<p>-</p>', '-', '2017-09-13 13:27:38', 'Y', '2017-09-13 05:40:55', '2017-09-13 06:27:38');
 
 -- --------------------------------------------------------
 
@@ -390,8 +393,9 @@ CREATE TABLE `companyservices` (
 --
 
 INSERT INTO `companyservices` (`id`, `name`, `codecompanyservices`, `codecompanypartnership`, `codetagservices`, `codeservices`, `quota`, `price`, `quotauser`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
-(5, 'Company Services1', 'COS002', '7', '2', '2', 1, 1, 1, '1', '2017-09-12 08:03:02', 'Y', '2017-08-23 21:49:27', '2017-09-12 01:03:02'),
-(7, 'Company Services3', 'COS004', '7', '4', '2', 111, 131, 111, '1', '2017-09-12 08:03:23', 'Y', '2017-09-06 22:53:18', '2017-09-12 01:03:23');
+(5, 'Special Packages3', 'COS002', '10', '5', '2', 20, 5000000, 20, 'Special Packages3', '2017-09-13 13:25:34', 'Y', '2017-08-23 21:49:27', '2017-09-13 06:25:34'),
+(8, 'Special Packages2', 'COS005', '9', '5', '2', 100, 700000, 20, 'Special Packages2', '2017-09-13 13:28:11', 'Y', '2017-09-12 09:30:25', '2017-09-13 06:28:11'),
+(13, 'Special Packages1', 'COS009', '7', '5', '2', 100, 200000, 20, 'Special Packages1', '2017-09-13 13:25:15', 'Y', '2017-09-12 22:32:14', '2017-09-13 06:25:15');
 
 -- --------------------------------------------------------
 
@@ -541,9 +545,12 @@ CREATE TABLE `informasicompanies` (
 --
 
 INSERT INTO `informasicompanies` (`id`, `name`, `categoryinfromasi`, `title`, `description`, `icon`, `status`, `created_at`, `updated_at`) VALUES
-(1, '100+ Partnership', 'HEADER', '100+ Partnership', 'Prepared do an dissuade whatever steepest.', '35922.png', 'Y', '2017-08-21 17:00:00', '2017-09-12 06:24:25'),
+(1, '100+ Partnership', 'HEADER', '100+ Partnership', 'Prepared do an dissuade whatever steepest.', '35922.png', 'Y', '2017-08-21 17:00:00', '2017-09-12 22:06:25'),
 (3, '300+ Basecamp', 'HEADER', '300+ Basecamp', 'Tastes giving in passed direct me valley supply.', '29987.png', 'Y', '2017-09-11 22:51:07', '2017-09-12 06:22:55'),
-(4, '20000+ Happy Customers', 'HEADER', '20000+ Happy Customers', 'Devonshire invitation discovered indulgence.', '48448.png', 'Y', '2017-09-11 22:51:59', '2017-09-11 22:51:59');
+(4, '20000+ Happy Customers', 'HEADER', '20000+ Happy Customers', 'Devonshire invitation discovered indulgence.', '48448.png', 'Y', '2017-09-11 22:51:59', '2017-09-11 22:51:59'),
+(5, 'Easy to Booking', 'SERVICES', 'pe-7s-users', 'Blind would equal while oh mr lain led and fact none. One preferred sportsmen resolving the happiness continued. High at of in loud rich true.', '59505.png', 'Y', '2017-09-13 06:32:43', '2017-09-13 07:02:56'),
+(6, 'Quality Facilities', 'SERVICES', 'pe-7s-home', 'Admiration stimulated cultivated reasonable be projection possession of. Real no near room ye bred sake if some. Is arranging furnished knowledge.', '90495.png', 'Y', '2017-09-13 06:47:47', '2017-09-13 07:03:08'),
+(7, 'Comfortable Room', 'SERVICES', 'pe-7s-car', 'Effect twenty indeed beyond for not had county. The use him without greatly can private. Increasing it unpleasant no of contrasted no continuing.', '37239.png', 'Y', '2017-09-13 06:50:17', '2017-09-13 07:02:34');
 
 -- --------------------------------------------------------
 
@@ -732,7 +739,12 @@ CREATE TABLE `subscribers` (
 --
 
 INSERT INTO `subscribers` (`id`, `name`, `email`, `status`, `created_at`, `updated_at`) VALUES
-(2, '22', 'navagiaginasta@gmail.com', 'N', '2017-08-28 05:30:18', '2017-08-28 05:30:18');
+(2, '22', 'navagiaginasta@gmail.com', 'N', '2017-08-28 05:30:18', '2017-08-28 05:30:18'),
+(3, '-', 'navagiaginasta@gmail.com', 'N', '2017-09-13 07:43:32', '2017-09-13 07:43:32'),
+(4, '-', 'admin@example.com', 'N', '2017-09-13 07:44:24', '2017-09-13 07:44:24'),
+(5, '-', 'ketut@gmail.com', 'N', '2017-09-13 07:46:33', '2017-09-13 07:46:33'),
+(6, '-', 'admin@example.com', 'N', '2017-09-13 07:57:07', '2017-09-13 07:57:07'),
+(7, '-', 'andrey@gmail.com', 'N', '2017-09-13 07:57:33', '2017-09-13 07:57:33');
 
 -- --------------------------------------------------------
 
@@ -742,6 +754,7 @@ INSERT INTO `subscribers` (`id`, `name`, `email`, `status`, `created_at`, `updat
 
 CREATE TABLE `tagservices` (
   `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codetagservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codeservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `choosetagservices` enum('PARTNERSHIP','COMPANY SERVICES') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'PARTNERSHIP',
@@ -755,9 +768,10 @@ CREATE TABLE `tagservices` (
 -- Dumping data for table `tagservices`
 --
 
-INSERT INTO `tagservices` (`id`, `codetagservices`, `codeservices`, `choosetagservices`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'CTS001', '2', 'COMPANY SERVICES', '11', 'Y', '2017-08-22 19:47:57', '2017-09-12 01:15:31'),
-(3, 'CTS002', '4', 'COMPANY SERVICES', '3', 'N', '2017-08-22 19:48:08', '2017-09-12 01:16:39');
+INSERT INTO `tagservices` (`id`, `name`, `codetagservices`, `codeservices`, `choosetagservices`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'Hot Service', 'CTS001', '2', 'COMPANY SERVICES', 'Hot Service', 'Y', '2017-08-22 19:47:57', '2017-09-13 05:42:30'),
+(3, 'Top Basecamp', 'CTS002', '2', 'PARTNERSHIP', 'Top Basecamp', 'Y', '2017-08-22 19:48:08', '2017-09-12 22:21:42'),
+(5, 'Special', 'CTS003', '2', 'COMPANY SERVICES', 'Special', 'Y', '2017-09-12 22:25:28', '2017-09-13 06:25:02');
 
 -- --------------------------------------------------------
 
@@ -804,7 +818,8 @@ CREATE TABLE `testimonials` (
 --
 
 INSERT INTO `testimonials` (`id`, `name`, `description`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, '11', '21', '27097.jpg', 'N', '2017-08-28 05:31:55', '2017-08-28 05:32:33');
+(1, 'Nava Gia Ginasta', '\"Fast response, friendly, and I am really happy with the service of Workspace. I\'ve tried to find an office by myself and it didn\'t work.\"', '27467.jpg', 'Y', '2017-08-28 05:31:55', '2017-09-13 07:04:20'),
+(2, 'Ketut Adi Wijanarko', '\"Excellent service. Workspace has deep understanding in office market and a structured way in organizing the information that make it easy for customers to quickly assess options.\".', '58499.jpg', 'Y', '2017-09-13 07:05:27', '2017-09-13 07:05:27');
 
 -- --------------------------------------------------------
 
@@ -833,9 +848,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `codeuser`, `email`, `password`, `remember_token`, `status`, `user_id`, `provider_id`, `lastlogin`, `registerdate`, `created_at`, `updated_at`) VALUES
-(3, 'Nava Gia Ginasta', 'USR001', 'navagiaginasta@gmail.com', '$2y$10$wnEhcBgMsVXUz8hyw/uZ3Ot6Br2ggdo6hGCzFmARKAJqkjeA3us02', 'GE04VAEnX95EkjLoMxS8mmGOcoMQBvPAoLQvsjO7fBCCuiXQ36IC2jaLZbrC', 'ADMIN', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2017-08-19 05:52:17', '2017-08-19 05:52:17'),
+(3, 'Nava Gia Ginasta', 'USR001', 'navagiaginasta@gmail.com', '$2y$10$wnEhcBgMsVXUz8hyw/uZ3Ot6Br2ggdo6hGCzFmARKAJqkjeA3us02', 'hsX2sRfvR2oJ19ARDGwfRhsL4ZORwpt0ncllkjCm0cVV47GWjxsEgavlge7h', 'ADMIN', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2017-08-19 05:52:17', '2017-08-19 05:52:17'),
 (10, 'admin@cubic.co.id', 'USR002', 'admin@cubic.co.id', '$2y$10$p5BM.1OpC08eews3rBFJEuuS46ifZ/2Ez1q7Ofkko3H/XNEb5el/2', 'LwlflPD1uq86fXbMo0hLo5xT0Qdb6In01v6bPpEuKT14B4YOi06EnG67c3p5', 'ADMIN', '', '', '2017-09-01 15:06:49', '2017-09-01 15:06:49', '2017-08-23 01:20:18', '2017-09-01 08:06:49'),
-(13, 'user', 'USR004', 'user@gmail.com', '$2y$10$6eo7DNUnVkVvAm5rUAcweOnkHiL9qSVcFL2jFn4m22FheL6AitaCe', 'yQvDXJb7JW8RDF66WXcrOQxoGmPBYYfwD9pWiDbs8y4RFAtc6sw97cRomfz8', 'USER', '', '', '2017-09-01 16:14:09', '2017-09-01 16:14:09', '2017-09-01 09:14:09', '2017-09-01 09:14:09');
+(13, 'user', 'USR004', 'user@gmail.com', '$2y$10$6eo7DNUnVkVvAm5rUAcweOnkHiL9qSVcFL2jFn4m22FheL6AitaCe', 'yQvDXJb7JW8RDF66WXcrOQxoGmPBYYfwD9pWiDbs8y4RFAtc6sw97cRomfz8', 'USER', '', '', '2017-09-01 16:14:09', '2017-09-01 16:14:09', '2017-09-01 09:14:09', '2017-09-01 09:14:09'),
+(14, 'Nava Gia', 'USR005', 'navagiaginasta2@gmail.com', '$2y$10$Ek.5jo6WrLaOkqs/iuuL7OuiIvVOj5m6W0Sf.pePtUt9b65eujvpW', NULL, 'USER', '', '', '2017-09-12 13:43:03', '2017-09-12 13:43:03', '2017-09-12 06:43:03', '2017-09-12 06:43:03'),
+(15, 'Nava Gia', 'USR006', 'navagiaginasta@gmail.com', '$2y$10$ijE/rhQT1/MICrUQTyOleuKhwmgkIq2mGQjWyjBINrozcfJ6.GEEq', NULL, 'USER', '', '', '2017-09-12 13:43:13', '2017-09-12 13:43:13', '2017-09-12 06:43:13', '2017-09-12 06:43:13'),
+(16, 'Nava Gia', 'USR007', 'navagiaginasta@gmail.com', '$2y$10$va6bVQcLwwvpFM0eCE/grudsJ/OtXYs4oxkLBNQnYC3BbluMH1gUG', NULL, 'USER', '', '', '2017-09-12 13:43:23', '2017-09-12 13:43:23', '2017-09-12 06:43:23', '2017-09-12 06:43:23');
 
 --
 -- Indexes for dumped tables
@@ -1051,7 +1069,7 @@ ALTER TABLE `billingcompanyservices`
 -- AUTO_INCREMENT for table `bookingspaces`
 --
 ALTER TABLE `bookingspaces`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `categoryadmins`
 --
@@ -1071,7 +1089,7 @@ ALTER TABLE `categorymedia`
 -- AUTO_INCREMENT for table `categorypaymentmethodes`
 --
 ALTER TABLE `categorypaymentmethodes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `categoryservices`
 --
@@ -1091,12 +1109,12 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `companypartnerships`
 --
 ALTER TABLE `companypartnerships`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `companyservices`
 --
 ALTER TABLE `companyservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `countrys`
 --
@@ -1116,12 +1134,12 @@ ALTER TABLE `historybillingcompanyservices`
 -- AUTO_INCREMENT for table `historybookingspaces`
 --
 ALTER TABLE `historybookingspaces`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `informasicompanies`
 --
 ALTER TABLE `informasicompanies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `media`
 --
@@ -1146,12 +1164,12 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `paymentmethodes`
 --
 ALTER TABLE `paymentmethodes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `sosialmedias`
 --
@@ -1161,12 +1179,12 @@ ALTER TABLE `sosialmedias`
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tagservices`
 --
 ALTER TABLE `tagservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `teams`
 --
@@ -1176,12 +1194,12 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `testimonials`
 --
 ALTER TABLE `testimonials`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;COMMIT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

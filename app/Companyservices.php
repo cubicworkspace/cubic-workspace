@@ -13,6 +13,14 @@ class Companyservices extends Model
     	return $this->belongsTo('App\Services', 'codeservices');
     }
     public function tagservices() {
-    	return $this->belongsTo('App\Tagservices', 'codetagservices');
+    	return $this->hasMany('App\Tagservices', 'codetagservices');
     }
+    // public function getTagServiceAttribute() {
+    // 	return $this->tagservices->lists('id')->toArray();
+    // }
+
+    // public function tagserv()
+    // {
+    //     return $this->belongsToMany('App\Tagservices', 'codetagservices');
+    // }
 }

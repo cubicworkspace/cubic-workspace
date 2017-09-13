@@ -86,6 +86,7 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Code</th>
+                                                    <th>Name</th>
                                                     <th>Choose Tag Services</th>
                                                     <th>Services</th>
                                                     <th>Description</th>
@@ -98,6 +99,7 @@
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->codetagservices }}</td>
+                                                    <td>{{ $row->name }}</td>
                                                     <td>{{ $row->choosetagservices }}</td>
                                                     <td>{{ !empty($row->services->name) ? $row->services->name : '-' }} </td>
                                                     <td>{{ $row->description }}</td>
