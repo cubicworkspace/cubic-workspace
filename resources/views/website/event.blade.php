@@ -48,7 +48,8 @@
 									</div>
 											
 									<div class="blog-content">
-										<h3><a href="detail_event.php" class="inverse">Blog title post with a featured image</a></h3>
+									@foreach($event as $row)
+										<h3><a href="detail_event.php" class="inverse"><option value="{{ $row->id }}">{{ $row->title }}</option></a></h3>
 										<ul class="blog-meta clearfix">
 											<li>by <a href="#">Admin</a></li>
 											<li>by January 09, 2016</li>
@@ -56,7 +57,8 @@
 											<li>32 comments</li>
 										</ul>
 										<div class="blog-entry">  
-											Up branch to easily missed by do. Admiration considered acceptance too led one melancholy expression. Are will took form the nor true. Winding enjoyed minuter her letters evident use eat colonel. He attacks observe mr cottage inquiry am examine gravity. Are dear but near left was. Year kept on over so as this of. She steepest doubtful betrayed formerly him. Active one called uneasy our seeing see cousin tastes its. Ye am it formed indeed agreed relied piqued. 
+	   													<option value="{{ $row->id }}">{{ $row->description }}</option>
+	   											@endforeach
 										</div>
 										<a href="detail_event.php" class="btn-blog">Read More <i class="fa fa-long-arrow-right"></i></a>
 									</div>
@@ -300,14 +302,9 @@
 										<h4 class="sidebar-title">Categories</h4>
 										<div class="sidebar-module-inner">
 											<ul class="sidebar-category">
-												<li><a href="#">Business<span>(25)</span></a></li>
-												<li class="active"><a href="#">Commerce<span>(2)</span></a></li>
-												<li><a href="#">Coporate<span>(14)</span></a></li>
-												<li><a href="#">Creative<span>(157)</span></a></li>
-												<li><a href="#">lifestyle<span>(87)</span></a></li>
-												<li><a href="#">Nonprofit<span>(47)</span></a></li>
-												<li><a href="#">Personal<span>(8)</span></a></li>
-												<li><a href="#">Technology<span>(32)</span></a></li>
+												@foreach($categoryevent as $row)
+	   													<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   											@endforeach
 											</ul>
 										</div>
 									</div>

@@ -22,7 +22,7 @@ class PaymentmethodeController extends Controller
     public function index()
     {
         $no = 1;
-        $view = paymentmethodes::orderBy('id', 'DESC')->get();
+        $view = paymentmethodes::all();
         return view('internal.paymentmethode.view', compact('view'));
     }
 

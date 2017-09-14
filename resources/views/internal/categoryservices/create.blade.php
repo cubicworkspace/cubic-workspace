@@ -76,7 +76,7 @@
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>
-									    <input class="btn btn-default" type="reset" name="batal" value="Cancel" onclick="location.href='/categoryservices/'"/></td>
+									    <input class="btn btn-default" type="reset" name="batal" value="Cancel" onclick="location.href='/services/'"/></td>
 									</tr>
 									</table>
 									</div>

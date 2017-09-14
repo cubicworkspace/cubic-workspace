@@ -21,7 +21,7 @@ class TagServicesController extends Controller
     {
         
         $no = 1;
-        $view = tagservices::orderBy('id', 'DESC')->get();
+        $view = tagservices::all();
         return view('internal.tagservices.view', compact('view'));
     }
 
@@ -58,9 +58,7 @@ class TagServicesController extends Controller
              'description' => 'required']);
         $tagservices->codetagservices = $request->codetagservices;
         $tagservices->codeservices = $request->codeservices;
-        $tagservices->name = $request->name;
         $tagservices->description = $request->description;
-        $tagservices->choosetagservices = $request->choosetagservices;
         $tagservices->status = $request->status;
         $tagservices->save();
         \Session::flash('success', 'Tag Services data has been successfully added!,');
@@ -104,9 +102,7 @@ class TagServicesController extends Controller
              'codeservices' => 'required',
              'description' => 'required']);
         $tagservices->codeservices = $request->codeservices;
-        $tagservices->name = $request->name;
         $tagservices->description = $request->description;
-        $tagservices->choosetagservices = $request->choosetagservices;
         $tagservices->status = $request->status;
         $tagservices->save();
         \Session::flash('success', 'Tag Services data has been edited successfully!,');

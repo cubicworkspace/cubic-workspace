@@ -31,7 +31,7 @@
                                             <span class="caption-subject bold uppercase"> Managed @yield('title')</span>
                                         </div>
                                     </div>
-                                    @if (Session::has('success'))
+                                      @if (Session::has('success'))
 						                    <div class="alert alert-success alert-dismissible" role="alert">
 						                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						                    <i class="fa fa-check-circle"></i> {!! session('success') !!}
@@ -46,6 +46,7 @@
 						                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						                    <i class="fa fa-times-circle"></i> {!! session('error') !!}
 						                  </div>
+
 						            @endif
                                     <div class="portlet-body">
                                         <div class="table-toolbar">

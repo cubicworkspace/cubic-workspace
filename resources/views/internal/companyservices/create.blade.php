@@ -79,17 +79,6 @@
 										<td>:</td>
 										<td><input type="number" name="quotauser"  class="form-control" ></td>
 									</tr>
-									
-									<tr>
-										<td>City</td>
-										<td>:</td>
-										<td>
-	   								 {!! Form::select('codecity', $city, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
-	   								  	'placeholder' => '-- Select City --'
-	   								 ]) !!}
-									</td>
-									</tr>
 									<tr>
 										<td>Status</td>
 										<td>:</td>
@@ -110,16 +99,13 @@
 	   								 ]) !!}</td>
 									</tr>
 						            <tr>
-										<td>Tag Service</td>
+										<td>Code Tag Service</td>
 										<td>:</td>
 										<td>
-										<div class="mt-checkbox-list">
-										@foreach($tagservices as $key => $value)
-												<label class="mt-checkbox mt-checkbox-outline">{!! Form::checkbox('codetagservices[]', $key, null) !!} {{ $value }}
-										<span></span></label>
-										@endforeach
-	   									</div>
-	   								</td>
+	   								 {!! Form::select('codetagservices', $tagservices, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Tag Services --'
+	   								 ]) !!}</td>
 									</tr>
 									<tr>
 										<td>Service</td>

@@ -18,7 +18,7 @@ class CategoryadminController extends Controller
     public function index()
     {
         $no = 1;
-        $view = categoryadmins::orderBy('id', 'DESC')->get();
+        $view = categoryadmins::all();
         return view('internal.categoryadmin.view', compact('view'));
     }
 

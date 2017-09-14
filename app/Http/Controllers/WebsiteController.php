@@ -13,6 +13,13 @@ use App\subscribers;
 use App\citys;
 use App\services;
 
+use App\companies;
+use App\teams;
+use App\sosialmedias;
+use App\events;
+use App\messages;
+use App\categoryevents;
+
 use App\Http\Requests; // path saja, untuk form request (jika ada)
 use App\Http\Requests\companyservicesRequest;
 use Illuminate\Http\Request;
@@ -27,6 +34,7 @@ class WebsiteController extends Controller
      */
     public function index()
     {
+        // $media = media::where('codecategorymedia','5')->get();
         $media              = media::find('4');
         $header             = informasicompanies::where('categoryinfromasi', '=', 'HEADER')
                                                  ->where('status', '=', 'Y')->limit(3)->get();
@@ -48,6 +56,7 @@ class WebsiteController extends Controller
         $services                 = services::pluck('name','id');
         return view('website.package_list', compact('companyservices','count_companyservices','city','services'));
     }
+
 
     public function search(Request $request) {
         $companyservices          = companyservices::paginate(10);
@@ -81,17 +90,26 @@ class WebsiteController extends Controller
 
     public function about()
     {
-         return view('website.about');
+         $companies=companies::all();
+         $team=teams::all();
+         $companypartnership=companypartnership::all();
+         return view('website.about', compact('companies','team','companypartnership'));
     }
 
     public function event()
     {
-         return view('website.event');
+         $categoryevent=categoryevents::all();
+         $event=events::all();
+         return view('website.event', compact('event','categoryevent'));
     }
 
     public function contact()
     {
-         return view('website.contact');
+         $companies=companies::all();
+         $informasicompanies=informasicompanies::all();
+         $message=messages::all();
+         $sosialmedia = sosialmedias::all();
+         return view('website.contact', compact('companies','informasicompanies','message','sosialmedia'));
     }
 
     public function newsletter()
@@ -100,7 +118,7 @@ class WebsiteController extends Controller
     }
     public function subscriber(Request $request)
     {
-        $subscriber = subscribers::where('email',Input::get('email'))->first();
+       $subscriber = subscribers::where('email',Input::get('email'))->first();
         if (is_null($subscriber)) {
             $subscriber = new subscribers;
             $subscriber->name        = '-';

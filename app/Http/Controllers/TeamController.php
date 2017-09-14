@@ -21,7 +21,7 @@ class TeamController extends Controller
     public function index()
     {
         $no = 1;
-        $view = teams::orderBy('id', 'DESC')->get();
+        $view = teams::all();
         return view('internal.team.view', compact('view'));
     }
 

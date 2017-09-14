@@ -35,7 +35,6 @@ class InternalController extends Controller
      */
     public function __construct()
     {
-    $this->redirectTo = route('index');
         $this->middleware('admin')->except('logout');
     }
 

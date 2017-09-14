@@ -6,7 +6,6 @@ use DB;
 use App\companypartnership;
 use App\countrys;
 use App\citys;
-use App\tagservices;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -25,7 +24,7 @@ class CompanyPartnershipController extends Controller
     public function index()
     {
         $no = 1;
-        $view = companypartnership::orderBy('id', 'ASC')->get();
+        $view = companypartnership::all();
         return view('internal.companypartnership.view', compact('view'));
     }
 
@@ -44,9 +43,8 @@ class CompanyPartnershipController extends Controller
         $char   = "COP";
         $no   =  $char . sprintf("%03s", $noRand);
         $city = citys::pluck('name', 'id');
-        $country = countrys::pluck('name', 'id');
-        $tagservices = tagservices::where('choosetagservices', '=', 'PARTNERSHIP')->pluck('name', 'id');
-        return view('internal.companypartnership.create', compact('no','country','city','tagservices'));
+         $country = countrys::pluck('name', 'id');
+        return view('internal.companypartnership.create', compact('no','country','city'));
     }
 
     /**
@@ -78,7 +76,6 @@ class CompanyPartnershipController extends Controller
         $companypartnership->codecompanypartnership = $request->codecompanypartnership;
         $companypartnership->favicon = $favicon;
         $companypartnership->logo = $filename;
-        $companypartnership->codetagservices = implode($request->codetagservices, ',');
         $companypartnership->email = $request->email;
         $companypartnership->phone = $request->phone;
         $companypartnership->fax = $request->fax;
@@ -120,11 +117,10 @@ class CompanyPartnershipController extends Controller
     public function edit($id)
     {
         
-        $country = countrys::all();
-        $city = citys::all();
+       $country = countrys::all();
+         $city = citys::all();
         $edit = companypartnership::find($id);
-        $tagservices = tagservices::where('choosetagservices', '=', 'PARTNERSHIP')->pluck('name', 'id');
-        return view('internal.companypartnership.edit', compact('edit','country','city','tagservices'));
+        return view('internal.companypartnership.edit', compact('edit','country','city'));
     }
 
     /**
@@ -159,7 +155,6 @@ class CompanyPartnershipController extends Controller
             $companypartnership->name = $request->name;
             $companypartnership->favicon = $favicon;
             $companypartnership->logo = $filename;
-            $companypartnership->codetagservices = implode($request->codetagservices, ',');
             $companypartnership->email = $request->email;
             $companypartnership->phone = $request->phone;
             $companypartnership->fax = $request->fax;
@@ -189,7 +184,6 @@ class CompanyPartnershipController extends Controller
             $companypartnership->name = $request->name;
             $companypartnership->email = $request->email;
             $companypartnership->phone = $request->phone;
-            $companypartnership->codetagservices = implode($request->codetagservices, ',');
             $companypartnership->fax = $request->fax;
             $companypartnership->address = $request->address;
             $companypartnership->maps = $request->maps;

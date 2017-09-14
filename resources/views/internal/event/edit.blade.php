@@ -59,7 +59,7 @@
 										<td>Category Event</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codecategoryevent">
-										<option value="{{ !empty($edit->categoryevent->id) ? $edit->categoryevent->id : '' }}">{{ !empty($edit->categoryevent->name) ? $edit->categoryevent->name : '-- Select Category Event --' }} </option>
+	   								 				<option value="{{ $edit->categoryevent->id }}">{{ $edit->categoryevent->name }}</option>
 	   												 @foreach($categoryevent as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach

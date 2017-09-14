@@ -80,18 +80,6 @@
 										<td>:</td>
 										<td><input type="number" name="quotauser" value="{{ $edit->quotauser }}"  class="form-control" ></td>
 									</tr>
-									
-									<tr>
-										<td>City</td>
-										<td>:</td>
-										<td> <select class="form-control" id="id" value="name" name="codecity">
-										<option value="{{ !empty($edit->city->id) ? $edit->city->id : '' }}">{{ !empty($edit->city->name) ? $edit->city->name : '-- Select City --' }} </option>
-	   												 @foreach($city as $row)
-	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
-	   												 @endforeach
-	   								 		</select>
-	   								 </td>
-									</tr>
 									<tr>
 										<td>Status</td>
 										<td>:</td>
@@ -107,30 +95,29 @@
 										<td>Company Partnership</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codecompanypartnership">
-													<option value="{{ !empty($edit->companypartnership->id) ? $edit->companypartnership->id : '' }}">{{ !empty($edit->companypartnership->name) ? $edit->companypartnership->name : '-- Select Company Partnership --' }} </option>
+	   								 				<option value="{{ $edit->companypartnership->id }}">{{ $edit->companypartnership->name }}</option>
 	   												 @foreach($companypartnership as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
 	   								 		</select>
 	   								 </td>
 									</tr>
-									<tr>
-										<td>Tag Service</td>
+						            <tr>
+										<td>Code Tag Service</td>
 										<td>:</td>
-										<td>
-										<div class="mt-checkbox-list">
-										@foreach($tagservices as $key => $value)
-												<label class="mt-checkbox mt-checkbox-outline">{!! Form::checkbox('codetagservices[]', $key,null) !!} {{ $value }}
-										<span></span></label>
-										@endforeach
-	   									</div>
-	   								</td>
+										<td> <select class="form-control" id="id" name="codetagservices">
+	   								 				<option value="{{ $edit->tagservices->id }}">{{ $edit->tagservices->codetagservices }}</option>
+	   												 @foreach($tagservices as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->codetagservices }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td>Service</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codeservices">
-													<option value="{{ !empty($edit->services->id) ? $edit->services->id : '' }}">{{ !empty($edit->services->name) ? $edit->services->name : '-- Select Services --' }} </option>
+	   								 				<option value="{{ $edit->services->id }}">{{ $edit->services->name }}</option>
 	   												 @foreach($services as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach

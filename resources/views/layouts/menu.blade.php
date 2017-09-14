@@ -61,7 +61,7 @@
                                  </ul>
                             </li>
 
-                            <li class="nav-item {{ Request::segment(1) === 'companies/1/edit' ? 'active' : null }} 
+                            <li class="nav-item {{ Request::segment(1) === 'companies' ? 'active' : null }} 
                             {{ Request::segment(1) === 'informasicompanies' ? 'active' : null }} ">
                                 <a href="javascript:;" class="nav-link nav-toggle">
                                     <i class="icon-wallet"></i>
@@ -70,7 +70,7 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="nav-item  ">
-                                        <a href="{{ url('/companies/1/edit') }}" class="nav-link ">
+                                        <a href="{{ url('/companies') }}" class="nav-link ">
                                             <span class="title">Companies</span>
                                         </a>
                                     </li>

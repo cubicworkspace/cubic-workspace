@@ -23,7 +23,7 @@ class MediaController extends Controller
     public function index()
     {
         $no = 1;
-        $view = media::orderBy('id', 'DESC')->get();
+        $view = media::all();
         return view('internal.media.view', compact('view'));
     }
 

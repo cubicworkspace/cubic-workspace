@@ -62,12 +62,12 @@
 									<tr>
 										<td>Favicon</td>
 										<td>:</td>
-										<td><input type="file" name="favicon" required  class="form-control" ></td>
+										<td><input type="file" name="favicon"  class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Logo</td>
 										<td>:</td>
-										<td><input type="file" name="logo" required  class="form-control" ></td>
+										<td><input type="file" name="logo"  class="form-control" ></td>
 									</tr>
 						            <tr>
 										<td>Email</td>
@@ -142,24 +142,13 @@
 									<tr>
 										<td>Faq</td>
 										<td>:</td>
-										<td><textarea class="ckeditor form-control" name="faq" rows="6" data-error-container="#editor2_error"></textarea></td>
+										<td><input type="text" name="faq"  class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Information</td>
 										<td>:</td>
 										<td><input type="text" name="information"  class="form-control" ></td>
 									</tr>
-									<tr>
-										<td>Tag Service</td>
-										<td>:</td>
-										<td>
-										<div class="mt-checkbox-list">
-										@foreach($tagservices as $key => $value)
-												<label class="mt-checkbox mt-checkbox-outline">{!! Form::checkbox('codetagservices[]', $key, null) !!} {{ $value }}
-										<span></span></label>
-										@endforeach
-	   									</div>
-	   								</td>
 									<tr>
 										<td>Status</td>
 										<td>:</td>

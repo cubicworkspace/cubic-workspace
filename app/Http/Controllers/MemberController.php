@@ -18,7 +18,7 @@ class MemberController extends Controller
     public function index()
     {
         $no = 1;
-        $view = members::orderBy('id', 'DESC')->get();
+        $view = members::all();
         return view('internal.member.view', compact('view'));
     }
 

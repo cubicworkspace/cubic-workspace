@@ -18,7 +18,7 @@ class CategorypaymentmethodeController extends Controller
     public function index()
     {
         $no = 1;
-        $view = categorypaymentmethodes::orderBy('id', 'DESC')->get();
+        $view = categorypaymentmethodes::all();
         return view('internal.categorypaymentmethode.view', compact('view'));
     }
 

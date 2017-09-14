@@ -60,7 +60,7 @@
 										<td>Category Payment Methode</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codecategorypaymentmethode">
-													<option value="{{ !empty($edit->categorypaymentmethode->id) ? $edit->categorypaymentmethode->id : '' }}">{{ !empty($edit->categorypaymentmethode->name) ? $edit->categorypaymentmethode->name : '-- Select Category Payment Methode --' }} </option>
+	   								 				<option value="{{ $edit->categorypaymentmethode->id }}">{{ $edit->categorypaymentmethode->name }}</option>
 	   												 @foreach($categorypaymentmethode as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach

@@ -18,7 +18,7 @@ class CategoryMediaController extends Controller
     public function index()
     {
         $no = 1;
-        $view = categorymedia::orderBy('id', 'DESC')->get();
+        $view = categorymedia::all();
         return view('internal.categorymedia.view', compact('view'));
     }
 

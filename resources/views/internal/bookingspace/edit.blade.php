@@ -59,7 +59,7 @@
 										<td>Service</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codeservices">
-	   								 				<option value="{{ !empty($edit->services->id) ? $edit->services->id : '' }}">{{ !empty($edit->services->name) ? $edit->services->name : '-- Select Services --' }} </option>
+	   								 				<option value="{{ $edit->services->id }}">{{ $edit->services->name }}</option>
 	   												 @foreach($services as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
@@ -70,7 +70,7 @@
 										<td>Company Partnership</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codecompanypartnership">
-	   								 				<option value="{{ !empty($edit->companypartnership->id) ? $edit->companypartnership->id : '' }}">{{ !empty($edit->companypartnership->name) ? $edit->companypartnership->name : '-- Select Company Partnership --' }} </option>
+	   								 				<option value="{{ $edit->companypartnership->id }}">{{ $edit->companypartnership->name }}</option>
 	   												 @foreach($companypartnership as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
@@ -81,7 +81,7 @@
 										<td>Billing Company Service</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codebillingcompanyservices">
-	   								 				<option value="{{ !empty($edit->billingcompanyservices->id) ? $edit->billingcompanyservices->id : '' }}">{{ !empty($edit->billingcompanyservices->name) ? $edit->billingcompanyservices->name : '-- Select Billing Company Service --' }} </option>
+	   								 				<option value="{{ $edit->billingcompanyservices->id }}">{{ $edit->billingcompanyservices->name }}</option>
 	   												 @foreach($billingcompanyservices as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
@@ -92,7 +92,7 @@
 										<td>User</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codeuser">
-	   								 				<option value="{{ !empty($edit->user->id) ? $edit->user->id : '' }}">{{ !empty($edit->user->name) ? $edit->user->name : '-- Select Users --' }} </option>
+	   								 				<option value="{{ $edit->user->id }}">{{ $edit->user->name }}</option>
 	   												 @foreach($users as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
@@ -103,7 +103,7 @@
 										<td>Payment Methode</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codepaymentmethode">
-	   								 				<option value="{{ !empty($edit->paymentmethodes->id) ? $edit->paymentmethodes->id : '' }}">{{ !empty($edit->paymentmethodes->name) ? $edit->paymentmethodes->name : '-- Select Payment Methode --' }} </option>
+	   								 				<option value="{{ $edit->paymentmethodes->id }}">{{ $edit->paymentmethodes->name }}</option>
 	   												 @foreach($paymentmethodes as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach

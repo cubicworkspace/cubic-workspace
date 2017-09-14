@@ -20,7 +20,7 @@ class CityController extends Controller
     {
         
         $no = 1;
-        $view = citys::orderBy('id', 'DESC')->get();
+        $view = citys::all();
         return view('internal.city.view', compact('view'));
     }
 

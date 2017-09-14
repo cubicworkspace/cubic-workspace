@@ -84,7 +84,7 @@
 									<tr>
 										<td>Image</td>
 										<td>:</td>
-										<td><input type="file" name="image" required  class="form-control" ></td>
+										<td><input type="file" name="image"  class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Status</td>

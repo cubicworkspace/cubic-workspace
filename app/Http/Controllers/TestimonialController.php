@@ -20,7 +20,7 @@ class TestimonialController extends Controller
     public function index()
     {
         $no = 1;
-        $view = testimonials::orderBy('id', 'DESC')->get();
+        $view = testimonials::all();
         return view('internal.testimonial.view', compact('view'));
     }
 

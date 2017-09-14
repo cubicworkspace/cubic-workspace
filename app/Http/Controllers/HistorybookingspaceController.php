@@ -25,7 +25,7 @@ class HistorybookingspaceController extends Controller
     public function index()
     {
         $no = 1;
-        $view = historybookingspaces::orderBy('id', 'DESC')->get();
+        $view = historybookingspaces::all();
         return view('internal.historybookingspace.view', compact('view'));
     }
 

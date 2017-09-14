@@ -55,25 +55,10 @@
 										<td>:</td>
 										<td><b>{{ $edit->codetagservices }} </b></td>
 									</tr>
-									<tr>
-										<td>Name</td>
-										<td>:</td>
-										<td><input type="text" name="name" value="{{ $edit->name }}" class="form-control" ></td>
-									</tr>
 						            <tr>
 										<td>Description</td>
 										<td>:</td>
 										<td><textarea name="description"  class="form-control">{{ $edit->description }}</textarea></td>
-									</tr>
-									<tr>
-										<td>Choose Tag Services</td>
-										<td>:</td>
-										<td> <label class="radio-inline"> 
-						                     <input type="radio" checked="" name="choosetagservices" class="icheck" value="PARTNERSHIP"  {{ $a = ($edit->choosetagservices=='PARTNERSHIP')?'checked':''}}> PARTNERSHIP
-						                    </label> 
-						                     <label class="radio-inline"> 
-						                     <input type="radio"  name="choosetagservices" class="icheck" value="COMPANY SERVICES" {{ $b = ($edit->choosetagservices=='COMPANY SERVICES')?'checked':''}}> COMPANY SERVICES
-						                   </label> </td>
 									</tr>
 									<tr>
 										<td>Status</td>
@@ -88,8 +73,8 @@
 									<tr>
 										<td>Services</td>
 										<td>:</td>
-										<td> <select class="form-control" id="id" value="name" name="codeservices">										
-													<option value="{{ !empty($edit->services->id) ? $edit->services->id : '' }}">{{ !empty($edit->services->name) ? $edit->services->name : '-- Select Services --' }} </option>
+										<td> <select class="form-control" id="id" value="name" name="codeservices">
+	   								 				<option value="{{ $edit->services->id }}">{{ $edit->services->name }}</option>
 	   												 @foreach($services as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach

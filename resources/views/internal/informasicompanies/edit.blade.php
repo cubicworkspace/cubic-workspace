@@ -84,23 +84,6 @@
 									</tr>
 								@endif
 									<tr>
-										<td>Category Informasi</td>
-										<td>:</td>
-										<td> <label class="radio-inline"> 
-						                     <input type="radio" name="categoryinfromasi" class="icheck" value="HEADER" {{ $a = ($edit->categoryinfromasi=='HEADER')?'checked':''}} > HEADER
-						                   	 </label> 
-						                     <label class="radio-inline"> 
-						                     <input type="radio"  name="categoryinfromasi" class="icheck" value="BOOKING" {{ $b = ($edit->categoryinfromasi=='BOOKING')?'checked':''}}> BOOKING
-						                  	 </label> 
-						                     <label class="radio-inline"> 
-						                     <input type="radio"  name="categoryinfromasi" class="icheck" value="SERVICES" {{ $c = ($edit->categoryinfromasi=='SERVICES')?'checked':''}}> SERVICES
-						                  	 </label> 
-						                     <label class="radio-inline"> 
-						                     <input type="radio"  name="categoryinfromasi" class="icheck" value="OFFICE" {{ $d = ($edit->categoryinfromasi=='OFFICE')?'checked':''}}> OFFICE
-						                  	 </label> 
-										</td>
-									</tr>
-									<tr>
 										<td>Status</td>
 										<td>:</td>
 										<td><label class="radio-inline"> 

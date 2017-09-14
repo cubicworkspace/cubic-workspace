@@ -115,7 +115,7 @@
 										<td>Category Media</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codecategorymedia">
-										<option value="{{ !empty($edit->categorymedia->id) ? $edit->categorymedia->id : '' }}">{{ !empty($edit->categorymedia->name) ? $edit->categorymedia->name : '-- Select Category Media --' }} </option>
+	   								 				<option value="{{ $edit->categorymedia->id }}">{{ $edit->categorymedia->name }}</option>
 	   												 @foreach($categorymedia as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach

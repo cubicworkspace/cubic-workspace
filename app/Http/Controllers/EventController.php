@@ -20,7 +20,7 @@ class EventController extends Controller
     public function index()
     {
         $no = 1;
-        $view = events::orderBy('id', 'DESC')->get();
+        $view = events::all();
         return view('internal.event.view', compact('view'));
     }
 

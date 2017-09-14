@@ -22,7 +22,7 @@ class CountryController extends Controller
     public function index()
     {       
         $no = 1;
-        $view = countrys::orderBy('id', 'DESC')->get();
+        $view = countrys::all();
         return view('internal.country.view', compact('view'));
     }
 

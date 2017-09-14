@@ -22,7 +22,7 @@ class HistoryBillingController extends Controller
     {
         
         $no = 1;
-        $view = historybillingcompanyservices::orderBy('id', 'DESC')->get();
+        $view = historybillingcompanyservices::all();
         return view('internal.historybilling.view', compact('view'));
     }
 
@@ -88,8 +88,9 @@ class HistoryBillingController extends Controller
     {
         $companypartnership = companypartnership::all();
         $companyservices = companyservices::all();
+        $users = users::all();
         $edit = historybillingcompanyservices::find($id);
-        return view('internal.historybilling.edit', compact('edit','companypartnership','companyservices'));
+        return view('internal.historybilling.edit', compact('edit','companypartnership','companyservices','user'));
     }
 
     /**
