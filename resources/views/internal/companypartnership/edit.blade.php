@@ -120,8 +120,7 @@
 										<td>Maps</td>
 										<td>:</td>
 										<td><input type="text" name="maps" value="{{ $edit->maps }}" class="form-control" ></td>
-									</tr>
-									
+									</tr>									
 									<tr>
 										<td>City</td>
 										<td>:</td>

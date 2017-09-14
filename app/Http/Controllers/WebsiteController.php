@@ -10,7 +10,11 @@ use App\companypartnership;
 use App\companyservices;
 use App\testimonials;
 use App\subscribers;
+use App\citys;
+use App\services;
 
+use App\Http\Requests; // path saja, untuk form request (jika ada)
+use App\Http\Requests\companyservicesRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -23,7 +27,6 @@ class WebsiteController extends Controller
      */
     public function index()
     {
-        // $media = media::where('codecategorymedia','5')->get();
         $media              = media::find('4');
         $header             = informasicompanies::where('categoryinfromasi', '=', 'HEADER')
                                                  ->where('status', '=', 'Y')->limit(3)->get();
@@ -39,7 +42,41 @@ class WebsiteController extends Controller
 
     public function package_list()
     {
-         return view('website.package_list');
+        $companyservices          = companyservices::paginate(10);
+        $count_companyservices    = companyservices::count();
+        $city                     = citys::pluck('name','id');
+        $services                 = services::pluck('name','id');
+        return view('website.package_list', compact('companyservices','count_companyservices','city','services'));
+    }
+
+    public function search(Request $request) {
+        $companyservices          = companyservices::paginate(10);
+        $count_companyservices    = companyservices::count();
+        $city                     = citys::pluck('name','id');
+        $services                 = services::pluck('name','id');
+        
+        $q   = trim($request->input('q'));
+
+        if (! empty($q)) {
+            $codeservices = $request->input('codeservices');
+            $codecity      = $request->input('codecity');
+
+            // Query
+            $query          = companyservices::where('name', 'LIKE', '%' . $q. '%');
+            (! empty($codeservices)) ? $query->where('codeservices', $codeservices) : '';
+            (! empty($codecity)) ? $query->where('codecity', $codecity) : '';
+            $companyservices = $query->paginate(10);
+
+            // URL Links count_companyservices
+            $count_companyservices = (! empty($codeservices)) ? $companyservices->appends(['codeservices' => $codeservices]) : '';
+            $count_companyservices = (! empty($codecity)) ? $count_companyservices = $companyservices->appends(['codecity' => $codecity]) : '';
+            $count_companyservices = $companyservices->appends(['q' => $q]);
+
+            $count_companyservices = $companyservices->total();
+            return view('website.package_list', compact('companyservices','count_companyservices','city','services','q','count_companyservices'));
+        }
+
+        return redirect('package');
     }
 
     public function about()

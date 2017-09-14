@@ -41,37 +41,20 @@
 									
 									<div class="sidebar-search-content">
 
+								{!! Form::open(['url' => 'package/search', 'method' => 'GET', 'id' => 'form-pencarian']) !!}
 										<div class="form-group">
-											
-											<select name="destination" class="select2-multi form-control" data-placeholder="Choose a Destination" multiple>
-												<option value="">Choose a Location</option>
-												<option value="0">Any Location</option>
-												<option value="Jakarta">Jakarta</option>
-												<option value="Bandung" selected>Bandung</option>
-												<option value="Solo">Solo</option>
-												
-											</select>
-
+								            {!! Form::select('codecity', $city, (! empty($id) ? $id : null), ['id' => 'codecity', 'class' => 'select2-multi form-control', 'data-placeholder' => 'Choose a Location', 'multiple']) !!}
 										</div>
 									
 										<div class="form-group">
-														
-											<select name="month" class="select2-multi form-control" data-placeholder="Choose a Type" multiple>
-												<option value="">Choose a Type</option>
-												<option value="0">CoWorking</option>
-												<option value="1">Office</option>
-												<option value="2">Residence</option>
-											</select>
+								            {!! Form::select('codeservices', $services, (! empty($id) ? $id : null), ['id' => 'codeservices', 'class' => 'select2-multi form-control', 'data-placeholder' => 'Choose a Type Services', 'multiple']) !!}
 											
 										</div>
 										
 										<div class="form-group">
-
-											
-											<input type="date" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+            								{!! Form:: text('q', (! empty($q)) ? $q : null,['class' => 'form-control', 'placeholder' => 'Company Service Name']) !!}
 										</div>
-									
-										<a href="#" class="btn btn-primary btn-block">Search</a>
+          							  {!! Form::button('Search', ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}
 									
 									</div>
 									
@@ -129,76 +112,39 @@
 							
 							<div class="package-list-item-wrapper on-page-result-page">
 							
+							<!-- companyservices -->
+							@if (count($companyservices) > 0)
+							@foreach($companyservices as $row)
 								<div class="package-list-item clearfix">
 									<div class="image">
-										<img src="{{ asset('frontend/images/tour-package/01.jpg') }}" alt="Tour Package" />
-										<div class="absolute-in-image">
-											
+										<img src="{{ asset('upload/companypartnership') }}/{{ $row->companypartnership->favicon }}" alt="Tour Package" />
+										<div class="absolute-in-image">											
 										</div>
-									</div>
-									
+									</div>									
 									<div class="content">
-										<h5>PostCard Cafe <button class="btn"><i class="fa fa-heart-o"></i></button></h5>
+										<h5>{{ $row->name }} <button class="btn"><i class="fa fa-heart-o"></i></button></h5>
 										<div class="row gap-10">
 											<div class="col-sm-12 col-md-9">
-												
-												<p class="line18">Letter wooded direct two men indeed income sister. Impression up admiration partiality is...</p>
-												
+												<p class="line18">{{ $row->information }}</p>
 												<ul class="list-info">
-													<li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">City: </span> Bandung</li>
-													<li><span class="icon"><i class="fa fa-flag"></i></span> <span class="font600">Status:</span> Avaliabel</li>
-													
-												</ul>
-												
-											</div>
-											<div class="col-sm-12 col-md-3 text-right text-left-sm">
-												
-												
-												
-												<div class="price">Rp 10 Jt Perbulan</div>
-												
-												<a href="detail_package.php" class="btn btn-primary btn-sm">view</a>
-												
-											</div>
-										</div>
-									</div>
-									
-								</div>
-								
-								<div class="package-list-item clearfix">
-									<div class="image">
-										<img src="{{ asset('frontend/images/tour-package/02.jpg') }}" alt="Tour Package" />
-										
-									</div>
-									
-									<div class="content">
-										<h5>Manami Buah Batu<button class="btn"><i class="fa fa-heart-o"></i></button></h5>
-										<div class="row gap-10">
-											<div class="col-sm-12 col-md-9">
-												
-												<p class="line18">Letter wooded direct two men indeed income sister. Impression up admiration partiality is...</p>
-												
-												<ul class="list-info">
-													<li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">City: </span> North Jakarta </li>
-													
-													
+													<li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">City: </span> {{ $row->city->name }}</li>
+													<li><span class="icon"><i class="fa fa-flag"></i></span> <span class="font600">Status:</span> @if($row->status == 'Y') Available @elseif($row->status == 'N') Not Available @endif</li>													
 												</ul>
 											</div>
 											<div class="col-sm-12 col-md-3 text-right text-left-sm">
-												
-											
-												
-												<div class="price">Rp 1,5 Jt Perbulan</div>
-												
+												<div class="price">Rp {{ $row->price }}</div>
 												<a href="detail_package.php" class="btn btn-primary btn-sm">view</a>
-												
 											</div>
 										</div>
 									</div>
-									
 								</div>
+							@endforeach
+							@else
+           					 <p><b>No data package list.</b></p>
+       						@endif
+							<!-- companyservices-->
 								
-							
+								
 							<div class="pager-wrappper clearfix">
 			
 								<div class="pager-innner">
@@ -206,28 +152,14 @@
 									<div class="flex-row flex-align-middle">
 											
 										<div class="flex-column flex-sm-12">
-											Showing reslut 1 to 15 from 248 
+											Showing reslut 1 to 10 from {{ $count_companyservices}}
 										</div>
 										
 										<div class="flex-column flex-sm-12">
 											<nav class="pager-right">
 												<ul class="pagination">
 													<li>
-														<a href="#" aria-label="Previous">
-															<span aria-hidden="true">&laquo;</span>
-														</a>
-													</li>
-													<li class="active"><a href="#">1</a></li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-													<li><span>...</span></li>
-													<li><a href="#">11</a></li>
-													<li><a href="#">12</a></li>
-													<li><a href="#">13</a></li>
-													<li>
-														<a href="#" aria-label="Next">
-															<span aria-hidden="true">&raquo;</span>
-														</a>
+               										 {{ $companyservices->links() }}
 													</li>
 												</ul>
 											</nav>

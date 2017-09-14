@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 /* page user */
 Route::get('/','WebsiteController@index');
 Route::get('package','WebsiteController@package_list');
+Route::get('package/search', 'WebsiteController@search');
 Route::get('about','WebsiteController@about');
 Route::get('events','WebsiteController@event');
 Route::get('contact','WebsiteController@contact');

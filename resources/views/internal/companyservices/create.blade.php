@@ -79,6 +79,17 @@
 										<td>:</td>
 										<td><input type="number" name="quotauser"  class="form-control" ></td>
 									</tr>
+									
+									<tr>
+										<td>City</td>
+										<td>:</td>
+										<td>
+	   								 {!! Form::select('codecity', $city, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select City --'
+	   								 ]) !!}
+									</td>
+									</tr>
 									<tr>
 										<td>Status</td>
 										<td>:</td>

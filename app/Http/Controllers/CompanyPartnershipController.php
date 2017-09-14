@@ -25,7 +25,7 @@ class CompanyPartnershipController extends Controller
     public function index()
     {
         $no = 1;
-        $view = companypartnership::orderBy('id', 'DESC')->get();
+        $view = companypartnership::orderBy('id', 'ASC')->get();
         return view('internal.companypartnership.view', compact('view'));
     }
 

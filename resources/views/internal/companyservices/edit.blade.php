@@ -80,6 +80,18 @@
 										<td>:</td>
 										<td><input type="number" name="quotauser" value="{{ $edit->quotauser }}"  class="form-control" ></td>
 									</tr>
+									
+									<tr>
+										<td>City</td>
+										<td>:</td>
+										<td> <select class="form-control" id="id" value="name" name="codecity">
+										<option value="{{ !empty($edit->city->id) ? $edit->city->id : '' }}">{{ !empty($edit->city->name) ? $edit->city->name : '-- Select City --' }} </option>
+	   												 @foreach($city as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
+									</tr>
 									<tr>
 										<td>Status</td>
 										<td>:</td>

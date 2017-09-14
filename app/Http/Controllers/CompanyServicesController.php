@@ -7,6 +7,7 @@ use App\companyservices;
 use App\tagservices;
 use App\companypartnership;
 use App\services;
+use App\citys;
 
 
 use Illuminate\Http\Request;
@@ -46,7 +47,8 @@ class CompanyServicesController extends Controller
         $tagservices = tagservices::where('choosetagservices', '=', 'COMPANY SERVICES')->pluck('name', 'id');
         $companypartnership = companypartnership::pluck('name', 'id');
         $services = services::pluck('name', 'id');
-        return view('internal.companyservices.create', compact('no','tagservices','companypartnership','services'));
+        $city = citys::pluck('name', 'id');
+        return view('internal.companyservices.create', compact('no','tagservices','companypartnership','services','city'));
     }
 
     /**
@@ -64,6 +66,7 @@ class CompanyServicesController extends Controller
         $companyservices->name = $request->name;
         $companyservices->codecompanyservices = $request->codecompanyservices;
         $companyservices->codeservices = $request->codeservices;
+        $companyservices->codecity = $request->codecity;
         $companyservices->codecompanypartnership = $request->codecompanypartnership;
         $companyservices->codetagservices = implode($request->codetagservices, ',');
         $companyservices->information = $request->information;
@@ -101,8 +104,9 @@ class CompanyServicesController extends Controller
         $tagservices = tagservices::where('choosetagservices', '=', 'COMPANY SERVICES')->pluck('name', 'id');
         $companypartnership = companypartnership::all();
         $services = services::all();
+        $city = citys::all();
         $edit = companyservices::find($id);
-        return view('internal.companyservices.edit', compact('edit','tagservices','companypartnership','services','ceked'));
+        return view('internal.companyservices.edit', compact('edit','tagservices','companypartnership','services','city'));
     }
 
     /**
@@ -120,6 +124,7 @@ class CompanyServicesController extends Controller
              'name' => 'required']);
         $companyservices->name = $request->name;
         $companyservices->codeservices = $request->codeservices;
+        $companyservices->codecity = $request->codecity;
         $companyservices->codecompanypartnership = $request->codecompanypartnership;
         $companyservices->codetagservices = implode($request->codetagservices, ',');
         $companyservices->information = $request->information;
