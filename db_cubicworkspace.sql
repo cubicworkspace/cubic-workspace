@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2017 at 06:08 PM
+-- Generation Time: Sep 14, 2017 at 08:14 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -360,7 +360,7 @@ CREATE TABLE `companypartnerships` (
 --
 
 INSERT INTO `companypartnerships` (`id`, `name`, `codecompanypartnership`, `codetagservices`, `favicon`, `logo`, `email`, `phone`, `fax`, `address`, `maps`, `codecountry`, `codecity`, `profile`, `history`, `description`, `vision`, `mision`, `faq`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
-(7, 'CO&CO', 'COP001', '3', '80994.jpg', '98118.jpg', 'navagiaginasta@gmail.com', '87820033395', '87820033395', 'Cianjur', '-', '2', '3', '-', '1', '1', '1', '1', '<p>1</p>', '1', '2017-09-13 12:38:46', 'Y', '2017-09-12 00:37:53', '2017-09-13 05:38:46'),
+(7, 'CO&CO', 'COP001', '3', '80994.jpg', '98118.jpg', 'navagiaginasta@gmail.com', '87820033395', '87820033395', 'Cianjur', '-', '2', '2', '-', '1', '1', '1', '1', '<p>1</p>', '1', '2017-09-14 04:05:32', 'Y', '2017-09-12 00:37:53', '2017-09-13 21:05:32'),
 (8, 'FREENOVATION', 'COP002', '3', '83540.jpg', '20336.jpg', 'fvdfvfdv@gmail.com', '087820033395', '87820033395', '-', '-', '2', '2', '-', '-', '-', '-', '-', '<p>-</p>', '-', '2017-09-13 12:39:12', 'Y', '2017-09-12 06:32:41', '2017-09-13 05:39:12'),
 (9, 'Bandung Digital Valley', 'COP003', '3', '85158.jpg', '46376.jpg', 'bdv@gmail.com', '0', '0', '-', '-', '2', '3', '-', '-', '-', '-', '-', '<p>-</p>', '-', '2017-09-13 12:39:37', 'Y', '2017-09-13 05:34:43', '2017-09-13 05:39:37'),
 (10, 'PT.DYCODE INDONESIA', 'COP004', '3', '66913.jpg', '37513.jpg', 'dycode@gmail.com', '0', '0', 'Jl.Sari Asih no.54', '-', '2', '3', '-', '-', '-', '-', '-', '<p>-</p>', '-', '2017-09-13 13:27:38', 'Y', '2017-09-13 05:40:55', '2017-09-13 06:27:38');
@@ -378,6 +378,7 @@ CREATE TABLE `companyservices` (
   `codecompanypartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codetagservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codeservices` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codecity` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quota` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `quotauser` int(11) NOT NULL,
@@ -392,10 +393,11 @@ CREATE TABLE `companyservices` (
 -- Dumping data for table `companyservices`
 --
 
-INSERT INTO `companyservices` (`id`, `name`, `codecompanyservices`, `codecompanypartnership`, `codetagservices`, `codeservices`, `quota`, `price`, `quotauser`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
-(5, 'Special Packages3', 'COS002', '10', '5', '2', 20, 5000000, 20, 'Special Packages3', '2017-09-13 13:25:34', 'Y', '2017-08-23 21:49:27', '2017-09-13 06:25:34'),
-(8, 'Special Packages2', 'COS005', '9', '5', '2', 100, 700000, 20, 'Special Packages2', '2017-09-13 13:28:11', 'Y', '2017-09-12 09:30:25', '2017-09-13 06:28:11'),
-(13, 'Special Packages1', 'COS009', '7', '5', '2', 100, 200000, 20, 'Special Packages1', '2017-09-13 13:25:15', 'Y', '2017-09-12 22:32:14', '2017-09-13 06:25:15');
+INSERT INTO `companyservices` (`id`, `name`, `codecompanyservices`, `codecompanypartnership`, `codetagservices`, `codeservices`, `codecity`, `quota`, `price`, `quotauser`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
+(5, 'Special Packages3', 'COS002', '10', '5', '2', '3', 20, 5000000, 20, 'Special Packages3', '2017-09-13 13:25:34', 'Y', '2017-08-23 21:49:27', '2017-09-13 06:25:34'),
+(8, 'Special Packages2', 'COS005', '9', '5', '2', '3', 100, 700000, 20, 'Special Packages2', '2017-09-13 13:28:11', 'Y', '2017-09-12 09:30:25', '2017-09-13 06:28:11'),
+(13, 'Special Packages1', 'COS009', '7', '5', '4', '2', 100, 200000, 20, 'Special Packages1', '2017-09-14 04:57:12', 'Y', '2017-09-12 22:32:14', '2017-09-13 21:57:12'),
+(14, 'Special Packages4', 'COS010', '7', '2,5', '5', '2', 20, 20, 10, 'Special Packages4', '2017-09-14 04:32:47', 'N', '2017-09-13 21:30:18', '2017-09-13 21:32:47');
 
 -- --------------------------------------------------------
 
@@ -694,7 +696,9 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `name`, `codecategoryservices`, `codeservices`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'SERVICE21', '4', 'SER001', '1231', 'Y', '2017-08-23 22:07:48', '2017-09-12 01:18:20');
+(2, 'CoWorking', '4', 'SER001', '1231', 'Y', '2017-08-23 22:07:48', '2017-09-13 20:33:18'),
+(4, 'Office', '3', 'SER002', 'Office', 'Y', '2017-09-13 20:33:30', '2017-09-13 20:33:30'),
+(5, 'Residence', '3', 'SER003', 'Residence', 'Y', '2017-09-13 20:33:41', '2017-09-13 20:33:41');
 
 -- --------------------------------------------------------
 
@@ -739,12 +743,11 @@ CREATE TABLE `subscribers` (
 --
 
 INSERT INTO `subscribers` (`id`, `name`, `email`, `status`, `created_at`, `updated_at`) VALUES
-(2, '22', 'navagiaginasta@gmail.com', 'N', '2017-08-28 05:30:18', '2017-08-28 05:30:18'),
 (3, '-', 'navagiaginasta@gmail.com', 'N', '2017-09-13 07:43:32', '2017-09-13 07:43:32'),
 (4, '-', 'admin@example.com', 'N', '2017-09-13 07:44:24', '2017-09-13 07:44:24'),
 (5, '-', 'ketut@gmail.com', 'N', '2017-09-13 07:46:33', '2017-09-13 07:46:33'),
-(6, '-', 'admin@example.com', 'N', '2017-09-13 07:57:07', '2017-09-13 07:57:07'),
-(7, '-', 'andrey@gmail.com', 'N', '2017-09-13 07:57:33', '2017-09-13 07:57:33');
+(7, '-', 'andrey@gmail.com', 'N', '2017-09-13 07:57:33', '2017-09-13 07:57:33'),
+(10, '-', 'nav@gmail.com', 'N', '2017-09-13 09:45:40', '2017-09-13 09:45:40');
 
 -- --------------------------------------------------------
 
@@ -1114,7 +1117,7 @@ ALTER TABLE `companypartnerships`
 -- AUTO_INCREMENT for table `companyservices`
 --
 ALTER TABLE `companyservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `countrys`
 --
@@ -1169,7 +1172,7 @@ ALTER TABLE `paymentmethodes`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `sosialmedias`
 --
@@ -1179,7 +1182,7 @@ ALTER TABLE `sosialmedias`
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tagservices`
 --
