@@ -54,7 +54,7 @@
 										<td>User</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codeuser">
-	   								 				<option value="{{ $edit->user->id }}">{{ $edit->user->name }}</option>
+										<option value="{{ !empty($edit->user->id) ? $edit->user->id : '' }}">{{ !empty($edit->user->name) ? $edit->user->name : '-- Select Category Users --' }} </option>
 	   												 @foreach($user as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
@@ -75,7 +75,7 @@
 									<tr>
 										<td>Image</td>
 										<td>:</td>
-										<td><img src="{{ asset('upload/admin') }}/{{ $edit->image }}" width="80"></td>
+										<td><img src="{{ asset('upload/adminpartnership') }}/{{ $edit->image }}" width="80"></td>
 									</tr>
 									<tr>
 										<td>Edit Image</td>
@@ -103,7 +103,7 @@
 										<td>Company Partnership</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codecompanypartnership">
-	   								 				<option value="{{ $edit->companypartnership->id }}">{{ $edit->companypartnership->name }}</option>
+													<option value="{{ !empty($edit->companypartnership->id) ? $edit->companypartnership->id : '' }}">{{ !empty($edit->companypartnership->name) ? $edit->companypartnership->name : '-- Select Company Partnership --' }} </option>
 	   												 @foreach($companypartnership as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach

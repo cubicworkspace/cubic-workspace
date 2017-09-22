@@ -6,11 +6,12 @@ use DB;
 use App\admins;
 use App\users;
 use App\categoryadmins;
-
-use Illuminate\Http\Request;
+use App\Http\Requests\AdminsRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -27,7 +28,7 @@ class AdminController extends Controller
     public function index()
     {
         $no = 1;
-        $view = Admins::all();
+        $view = Admins::orderBy('id', 'DESC')->get();
         return view('internal.admin.view', compact('view'));
     }
 
@@ -59,9 +60,8 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $admin = new admins;
-
         $extention = Input::file('image')->getClientOriginalExtension();
-        $filename = rand(11111,99999).'.'. $extention;
+        $filename =  date('YmdHis'). ".$extention";
         $request->file('image')->move(
             base_path() . '/public/upload/admin/', $filename
         );
@@ -118,9 +118,9 @@ class AdminController extends Controller
         $admin = admins::find($id);
         $image = Input::file('image');
         if($image) {     
-            File::delete('public/upload/admin'.'/'.$admin->image);
+            File::delete(public_path('/upload/admin/'.$admin->image));
             $extention = Input::file('image')->getClientOriginalExtension();
-            $filename = rand(11111,99999).'.'. $extention;
+            $filename =  date('YmdHis'). ".$extention";
             $request->file('image')->move(
                 base_path() . '/public/upload/admin/', $filename
             );
@@ -161,9 +161,11 @@ class AdminController extends Controller
     public function destroy($id)
     {       
         $admin = admins::find($id);
-            Storage::delete('public/upload/admin'.'/'.$admin->image);
-            $admin->delete();
-             \Session::flash('warning', 'Admin data has been successfully deleted!,');
-            return redirect('/admin');
+        File::delete(public_path('/upload/admin/'.$admin->image));
+        $admin->delete();
+        \Session::flash('warning', 'Admin data has been successfully deleted!,');
+        return redirect('/admin');
     }
+
+
 }

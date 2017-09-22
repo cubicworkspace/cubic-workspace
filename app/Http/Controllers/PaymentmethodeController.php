@@ -22,7 +22,7 @@ class PaymentmethodeController extends Controller
     public function index()
     {
         $no = 1;
-        $view = paymentmethodes::all();
+        $view = paymentmethodes::orderBy('id', 'DESC')->get();
         return view('internal.paymentmethode.view', compact('view'));
     }
 
@@ -40,10 +40,7 @@ class PaymentmethodeController extends Controller
         $noRand++;  
         $char   = "PAM";
         $no   =  $char . sprintf("%03s", $noRand);
-
-
         $categorypaymentmethodes        = categorypaymentmethodes::pluck('name', 'id');
-
         return view('internal.paymentmethode.create', compact('no','categorypaymentmethodes'));
     }
 
@@ -101,8 +98,7 @@ class PaymentmethodeController extends Controller
     public function edit($id)
     {
         $categorypaymentmethode        = categorypaymentmethodes::all();
-
-         $edit = paymentmethodes::find($id);
+        $edit = paymentmethodes::find($id);
         return view('internal.paymentmethode.edit', compact('edit','categorypaymentmethode'));
     }
 
@@ -118,7 +114,7 @@ class PaymentmethodeController extends Controller
          $paymentmethode = paymentmethodes::find($id);
         $logo = Input::file('logo');
         if($logo) {     
-            File::delete('public/upload/paymentmethode'.'/'.$paymentmethode->logo);
+            File::delete(public_path('/upload/paymentmethode/'.$paymentmethode->logo)); 
             $extention = Input::file('logo')->getClientOriginalExtension();
             $filename = rand(11111,99999).'.'. $extention;
             $request->file('logo')->move(
@@ -170,10 +166,10 @@ class PaymentmethodeController extends Controller
      */
     public function destroy($id)
     {
-         $paymentmethode = paymentmethodes::find($id);
-            Storage::delete('public/upload/paymentmethode'.'/'.$paymentmethode->logo);
-            $paymentmethode->delete();
-             \Session::flash('warning', 'Payment Methode data has been successfully deleted!,');
-            return redirect('/paymentmethode');
+        $paymentmethode = paymentmethodes::find($id);
+        File::delete(public_path('/upload/paymentmethode/'.$paymentmethode->logo)); 
+        $paymentmethode->delete();
+        \Session::flash('warning', 'Payment Methode data has been successfully deleted!,');
+        return redirect('/paymentmethode');
     }
 }

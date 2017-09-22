@@ -12,28 +12,46 @@ use Illuminate\Http\Request;
 |
 */
 
+
 /* page user */
 Route::get('/','WebsiteController@index');
-Route::get('package_list','WebsiteController@package_list');
-Route::get('about','WebsiteController@about');
-Route::get('event_site','WebsiteController@event');
-Route::get('contact','WebsiteController@contact');
-Route::post('subscriber/tambah','WebsiteController@subscriber');
-Route::get('newsletter','WebsiteController@newsletter');
-Route::get('detail_company_partnership','WebsiteController@detail_company_partnership');
+Route::get('website/package','WebsiteController@package_list');
+Route::get('website/package/search', 'WebsiteController@package_search');
+Route::get('website/about','WebsiteController@about');
+Route::get('website/events','WebsiteController@event');
+Route::get('website/contact','WebsiteController@contact');
+Route::post('website/subscriber/tambah','WebsiteController@subscriber');
+Route::post('website/register','WebsiteController@register');
+Route::get('website/newsletter','WebsiteController@newsletter');
+Route::get('website/package/detail/{id}/{name}','WebsiteController@package_detail');
+Route::post('website/bookingtour','WebsiteController@bookingtour');
 /* end page user */
+
+/* login social media */
+Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
+/* end login social media */
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
  Route::group(['middleware' => 'web'], function() {
-	Route::auth();
+	 Route::auth();
  });
 
+// Route::resource('login','LoginController'); 
 
+/* page member */
+// Route::post('eksternal','EksternalController');
 
-Route::group(['middleware' => ['member','auth','web','nocache']], function() {
-	Route::resource('login','LoginController'); 
+Route::get('eksternal','Controller@eksternal');
+Route::post('eksternal','Controller@login');
+Route::group(['middleware' => ['member','nocache']], function() {
+	Route::get('member/dashboard','ClientController@index');
+
 });
+/* end page member */
 
 /* PAGE ADMINISTRATOR  */
 Route::get('internal','Controller@internal');
@@ -68,6 +86,8 @@ Route::group(['middleware' => ['admin','auth','web','nocache']], function() {
 	Route::resource('categorypaymentmethode','CategorypaymentmethodeController'); 
 	Route::resource('paymentmethode','PaymentmethodeController'); 
 	Route::resource('bookingspace','BookingspaceController'); 
-	Route::resource('historybookingspace','HistorybookingspaceController'); 
+	Route::resource('historybookingspace','HistorybookingspaceController');
+	Route::resource('mediacompanyservices','MediaCompanyServicesController');  
+	Route::resource('bookingtour','BookingtourController'); 
 	//Route::resource('login','LoginController'); 
 });

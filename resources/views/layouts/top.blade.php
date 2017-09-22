@@ -12,26 +12,37 @@
 				<div id="modal-login-form-wrapper">
 					
 					<!-- Begin # Login Form -->
-					<form id="login-form">
+					<form id="login-form" method="POST" action="{{ url('eksternal') }}">
+					{{csrf_field()}}
 					
-						<div class="modal-body pb-5">
-					
+						<div class="modal-body pb-5">					
 							<h4 class="text-center heading mt-10 mb-20">Sign-in Member</h4>
-						
-							<button class="btn btn-facebook btn-block">Sign-in with Facebook</button>
-							
+								@if ($errors->has('email'))
+                                          <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <i class="fa fa-times-circle"></i> {{ $errors->first('email') }}
+                                          </div>
+                                    @elseif ($errors->has('password'))
+                                          <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <i class="fa fa-times-circle"></i> {{ $errors->first('password') }}
+                                          </div>
+                                    @endif
+							<a href="{{ url('/auth/facebook') }}" class="btn btn-facebook btn-block"><span class="fa fa-facebook"></span>  Sign-in with Facebook</a>
+							<a href="{{ url('/auth/google') }}" class="btn btn-google btn-block"><span class="fa fa-google-plus"></span>
+							   Sign-in with Google</a>
 							<div class="modal-seperator">
 								<span>or</span>
 							</div>
 							
 							<div class="form-group"> 
-								<input id="login_username" class="form-control" placeholder="username" type="text"> 
+								<input name="email" class="form-control" placeholder="Email" type="text" required> 
 							</div>
 							<div class="form-group"> 
-								<input id="login_password" class="form-control" placeholder="password" type="password"> 
+								<input name="password" class="form-control" placeholder="password" type="password" required> 
 							</div>
 			
-							<div class="form-group">
+						<!-- 	<div class="form-group">
 								<div class="row gap-5">
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<div class="checkbox-block fa-checkbox"> 
@@ -39,11 +50,11 @@
 											<label class="" for="remember_me_checkbox">remember</label>
 										</div>
 									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 text-right"> 
+									<!-- <div class="col-xs-6 col-sm-6 col-md-6 text-right"> 
 										<button id="login_lost_btn" type="button" class="btn btn-link">forgot pass?</button>
-									</div>
+									</div> 
 								</div>
-							</div>
+							</div> -->
 						
 						</div>
 						
@@ -66,7 +77,7 @@
 					</form>
 					<!-- End # Login Form -->
 								
-					<!-- Begin | Lost Password Form -->
+					<!-- Begin | Lost Password Form -
 					<form id="lost-form" style="display:none;">
 						<div class="modal-body pb-5">
 						
@@ -99,39 +110,25 @@
 					<!-- End | Lost Password Form -->
 								
 					<!-- Begin | Register Form -->
-					<form id="register-form" style="display:none;">
-					
+					<form id="register-form" style="display:none;" action="/website/register" method="POST">
+					{{csrf_field()}}
 						<div class="modal-body pb-5">
 						
 							<h3 class="text-center heading mt-10 mb-20">Register</h3>
-							
-							<button class="btn btn-facebook btn-block">Register with Facebook</button>
 							
 							<div class="modal-seperator">
 								<span>or</span>
 							</div>
 							
 							<div class="form-group"> 
-								<input id="register_username" class="form-control" type="text" placeholder="Username"> 
+								<input type="text" name="name" class="form-control" placeholder="Name" required=""> 
 							</div>
 							<div class="form-group"> 
-								<input id="register_address" class="form-control" type="text" placeholder="Institution"> 
-							</div>
-
-							<div class="form-group"> 
-								<input id="register_email" class="form-control" type="email" placeholder="Email">
+								<input name="email" class="form-control" type="email" placeholder="Email" required=""> 
 							</div>
 							<div class="form-group"> 
-								<input id="register_phone" class="form-control" type="text" placeholder="Phone"> 
+								<input name="password" class="form-control" type="password" placeholder="Password">
 							</div>
-							<div class="form-group"> 
-								<input id="register_address" class="form-control" type="text" placeholder="Address"> 
-							</div>
-
-							<div class="form-group"> 
-								<input id="register_password" class="form-control" type="password" placeholder="Password">
-							</div>
-							
 							
 
 						</div>
@@ -188,12 +185,29 @@
 								
 									<div class="navbar-mini">
 										<ul class="clearfix">
-										
-										
+											 @guest
 											<li class="user-action">
 												<a data-toggle="modal" href="#loginModal" class="btn">Sign up/in</a>
 											</li>
-
+				                        @else
+				                        	<li class="dropdown bt-dropdown-click hidden-xs">
+												<a id="language-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+													<i class="ion-social-users hidden-xss"></i> 
+				                                    {{ Auth::user()->name }} <span class="caret"></span>
+												</a>
+												<ul class="dropdown-menu" aria-labelledby="language-dropdown">
+													<li><a href="#"><i class="fa fa-user"></i> Edit Profile</a></li>
+												</ul>
+											</li>
+											<li class="user-action">
+												<a href="{{ route('logout') }}" class="btn" 
+				                                            onclick="event.preventDefault();
+				                                                     document.getElementById('logout-form').submit();">Logout</a>
+												<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+				                                            {{ csrf_field() }}
+				                                        </form>
+											</li>
+				                        @endguest
 										</ul>
 									</div>
 						
@@ -216,10 +230,10 @@
 								<div id="navbar" class="collapse navbar-collapse navbar-arrow">
 									<ul class="nav navbar-nav" id="responsive-menu">
 										<li><a href="{{ url('') }}">Home</a></li>
-										<li><a href="{{ url('/package_list') }}">Package</a></li>
-										<li><a href="{{ url('/about') }}">About Us</a></li>
-										<li><a href="{{ url('/event_site') }}">Event</a></li>
-										<li><a href="{{ url('/contact') }}">Contact us</a></li>
+										<li><a href="{{ url('/website/package') }}">Package</a></li>
+										<li><a href="{{ url('/website/about') }}">About Us</a></li>
+										<li><a href="{{ url('/website/events') }}">Event</a></li>
+										<li><a href="{{ url('/website/contact') }}">Contact us</a></li>
 									</ul>
 								</div><!--/.nav-collapse -->
 								

@@ -18,7 +18,7 @@ class MemberController extends Controller
     public function index()
     {
         $no = 1;
-        $view = members::all();
+        $view = members::orderBy('id', 'DESC')->get();
         return view('internal.member.view', compact('view'));
     }
 
@@ -108,8 +108,8 @@ class MemberController extends Controller
     {
         $member = members::find($id);
         $image = Input::file('image');
-        if($image) {     
-            File::delete('public/upload/member'.'/'.$member->image);
+        if($image) {                
+            File::delete(public_path('/upload/member/'.$member->image));
             $extention = Input::file('image')->getClientOriginalExtension();
             $filename = rand(11111,99999).'.'. $extention;
             $request->file('image')->move(
@@ -163,7 +163,8 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-         $member = members::find($id);
+        $member = members::find($id);
+        File::delete(public_path('/upload/member/'.$member->image));
         $member->delete();
         \Session::flash('warning', 'Member data has been successfully deleted!,');
         return redirect('/member');

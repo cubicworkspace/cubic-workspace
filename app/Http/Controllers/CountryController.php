@@ -22,7 +22,7 @@ class CountryController extends Controller
     public function index()
     {       
         $no = 1;
-        $view = countrys::all();
+        $view = countrys::orderBy('id', 'DESC')->get();
         return view('internal.country.view', compact('view'));
     }
 
@@ -107,6 +107,7 @@ class CountryController extends Controller
         $country = countrys::find($id);
         $flag= Input::file('flag');
         if($flag) {     
+            File::delete(public_path('/upload/country/'.$country->flag)); 
             $extention = Input::file('flag')->getClientOriginalExtension();
             $filename = rand(11111,99999).'.'. $extention;
             $request->file('flag')->move(
@@ -144,6 +145,7 @@ class CountryController extends Controller
     public function destroy($id)
     {
         $country = countrys::find($id);
+        File::delete(public_path('/upload/country/'.$country->flag)); 
         $country->delete();
          \Session::flash('warning', 'Country data has been successfully deleted!,');
         return redirect('/country');

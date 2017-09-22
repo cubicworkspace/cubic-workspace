@@ -23,7 +23,7 @@ class MediaController extends Controller
     public function index()
     {
         $no = 1;
-        $view = media::all();
+        $view = media::orderBy('id', 'DESC')->get();
         return view('internal.media.view', compact('view'));
     }
 
@@ -56,7 +56,7 @@ class MediaController extends Controller
         $media= new media;
 
         $extention = Input::file('image')->getClientOriginalExtension();
-        $filename = rand(11111,99999).'.'. $extention;
+        $filename =  date('YmdHis'). ".$extention";
         $request->file('image')->move(
             base_path() . '/public/upload/media/', $filename
         );
@@ -113,11 +113,11 @@ class MediaController extends Controller
     public function update(Request $request, $id)
     {
         $media= media::find($id);
-
         $image = Input::file('image');
-        if($image) {  
+        if($image) {
+            File::delete(public_path('/upload/media/'.$media->image));  
             $extention = Input::file('image')->getClientOriginalExtension();
-            $filename = rand(11111,99999).'.'. $extention;
+            $filename =  date('YmdHis'). ".$extention";
             $request->file('image')->move(
                 base_path() . '/public/upload/media/', $filename
             );
@@ -161,7 +161,7 @@ class MediaController extends Controller
     public function destroy($id)
     {
         $media = media::find($id);
-        Storage::delete('public/upload/media'.'/'.$media->image);
+        File::delete(public_path('/upload/media/'.$media->image));
         $media->delete();
         \Session::flash('warning', 'Media data has been successfully deleted!,');
         return redirect('/media');

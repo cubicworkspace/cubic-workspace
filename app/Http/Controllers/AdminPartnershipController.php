@@ -23,7 +23,7 @@ class AdminPartnershipController extends Controller
     public function index()
     {
         $no = 1;
-        $view = adminspartnerships::all();
+        $view = adminspartnerships::orderBy('id', 'DESC')->get();
         return view('internal.adminpartnership.view', compact('view'));
     }
 
@@ -48,9 +48,8 @@ class AdminPartnershipController extends Controller
     public function store(Request $request)
     {
         $adminpartnership = new adminspartnerships;
-
-         $extention = Input::file('image')->getClientOriginalExtension();
-        $filename = rand(11111,99999).'.'. $extention;
+        $extention = Input::file('image')->getClientOriginalExtension();
+        $filename =  date('YmdHis'). ".$extention";
         $request->file('image')->move(
             base_path() . '/public/upload/adminpartnership/', $filename
         );
@@ -90,9 +89,8 @@ class AdminPartnershipController extends Controller
      */
     public function edit($id)
     {
-        
         $user = users::all();
-         $companypartnership = companypartnership::all();
+        $companypartnership = companypartnership::all();
         $edit = adminspartnerships::find($id);
         return view('internal.adminpartnership.edit', compact('edit','user','companypartnership'));
     }
@@ -109,9 +107,9 @@ class AdminPartnershipController extends Controller
        $adminpartnership = adminspartnerships::find($id);
         $image = Input::file('image');
         if($image) {     
-            File::delete('public/upload/adminpartnership'.'/'.$adminpartnership->image);
-            $extention = Input::file('image')->getClientOriginalExtension();
-            $filename = rand(11111,99999).'.'. $extention;
+            File::delete(public_path('/upload/adminpartnership/'.$adminpartnership->image)); 
+            $extention = Input::file('image')->getClientOriginalExtension();  
+            $filename =  date('YmdHis'). ".$extention";
             $request->file('image')->move(
                 base_path() . '/public/upload/adminpartnership/', $filename
             );
@@ -158,6 +156,7 @@ class AdminPartnershipController extends Controller
     public function destroy($id)
     {
         $adminpartnership = adminspartnerships::find($id);
+        File::delete(public_path('/upload/adminpartnership/'.$adminpartnership->image));
         $adminpartnership->delete();
          \Session::flash('warning', 'Admin Partnership data has been successfully deleted!,');
         return redirect('/adminpartnership');

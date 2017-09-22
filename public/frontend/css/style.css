@@ -3700,7 +3700,14 @@ ul.login-modal-tab-nav li a:hover {
 .btn.btn-facebook:hover {
     opacity: 0.8;
 }
+.btn.btn-google {
+    background: #F44336;
+    color: #FFF;
+}
 
+.btn.btn-google:hover {
+    opacity: 0.8;
+}
 @media only screen and (max-width: 1199px) {}
 
 @media only screen and (max-width: 991px) {}

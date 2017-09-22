@@ -1,6 +1,6 @@
 @extends('layouts.website')
 @section('content')
-
+@include('layouts.flash')
 <!-- start end Page title -->
 			<div class="page-title" style="background-image:url('{{ asset('frontend/images/hero-header/breadcrumb.jpg') }}');">
 				
@@ -41,7 +41,7 @@
 									
 									<div class="sidebar-search-content">
 
-								{!! Form::open(['url' => 'package/search', 'method' => 'GET', 'id' => 'form-pencarian']) !!}
+								{!! Form::open(['url' => 'website/package/search', 'method' => 'GET', 'id' => 'form-pencarian']) !!}
 										<div class="form-group">
 								            {!! Form::select('codecity', $city, (! empty($id) ? $id : null), ['id' => 'codecity', 'class' => 'select2-multi form-control', 'data-placeholder' => 'Choose a Location', 'multiple']) !!}
 										</div>
@@ -52,7 +52,7 @@
 										</div>
 										
 										<div class="form-group">
-            								{!! Form:: text('q', (! empty($q)) ? $q : null,['class' => 'form-control', 'placeholder' => 'Company Service Name']) !!}
+            								{!! Form:: text('q', (! empty($q)) ? $q : null,['class' => 'form-control', 'required' => 'required', 'placeholder' => 'Company Service Name']) !!}
 										</div>
           							  {!! Form::button('Search', ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}
 									
@@ -95,9 +95,9 @@
 												<label class="sorting-label">Sort by: </label> 
 												<div class="sorting-middle-holder">
 													<ul class="sort-by">
-														<li class="active up"><a href="#">Name <i class="fa fa-long-arrow-down"></i></a></li>
+														<li class="active up"><a href="#">Name <i class="fa fa-long-arrow-down"></i></a></li><!-- 
 														<li><a href="#">Price</a></li>
-														<li><a href="#">Location</a></li>
+														<li><a href="#">Location</a></li> -->
 													</ul>
 												</div>
 											</div>
@@ -117,12 +117,12 @@
 							@foreach($companyservices as $row)
 								<div class="package-list-item clearfix">
 									<div class="image">
-										<img src="{{ asset('upload/companypartnership') }}/{{ $row->companypartnership->favicon }}" alt="Tour Package" />
+										<img src="{{ asset('upload/companypartnership') }}/{{ $row->companypartnership->favicon }}" alt="{{ $row->name }}" />
 										<div class="absolute-in-image">											
 										</div>
 									</div>									
 									<div class="content">
-										<h5>{{ $row->name }} <button class="btn"><i class="fa fa-heart-o"></i></button></h5>
+										<h5>{{ $row->name }} <a href="{{ url('/website/package/detail') }}/{{ $row->id }}/{{ str_slug($row->name) }}" class="btn"><i class="fa fa-heart-o"></i></a></h5>
 										<div class="row gap-10">
 											<div class="col-sm-12 col-md-9">
 												<p class="line18">{{ $row->information }}</p>
@@ -132,8 +132,8 @@
 												</ul>
 											</div>
 											<div class="col-sm-12 col-md-3 text-right text-left-sm">
-												<div class="price">Rp {{ $row->price }}</div>
-												<a href="detail_package.php" class="btn btn-primary btn-sm">view</a>
+												<div class="price">Rp {{ number_format($row->price, 2) }}</div>
+												<a href="{{ url('/website/package/detail') }}/{{ $row->id }}/{{ str_slug($row->name) }}" class="btn btn-primary btn-sm">view</a>
 											</div>
 										</div>
 									</div>

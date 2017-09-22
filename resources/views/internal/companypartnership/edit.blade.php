@@ -120,13 +120,12 @@
 										<td>Maps</td>
 										<td>:</td>
 										<td><input type="text" name="maps" value="{{ $edit->maps }}" class="form-control" ></td>
-									</tr>
-									
+									</tr>									
 									<tr>
 										<td>City</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codecity">
-	   								 				<option value="{{ $edit->city->id }}">{{ $edit->city->name }}</option>
+										<option value="{{ !empty($edit->city->id) ? $edit->city->id : '' }}">{{ !empty($edit->city->name) ? $edit->city->name : '-- Select City --' }} </option>
 	   												 @foreach($city as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
@@ -136,7 +135,7 @@
 										<td>Country</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codecountry">
-	   								 				<option value="{{ $edit->country->id }}">{{ $edit->country->name }}</option>
+										<option value="{{ !empty($edit->country->id) ? $edit->country->id : '' }}">{{ !empty($edit->country->name) ? $edit->country->name : '-- Select Country --' }} </option>
 	   												 @foreach($country as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
@@ -167,17 +166,28 @@
 										<td>Mision</td>
 										<td>:</td>
 										<td><textarea name="mision"  class="form-control" >{{ $edit->mision }}</textarea></td>
-									</tr>
+									</tr>									
 									<tr>
 										<td>Faq</td>
 										<td>:</td>
-										<td><input type="text" name="faq" value="{{ $edit->faq }}" class="form-control" ></td>
+										<td><textarea class="ckeditor form-control" name="faq" rows="6" data-error-container="#editor2_error">{{ $edit->faq }}</textarea></td>
 									</tr>
 									<tr>
 										<td>Information</td>
 										<td>:</td>
 										<td><input type="text" name="information" value="{{ $edit->information }}" class="form-control" ></td>
 									</tr>
+									<tr>
+										<td>Tag Service</td>
+										<td>:</td>
+										<td>
+										<div class="mt-checkbox-list">
+										@foreach($tagservices as $key => $value)
+												<label class="mt-checkbox mt-checkbox-outline">{!! Form::checkbox('codetagservices[]', $key, null) !!} {{ $value }}
+										<span></span></label>
+										@endforeach
+	   									</div>
+	   								</td>
 									<tr>
 										<td>Status</td>
 										<td>:</td>

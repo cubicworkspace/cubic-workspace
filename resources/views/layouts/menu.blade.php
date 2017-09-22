@@ -61,7 +61,7 @@
                                  </ul>
                             </li>
 
-                            <li class="nav-item {{ Request::segment(1) === 'companies' ? 'active' : null }} 
+                            <li class="nav-item {{ Request::segment(1) === 'companies/1/edit' ? 'active' : null }} 
                             {{ Request::segment(1) === 'informasicompanies' ? 'active' : null }} ">
                                 <a href="javascript:;" class="nav-link nav-toggle">
                                     <i class="icon-wallet"></i>
@@ -70,7 +70,7 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="nav-item  ">
-                                        <a href="{{ url('/companies') }}" class="nav-link ">
+                                        <a href="{{ url('/companies/1/edit') }}" class="nav-link ">
                                             <span class="title">Companies</span>
                                         </a>
                                     </li>
@@ -110,6 +110,12 @@
                                     <i class="icon-layers"></i>
                                     <span class="title">Company Services</span>
                                 </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/mediacompanyservices') }}" class="nav-link nav-toggle">
+                                    <i class="icon-camera"></i>
+                                    <span class="title">Media Company Services</span>
+                                </a>
                             </li> 
 
                             <li class="nav-item 
@@ -145,6 +151,7 @@
                             {{ Request::segment(1) === 'historybilling' ? 'active' : null }}
                             {{ Request::segment(1) === 'bookingspace' ? 'active' : null }}
                             {{ Request::segment(1) === 'historybookingspace' ? 'active' : null }}
+                            {{ Request::segment(1) === 'bookingtour' ? 'active' : null }}
                             ">
                                 <a href="javascript:;" class="nav-link nav-toggle">
                                     <i class="icon-bulb"></i>
@@ -170,6 +177,11 @@
                                     <li class="nav-item ">
                                         <a href="{{ url('/historybookingspace') }}" class="nav-link ">
                                             <span class="title">History Booking Space</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a href="{{ url('/bookingtour') }}" class="nav-link ">
+                                            <span class="title">Booking Tour</span>
                                         </a>
                                     </li>
                                  </ul>

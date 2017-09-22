@@ -22,7 +22,7 @@ class SubscriberController extends Controller
     public function index()
     {
         $no = 1;
-        $view = subscribers::all();
+        $view = subscribers::orderBy('id', 'DESC')->get();
         return view('internal.subscriber.view', compact('view'));
     }
 

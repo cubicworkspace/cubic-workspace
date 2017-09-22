@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #1 for statistics, charts, recent events and reports" name="description" />
-        <meta content="" name="author" />
+        <meta content="https://www.facebook.com/navagiaginasta" name="author" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/global/plugins/font-awesome/css/font-awesome.min.css') }}">
@@ -31,15 +31,12 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/global/css/plugins.min.css') }}">
         <!-- END THEME GLOBAL STYLES -->
 
-
         <!-- DATEPICKER GLOBAL STYLES -->
         <link href="{{ asset('backend/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/global/plugins/clockface/css/clockface.css') }}" rel="stylesheet" type="text/css" />
-
-
 
         <!-- BEGIN THEME LAYOUT STYLES -->
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/layouts/layout/css/layout.css') }}"/>
@@ -49,7 +46,7 @@
         <link rel="shortcut icon" href="{{ asset('faviconcubic.png') }}" />
      </head>
     <!-- END HEAD -->
-     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+    <body class="page-header-fixed page-footer-fixed page-sidebar-closed-hide-logo page-content-white">
         <div class="page-wrapper">
             <!-- BEGIN HEADER -->
             <div class="page-header navbar navbar-fixed-top">
@@ -75,20 +72,20 @@
                           
                             <li class="dropdown dropdown-user">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <img alt="" class="img-circle" src="{{ asset('internal/layouts/layout/img/avatar3_small.jpg') }}" />
+                                    <!-- <img alt="" class="img-circle" src="{{ asset('internal/layouts/layout/img/avatar3_small.jpg') }}" /> -->
                                     <span class="username username-hide-on-mobile">{{ Auth::user()->name }}  </span>
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
-                                        <a href="page_user_profile_1.html">
+                                        <a href="">
                                             <i class="icon-user"></i> My Profile </a>
                                     </li>
                                     <li>
-                                        <a href="app_calendar.html">
-                                            <i class="icon-calendar"></i> My Calendar </a>
+                                        <a href="{{ url('/') }}" target="_blank">
+                                            <i class="icon-globe"></i> Website </a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a href="app_inbox.html">
                                             <i class="icon-envelope-open"></i> My Inbox
                                             <span class="badge badge-danger"> 3 </span>
@@ -99,12 +96,8 @@
                                             <i class="icon-rocket"></i> My Tasks
                                             <span class="badge badge-success"> 7 </span>
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li class="divider"> </li>
-                                    <li>
-                                        <a href="page_user_lock_1.html">
-                                            <i class="icon-lock"></i> Lock Screen </a>
-                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -120,9 +113,12 @@
                             <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li class="dropdown dropdown-quick-sidebar-toggler">
-                                <a href="javascript:;" class="dropdown-toggle">
+                                <a href="{{ route('logout') }}" class="dropdown-toggle" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="icon-logout"></i>
                                 </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                            </form>
                             </li>
                             <!-- END QUICK SIDEBAR TOGGLER -->
                         </ul>
@@ -226,7 +222,9 @@
         <script src="{{ asset('backend/pages/scripts/dashboard.min.js') }}"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
         <script src="{{ asset('backend/pages/scripts/table-datatables-managed.min.js') }}" type="text/javascript"></script>
-
+        
+        <script src="{{ asset('backend/global/plugins/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+        
 
         <!-- BEGIN DATEPICKER LEVEL PLUGINS -->
         <script src="{{ asset('backend/pages/scripts/components-date-time-pickers.min.js') }}" type="text/javascript"></script>

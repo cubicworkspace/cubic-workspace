@@ -20,7 +20,7 @@ class EventController extends Controller
     public function index()
     {
         $no = 1;
-        $view = events::all();
+        $view = events::orderBy('id', 'DESC')->get();
         return view('internal.event.view', compact('view'));
     }
 
@@ -115,7 +115,7 @@ class EventController extends Controller
         $event = events::find($id);
         $image = Input::file('image');
         if($image) {     
-            File::delete('public/upload/event'.'/'.$event->image);
+            File::delete(public_path('/upload/event/'.$event->image));  
             $extention = Input::file('image')->getClientOriginalExtension();
             $filename = rand(11111,99999).'.'. $extention;
             $request->file('image')->move(
@@ -174,9 +174,9 @@ class EventController extends Controller
     public function destroy($id)
     {
         $event = events::find($id);
-            Storage::delete('public/upload/event'.'/'.$event->image);
-            $event->delete();
-             \Session::flash('warning', 'Event data has been successfully deleted!,');
-            return redirect('/event');
+        File::delete(public_path('/upload/event/'.$event->image));
+        $event->delete();
+        \Session::flash('warning', 'Event data has been successfully deleted!,');
+        return redirect('/event');
     }
 }

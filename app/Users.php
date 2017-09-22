@@ -17,4 +17,5 @@ class Users extends Model
     public function adminspartnership() {
     	return $this->hasOne('App\Adminspartnership', 'codeuser');
     }
+    
 }

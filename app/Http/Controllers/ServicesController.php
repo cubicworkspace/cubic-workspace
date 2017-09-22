@@ -18,7 +18,7 @@ class ServicesController extends Controller
     public function index()
     {
         $no = 1;
-        $view = services::all();
+        $view = services::orderBy('id', 'DESC')->get();
         return view('internal.services.view', compact('view'));
     }
 

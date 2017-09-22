@@ -18,7 +18,7 @@ class BillingCompanyServicesController extends Controller
     public function index()
     {        
         $no = 1;
-        $view = billingcompanyservices::all();
+        $view = billingcompanyservices::orderBy('id', 'DESC')->get();
         return view('internal.billingcompanyservices.view', compact('view'));
     }
 

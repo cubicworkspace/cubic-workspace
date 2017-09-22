@@ -20,7 +20,7 @@ class TestimonialController extends Controller
     public function index()
     {
         $no = 1;
-        $view = testimonials::all();
+        $view = testimonials::orderBy('id', 'DESC')->get();
         return view('internal.testimonial.view', compact('view'));
     }
 
@@ -98,6 +98,7 @@ class TestimonialController extends Controller
 
         $image = Input::file('image');
         if($image) {  
+            File::delete(public_path('/upload/testimonial/'.$testimonial->image));
             $extention = Input::file('image')->getClientOriginalExtension();
             $filename = rand(11111,99999).'.'. $extention;
             $request->file('image')->move(
@@ -137,7 +138,7 @@ class TestimonialController extends Controller
     public function destroy($id)
     {
         $testimonial = testimonials::find($id);
-        Storage::delete('public/upload/testimonial'.'/'.$testimonial->image);
+        File::delete(public_path('/upload/testimonial/'.$testimonial->image));
         $testimonial->delete();
         \Session::flash('warning', 'Testimonial data has been successfully deleted!,');
         return redirect('/testimonial');

@@ -79,7 +79,7 @@
 									<tr>
 										<td>Image</td>
 										<td>:</td>
-										<td><img src="{{ asset('upload/adminpartnership') }}/{{ $edit->image }}" width="80"></td>
+										<td><img src="{{ asset('upload/member') }}/{{ $edit->image }}" width="80"></td>
 									</tr>
 									<tr>
 										<td>Edit Image</td>

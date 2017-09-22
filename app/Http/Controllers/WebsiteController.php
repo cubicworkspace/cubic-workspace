@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\users;
 use App\media;
 use App\categorymedia;
 use App\informasicompanies;
@@ -12,21 +13,19 @@ use App\testimonials;
 use App\subscribers;
 use App\citys;
 use App\services;
-
-use App\companies;
-use App\teams;
-use App\sosialmedias;
-use App\events;
-use App\messages;
-use App\categoryevents;
+use App\mediacompanyservices;
+use App\bookingtour;
 
 use App\Http\Requests; // path saja, untuk form request (jika ada)
 use App\Http\Requests\companyservicesRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
 
 class WebsiteController extends Controller
 {
+  
+
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +33,6 @@ class WebsiteController extends Controller
      */
     public function index()
     {
-        // $media = media::where('codecategorymedia','5')->get();
         $media              = media::find('4');
         $header             = informasicompanies::where('categoryinfromasi', '=', 'HEADER')
                                                  ->where('status', '=', 'Y')->limit(3)->get();
@@ -45,7 +43,9 @@ class WebsiteController extends Controller
         $services           = informasicompanies::where('categoryinfromasi', '=', 'SERVICES')
                                                  ->where('status', '=', 'Y')->limit(3)->get();
         $testimonial        = testimonials::where('status', '=', 'Y')->limit(2)->get();
-        return view('website.index', compact('media','header','topbasecamp','specialpackages','services','testimonial'));
+        $city               = citys::pluck('name','id');
+        $services2           = services::pluck('name','id');
+        return view('website.index', compact('media','header','topbasecamp','specialpackages','services','testimonial','city','services2'));
     }
 
     public function package_list()
@@ -57,8 +57,7 @@ class WebsiteController extends Controller
         return view('website.package_list', compact('companyservices','count_companyservices','city','services'));
     }
 
-
-    public function search(Request $request) {
+    public function package_search(Request $request) {
         $companyservices          = companyservices::paginate(10);
         $count_companyservices    = companyservices::count();
         $city                     = citys::pluck('name','id');
@@ -88,49 +87,86 @@ class WebsiteController extends Controller
         return redirect('package');
     }
 
+     public function package_detail($id, $name='')
+    {
+        $companyservices          = companyservices::findOrFail($id);
+        $mediacompanyservices     = mediacompanyservices::where('codecompanyservices', '=', $id)
+                                                 ->where('status', '=', 'Y')->get();
+        return view('website.package_detail', compact('companyservices','mediacompanyservices'));
+    }
+
     public function about()
     {
-         $companies=companies::all();
-         $team=teams::all();
-         $companypartnership=companypartnership::all();
-         return view('website.about', compact('companies','team','companypartnership'));
+         return view('website.about');
     }
 
     public function event()
     {
-         $categoryevent=categoryevents::all();
-         $event=events::all();
-         return view('website.event', compact('event','categoryevent'));
+         return view('website.event');
     }
 
     public function contact()
     {
-         $companies=companies::all();
-         $informasicompanies=informasicompanies::all();
-         $message=messages::all();
-         $sosialmedia = sosialmedias::all();
-         return view('website.contact', compact('companies','informasicompanies','message','sosialmedia'));
+         return view('website.contact');
     }
 
     public function newsletter()
     {
          return view('website.newsletter');
     }
+
     public function subscriber(Request $request)
     {
-       $subscriber = subscribers::where('email',Input::get('email'))->first();
+        $subscriber = subscribers::where('email',Input::get('email'))->first();
         if (is_null($subscriber)) {
             $subscriber = new subscribers;
             $subscriber->name        = '-';
             $subscriber->email       = $request->email;
             $subscriber->status      = 'N';
             $subscriber->save();
-        \Session::flash('success', 'Terimakasih telah melakukan Newsletter!,');
-        return redirect('/newsletter');
+        \Session::flash('success', 'Thank you for doing Newsletter!');
+        return redirect('/');
         } 
-        \Session::flash('warning', 'Email anda sudah terdaftar di Newsletter!,');
-        return redirect('/newsletter');
+        \Session::flash('warning', 'Your email is already registered in the Newsletter!');
+        return redirect('/');
     
+    }
+
+    public function register(Request $request)
+    {
+        $user = users::where('email',Input::get('email'))->first();
+        if (is_null($user)) {
+            $user = new users;
+            $user->name = $request->name;
+            $user->lastlogin = date('Y-m-d H:i:s');
+            $user->registerdate = date('Y-m-d H:i:s');
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->save();
+        \Session::flash('success', 'Thank you for registering as a member!');
+        return redirect('/');
+        } 
+        \Session::flash('warning', 'Your email is registered as a member!');
+        return redirect('/');
+    
+    }
+
+    public function bookingtour(Request $request)
+    {
+            $bookingtour = new bookingtour;
+            $bookingtour->codecompanyservices     = $request->codecompanyservices;
+            $bookingtour->codecompanypartnership  = $request->codecompanypartnership;
+            $bookingtour->date                    = $request->date;
+            $bookingtour->time                    = $request->time;
+            $bookingtour->status                  = 'N';
+            $bookingtour->save();
+        \Session::flash('success', 'Thank you for doing Booking Tour!');
+        return redirect('/website/package');
+    }
+
+    public function dashboard()
+    {
+         return view('website.dashboard');
     }
    
 }

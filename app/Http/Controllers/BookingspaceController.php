@@ -27,7 +27,7 @@ class BookingspaceController extends Controller
     public function index()
     {
         $no = 1;
-        $view = bookingspaces::all();
+        $view = bookingspaces::orderBy('id', 'DESC')->get();
         return view('internal.bookingspace.view', compact('view'));
     }
 

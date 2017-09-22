@@ -14,11 +14,11 @@ class IsMember
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+     public function handle($request, Closure $next)
     {
-        if(Auth::user()->status !== 'USER') {
-            return view('internal.login');
-        }
+        if(!(Auth::user()->status == 'USER')) {
+            return redirect('/member/dashboard');
+        } 
         return $next($request);
     }
 }

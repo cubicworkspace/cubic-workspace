@@ -59,7 +59,7 @@
 										<td>User</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id" value="name" name="codeuser">
-	   								 				<option value="{{ $edit->user->id }}">{{ $edit->user->name }}</option>
+	   								 				<option value="{{ !empty($edit->user->name) ? $edit->user->name : '' }}">{{ !empty($edit->user->name) ? $edit->user->name : '-- Select Users --' }} </option>
 	   												 @foreach($user as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
@@ -103,7 +103,7 @@
 										<td>Category Admin</td>
 										<td>:</td>
 										<td> <select class="form-control" id="id"  name="codecategoryadmin">
-	   								 				<option value="{{ $edit->categoryadmin->id }}">{{ $edit->categoryadmin->name }}</option>
+	   								 				<option value="{{ !empty($edit->categoryadmin->id) ? $edit->categoryadmin->id : '' }}">{{ !empty($edit->categoryadmin->name) ? $edit->categoryadmin->name : '-- Select Category Admin --' }} </option>
 	   												 @foreach($categoryadmin as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach

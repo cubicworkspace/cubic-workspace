@@ -7,9 +7,14 @@ use App\companyservices;
 use App\tagservices;
 use App\companypartnership;
 use App\services;
+use App\citys;
+use App\tagcompanyservices;
+use App\Http\Requests;
+use App\Http\Requests\CompanyservicesRequest;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class CompanyServicesController extends Controller
 {
@@ -23,7 +28,7 @@ class CompanyServicesController extends Controller
     {
         
         $no = 1;
-        $view = companyservices::all();
+        $view = companyservices::orderBy('id', 'DESC')->get();
         return view('internal.companyservices.view', compact('view'));
     }
 
@@ -34,7 +39,6 @@ class CompanyServicesController extends Controller
      */
     public function create()
     {
-        
         $companyservices = DB::select('select max(codecompanyservices) as idMaks from companyservices');
         foreach($companyservices as $row3){}
         $nomor  = $row3->idMaks; 
@@ -42,10 +46,11 @@ class CompanyServicesController extends Controller
         $noRand++;  
         $char   = "COS";
         $no   =  $char . sprintf("%03s", $noRand);
-        $tagservices = tagservices::pluck('codetagservices', 'id');
+        $tagservices = tagservices::where('choosetagservices', '=', 'COMPANY SERVICES')->pluck('name', 'id');
         $companypartnership = companypartnership::pluck('name', 'id');
         $services = services::pluck('name', 'id');
-        return view('internal.companyservices.create', compact('no','tagservices','companypartnership','services'));
+        $city = citys::pluck('name', 'id');
+        return view('internal.companyservices.create', compact('no','tagservices','companypartnership','services','city'));
     }
 
     /**
@@ -56,15 +61,16 @@ class CompanyServicesController extends Controller
      */
     public function store(Request $request)
     {
-        $companyservices = new companyservices;
+         $companyservices = new companyservices;
         $this->validate($request, [            
              'name' => 'required']);
         $companyservices->name = $request->name;
         $companyservices->codecompanyservices = $request->codecompanyservices;
         $companyservices->codeservices = $request->codeservices;
+        $companyservices->codecity = $request->codecity;
         $companyservices->codecompanypartnership = $request->codecompanypartnership;
-        $companyservices->codetagservices = $request->codetagservices;
         $companyservices->information = $request->information;
+        $companyservices->codetagservices = '-';
         $companyservices->quota = $request->quota;
         $companyservices->price = $request->price;
         $companyservices->quotauser = $request->quotauser;
@@ -72,6 +78,7 @@ class CompanyServicesController extends Controller
         $companyservices->registerdate = date('Y-m-d H:i:s');
         $companyservices->status = $request->status;
         $companyservices->save();
+        $companyservices->tagservices()->attach($request->input('codetagservices'));
         \Session::flash('success', 'Company Services data has been successfully added!,');
         return redirect('/companyservices');
     }
@@ -95,11 +102,12 @@ class CompanyServicesController extends Controller
      */
     public function edit($id)
     {
-        $tagservices = tagservices::all();
         $companypartnership = companypartnership::all();
         $services = services::all();
+        $city = citys::all();
         $edit = companyservices::find($id);
-        return view('internal.companyservices.edit', compact('edit','tagservices','companypartnership','services'));
+        $listtagservices = tagservices::where('choosetagservices', '=', 'COMPANY SERVICES')->pluck('name', 'id');
+        return view('internal.companyservices.edit', compact('edit','listtagservices','companypartnership','services','city'));
     }
 
     /**
@@ -111,14 +119,13 @@ class CompanyServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $companyservices = companyservices::find($id);
         $this->validate($request, [            
              'name' => 'required']);
         $companyservices->name = $request->name;
         $companyservices->codeservices = $request->codeservices;
+        $companyservices->codecity = $request->codecity;
         $companyservices->codecompanypartnership = $request->codecompanypartnership;
-        $companyservices->codetagservices = $request->codetagservices;
         $companyservices->information = $request->information;
         $companyservices->quota = $request->quota;
         $companyservices->price = $request->price;
@@ -127,6 +134,10 @@ class CompanyServicesController extends Controller
         $companyservices->registerdate = date('Y-m-d H:i:s');
         $companyservices->status = $request->status;
         $companyservices->save();
+           if (! is_null($request->input('tag_services'))) {
+            $companyservices->tagservices()->sync($request->input('tag_services'));
+        }
+
         \Session::flash('success', 'Company Services data has been edited successfully!,');
         return redirect('/companyservices');
     }

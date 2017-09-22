@@ -1,5 +1,5 @@
 @extends('layouts.internal')
-@section('title','Edit companies')
+@section('title','Edit Companies')
 @section('content')  
  <!-- BEGIN CONTENT BODY -->
                     <div class="page-content">
@@ -26,7 +26,7 @@
                         <!-- END PAGE TITLE-->
                         <!-- END PAGE HEADER-->
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12">							
                                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                                 <div class="portlet light bordered">
                                     <div class="portlet-title">
@@ -35,6 +35,22 @@
                                             <span class="caption-subject bold uppercase"> Managed @yield('title')</span>
                                         </div>
                                     </div>
+                                    @if (Session::has('success'))
+						                    <div class="alert alert-success alert-dismissible" role="alert">
+						                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						                    <i class="fa fa-check-circle"></i> {!! session('success') !!}
+						                  </div>
+						            @elseif (Session::has('warning'))
+						                  <div class="alert alert-warning alert-dismissible" role="alert">
+						                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						                    <i class="fa fa-warning"></i> {!! session('warning') !!}
+						                  </div>
+						            @elseif (Session::has('error'))
+						                  <div class="alert alert-danger alert-dismissible" role="alert">
+						                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						                    <i class="fa fa-times-circle"></i> {!! session('error') !!}
+						                  </div>
+						            @endif
                                     @if (count($errors)>0)
 										<div class="alert alert-danger alert-dismissible">
 						                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -119,8 +135,8 @@
 									</tr>
 									<tr>
 										<td>Profile</td>
-										<td>:</td>
-										<td><input type="text" name="profile" value="{{ $edit->profile }}" class="form-control" ></td>
+										<td>:</td>	
+										<td><textarea class="ckeditor form-control" name="profile" rows="6" data-error-container="#editor2_error">{{ $edit->profile }}</textarea></td>
 									</tr>
 									<tr>
 										<td>History</td>
@@ -130,7 +146,7 @@
 									<tr>
 										<td>Description</td>
 										<td>:</td>
-										<td><textarea name="description"  class="form-control" >{{ $edit->description }}</textarea></td>
+										<td><textarea class="ckeditor form-control" name="description" rows="6" data-error-container="#editor2_error">{{ $edit->description }}</textarea></td>
 									</tr>
 									<tr>
 										<td>Vision</td>
@@ -153,8 +169,7 @@
 						                   </label></td>
 									</tr>
 									<tr>
-										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>
-									    <input class="btn btn-default" type="reset" name="batal" value="Cancel" onclick="location.href='/companies/'"/></td>
+										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button></td>
 									</tr>
 									</table>
 									</div>

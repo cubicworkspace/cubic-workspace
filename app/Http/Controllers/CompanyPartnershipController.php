@@ -6,6 +6,7 @@ use DB;
 use App\companypartnership;
 use App\countrys;
 use App\citys;
+use App\tagservices;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -24,7 +25,7 @@ class CompanyPartnershipController extends Controller
     public function index()
     {
         $no = 1;
-        $view = companypartnership::all();
+        $view = companypartnership::orderBy('id', 'ASC')->get();
         return view('internal.companypartnership.view', compact('view'));
     }
 
@@ -43,8 +44,9 @@ class CompanyPartnershipController extends Controller
         $char   = "COP";
         $no   =  $char . sprintf("%03s", $noRand);
         $city = citys::pluck('name', 'id');
-         $country = countrys::pluck('name', 'id');
-        return view('internal.companypartnership.create', compact('no','country','city'));
+        $country = countrys::pluck('name', 'id');
+        $tagservices = tagservices::where('choosetagservices', '=', 'PARTNERSHIP')->pluck('name', 'id');
+        return view('internal.companypartnership.create', compact('no','country','city','tagservices'));
     }
 
     /**
@@ -76,6 +78,7 @@ class CompanyPartnershipController extends Controller
         $companypartnership->codecompanypartnership = $request->codecompanypartnership;
         $companypartnership->favicon = $favicon;
         $companypartnership->logo = $filename;
+        $companypartnership->codetagservices = implode($request->codetagservices, ',');
         $companypartnership->email = $request->email;
         $companypartnership->phone = $request->phone;
         $companypartnership->fax = $request->fax;
@@ -117,10 +120,11 @@ class CompanyPartnershipController extends Controller
     public function edit($id)
     {
         
-       $country = countrys::all();
-         $city = citys::all();
+        $country = countrys::all();
+        $city = citys::all();
         $edit = companypartnership::find($id);
-        return view('internal.companypartnership.edit', compact('edit','country','city'));
+        $tagservices = tagservices::where('choosetagservices', '=', 'PARTNERSHIP')->pluck('name', 'id');
+        return view('internal.companypartnership.edit', compact('edit','country','city','tagservices'));
     }
 
     /**
@@ -136,11 +140,13 @@ class CompanyPartnershipController extends Controller
         $logo = Input::file('logo');
         $favicon = Input::file('favicon');
         if($logo && $favicon) {     
+            File::delete(public_path('/upload/companypartnership/'.$companypartnership->logo));  
             $extention = Input::file('logo')->getClientOriginalExtension();
             $filename = rand(11111,99999).'.'. $extention;
             $request->file('logo')->move(
                 base_path() . '/public/upload/companypartnership/', $filename
             );
+            File::delete(public_path('/upload/companypartnership/'.$companypartnership->favicon));  
             $extention2 = Input::file('favicon')->getClientOriginalExtension();
             $favicon = rand(11111,99999).'.'. $extention2;
             $request->file('favicon')->move(
@@ -155,6 +161,7 @@ class CompanyPartnershipController extends Controller
             $companypartnership->name = $request->name;
             $companypartnership->favicon = $favicon;
             $companypartnership->logo = $filename;
+            $companypartnership->codetagservices = implode($request->codetagservices, ',');
             $companypartnership->email = $request->email;
             $companypartnership->phone = $request->phone;
             $companypartnership->fax = $request->fax;
@@ -184,6 +191,7 @@ class CompanyPartnershipController extends Controller
             $companypartnership->name = $request->name;
             $companypartnership->email = $request->email;
             $companypartnership->phone = $request->phone;
+            $companypartnership->codetagservices = implode($request->codetagservices, ',');
             $companypartnership->fax = $request->fax;
             $companypartnership->address = $request->address;
             $companypartnership->maps = $request->maps;
@@ -213,6 +221,8 @@ class CompanyPartnershipController extends Controller
     public function destroy($id)
     {
         $companypartnership = companypartnership::find($id);
+        File::delete(public_path('/upload/companypartnership/'.$companypartnership->logo));  
+        File::delete(public_path('/upload/companypartnership/'.$companypartnership->favicon));  
         $companypartnership->delete();
         \Session::flash('warning', 'Company Partnership data has been successfully deleted!,');
         return redirect('/companypartnership');

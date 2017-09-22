@@ -77,9 +77,7 @@
 		 <a href="#"><i class="fa fa-angle-up"></i></a>
 	</div>
 	<!-- end Back To Top -->
-
-
-
+@include('layouts.flash')
 <!-- JS -->
 <script type="text/javascript" src="{{ asset('frontend/js/jquery-1.11.3.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/js/jquery-migrate-1.2.1.min.js') }}"></script>
@@ -101,7 +99,9 @@
 <script type="text/javascript" src="{{ asset('frontend/js/jquery.raty.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('frontend/js/customs.js') }}"></script>
 
-
+<script>
+$('#myModal').modal('show');
+</script>
 </body>
 
 <!-- Mirrored from crenoveative.com/envato/tour-packer/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Mar 2017 03:28:49 GMT -->

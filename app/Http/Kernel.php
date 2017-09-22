@@ -58,7 +58,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'admin' => \App\Http\Middleware\IsAdmin::class,
         'member' => \App\Http\Middleware\IsMember::class,
-        'AdminPatnership' => \App\Http\Middleware\IsAdminPatnership::class,
+        'adminpatnership' => \App\Http\Middleware\IsAdminPatnership::class,
         'nocache'=>\App\Http\Middleware\NoCacheMiddleware::class,
     ];
 }

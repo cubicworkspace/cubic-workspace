@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+
 class IsAdminPatnership
 {
     /**
@@ -15,9 +16,9 @@ class IsAdminPatnership
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->check() && $request->user()->status == 'ADMIN PATNERSHIP') {
-            return redirect('home');
+        if(!(Auth::user()->status == 'ADMIN PARTNERSHIP')) {
+            return redirect('/');
         } 
-        return redirect()->guest('/');
+        return $next($request);
     }
 }

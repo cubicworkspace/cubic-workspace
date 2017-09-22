@@ -55,6 +55,22 @@ return [
             'driver' => 'token',
             'provider' => 'admins',
         ],
+
+
+        'admin' =>  [
+            'driver'   => 'session',
+            'provider' => 'admin',
+        ],
+     
+        'member' =>  [
+            'driver'   => 'session',
+            'provider' => 'member',
+        ],
+     
+        'adminpartnership' =>  [
+            'driver'   => 'session',
+            'provider' => 'adminpartnership',
+        ],
     ],
 
     /*
@@ -83,6 +99,22 @@ return [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
         ],
+
+        'admin' =>  [
+            'driver' => 'eloquent',
+            'model'  => App\Doctor::class,
+        ],
+     
+        'member' =>  [
+            'driver' => 'eloquent',
+            'model'  => App\Patient::class,
+        ],
+     
+        'adminpartnership' =>  [
+            'driver' => 'eloquent',
+            'model'  => App\Staff::class,
+        ],
+
 
         // 'users' => [
         //     'driver' => 'database',

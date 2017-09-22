@@ -18,7 +18,7 @@ class CategoryServicesController extends Controller
     public function index()
     {
         $no = 1;
-        $view = categoryservices::all();
+        $view = categoryservices::orderBy('id', 'DESC')->get();
         return view('internal.categoryservices.view', compact('view'));
     }
 

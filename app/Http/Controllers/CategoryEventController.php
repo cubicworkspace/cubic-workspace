@@ -19,7 +19,7 @@ class CategoryEventController extends Controller
     public function index()
     {
         $no = 1;
-        $view = categoryevents::all();
+        $view = categoryevents::orderBy('id', 'DESC')->get();
         return view('internal.categoryevent.view', compact('view'));
     }
 

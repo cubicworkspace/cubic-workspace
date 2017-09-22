@@ -19,61 +19,34 @@
 					</div>
 					<div class="main-search-wrapper full-width">
 					
-						<div class="inner">
-						
-							<div class="column-item">
-							
+						<div class="inner">						
+								{!! Form::open(['url' => 'website/package/search', 'method' => 'GET', 'id' => 'form-pencarian']) !!}
+							<div class="column-item">							
 								<div class="form-group">
-								
-									<select name="destination" class="select2-multi form-control" data-placeholder="Choose a City" multiple>
-										<option value="">Choose a City </option>
-										<option value="0">Any City</option>
-										<option value="Albania">Bandung</option>
-										<option value="Austria">Jakarta</option>
-										<option value="Belgium">Jogja</option>
-										
-									</select>
-
+								{!! Form::select('codecity', $city, (! empty($id) ? $id : null), ['id' => 'codecity', 'class' => 'select2-multi form-control', 
+								'data-placeholder' => 'Choose a Location', 'multiple']) !!}
 								</div>
 							
 							</div>
 							
-							<div class="column-item">
-							
-								<div class="form-group">
-								
-									<select name="month" class="select2-multi form-control" data-placeholder="Choose a Type " multiple>
-										<option value="">Choose a Type</option>
-										<option value="0">Any Type</option>
-										<option value="1">Office</option>
-										<option value="2">Workspace</option>
-										<option value="3">Meeting Room</option>
-									</select>
-									
-								</div>
-							
+							<div class="column-item">							
+								<div class="form-group">								
+								  {!! Form::select('codeservices', $services2, (! empty($id) ? $id : null), ['id' => 'codeservices', 'class' => 'select2-multi form-control', 'data-placeholder' => 'Choose a Type Services', 'multiple']) !!}
+								</div>							
 							</div>
 							
-							<div class="column-item">
-							
+							<div class="column-item">							
 								<div class="form-group">
-
-									<input id="login_username" class="form-control" placeholder="username" type="date"> 
-									
-								</div>
-							
+								{!! Form:: text('q', (! empty($q)) ? $q : null,['class' => 'form-control', 'required' => 'required', 'placeholder' => 'Company Service Name']) !!}			
+								</div>							
 							</div>
 							
-							<div class="column-item for-btn">
-							
+							<div class="column-item for-btn">							
 								<div class="form-group">
-								
-									<a href="#" class="btn btn-primary btn-block">Search</a>
-									
-								</div>
-							
+          							  {!! Form::button('Search', ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}								
+								</div>							
 							</div>
-							
+							</form>
 						</div>
 						
 					</div>
@@ -314,7 +287,7 @@
 						
 						<div class="flex-columns flex-sm-12">
 							<div class="newsletter-form">
-								<form action="/subscriber/tambah" method="POST">
+								<form action="/website/subscriber/tambah" method="POST">
 									{{csrf_field()}}
 									<div class="input-group">
 										<input type="email" required class="form-control" name="email" placeholder="Newsletter..">

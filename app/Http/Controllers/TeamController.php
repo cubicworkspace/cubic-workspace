@@ -21,7 +21,7 @@ class TeamController extends Controller
     public function index()
     {
         $no = 1;
-        $view = teams::all();
+        $view = teams::orderBy('id', 'DESC')->get();
         return view('internal.team.view', compact('view'));
     }
 
@@ -96,10 +96,10 @@ class TeamController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $team= teams::find($id);
-
+        $team= teams::find($id);
         $image = Input::file('image');
         if($image) {  
+            File::delete(public_path('/upload/team/'.$team->image));
             $extention = Input::file('image')->getClientOriginalExtension();
             $filename = rand(11111,99999).'.'. $extention;
             $request->file('image')->move(
@@ -141,7 +141,7 @@ class TeamController extends Controller
     public function destroy($id)
     {
         $team = teams::find($id);
-        Storage::delete('public/upload/team'.'/'.$team->image);
+        File::delete(public_path('/upload/team/'.$team->image));
         $team->delete();
         \Session::flash('warning', 'Team data has been successfully deleted!,');
         return redirect('/team');

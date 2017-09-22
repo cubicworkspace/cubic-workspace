@@ -16,6 +16,9 @@ class Controller extends BaseController
  	public function internal () {
    		return view('internal.login');
   	}
+  	public function eksternal () {
+   		return view('internal.login');
+  	}
     // public function login () {
         // return "sudah login";
     // }

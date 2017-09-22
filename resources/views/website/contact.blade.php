@@ -201,9 +201,7 @@
 								<div class="col-sm-4">
 
 									<h5 class="heading mt-5">Let's Social</h5>
-									<p>@foreach($companies as $row)
-	   								 						<span><option value="{{ $row->id }}">{{ $row->profile }}</option></span>
-	   												 @endforeach</p>
+									<p>May indulgence difficulty ham can put especially. Bringing remember for supplied her why was confined. Middleton principle did she procuring extensive believing add. Weather adapted prepare oh is calling.</p>
 									
 									<div class="boxed-social mb-30-xs clearfix">
 										

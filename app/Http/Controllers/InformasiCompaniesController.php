@@ -23,7 +23,7 @@ class InformasiCompaniesController extends Controller
     {
         
         $no = 1;
-        $view = informasicompanies::all();
+        $view = informasicompanies::orderBy('id', 'DESC')->get();
         return view('internal.informasicompanies.view', compact('view'));
     }
 
@@ -48,7 +48,7 @@ class InformasiCompaniesController extends Controller
         $informasicompanies = new informasicompanies;
 
         $extention = Input::file('icon')->getClientOriginalExtension();
-        $filename = rand(11111,99999).'.'. $extention;
+        $filename =  date('YmdHis'). ".$extention";
         $request->file('icon')->move(
             base_path() . '/public/upload/informasicompanies/', $filename
         );
@@ -60,6 +60,7 @@ class InformasiCompaniesController extends Controller
         $informasicompanies->title = $request->title;
         $informasicompanies->description = $request->description;
         $informasicompanies->icon = $filename;
+        $informasicompanies->categoryinfromasi= $request->categoryinfromasi;
         $informasicompanies->status = $request->status;
         $informasicompanies->save();
         \Session::flash('success', 'Informasi Companies data has been successfully added!,');
@@ -101,8 +102,9 @@ class InformasiCompaniesController extends Controller
         $informasicompanies = informasicompanies::find($id);
         $icon = Input::file('icon');
         if($icon) {     
+            File::delete(public_path('/upload/informasicompanies/'.$informasicompanies->icon));  
             $extention = Input::file('icon')->getClientOriginalExtension();
-            $filename = rand(11111,99999).'.'. $extention;
+            $filename =  date('YmdHis'). ".$extention";
             $request->file('icon')->move(
                 base_path() . '/public/upload/informasicompanies/', $filename
             );
@@ -114,6 +116,7 @@ class InformasiCompaniesController extends Controller
             $informasicompanies->title = $request->title;
             $informasicompanies->description = $request->description;
             $informasicompanies->icon = $filename;
+            $informasicompanies->categoryinfromasi = $request->categoryinfromasi;
             $informasicompanies->status = $request->status;
             $informasicompanies->save();
             \Session::flash('success', 'Informasi Companies data has been edited successfully!,');
@@ -125,6 +128,7 @@ class InformasiCompaniesController extends Controller
             $informasicompanies->name = $request->name;
             $informasicompanies->title = $request->title;
             $informasicompanies->description = $request->description;
+            $informasicompanies->categoryinfromasi= $request->categoryinfromasi;
             $informasicompanies->status = $request->status;
             $informasicompanies->save();
             \Session::flash('success', 'Informasi Companies data has been edited successfully!,');
@@ -141,6 +145,7 @@ class InformasiCompaniesController extends Controller
     public function destroy($id)
     {
         $informasicompanies = informasicompanies::find($id);
+        File::delete(public_path('/upload/informasicompanies/'.$informasicompanies->icon));   
         $informasicompanies->delete();
         \Session::flash('warning', 'Informasi Companies data has been successfully deleted!,');
         return redirect('/informasicompanies');
