@@ -1,6 +1,6 @@
 
 @if (Session::has('success'))
-	<div id="myModal" class="modal fade" role="dialog">
+	<div id="confirmationModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -18,7 +18,7 @@
 	    </div>
 	</div>
 @elseif (Session::has('warning'))
-	<div id="myModal" class="modal fade" role="dialog">
+	<div id="confirmationModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -36,7 +36,7 @@
 	    </div>
 	</div>
 @elseif (Session::has('error'))
-	<div id="myModal" class="modal fade" role="dialog">
+	<div id="confirmationModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">

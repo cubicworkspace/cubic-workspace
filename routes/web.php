@@ -17,14 +17,16 @@ use Illuminate\Http\Request;
 Route::get('/','WebsiteController@index');
 Route::get('website/package','WebsiteController@package_list');
 Route::get('website/package/search', 'WebsiteController@package_search');
+Route::get('website/package/searchroom', 'WebsiteController@package_searchroom');
+Route::get('website/package/detail/{id}/{name}','WebsiteController@package_detail');
 Route::get('website/about','WebsiteController@about');
 Route::get('website/events','WebsiteController@event');
 Route::get('website/contact','WebsiteController@contact');
 Route::post('website/subscriber/tambah','WebsiteController@subscriber');
-Route::post('website/register','WebsiteController@register');
 Route::get('website/newsletter','WebsiteController@newsletter');
-Route::get('website/package/detail/{id}/{name}','WebsiteController@package_detail');
 Route::post('website/bookingtour','WebsiteController@bookingtour');
+Route::get('website/loginmember','WebsiteController@loginmember');
+Route::post('website/register','WebsiteController@register');
 /* end page user */
 
 /* login social media */
@@ -49,6 +51,11 @@ Route::get('eksternal','Controller@eksternal');
 Route::post('eksternal','Controller@login');
 Route::group(['middleware' => ['member','nocache']], function() {
 	Route::get('member/dashboard','ClientController@index');
+	Route::get('website/package/booking/{id}/{name}','WebsiteController@booking');
+	Route::get('website/package/bookingroom','WebsiteController@bookingroom');
+	Route::post('website/package/bookingroom/send','WebsiteController@bookingsend');
+	Route::get('website/package/bookingroom/thanks/{invoice}','WebsiteController@bookingthanks');
+	Route::get('website/package/invoice/print/{invoice}','WebsiteController@invoice_print');
 
 });
 /* end page member */

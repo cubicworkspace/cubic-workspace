@@ -41,6 +41,9 @@
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,300italic,300' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
+    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+
 	<!-- CSS Custom -->
 	<link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 
@@ -77,7 +80,7 @@
 		 <a href="#"><i class="fa fa-angle-up"></i></a>
 	</div>
 	<!-- end Back To Top -->
-@include('layouts.flash')
+	@include('layouts.flash')
 <!-- JS -->
 <script type="text/javascript" src="{{ asset('frontend/js/jquery-1.11.3.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/js/jquery-migrate-1.2.1.min.js') }}"></script>
@@ -98,11 +101,22 @@
 <script type="text/javascript" src="{{ asset('frontend/js/validator.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/js/jquery.raty.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('frontend/js/customs.js') }}"></script>
-
+<script type="text/javascript">
+$(function(){
+$('.input-group.date').datepicker({
+    calendarWeeks: true,
+    todayHighlight: true,
+    autoclose: true,
+     dateFormat: 'yy-mm-dd'
+});
+});
+ </script>
 <script>
-$('#myModal').modal('show');
+$('#confirmationModal').modal('show');
 </script>
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.3.js'></script>
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
 </body>
 
-<!-- Mirrored from crenoveative.com/envato/tour-packer/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Mar 2017 03:28:49 GMT -->
 </html>

@@ -9,6 +9,7 @@ use App\companypartnership;
 use App\services;
 use App\citys;
 use App\tagcompanyservices;
+use App\billingcompanyservices;
 use App\Http\Requests;
 use App\Http\Requests\CompanyservicesRequest;
 
@@ -61,7 +62,8 @@ class CompanyServicesController extends Controller
      */
     public function store(Request $request)
     {
-         $companyservices = new companyservices;
+        $companyservices = new companyservices;
+        $billingcompanyservices = new billingcompanyservices;
         $this->validate($request, [            
              'name' => 'required']);
         $companyservices->name = $request->name;
@@ -77,7 +79,17 @@ class CompanyServicesController extends Controller
         $companyservices->information = $request->information;
         $companyservices->registerdate = date('Y-m-d H:i:s');
         $companyservices->status = $request->status;
+
+        $billingcompanyservices->codecompanyservices = $request->codecompanyservices;
+        $billingcompanyservices->name = $request->name;
+        $billingcompanyservices->codecompanypartnership = $request->codecompanypartnership;
+        $billingcompanyservices->quota = $request->quota;
+        $billingcompanyservices->currentquota = $request->quota;
+        $billingcompanyservices->information = $request->information;   
+        $billingcompanyservices->registerdate = date('Y-m-d H:i:s');
+
         $companyservices->save();
+        $billingcompanyservices->save();
         $companyservices->tagservices()->attach($request->input('codetagservices'));
         \Session::flash('success', 'Company Services data has been successfully added!,');
         return redirect('/companyservices');

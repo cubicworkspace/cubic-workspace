@@ -70,7 +70,7 @@
 							</div>
 							<div class="text-left">
 								No account? 
-								<button id="login_register_btn" type="button" class="btn btn-link">Register</button>
+								<a href="{{ url('website/loginmember') }}" id="login_register_btn" class="btn btn-link">Register</a>
 							</div>
 							
 						</div>

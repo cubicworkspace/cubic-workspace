@@ -85,6 +85,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
                                                     <th>Company Services</th>
                                                     <th>Company Partnership</th>
                                                     <th>Date</th>
@@ -96,6 +98,8 @@
                                             @foreach ($view as $no => $row)
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
+                                                    <td>{{ $row->email }}</td>
+                                                    <td>{{ $row->phone }}</td>
                                                     <td>{{ !empty($row->companyservices->name) ? $row->companyservices->name : '-' }} </td>
                                                     <td>{{ !empty($row->companypartnership->name) ? $row->companypartnership->name : '-' }} </td>
                                                     <td>{{ date('d F Y', strtotime($row->date))}}</td>
