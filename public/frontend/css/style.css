@@ -2465,7 +2465,9 @@ ul.itinerary-meta li {
 }
 
 .partner-image-item img {
-    width: auto;
+    width: 162px;
+    height: 72px;
+    padding: 5px;
     display: inline-block;
 }
 

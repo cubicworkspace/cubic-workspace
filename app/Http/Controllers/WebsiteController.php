@@ -19,13 +19,21 @@ use App\bookingtour;
 use App\bookingspaces;
 use App\billingcompanyservices;
 use App\paymentmethodes;
+use App\companies;
+use App\teams;
+use App\events;
+use App\categoryevents;
+use App\sosialmedias;
+use App\messages;
 
 use App\Http\Requests; 
 use App\Http\Requests\companyservicesRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Session;
+use PDF;
 
 class WebsiteController extends Controller
 {
@@ -38,6 +46,8 @@ class WebsiteController extends Controller
      */
     public function index()
     {
+        $sosialmedia        = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas          = companies::find('1');
         $media              = media::find('4');
         $header             = informasicompanies::where('categoryinfromasi', '=', 'HEADER')
                                                  ->where('status', '=', 'Y')->limit(3)->get();
@@ -49,20 +59,24 @@ class WebsiteController extends Controller
                                                  ->where('status', '=', 'Y')->limit(3)->get();
         $testimonial        = testimonials::where('status', '=', 'Y')->limit(2)->get();
         $city               = citys::pluck('name','id');
-        $services2           = services::pluck('name','id');
-        return view('website.index', compact('media','header','topbasecamp','specialpackages','services','testimonial','city','services2'));
+        $services2          = services::pluck('name','id');
+        return view('website.index', compact('sosialmedia','identitas','media','header','topbasecamp','specialpackages','services','testimonial','city','services2'));
     }
 
     public function package_list()
     {
+        $sosialmedia              = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas                = companies::find('1');
         $companyservices          = companyservices::paginate(10);
         $count_companyservices    = companyservices::count();
         $city                     = citys::pluck('name','id');
         $services                 = services::pluck('name','id');
-        return view('website.package_list', compact('companyservices','count_companyservices','city','services'));
+        return view('website.package_list', compact('sosialmedia','identitas','companyservices','count_companyservices','city','services'));
     }
 
     public function package_search(Request $request) {
+        $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas                = companies::find('1');
         $companyservices          = companyservices::paginate(10);
         $count_companyservices    = companyservices::count();
         $city                     = citys::pluck('name','id');
@@ -86,7 +100,7 @@ class WebsiteController extends Controller
             $count_companyservices = $companyservices->appends(['q' => $q]);
 
             $count_companyservices = $companyservices->total();
-            return view('website.package_list', compact('companyservices','count_companyservices','city','services','q','count_companyservices'));
+            return view('website.package_list', compact('sosialmedia','identitas','companyservices','count_companyservices','city','services','q','count_companyservices'));
         }
 
         return redirect('package');
@@ -94,11 +108,13 @@ class WebsiteController extends Controller
 
     public function package_detail($id, $name='')
     {
+        $sosialmedia              = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas                = companies::find('1');
         $bookingspaces            = bookingspaces::paginate(10);
         $companyservices          = companyservices::findOrFail($id);
         $mediacompanyservices     = mediacompanyservices::where('codecompanyservices', '=', $id)
                                                  ->where('status', '=', 'Y')->get();
-        return view('website.package_detail', compact('companyservices','mediacompanyservices'));
+        return view('website.package_detail', compact('sosialmedia','identitas','companyservices','mediacompanyservices'));
     }
 
     public function package_searchroom(Request $request) {
@@ -111,9 +127,10 @@ class WebsiteController extends Controller
         // $billingcompanyservices     = billingcompanyservices::where('codecompanyservices', '=', $codecompanyservices)->get();
 
         $billingcompanyservices = DB::select("select * from billingcompanyservices WHERE codecompanyservices ='$codecompanyservices'");
-        foreach($billingcompanyservices as $row3){}
+        foreach($billingcompanyservices as $row){}
 
-        if (is_null($bookingspaces) && $row3->currentquota > 0) {
+        // if (is_null($bookingspaces)) {
+        if (is_null($bookingspaces) && $row->currentquota > 0) {
         \Session::flash('success', '<b class="text-success">Available Room!</b> from <b>'.date('d F Y', strtotime($datein)).'</b> to <b>'.date('d F Y', strtotime($dateout)).'</b>');
             return redirect('/website/package/detail/'.$codecompanyservices.'/confirmation/');
         }
@@ -122,25 +139,56 @@ class WebsiteController extends Controller
         
     }
 
-    public function about()
+    public function partnership($id, $name='')
     {
-         return view('website.about');
+        $sosialmedia              = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas                = companies::find('1');
+        $bookingspaces            = bookingspaces::paginate(10);
+        $companyservices          = companyservices::where('codecompanypartnership', '=', $id)->get();
+        $companypartnership       = companypartnership::findOrFail($id);
+        $mediacompanyservices     = mediacompanyservices::where('codecompanypartnership', '=', $id)
+                                                 ->where('status', '=', 'Y')->get();
+        return view('website.partnership', compact('sosialmedia','identitas','companypartnership','mediacompanyservices','companyservices','bookingspaces'));
     }
 
-    public function event()
+    public function about()
     {
-         return view('website.event');
+        $sosialmedia            = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas              = companies::find('1');
+        $teams                  = teams::all();
+        $companypartnership     = companypartnership::all();
+        return view('website.about', compact('sosialmedia','identitas','teams','companypartnership'));
+    }
+
+    public function events()
+    {
+        $sosialmedia            = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas              = companies::find('1'); 
+        $categoryevents         = categoryevents::where('status', '=', 'Y')->get();       
+        $events                 = events::paginate(5);
+        $count_events           = events::count();
+        return view('website.event', compact('sosialmedia','identitas','events','count_events','categoryevents'));
+    }
+
+    public function events_detail($id, $title='')
+    {
+        $sosialmedia            = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas              = companies::find('1');
+        $categoryevents         = categoryevents::where('status', '=', 'Y')->get();       
+        $events                 = events::findOrFail($id);
+        return view('website.event_detail', compact('sosialmedia','identitas','events','categoryevents'));
     }
 
     public function contact()
     {
-         return view('website.contact');
+        $identitas               = companies::find('1');
+        $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();
+        $informasicompanies      = informasicompanies::where('categoryinfromasi', '=', 'OFFICE')
+                                                       ->where('status', '=', 'Y')->get(); 
+        return view('website.contact', compact('sosialmedia','identitas','informasicompanies','sosialmedia'));
     }
 
-    public function newsletter()
-    {
-         return view('website.newsletter');
-    }
+  
 
     public function subscriber(Request $request)
     {
@@ -157,6 +205,19 @@ class WebsiteController extends Controller
         \Session::flash('warning', 'Your email is already registered in the Newsletter!');
         return redirect('/');
     
+    }
+
+    public function messages(Request $request)
+    {
+            $messages = new mEssages;
+            $messages->name                    = $request->name;
+            $messages->email                   = $request->email;
+            $messages->subject                 = $request->subject;
+            $messages->description             = $request->description;
+            $messages->status                  = 'N';
+            $messages->save();
+        \Session::flash('success', 'Thank you for doing Messages!');
+        return redirect('/website/contact');
     }
 
     public function bookingtour(Request $request)
@@ -176,14 +237,18 @@ class WebsiteController extends Controller
 
     public function booking($id, $name='')
     {
+        $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas               = companies::find('1');
         $no = rand(11111,99999);
         $companyservices          = companyservices::findOrFail($id);
         $paymentmethodes          = paymentmethodes::all();
-        return view('website.booking', compact('companyservices','paymentmethodes','no'));
+        return view('website.booking', compact('sosialmedia','identitas','companyservices','paymentmethodes','no'));
     }
 
     public function bookingroom(Request $request)
     {
+        $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas   = companies::find('1');
         $members     = members::where('codeuser', '=', $request->input('codeuser'))
                                                  ->where('status', '=', 'Y')->limit(1)->get();
         $bookingspaces = DB::select('select max(codebookingspace) as idMaks from bookingspaces');
@@ -202,23 +267,10 @@ class WebsiteController extends Controller
             "name" => $request->input('name'), 
             "email" => $request->input('email'), 
             "phone" => $request->input('phone'), 
+            "address" => $request->input('address'), 
             "codepaymentmethode" => $request->input('codepaymentmethode'),
             "invoice" => $request->input('no')
         ]);
-        // $data = [
-        //     $request->input('id'), 
-        //     $request->input('price'), 
-        //      $request->input('codeuser'), 
-        //     $request->input('datein'), 
-        //     $request->input('dateout'), 
-        //      $request->input('name'), 
-        //      $request->input('email'), 
-        //      $request->input('phone'), 
-        //      $request->input('codepaymentmethode'),
-        //      $request->input('no')
-        // ];
-        // $value = ['codecompanyservices','price','codeuser','datein','dateout','name','email','phone','codepaymentmethode','invoice'];
-
         $datein     = $request->input('datein');
         $dateout    = $request->input('dateout');
         $selisih    = strtotime($dateout) -  strtotime($datein);
@@ -226,7 +278,7 @@ class WebsiteController extends Controller
         $total      = ($hari * $request->input('price'));
 
         $companyservices          = companyservices::findOrFail($request->id);
-        return view('website.bookingroom', compact('no','companyservices','data','hari','total','value','members'));
+        return view('website.bookingroom', compact('sosialmedia','identitas','no','companyservices','data','hari','total','value','members'));
     }
 
     public function bookingsend(Request $request)
@@ -247,8 +299,8 @@ class WebsiteController extends Controller
         //$bookingspace->quotauser = $request->quotauser;
         $bookingspace->price   = $request->price;
         $bookingspace->totalprice = $request->totalprice;
-        $bookingspace->datein = date('Y-m-d H:i:s');
-        $bookingspace->dateout = date('Y-m-d H:i:s');
+        $bookingspace->datein = date('Y-m-d', strtotime($request->datein));
+        $bookingspace->dateout= date('Y-m-d', strtotime($request->dateout));
         // $bookingspace->currentquotauser = $request->currentquotauser;
         // $bookingspace->nowquotauser = $request->nowquotauser;
         // $bookingspace->information = $request->information;
@@ -260,22 +312,27 @@ class WebsiteController extends Controller
     }
 
     public function bookingthanks($invoice='')
-    {        
+    { 
+        $sosialmedia            = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas              = companies::find('1');       
         $bookingspaces          = bookingspaces::where('invoice', '=', $invoice)->limit(1)->get();
-        return view('website.bookingthanks', compact('bookingspaces'));
+        return view('website.bookingthanks', compact('sosialmedia','identitas','bookingspaces'));
     }
 
 
     public function invoice_print($invoice='')
     {
-        
+
         $bookingspaces          = bookingspaces::where('invoice', '=', $invoice)->limit(1)->get();
-        return view('website.invoice_print', compact('bookingspaces'));
+        $pdf=PDF::loadView('website.invoice_print', ['bookingspaces' => $bookingspaces]);
+        return $pdf->stream($invoice.'-invoice-cubicworkspace.pdf');
     }
 
 
     public function loginmember()
     {
+        $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas               = companies::find('1');
         $users = DB::select('select max(codeuser) as idMaks from users');
         foreach($users as $row3){}
         $nomor  = $row3->idMaks; 
@@ -283,7 +340,7 @@ class WebsiteController extends Controller
         $noRand++;  
         $char   = "USR";
         $no   =  $char . sprintf("%03s", $noRand);
-        return view('website.login', compact('no'));
+        return view('website.login', compact('sosialmedia','identitas','no'));
     }
 
     public function register(Request $request)
@@ -326,7 +383,9 @@ class WebsiteController extends Controller
 
     public function dashboard()
     {
-         return view('website.dashboard');
+        $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas               = companies::find('1');
+        return view('website.dashboard', compact('sosialmedia','identitas'));
     }
    
 }

@@ -1,19 +1,14 @@
 <!doctype html>
-
 <html lang="{{ app()->getLocale() }}">
-
-
-<!-- Mirrored from crenoveative.com/envato/tour-packer/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Mar 2017 03:26:51 GMT -->
 <head>
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Workspace</title>
-	<meta name="description" content="HTML Responsive Template for Tour Agency or Company Based on Twitter Bootstrap 3.x.x" />
-	<meta name="keywords" content="tour package, holiday, hotel, vocation, booking, trip, travel, tourism, tourist" />
-	<meta name="author" content="crenoveative">
+	<title>{{ $identitas->name }}</title>
+	<meta name="description" content="{{ $identitas->description }}" />
+	<meta name="keywords" content="{{ $identitas->profile }}" />
+	<meta name="author" content="{{ $identitas->author }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	<!-- Fav and Touch Icons -->
@@ -42,8 +37,6 @@
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
-    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
-
 	<!-- CSS Custom -->
 	<link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 
@@ -113,10 +106,9 @@ $('.input-group.date').datepicker({
  </script>
 <script>
 $('#confirmationModal').modal('show');
-</script>
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.3.js'></script>
-<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
-<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+</script><!-- 
+<script type='text/javascript' src="{{ asset('frontend/js/jquery-1.8.3.js') }}"></script> -->
+<script type='text/javascript' src="{{ asset('frontend/js/bootstrap-datepicker.min.js') }}"></script>
 </body>
 
 </html>

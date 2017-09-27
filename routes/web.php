@@ -20,13 +20,16 @@ Route::get('website/package/search', 'WebsiteController@package_search');
 Route::get('website/package/searchroom', 'WebsiteController@package_searchroom');
 Route::get('website/package/detail/{id}/{name}','WebsiteController@package_detail');
 Route::get('website/about','WebsiteController@about');
-Route::get('website/events','WebsiteController@event');
+Route::get('website/events','WebsiteController@events');
+Route::get('website/events/detail/{id}/{title}','WebsiteController@events_detail');
 Route::get('website/contact','WebsiteController@contact');
 Route::post('website/subscriber/tambah','WebsiteController@subscriber');
 Route::get('website/newsletter','WebsiteController@newsletter');
 Route::post('website/bookingtour','WebsiteController@bookingtour');
 Route::get('website/loginmember','WebsiteController@loginmember');
 Route::post('website/register','WebsiteController@register');
+Route::get('website/partnership/{id}/{name}','WebsiteController@partnership');
+Route::post('website/messages','WebsiteController@messages');
 /* end page user */
 
 /* login social media */
@@ -49,7 +52,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('eksternal','Controller@eksternal');
 Route::post('eksternal','Controller@login');
-Route::group(['middleware' => ['member','nocache']], function() {
+Route::group(['middleware' => ['member','auth','web','nocache']], function() {
 	Route::get('member/dashboard','ClientController@index');
 	Route::get('website/package/booking/{id}/{name}','WebsiteController@booking');
 	Route::get('website/package/bookingroom','WebsiteController@bookingroom');

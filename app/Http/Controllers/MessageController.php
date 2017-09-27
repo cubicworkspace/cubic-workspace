@@ -42,11 +42,11 @@ class MessageController extends Controller
         $this->validate($request, [
              'name' => 'required',
              'email'=> 'required',
-             'phone' => 'required',
+             'subject' => 'required',
              'description'=> 'required']);
         $message->name        = $request->name;
         $message->email       = $request->email;
-        $message->phone       = $request->phone;
+        $message->subject       = $request->subject;
         $message->description = $request->description;
         $message->status      = $request->status;
         $message->save();
@@ -91,11 +91,11 @@ class MessageController extends Controller
             $this->validate($request, [
                  'name' => 'required',
                  'email' => 'required',
-                 'phone' => 'required',
+                 'subject' => 'required',
                  'description'=> 'required']);
             $message->name        = $request->name;
             $message->email       = $request->email;
-            $message->phone        = $request->phone;
+            $message->subject        = $request->subject;
             $message->description        = $request->description;
             $message->status      = $request->status;
             $message->save();

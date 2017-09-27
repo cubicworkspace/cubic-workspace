@@ -97,10 +97,9 @@ class CategoryEventController extends Controller
     {
         $categoryevent = categoryevents::find($id);
             $this->validate($request, [
-                 'name' => 'required',
-                 'codecategoryevent' => 'required']);
+                 'name' => 'required',]);
             $categoryevent->name = $request->name;
-            $categoryevent->codecategoryevent = $request->codecategoryevent;
+            // $categoryevent->codecategoryevent = $request->codecategoryevent;
             $categoryevent->description = $request->description;
             $categoryevent->status = $request->status;
             $categoryevent->save();

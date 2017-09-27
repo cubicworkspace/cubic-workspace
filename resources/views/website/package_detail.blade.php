@@ -10,8 +10,8 @@
 						
 						<div class="flex-column flex-md-8 flex-sm-12">
 							
-							<h1 class="hero-title">{{ $companyservices->companypartnership->name }}</h1>
-							<p class="line18">{{ $companyservices->companypartnership->information }}</p>
+							<h1 class="hero-title">{{ $companyservices->name }}</h1>
+							<p class="line18">{{ $companyservices->information }}</p>
 							
 							<ul class="list-col clearfix">
 								<li class="rating-box">
@@ -209,7 +209,7 @@
 									
 									<br>
 									<div id="section-5">
-									<form method="GET" action="/website/package/searchroom" accept-charset="UTF-8" id="form-pencarian">
+									<form method="GET" action="/website/package/searchroom" accept-charset="UTF-8">
 									 <!-- <input type="hidden" name="q" value="{{ $companyservices->companypartnership->id }}"> -->
 									 <input type="hidden" name="codecompanyservices" value="{{ $companyservices->id }}">
 										<div class="section-title text-left">
@@ -219,16 +219,16 @@
 											<div class="col-sm-6">
 												<p>Start Mouth</p>
 												<div class="form-group">
-													<div class="input-group date">
-														 <input type="text" name="datein" class="form-control" placeholder="dd/mm/yyyy" required><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+													<div class="input-group">
+														 <input type="date" name="datein" class="form-control" value="" required><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 													</div>
 												</div>
 											</div>
 											<div class="col-sm-6">
 												<p>End Mouth</p>
 												<div class="form-group">
-													<div class="input-group date">
-														 <input type="text" name="dateout" class="form-control" placeholder="dd/mm/yyyy" required><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+													<div class="input-group">
+														 <input type="date" name="dateout" class="form-control" value="" required><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 													</div>
 												</div>
 											</div>

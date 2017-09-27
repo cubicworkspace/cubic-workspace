@@ -105,7 +105,7 @@
 					<!-- top basecamp -->
 					@foreach($topbasecamp as $row)
 					<div class="grid-item" data-colspan="5" data-rowspan="6">
-							<a href="{{ url ('detail_company_partnership') }}/{{ $row->id }}" class="top-destination-image-bg" style="background-image:url('{{ asset('upload/companypartnership') }}/{{ $row->favicon }}');">
+							<a href="{{ url('/website/partnership') }}/{{ $row->id }}/{{ str_slug($row->name) }}" class="top-destination-image-bg" style="background-image:url('{{ asset('upload/companypartnership') }}/{{ $row->favicon }}');">
 								<div class="relative">
 									<h4>{{ $row->name }}</h4>
 									<span>{{ $row->city->name }} - {{ $row->country->name }}</span>
@@ -148,7 +148,7 @@
 							@foreach($specialpackages as $row)
 							<div class="GridLex-col-4_sm-6_xs-12 mb-30">
 								<div class="package-grid-item"> 
-									<a href="index.html">
+									<a href="{{ url('/website/package/detail') }}/{{ $row->id }}/{{ str_slug($row->name) }}">
 										<div class="image">
 											<img src="{{ asset('upload/companypartnership') }}/{{ $row->companypartnership->favicon }}" alt="Tour Package" />
 											<div class="absolute-in-image">

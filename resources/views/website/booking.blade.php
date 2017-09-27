@@ -220,15 +220,17 @@
 												<div class="form-horizontal">
 													<div class="form-group gap-20">
 														<label class="col-sm-3 col-md-2 control-label"> Name:</label>
-														<div class="col-sm-5 col-md-4">
+														<div class="col-sm-5 col-md-6">
 															<input type="text" class="form-control" value="{{ Auth::user()->name }}" name="name">
 														</div>
 													</div>
 												</div>
+
+
 												<div class="form-horizontal">
 													<div class="form-group gap-20">
 														<label class="col-sm-3 col-md-2 control-label">Email:</label>
-														<div class="col-sm-5 col-md-4">
+														<div class="col-sm-5 col-md-6">
 															<input type="email" class="form-control" value="{{ Auth::user()->email }}" name="email" >
 														</div>
 													</div>
@@ -237,12 +239,21 @@
 												<div class="form-horizontal">
 													<div class="form-group gap-20">
 														<label class="col-sm-3 col-md-2 control-label">Phone Number:</label>
-														<div class="col-sm-5 col-md-4">
+														<div class="col-sm-5 col-md-6">
 															<input type="phone" class="form-control" required="" name="phone" value="{{ Auth::user()->phone }}">
 														</div>
 													</div>
 												</div>
 												
+												
+												<div class="form-horizontal">
+													<div class="form-group gap-20">
+														<label class="col-sm-3 col-md-2 control-label">Address:</label>
+														<div class="col-sm-8 col-md-6">
+															<input type="text" class="form-control" required="" name="address" >
+														</div>
+													</div>
+												</div>
 												
 												
 											</div>
@@ -272,7 +283,7 @@
 											<div class="form-horizontal">
 												<div class="form-group gap-20">
 													<label class="col-sm-3 col-md-2 control-label">Space:</label>
-													<div class="col-sm-5 col-md-4">
+													<div class="col-sm-5 col-md-6">
 														<input type="text" class="form-control" value="{{ $companyservices->name }}">
 													</div>
 												</div>
@@ -281,7 +292,7 @@
 											<div class="form-horizontal">
 												<div class="form-group gap-20">
 													<label class="col-sm-3 col-md-2 control-label">Type:</label>
-													<div class="col-sm-5 col-md-4">
+													<div class="col-sm-5 col-md-6">
 														<input type="text" class="form-control" value="{{ $companyservices->services->name }}">
 													</div>
 												</div>
@@ -290,7 +301,7 @@
 											<div class="form-horizontal">
 												<div class="form-group gap-20">
 													<label class="col-sm-3 col-md-2 control-label">Space Address:</label>
-													<div class="col-sm-5 col-md-4">
+													<div class="col-sm-5 col-md-6">
 														<input type="text" class="form-control" value="{{ $companyservices->city->name }}">
 													</div>
 												</div>
@@ -326,7 +337,7 @@
 												@foreach($paymentmethodes as $row)
 													<div class="col-sm-12">
 														<div class="radio-block">
-															<input id="payments{{ $row->id }}" name="codepaymentmethode" type="radio" class="radio" value="{{ $row->id }}"/>
+															<input id="payments{{ $row->id }}" name="codepaymentmethode" type="radio" class="radio" value="{{ $row->id }}" required />
 															<label class="" for="payments{{ $row->id }}"><span>{{ $row->name }}</span> <img src="{{ asset('upload/paymentmethode') }}/{{ $row->logo }}" alt="Image"></label>
 														</div>
 													</div>

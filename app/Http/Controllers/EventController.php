@@ -62,8 +62,7 @@ class EventController extends Controller
              'title' => 'required',
              'description' => 'required',
              'quota' => 'required',
-             'address' => 'required',
-             'url' => 'required']);
+             'address' => 'required']);
         $event->codeevent = $request->codeevent;
         $event->codecategoryevent = $request->codecategoryevent;
         $event->title = $request->title;
@@ -123,11 +122,10 @@ class EventController extends Controller
             );
 
             $this->validate($request, [
-                 'title' => 'required',
+             'title' => 'required',
              'description' => 'required',
              'quota' => 'required',
-             'address' => 'required',
-             'url' => 'required']);
+             'address' => 'required']);
        // $event->codeevent = $request->codeevent;
         $event->codecategoryevent = $request->codecategoryevent;
         $event->title = $request->title;
@@ -144,11 +142,10 @@ class EventController extends Controller
         } else {
             $event = events::find($id);
             $this->validate($request, [
-                'title' => 'required',
+              'title' => 'required',
              'description' => 'required',
              'quota' => 'required',
-             'address' => 'required',
-             'url' => 'required']);
+             'address' => 'required']);
        // $event->codeevent = $request->codeevent;
         $event->codecategoryevent = $request->codecategoryevent;
         $event->title = $request->title;

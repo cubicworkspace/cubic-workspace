@@ -60,9 +60,9 @@
 										<td><input type="email" name="email"  class="form-control" ></td>
 									</tr>
 									<tr>
-										<td>Phone</td>
+										<td>subject</td>
 										<td>:</td>
-										<td><input type="text" name="phone"  class="form-control" ></td>
+										<td><input type="text" name="subject"  class="form-control" ></td>
 									</tr>
 									<tr>
 										<td>Description</td>

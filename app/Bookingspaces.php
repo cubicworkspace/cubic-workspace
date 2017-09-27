@@ -9,6 +9,9 @@ class Bookingspaces extends Model
     public function services() {
     	return $this->belongsTo('App\Services', 'codeservices');
     }
+    public function companyservices() {
+        return $this->belongsTo('App\Companyservices', 'codecompanyservices');
+    }
     public function companypartnership() {
     	return $this->belongsTo('App\Companypartnership', 'codecompanypartnership');
     }

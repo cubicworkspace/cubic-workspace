@@ -35,6 +35,10 @@
                                             <span class="caption-subject bold uppercase"> Managed @yield('title')</span>
                                         </div>
                                     </div>
+                                     <div class="alert alert-warning alert-dismissible" role="alert">
+						                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						                    <i class="fa fa-warning"></i> Kosongkan URL jika Event berbentuk Gambar!
+						                  </div>
                                     @if (count($errors)>0)
 										<div class="alert alert-danger alert-dismissible">
 						                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

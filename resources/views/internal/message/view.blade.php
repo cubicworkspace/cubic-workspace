@@ -87,7 +87,7 @@
                                                     <th>#</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
-                                                    <th>Phone</th>
+                                                    <th>subject</th>
                                                     <th>Description</th>
                                                     <th>Status</th>
                                                     <th>Actions</th>
@@ -99,7 +99,7 @@
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->email }}</td>
-                                                    <td>{{ $row->phone }}</td>
+                                                    <td>{{ $row->subject }}</td>
                                                     <td>{{ $row->description }}</td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      

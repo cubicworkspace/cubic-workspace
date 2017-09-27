@@ -440,4 +440,4 @@ jQuery(function($) {
 
 		});
 
-})(jQuery);
+});

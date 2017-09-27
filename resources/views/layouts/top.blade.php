@@ -241,7 +241,7 @@
 							
 							<div class="col-sm-3">
 							
-								<div class="navbar-phone"><i class="fa fa-phone"></i> Call us: +66 28 878 5452</div>
+								<div class="navbar-phone"><i class="fa fa-phone"></i> Call us: {{ $identitas->phone }}</div>
 							
 							</div>
 

@@ -235,7 +235,9 @@
                                  </ul>
                             </li>
 
-                             <li class="nav-item">
+                             <li class="nav-item
+                            {{ Request::segment(1) === 'event' ? 'active' : null }}
+                            {{ Request::segment(1) === 'categoryevent' ? 'active' : null }}"">
                                 <a href="javascript:;" class="nav-link nav-toggle">
                                     <i class="glyphicon glyphicon-calendar"></i>
                                     <span class="title">Event</span>

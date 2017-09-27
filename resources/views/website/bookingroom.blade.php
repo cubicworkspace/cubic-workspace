@@ -37,14 +37,11 @@
 								<input type="hidden" name="codebookingspace" value="{{ $no }}">
 								<input type="hidden" name="codecompanypartnership" value="{{ $companyservices->companypartnership->id }}">
 								<input type="hidden" name="codeservices" value="{{ $companyservices->services->id }}">
-								@foreach ($members as $row )
-								<input type="hidden" name="address" value="{{ $row->address }}">
-								@endforeach
 								@foreach ($data as $name => $row )
 								<input type="hidden" name="{{ $name }}" value="{{  $booking[] = $row }}">
 								@endforeach
 									<ul class="book-sum-list">
-										<li><span class="font600">Booking Number: </span>{{ $booking[9] }}</li>
+										<li><span class="font600">Booking Number: </span>{{ $booking[10] }}</li>
 										<li><span class="font600">Space : </span>{{ $companyservices->name }}</li>
 										<li><span class="font600">Type : </span>{{ $companyservices->services->name }}</li>
 										<li><span class="font600">User Name: </span>{{ $booking[5] }}</li>
