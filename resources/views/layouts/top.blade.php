@@ -196,7 +196,9 @@
 				                                    {{ Auth::user()->name }} <span class="caret"></span>
 												</a>
 												<ul class="dropdown-menu" aria-labelledby="language-dropdown">
-													<li><a href="#"><i class="fa fa-user"></i> Edit Profile</a></li>
+													<!-- <li><a href="{{ url('personal/dashboard') }}"><i class="fa fa-home"></i> Dashboard</a></li> -->
+													<li><a href="{{ url('personal/booking') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-archive"></i> Booking</a></li>
+													<li><a href="{{ url('personal/profile') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-user"></i> Edit Profile</a></li>
 												</ul>
 											</li>
 											<li class="user-action">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\SocialProvider;
 use App\User;
+use App\members;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -117,13 +118,19 @@ class RegisterController extends Controller
                 ['provider_id' => $socialUser->getId(), 'provider' => $provider]
             );
 
+
+            $member = new members;
+            $member->email = $socialUser->getEmail();
+            $member->save();
+
         }
         else
             $user = $socialProvider->user;
 
         auth()->login($user);
 
-        return redirect('/member/dashboard'); //redirect setelah login
+         \Session::flash('success', 'Congratulations, you have successfully login as a member!,');
+        return redirect('/'); //redirect setelah login
 
     }
 

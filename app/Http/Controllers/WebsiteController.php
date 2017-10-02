@@ -325,7 +325,7 @@ class WebsiteController extends Controller
 
         $bookingspaces          = bookingspaces::where('invoice', '=', $invoice)->limit(1)->get();
         $pdf=PDF::loadView('website.invoice_print', ['bookingspaces' => $bookingspaces]);
-        return $pdf->stream($invoice.'-invoice-cubicworkspace.pdf');
+        return $pdf->download($invoice.'-invoice-cubicworkspace.pdf');
     }
 
 
@@ -381,11 +381,11 @@ class WebsiteController extends Controller
     
     }
 
-    public function dashboard()
-    {
-        $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
-        $identitas               = companies::find('1');
-        return view('website.dashboard', compact('sosialmedia','identitas'));
-    }
+    // public function dashboard()
+    // {
+    //     $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
+    //     $identitas               = companies::find('1');
+    //     return view('website.dashboard', compact('sosialmedia','identitas'));
+    // }
    
 }

@@ -49,11 +49,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /* page member */
 // Route::post('eksternal','EksternalController');
-
 Route::get('eksternal','Controller@eksternal');
 Route::post('eksternal','Controller@login');
 Route::group(['middleware' => ['member','auth','web','nocache']], function() {
-	Route::get('member/dashboard','ClientController@index');
+	Route::get('personal/dashboard','PesonalController@index');
+	Route::get('personal/profile/{id}/{email}','PesonalController@profile');
+	Route::post('personal/profile/edit/{id}/{email}','PesonalController@editprofile');
+	Route::get('personal/booking/{id}/{email}','PesonalController@booking');
 	Route::get('website/package/booking/{id}/{name}','WebsiteController@booking');
 	Route::get('website/package/bookingroom','WebsiteController@bookingroom');
 	Route::post('website/package/bookingroom/send','WebsiteController@bookingsend');
