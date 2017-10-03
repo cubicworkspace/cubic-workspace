@@ -6,8 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{ $identitas->name }}</title>
-	<meta name="description" content="{{ $identitas->description }}" />
-	<meta name="keywords" content="{{ $identitas->profile }}" />
+	<meta name="description" content="{{ strip_tags($identitas->description) }}" />
+	<meta name="keywords" content="{{ strip_tags($identitas->profile) }}" />
 	<meta name="author" content="{{ $identitas->author }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	

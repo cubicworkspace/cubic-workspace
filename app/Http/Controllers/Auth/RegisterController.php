@@ -121,6 +121,15 @@ class RegisterController extends Controller
 
             $member = new members;
             $member->email = $socialUser->getEmail();
+            $member->institution = '-';
+            $member->birthday = date('Y-m-d H:i:s');
+            $member->phone = '-';
+            $member->address = '-';
+            $member->description = '-';
+            $member->information = '-';
+            $member->registerdate = date('Y-m-d H:i:s');
+            $member->lastlogin = date('Y-m-d H:i:s');
+            $member->status = 'N';
             $member->save();
 
         }

@@ -46,23 +46,24 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
-        'admin' => [
-            'driver' => 'session',
+
+        'admin' =>  [
+            'driver'   => 'session',
             'provider' => 'admins',
         ],
-
+        
         'admin-api' => [
             'driver' => 'token',
             'provider' => 'admins',
         ],
 
 
-        'admin' =>  [
-            'driver'   => 'session',
-            'provider' => 'admin',
-        ],
-     
         'member' =>  [
+            'driver'   => 'session',
+            'provider' => 'member',
+        ],
+
+        'member-api' =>  [
             'driver'   => 'session',
             'provider' => 'member',
         ],
@@ -97,22 +98,18 @@ return [
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
+            'model' => App\Users::class,
         ],
 
-        'admin' =>  [
-            'driver' => 'eloquent',
-            'model'  => App\Doctor::class,
-        ],
      
         'member' =>  [
             'driver' => 'eloquent',
-            'model'  => App\Patient::class,
+            'model'  => App\Users::class,
         ],
      
         'adminpartnership' =>  [
             'driver' => 'eloquent',
-            'model'  => App\Staff::class,
+            'model'  => App\Users::class,
         ],
 
 

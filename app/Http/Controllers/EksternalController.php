@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
 
 class EksternalController extends Controller
 {
@@ -19,7 +17,7 @@ class EksternalController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    
 
     /**
      * Where to redirect users after login.
@@ -35,8 +33,13 @@ class EksternalController extends Controller
      */
     public function __construct()
     {
-        $this->redirectTo = route('index');
-        $this->middleware('member')->except('logout');
+        $this->middleware('auth:member');
+    }
+
+
+    public function index() {
+
+        return 'member';
     }
 
 }

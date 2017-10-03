@@ -105,7 +105,7 @@
 								                      <a href="/member/{{$row->id}}/edit" class="btn btn-warning"><i class="fa fa-pencil" ></i> Edit</a> 
 								                      {{ csrf_field() }}
 								                      {{ method_field('DELETE') }}
-								                      <button type="submit" class="btn btn-danger"  onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fa fa-trash" ></i> Delete</button>
+								                      <button type="submit" class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete this data?')"><i class="fa fa-trash" ></i> Delete</button>
 								                      </form>
 								                    </td>
                                                 </tr>

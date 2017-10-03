@@ -82,25 +82,25 @@ class WebsiteController extends Controller
         $city                     = citys::pluck('name','id');
         $services                 = services::pluck('name','id');
         
-        $q   = trim($request->input('q'));
+        $codeservices   = $request->input('codeservices');
 
-        if (! empty($q)) {
-            $codeservices = $request->input('codeservices');
+        if (! empty($codeservices)) {
+            // $codeservices = $request->input('codeservices');
             $codecity      = $request->input('codecity');
 
             // Query
-            $query          = companyservices::where('name', 'LIKE', '%' . $q. '%');
-            (! empty($codeservices)) ? $query->where('codeservices', $codeservices) : '';
+            $query          = companyservices::where('codeservices', 'LIKE', '%' . $codeservices. '%');
+            // (! empty($codeservices)) ? $query->where('codeservices', $codeservices) : '';
             (! empty($codecity)) ? $query->where('codecity', $codecity) : '';
             $companyservices = $query->paginate(10);
 
             // URL Links count_companyservices
-            $count_companyservices = (! empty($codeservices)) ? $companyservices->appends(['codeservices' => $codeservices]) : '';
+            // $count_companyservices = (! empty($codeservices)) ? $companyservices->appends(['codeservices' => $codeservices]) : '';
             $count_companyservices = (! empty($codecity)) ? $count_companyservices = $companyservices->appends(['codecity' => $codecity]) : '';
-            $count_companyservices = $companyservices->appends(['q' => $q]);
+            $count_companyservices = $companyservices->appends(['codeservices' => $codeservices]);
 
             $count_companyservices = $companyservices->total();
-            return view('website.package_list', compact('sosialmedia','identitas','companyservices','count_companyservices','city','services','q','count_companyservices'));
+            return view('website.package_list', compact('sosialmedia','identitas','companyservices','count_companyservices','city','services','codeservices','count_companyservices'));
         }
 
         return redirect('package');
@@ -126,11 +126,11 @@ class WebsiteController extends Controller
                                         ->where('dateout',Input::get('dateout'))->first();
         // $billingcompanyservices     = billingcompanyservices::where('codecompanyservices', '=', $codecompanyservices)->get();
 
-        $billingcompanyservices = DB::select("select * from billingcompanyservices WHERE codecompanyservices ='$codecompanyservices'");
-        foreach($billingcompanyservices as $row){}
+        // $billingcompanyservices = DB::select("select * from billingcompanyservices WHERE codecompanyservices ='$codecompanyservices'");
+        // foreach($billingcompanyservices as $row){}
 
-        // if (is_null($bookingspaces)) {
-        if (is_null($bookingspaces) && $row->currentquota > 0) {
+        if (is_null($bookingspaces)) {
+        // if (is_null($bookingspaces) && $row->currentquota > 0) {
         \Session::flash('success', '<b class="text-success">Available Room!</b> from <b>'.date('d F Y', strtotime($datein)).'</b> to <b>'.date('d F Y', strtotime($dateout)).'</b>');
             return redirect('/website/package/detail/'.$codecompanyservices.'/confirmation/');
         }

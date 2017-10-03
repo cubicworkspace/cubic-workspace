@@ -30,6 +30,12 @@ Route::get('website/loginmember','WebsiteController@loginmember');
 Route::post('website/register','WebsiteController@register');
 Route::get('website/partnership/{id}/{name}','WebsiteController@partnership');
 Route::post('website/messages','WebsiteController@messages');
+
+Route::prefix('member')->group(function() {
+		Route::get('/login','PersonalController@index')->name('member.dashboard');
+		Route::get('/login','Auth\MemberController@showLoginForm')->name('member.login');
+		Route::post('/','Auth\MemberController@login')->name('member.login.submit');
+});
 /* end page user */
 
 /* login social media */

@@ -1,9 +1,6 @@
 @extends('layouts.website')
 @section('content')
-@if (count($editmember ) > 0)
-@foreach($editmember as $edit)
 <!-- start Main Wrapper -->
-
 		<div class="main-wrapper">
 			<div class="breadcrumb-wrapper bg-light-2">
 				<div class="container">
@@ -20,14 +17,14 @@
 			
 					<div class="row">
 						<div class="col-sm-4 col-md-3 mt-50-xs">
-
-							@include('personal.personal')
-
+						@foreach($editmember as $edit)
+						@include('personal.personal')
+						@endforeach
 						</div>
 						<div class="col-sm-8 col-md-9">
 						<ul class="nav nav-tabs">
 						  <!-- <li><a href="{{ url('personal/dashboard') }}">Dashboard</a></li> -->
-						  <li><a href="{{ url('personal/booking') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-archive"></i> List Booking Infromation</a></li>
+						  <li><a href="{{ url('personal/booking') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-archive"></i> List Booking Information</a></li>
 						  <li class="active"><a href="{{ url('personal/profile') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"> <i class="fa fa-user"></i> Personal Information</a></li>
 						</ul>
 						<div class="payment-success">
@@ -35,6 +32,7 @@
 						<div class="section-title text-left">
 							<h4>Edit Personal Information</h4>
 						</div>
+
 						<form id="register-form" action="/personal/profile/edit/{{ $edit->id }}/{{ $edit->email }}" method="POST" enctype="multipart/form-data">
 							{{csrf_field()}}
 									<div class="form-group"> 
@@ -82,32 +80,6 @@
 									<div class="form-group"> 
 										<textarea name="information" class="form-control" placeholder="Information" required="">{{ $edit->information }}</textarea>
 									</div>
-									@endforeach
-									@else
-	           						<div class="form-group"> 
-										<input type="text" name="institution" class="form-control" placeholder="Institution" value="" required=""> 
-									</div>
-									<div class="form-group"> 
-										<div class="input-group date">
-											 <input type="text" name="birthday" class="form-control" placeholder="Birthday" value="" required><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-										</div>
-									</div>
-									<div class="form-group"> 
-										<input type="text" name="phone" class="form-control" placeholder="Phone" value="" required=""> 
-									</div>
-									<div class="form-group"> 
-										<textarea name="address" class="form-control" placeholder="Address" required=""></textarea>
-									</div>
-									<div class="form-group"> 
-										<input type="file" name="image" class="form-control" placeholder="Foto" required=""> 
-									</div>
-									<div class="form-group"> 
-										<textarea name="description" class="form-control" placeholder="Description" required=""></textarea>
-									</div>
-									<div class="form-group"> 
-										<textarea name="information" class="form-control" placeholder="Information" required=""></textarea>
-									</div>
-	       							@endif
 									<div class="row gap-10">
 										<div class="col-xs-12 col-sm-12 mb-10">
 											<button type="submit" class="btn btn-primary btn-block">Save Profile</button>

@@ -16,4 +16,7 @@ class Companypartnership extends Model
     public function country() {
     	return $this->belongsTo('App\Countrys', 'codecountry');
     }
+    public function tagservices() {
+        return $this->belongsTo('App\Tagservices', 'codetagservices');
+    }
 }

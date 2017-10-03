@@ -30,7 +30,7 @@
 							
 								<h3>{{ $identitas->name }}</h3>
 								
-								<p>{{ $identitas->description }}</p>
+								<p>{{ strip_tags($identitas->description) }}</p>
 								
 							</div>
 							
@@ -96,7 +96,7 @@
 								<div class="col-sm-4">
 
 									<h5 class="heading mt-5">{{ $identitas->name }}</h5>
-									<p>{{ $identitas->profile }}</p>
+									<p>{{ strip_tags($identitas->profile) }}</p>
 									
 									<div class="boxed-social mb-30-xs clearfix">
 										@foreach($sosialmedia as $row)

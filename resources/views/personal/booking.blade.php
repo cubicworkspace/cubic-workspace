@@ -1,14 +1,12 @@
 @extends('layouts.website')
 @section('content')
-@if (count($editmember ) > 0)
-@foreach($editmember as $edit)
 <!-- start Main Wrapper -->
 		<div class="main-wrapper">
 			<div class="breadcrumb-wrapper bg-light-2">
 				<div class="container">
 					<ol class="breadcrumb-list booking-step">
 						<li><a href="{{ url('/') }}">Home</a></li>
-						<li><span>Booking</span></li>
+						<li><span>List Booking Information</span></li>
 					</ol>
 				</div>
 			</div>
@@ -20,14 +18,14 @@
 			
 					<div class="row">
 						<div class="col-sm-4 col-md-3 mt-50-xs">
-
-							@include('personal.personal')
-
+						@foreach($editmember as $edit)
+						@include('personal.personal')
+						@endforeach
 						</div>
 						<div class="col-sm-8 col-md-9">
 						<ul class="nav nav-tabs">
 						  <!-- <li><a href="{{ url('personal/dashboard') }}">Dashboard</a></li> -->
-						  <li class="active"><a href="{{ url('personal/booking') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-archive"></i> List Booking Infromation</a></li>
+						  <li class="active"><a href="{{ url('personal/booking') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-archive"></i> List Booking Information</a></li>
 						  <li><a href="{{ url('personal/profile') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-user"></i> Personal Information</a></li>
 						</ul>
 							<div class="confirmation-wrapper">
@@ -91,7 +89,7 @@
 											<nav class="pager-right">
 												<ul class="pagination">
 													<li>
-               										 
+               										 {{ $bookingspaces->links() }}
 													</li>
 												</ul>
 											</nav>
@@ -127,10 +125,4 @@
 		</div>
 		<!-- end Main Wrapper -->
 
-
-									@endforeach
-									@else
-									<b>not found</b>
-									@endif
-			
 @endsection

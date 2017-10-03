@@ -61,7 +61,7 @@ class PesonalController extends Controller
 
     public function profile($id, $email='')
     {
-        $editmember              = members::where('email', '=', $email)->get();   
+        $editmember              = members::where('email', '=', $email)->limit(1)->get(); 
         $edituser                = users::findOrFail($id);
         $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
         $identitas               = companies::find('1');
@@ -128,10 +128,10 @@ class PesonalController extends Controller
 
     public function booking($id, $email='')
     {
-        $editmember              = members::where('email', '=', $email)->get();   
+        $editmember              = members::where('email', '=', $email)->limit(1)->get();   
         $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
         $identitas               = companies::find('1');
-        $bookingspaces           = bookingspaces::where('email', '=', $email)->get();
+        $bookingspaces           = bookingspaces::where('email', '=', $email)->paginate(5); 
         
         return view('personal.booking', compact('sosialmedia','identitas','editmember','bookingspaces'));
     }

@@ -17,9 +17,13 @@ class Companyservices extends Model
     public function services() {
     	return $this->belongsTo('App\Services', 'codeservices');
     }
+    // public function tagservices() {
+    //     return $this->belongsToMany('App\Tagservices', 'tagcompanyservices','codecompanyservices','codetagservices')->withTimeStamps();
+    // }
     public function tagservices() {
-        return $this->belongsToMany('App\Tagservices', 'tagcompanyservices','codecompanyservices','codetagservices')->withTimeStamps();
+        return $this->belongsTo('App\Tagservices', 'codetagservices');
     }
+
     public function city() {
         return $this->belongsTo('App\Citys', 'codecity');
     }

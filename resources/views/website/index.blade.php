@@ -24,25 +24,25 @@
 							<div class="column-item">							
 								<div class="form-group">
 								{!! Form::select('codecity', $city, (! empty($id) ? $id : null), ['id' => 'codecity', 'class' => 'select2-multi form-control', 
-								'data-placeholder' => 'Choose a Location', 'multiple']) !!}
+								'required' => 'required', 'data-placeholder' => 'Choose a Location', 'multiple']) !!}
 								</div>
 							
 							</div>
 							
 							<div class="column-item">							
 								<div class="form-group">								
-								  {!! Form::select('codeservices', $services2, (! empty($id) ? $id : null), ['id' => 'codeservices', 'class' => 'select2-multi form-control', 'data-placeholder' => 'Choose a Type Services', 'multiple']) !!}
+								  {!! Form::select('codeservices', $services2, (! empty($id) ? $id : null), ['id' => 'codeservices', 'class' => 'select2-multi form-control', 'required' => 'required', 'data-placeholder' => 'Choose a Type Services', 'multiple']) !!}
 								</div>							
 							</div>
 							
-							<div class="column-item">							
+							<!-- <div class="column-item">							
 								<div class="form-group">
 								{!! Form:: text('q', (! empty($q)) ? $q : null,['class' => 'form-control', 'required' => 'required', 'placeholder' => 'Company Service Name']) !!}			
 								</div>							
-							</div>
+							</div> -->
 							
 							<div class="column-item for-btn">							
-								<div class="form-group">
+								<div class="form-group ">
           							  {!! Form::button('Search', ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}								
 								</div>							
 							</div>
@@ -164,7 +164,7 @@
 											</div>
 											<div class="absolute-in-content">
 												<span class="btn"><i class="fa fa-heart-o"></i></span>
-												<div class="price">Rp {{ $row->price }}</div>
+												<div class="price">Rp {{ number_format($row->price, 2) }}</div>
 											</div>
 										</div>
 									</a>

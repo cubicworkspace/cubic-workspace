@@ -180,14 +180,14 @@
 									<tr>
 										<td>Tag Service</td>
 										<td>:</td>
-										<td>
-										<div class="mt-checkbox-list">
-										@foreach($tagservices as $key => $value)
-												<label class="mt-checkbox mt-checkbox-outline">{!! Form::checkbox('codetagservices[]', $key, null) !!} {{ $value }}
-										<span></span></label>
-										@endforeach
-	   									</div>
-	   								</td>
+										<td> <select class="form-control" id="id" value="name" name="codetagservices">
+													<option value="{{ !empty($edit->services->id) ? $edit->services->id : '' }}">{{ !empty($edit->tagservices->name) ? $edit->tagservices->name : '-- Select Tag Services --' }} </option>
+	   												 @foreach($tagservices as  $key => $value)
+	   								 						<option value="{{ $key }}">{{ $value }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
+									</tr>
 									<tr>
 										<td>Status</td>
 										<td>:</td>

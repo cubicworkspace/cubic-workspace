@@ -10,7 +10,7 @@
 					
 						<div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
 						
-							<h1 class="hero-title">Result list</h1>
+							<h1 class="hero-title">Package list</h1>
 							
 							
 							
@@ -51,9 +51,9 @@
 											
 										</div>
 										
-										<div class="form-group">
+										<!-- <div class="form-group">
             								{!! Form:: text('q', (! empty($q)) ? $q : null,['class' => 'form-control', 'required' => 'required', 'placeholder' => 'Company Service Name']) !!}
-										</div>
+										</div> -->
           							  {!! Form::button('Search', ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}
 									
 									</div>
@@ -82,8 +82,8 @@
 							<div class="sorting-wrappper">
 			
 								<div class="sorting-header">
-									<h3 class="sorting-title uppercase">3 Countries: Germany, France, Austria</h3>
-									<p class="sorting-lead">587 results found</p>
+									<h3 class="sorting-title uppercase">Package list</h3>
+									<!-- <p class="sorting-lead">587 results found</p> -->
 								</div>
 								
 								<div class="sorting-content">

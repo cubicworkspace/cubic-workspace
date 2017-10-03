@@ -109,17 +109,15 @@
 	   								  	'placeholder' => '-- Select Company Partnership --'
 	   								 ]) !!}</td>
 									</tr>
-						            <tr>
+									</tr> -->
+									<tr>
 										<td>Tag Service</td>
 										<td>:</td>
 										<td>
-										<div class="mt-checkbox-list">
-										@foreach($tagservices as $key => $value)
-												<label class="mt-checkbox mt-checkbox-outline">{!! Form::checkbox('codetagservices[]', $key, null) !!} {{ $value }}
-										<span></span></label>
-										@endforeach
-	   									</div>
-	   								</td>
+	   								 {!! Form::select('codetagservices', $tagservices, null,
+	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
+	   								  	'placeholder' => '-- Select Tag Services --'
+	   								 ]) !!}</td>
 									</tr>
 									<tr>
 										<td>Service</td>

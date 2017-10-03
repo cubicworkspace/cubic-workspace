@@ -72,7 +72,7 @@ class CompanyServicesController extends Controller
         $companyservices->codecity = $request->codecity;
         $companyservices->codecompanypartnership = $request->codecompanypartnership;
         $companyservices->information = $request->information;
-        $companyservices->codetagservices = '-';
+        $companyservices->codetagservices = $request->codetagservices;
         $companyservices->quota = $request->quota;
         $companyservices->price = $request->price;
         $companyservices->quotauser = $request->quotauser;
@@ -90,7 +90,7 @@ class CompanyServicesController extends Controller
 
         $companyservices->save();
         $billingcompanyservices->save();
-        $companyservices->tagservices()->attach($request->input('codetagservices'));
+        // $companyservices->tagservices()->attach($request->input('codetagservices'));
         \Session::flash('success', 'Company Services data has been successfully added!,');
         return redirect('/companyservices');
     }
@@ -118,8 +118,8 @@ class CompanyServicesController extends Controller
         $services = services::all();
         $city = citys::all();
         $edit = companyservices::find($id);
-        $listtagservices = tagservices::where('choosetagservices', '=', 'COMPANY SERVICES')->pluck('name', 'id');
-        return view('internal.companyservices.edit', compact('edit','listtagservices','companypartnership','services','city'));
+        $tagservices = tagservices::where('choosetagservices', '=', 'COMPANY SERVICES')->pluck('name', 'id');
+        return view('internal.companyservices.edit', compact('edit','companypartnership','services','city','tagservices'));
     }
 
     /**
@@ -136,6 +136,7 @@ class CompanyServicesController extends Controller
              'name' => 'required']);
         $companyservices->name = $request->name;
         $companyservices->codeservices = $request->codeservices;
+        $companyservices->codetagservices = $request->codetagservices;
         $companyservices->codecity = $request->codecity;
         $companyservices->codecompanypartnership = $request->codecompanypartnership;
         $companyservices->information = $request->information;
@@ -146,9 +147,9 @@ class CompanyServicesController extends Controller
         $companyservices->registerdate = date('Y-m-d H:i:s');
         $companyservices->status = $request->status;
         $companyservices->save();
-           if (! is_null($request->input('tag_services'))) {
-            $companyservices->tagservices()->sync($request->input('tag_services'));
-        }
+        //    if (! is_null($request->input('tag_services'))) {
+        //     $companyservices->tagservices()->sync($request->input('tag_services'));
+        // }
 
         \Session::flash('success', 'Company Services data has been edited successfully!,');
         return redirect('/companyservices');

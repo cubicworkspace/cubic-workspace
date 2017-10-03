@@ -10,4 +10,8 @@ class Tagcompanyservices extends Model
     {
         return $this->belongsToMany('App\Companyservices', 'tagcompanyservices', 'codecompanyservices', 'codetagservices');
     }
+    public function comservices() {
+    	return $this->belongsTo('App\Companyservices', 'codecompanyservices');
+    }
+   
 }

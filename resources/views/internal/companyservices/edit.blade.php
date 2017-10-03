@@ -115,20 +115,15 @@
 	   								 </td>
 									</tr>
 									<tr>
-										<td></td>
+										<td>Tag Service</td>
 										<td>:</td>
-										<td>
-										<div class="mt-checkbox-list">
-										{!! Form::label('kategori_tag', 'Tag Services:', ['class' => 'control-label']) !!}
-										@if(count($listtagservices) > 0)
-        								@foreach($listtagservices as $key => $value)
-												<label class="mt-checkbox mt-checkbox-outline">{!! Form::checkbox('kategori_tag[]', $key, null) !!} {{ $value }}<span></span></label>
-											        @endforeach
-											    @else
-											        <p>Not Tag Service</p>
-											    @endif
-									</div>					
-									</td>
+										<td> <select class="form-control" id="id" value="name" name="codetagservices">
+													<option value="{{ !empty($edit->services->id) ? $edit->services->id : '' }}">{{ !empty($edit->tagservices->name) ? $edit->tagservices->name : '-- Select Tag Services --' }} </option>
+	   												 @foreach($tagservices as  $key => $value)
+	   								 						<option value="{{ $key }}">{{ $value }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
 									<tr>
 										<td>Service</td>

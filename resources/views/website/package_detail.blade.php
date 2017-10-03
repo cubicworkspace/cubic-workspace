@@ -62,7 +62,7 @@
 										</div>
 										
 
-										<p>{{ $companyservices->companypartnership->profile }}</p>
+										<p>{{ strip_tags($companyservices->companypartnership->profile) }}</p>
 
 									</div>
 									
@@ -338,7 +338,7 @@
 			
 													<div class="read-more-div-inner">
 													<!-- <h5 class="heading mt-0">Heading Information 1</h5> -->
-														{{ $companyservices->companypartnership->faq }}
+														{{ strip_tags($companyservices->companypartnership->faq) }}
 
 													</div>
 													

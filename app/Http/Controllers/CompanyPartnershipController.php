@@ -78,7 +78,7 @@ class CompanyPartnershipController extends Controller
         $companypartnership->codecompanypartnership = $request->codecompanypartnership;
         $companypartnership->favicon = $favicon;
         $companypartnership->logo = $filename;
-        $companypartnership->codetagservices = implode($request->codetagservices, ',');
+        $companypartnership->codetagservices = $request->codetagservices;
         $companypartnership->email = $request->email;
         $companypartnership->phone = $request->phone;
         $companypartnership->fax = $request->fax;
@@ -161,7 +161,7 @@ class CompanyPartnershipController extends Controller
             $companypartnership->name = $request->name;
             $companypartnership->favicon = $favicon;
             $companypartnership->logo = $filename;
-            $companypartnership->codetagservices = implode($request->codetagservices, ',');
+            $companypartnership->codetagservices = $request->codetagservices;
             $companypartnership->email = $request->email;
             $companypartnership->phone = $request->phone;
             $companypartnership->fax = $request->fax;
@@ -191,7 +191,7 @@ class CompanyPartnershipController extends Controller
             $companypartnership->name = $request->name;
             $companypartnership->email = $request->email;
             $companypartnership->phone = $request->phone;
-            $companypartnership->codetagservices = implode($request->codetagservices, ',');
+            $companypartnership->codetagservices = $request->codetagservices;
             $companypartnership->fax = $request->fax;
             $companypartnership->address = $request->address;
             $companypartnership->maps = $request->maps;

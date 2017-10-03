@@ -30,7 +30,7 @@
 				
 					<div class="container">
 
-						<p class="font15 mb-30">{{ $identitas->profile }}</p>
+						<p class="font15 mb-30">{{ strip_tags($identitas->profile) }}</p>
 						
 						<div class="about-us-grid-block GridLex-gap-20-wrappper">
 						
@@ -85,7 +85,7 @@
 								<div class="GridLex-col-6_xs-12">
 									<div class="about-us-grid-block-item mb-20">
 										<h4 class="heading mt-0 text-white">Description</h4>
-										<p>{{ $identitas->description }}</p>
+										<p>{{ strip_tags($identitas->description) }}</p>
 									</div>
 								</div>
 								

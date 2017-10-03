@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2017 at 05:27 PM
+-- Generation Time: Sep 26, 2017 at 08:02 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -157,8 +157,7 @@ INSERT INTO `bookingspaces` (`id`, `codebookingspace`, `codecompanyservices`, `c
 (42, 'CBS009', '5', '10', '', '2', '13', '2', '28266', 'user', 'user@gmail.com', '12121', 'bandung', 0, 0, 5000000, 5000000, '2017-09-01', '2017-09-02', 0, 0, '', '2017-09-25 23:05:01', 'N', '2017-09-25 16:05:01', '2017-09-25 16:05:01'),
 (43, 'CBS010', '5', '10', '', '2', '13', '1', '93611', 'user', 'user@gmail.com', '0', 'bdg', 0, 0, 5000000, 20000000, '2017-09-26', '2017-09-30', 0, 0, '', '2017-09-26 04:59:44', 'N', '2017-09-25 21:59:44', '2017-09-25 21:59:44'),
 (44, 'CBS011', '5', '10', '', '2', '13', '1', '60986', 'user', 'user@gmail.com', '0', '0', 0, 0, 5000000, 5000000, '2017-09-02', '2017-09-03', 0, 0, '', '2017-09-26 08:43:17', 'N', '2017-09-26 01:43:17', '2017-09-26 01:43:17'),
-(45, 'CBS012', '5', '10', '', '2', '13', '1', '63596', 'user', 'user@gmail.com', '087820033395', 'Cianjur', 0, 0, 5000000, 145000000, '2017-09-01', '2017-09-30', 0, 0, '', '2017-09-26 15:36:03', 'N', '2017-09-26 08:36:03', '2017-09-26 08:36:03'),
-(46, 'CBS013', '5', '10', '', '2', '13', '2', '48963', 'user', 'user@gmail.com', '0', '0', 0, 0, 5000000, 15000000, '2017-09-27', '2017-09-30', 0, 0, '', '2017-09-27 06:02:04', 'N', '2017-09-26 23:02:04', '2017-09-26 23:02:04');
+(45, 'CBS012', '5', '10', '', '2', '13', '1', '63596', 'user', 'user@gmail.com', '087820033395', 'Cianjur', 0, 0, 5000000, 145000000, '2017-09-01', '2017-09-30', 0, 0, '', '2017-09-26 15:36:03', 'N', '2017-09-26 08:36:03', '2017-09-26 08:36:03');
 
 -- --------------------------------------------------------
 
@@ -194,8 +193,7 @@ INSERT INTO `bookingtours` (`id`, `codecompanyservices`, `codecompanypartnership
 (13, 8, 9, 'navagiaginasta@gmail.com', 'e', '2017-09-08', '00:01', 'N', '2017-09-23 02:32:13', '2017-09-23 02:32:13'),
 (14, 8, 9, 'admin@example.com', '87820033395', '2017-09-23', '14:03', 'N', '2017-09-23 02:32:57', '2017-09-23 02:32:57'),
 (15, 13, 7, 'navagiaginasta@gmail.com', '87820033395', '2017-09-04', '01:01', 'N', '2017-09-23 02:33:51', '2017-09-23 02:33:51'),
-(16, 5, 10, 'aliando@gmail.com', '010101', '0000-00-00', '02:02', 'N', '2017-09-24 03:56:59', '2017-09-24 03:56:59'),
-(17, 5, 10, 'kp@gmail.com', '0899999', '0000-00-00', '10:20', 'N', '2017-09-26 23:26:48', '2017-09-26 23:26:48');
+(16, 5, 10, 'aliando@gmail.com', '010101', '0000-00-00', '02:02', 'N', '2017-09-24 03:56:59', '2017-09-24 03:56:59');
 
 -- --------------------------------------------------------
 
@@ -1011,9 +1009,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `codeuser`, `email`, `password`, `remember_token`, `status`, `lastlogin`, `registerdate`, `created_at`, `updated_at`) VALUES
-(3, 'Nava Gia Ginasta', 'USR001', 'nava@gmail.com', '$2y$10$wnEhcBgMsVXUz8hyw/uZ3Ot6Br2ggdo6hGCzFmARKAJqkjeA3us02', 'BzoWYeV61ln6I3VtMCN8L3CZX5ryhS4Q4zPm0VwOCjHBh8CoJiQjgBiXYVkb', 'ADMIN', '2017-09-27 07:02:23', '0000-00-00 00:00:00', '2017-08-19 05:52:17', '2017-08-19 05:52:17'),
+(3, 'Nava Gia Ginasta', 'USR001', 'nava@gmail.com', '$2y$10$wnEhcBgMsVXUz8hyw/uZ3Ot6Br2ggdo6hGCzFmARKAJqkjeA3us02', 'dIS238qGvabkTwfKCTBttPF19PGgiJnwOiuNL8qRFLCWeyp16j18bEpHfpZH', 'ADMIN', '2017-09-26 17:57:19', '0000-00-00 00:00:00', '2017-08-19 05:52:17', '2017-08-19 05:52:17'),
 (10, 'admin@cubic.co.id', 'USR002', 'admin@cubic.co.id', '$2y$10$p5BM.1OpC08eews3rBFJEuuS46ifZ/2Ez1q7Ofkko3H/XNEb5el/2', 'LwlflPD1uq86fXbMo0hLo5xT0Qdb6In01v6bPpEuKT14B4YOi06EnG67c3p5', 'ADMIN', '2017-09-01 08:06:49', '2017-09-01 08:06:49', '2017-08-23 01:20:18', '2017-09-01 08:06:49'),
-(13, 'user', 'USR004', 'user@gmail.com', '$2y$10$6eo7DNUnVkVvAm5rUAcweOnkHiL9qSVcFL2jFn4m22FheL6AitaCe', 'i8kVlQdwVhhafztZkq3ndWeCPTpx1CIjkW1MPwZc3Ch84eR2Bvzq4NDNckyf', 'USER', '2017-09-27 06:04:24', '2017-09-01 09:14:09', '2017-09-01 09:14:09', '2017-09-01 09:14:09'),
+(13, 'user', 'USR004', 'user@gmail.com', '$2y$10$6eo7DNUnVkVvAm5rUAcweOnkHiL9qSVcFL2jFn4m22FheL6AitaCe', 'Lg9BkSamDMNDF3EzrdaQN7vGV12VXrsWo5PupvAWPaxcJ2uDP5xYYPyCNSIT', 'USER', '2017-09-26 16:03:33', '2017-09-01 09:14:09', '2017-09-01 09:14:09', '2017-09-01 09:14:09'),
 (14, 'Nava Gia', 'USR005', 'nava2@gmail.com', '$2y$10$Ek.5jo6WrLaOkqs/iuuL7OuiIvVOj5m6W0Sf.pePtUt9b65eujvpW', NULL, 'USER', '2017-09-12 06:43:03', '2017-09-12 06:43:03', '2017-09-12 06:43:03', '2017-09-12 06:43:03'),
 (24, 'Nava Gia Ginasta', '', 'navagiaginasta@gmail.com', '', '7wIeIXGxwDrR3o1Dkbh9LdcdJPllgdA0ojulgdH5OsQ73yf5kzvdQQVXX1r8', 'USER', '2017-09-20 18:02:02', '0000-00-00 00:00:00', '2017-09-20 01:22:38', '2017-09-20 01:22:38'),
 (25, 'Nava Gia', '', 'navagiaginasta222@gmail.com', '$2y$10$FIwI9eEs6KLDZjznv0DEpepySp5XreSN5qcEN9bjmEXarHQUXIWjK', 'h8Mih29GIpSXujHWOVGdElRbgrm0zeYE7Z36VKEZCqWIjqiGFYimqqQrT6qq', 'USER', '2017-09-20 09:04:34', '2017-09-20 01:36:54', '2017-09-20 01:36:54', '2017-09-20 01:36:54'),
@@ -1251,7 +1249,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `adminspartnerships`
 --
 ALTER TABLE `adminspartnerships`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `billingcompanyservices`
 --
@@ -1266,7 +1264,7 @@ ALTER TABLE `bookingspaces`
 -- AUTO_INCREMENT for table `bookingtours`
 --
 ALTER TABLE `bookingtours`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `categoryadmins`
 --
@@ -1281,7 +1279,7 @@ ALTER TABLE `categoryevents`
 -- AUTO_INCREMENT for table `categorymedia`
 --
 ALTER TABLE `categorymedia`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `categorypaymentmethodes`
 --
@@ -1291,7 +1289,7 @@ ALTER TABLE `categorypaymentmethodes`
 -- AUTO_INCREMENT for table `categoryservices`
 --
 ALTER TABLE `categoryservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `citys`
 --
@@ -1311,7 +1309,7 @@ ALTER TABLE `companypartnerships`
 -- AUTO_INCREMENT for table `companyservices`
 --
 ALTER TABLE `companyservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `countrys`
 --
@@ -1321,32 +1319,32 @@ ALTER TABLE `countrys`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `historybillingcompanyservices`
 --
 ALTER TABLE `historybillingcompanyservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `historybookingspaces`
 --
 ALTER TABLE `historybookingspaces`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `informasicompanies`
 --
 ALTER TABLE `informasicompanies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `mediacompanyservices`
 --
 ALTER TABLE `mediacompanyservices`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `members`
 --
@@ -1371,7 +1369,7 @@ ALTER TABLE `paymentmethodes`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `social_providers`
 --
@@ -1391,17 +1389,17 @@ ALTER TABLE `subscribers`
 -- AUTO_INCREMENT for table `tagservices`
 --
 ALTER TABLE `tagservices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `testimonials`
 --
 ALTER TABLE `testimonials`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --

@@ -28,52 +28,52 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
+                                <a class="dashboard-stat dashboard-stat-v2 blue" href="{{ url('/companyservices') }}">
                                     <div class="visual">
-                                        <i class="fa fa-comments"></i>
+                                        <i class="icon-layers"></i>
                                     </div>
                                     <div class="details">
                                         <div class="number">
-                                            <span data-counter="counterup" data-value="1349">0</span>
+                                            <span data-counter="counterup" data-value="{{ $count_companyservices }}">{{ $count_companyservices }}</span>
                                         </div>
-                                        <div class="desc"> New Feedbacks </div>
+                                        <div class="desc"> Company Services </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <a class="dashboard-stat dashboard-stat-v2 red" href="#">
+                                <a class="dashboard-stat dashboard-stat-v2 red" href="{{ url('/companypartnership') }}">
                                     <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
+                                        <i class="icon-briefcase"></i>
                                     </div>
                                     <div class="details">
                                         <div class="number">
-                                            <span data-counter="counterup" data-value="12,5">0</span>M$ </div>
-                                        <div class="desc"> Total Profit </div>
+                                            <span data-counter="counterup" data-value="{{ $count_companypartnership }}">{{ $count_companypartnership }}</span></div>
+                                        <div class="desc"> Company Partnership </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <a class="dashboard-stat dashboard-stat-v2 green" href="#">
+                                <a class="dashboard-stat dashboard-stat-v2 green" href="{{ url('/user') }}">
                                     <div class="visual">
-                                        <i class="fa fa-shopping-cart"></i>
+                                        <i class="icon-users"></i>
                                     </div>
                                     <div class="details">
                                         <div class="number">
-                                            <span data-counter="counterup" data-value="549">0</span>
+                                            <span data-counter="counterup" data-value="{{ $count_users }}">{{ $count_users }}</span>
                                         </div>
-                                        <div class="desc"> New Orders </div>
+                                        <div class="desc"> Users </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+                                <a class="dashboard-stat dashboard-stat-v2 purple" href="{{ url('/message') }}">
                                     <div class="visual">
-                                        <i class="fa fa-globe"></i>
+                                    <i class="glyphicon glyphicon-envelope"></i>
                                     </div>
                                     <div class="details">
-                                        <div class="number"> +
-                                            <span data-counter="counterup" data-value="89"></span>% </div>
-                                        <div class="desc"> Brand Popularity </div>
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="{{ $count_messages }}"></span>{{ $count_messages }}</div>
+                                        <div class="desc"> Messages </div>
                                     </div>
                                 </a>
                             </div>
