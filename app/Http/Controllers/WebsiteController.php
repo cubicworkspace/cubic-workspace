@@ -26,6 +26,10 @@ use App\categoryevents;
 use App\sosialmedias;
 use App\messages;
 
+use Mail;
+use App\Mail\Reminder;
+use App\Mail\OrderShipped;
+
 use App\Http\Requests; 
 use App\Http\Requests\companyservicesRequest;
 use Illuminate\Http\Request;
@@ -307,6 +311,9 @@ class WebsiteController extends Controller
         $bookingspace->dateregister = date('Y-m-d H:i:s');
         $bookingspace->status      = 'N';
         $bookingspace->save();
+
+        Mail::to($request->email)->send(new Reminder);
+        // Mail::to($mail2)->send(new OrderShipped);
         \Session::flash('thanks', '<p>Your confirmation number is <span class="text-primary font700">'.$request->invoice.'</span></p>');
         return redirect('/website/package/bookingroom/thanks/'.$request->invoice);
     }

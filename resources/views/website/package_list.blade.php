@@ -124,14 +124,14 @@
 									<div class="content">
 										<h5>{{ $row->name }} <a href="{{ url('/website/package/detail') }}/{{ $row->id }}/{{ str_slug($row->name) }}" class="btn"><i class="fa fa-heart-o"></i></a></h5>
 										<div class="row gap-10">
-											<div class="col-sm-12 col-md-9">
+											<div class="col-sm-12 col-md-8">
 												<p class="line18">{{ $row->information }}</p>
 												<ul class="list-info">
 													<li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">City: </span> {{ $row->city->name }}</li>
 													<li><span class="icon"><i class="fa fa-flag"></i></span> <span class="font600">Status:</span> @if($row->status == 'Y') Available @elseif($row->status == 'N') Not Available @endif</li>													
 												</ul>
 											</div>
-											<div class="col-sm-12 col-md-3 text-right text-left-sm">
+											<div class="col-sm-12 col-md-4 text-right text-left-sm">
 												<div class="price">Rp {{ number_format($row->price, 2) }}</div>
 												<a href="{{ url('/website/package/detail') }}/{{ $row->id }}/{{ str_slug($row->name) }}" class="btn btn-primary btn-sm">view</a>
 											</div>

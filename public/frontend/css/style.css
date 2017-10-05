@@ -756,7 +756,7 @@ ul.availabily-list li > div.date-to {
 }
 
 ul.availabily-list li > div.price {
-    width: 12.5%;
+    width: 30.5%;
 }
 
 ul.availabily-list li > div.status,
@@ -1981,7 +1981,7 @@ a.top-destination-image-bg {
 .package-list-item .content .price {
     color: #f16121;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
     margin: 15px 0 25px;
 }
 

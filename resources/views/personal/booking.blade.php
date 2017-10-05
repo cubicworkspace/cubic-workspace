@@ -26,6 +26,7 @@
 						<ul class="nav nav-tabs">
 						  <!-- <li><a href="{{ url('personal/dashboard') }}">Dashboard</a></li> -->
 						  <li class="active"><a href="{{ url('personal/booking') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-archive"></i> List Booking Information</a></li>
+						  <li><a href="{{ url('personal/historybooking') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-archive"></i> History Booking Information</a></li>
 						  <li><a href="{{ url('personal/profile') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-user"></i> Personal Information</a></li>
 						</ul>
 							<div class="confirmation-wrapper">
@@ -39,11 +40,10 @@
 										<h4>List Booking Information</h4>
 
 									</div>
-									<a href="detail_package.php" class="btn btn-primary btn-sm">Online</a>
-									<a href="detail_package.php" class="btn btn-primary btn-inverse btn-sm">Offline</a>
+									<!-- <a href="detail_package.php" class="btn btn-primary btn-sm">Online</a>
+									<a href="detail_package.php" class="btn btn-primary btn-inverse btn-sm">Offline</a> -->
 												
 									<div class="package-list-item-wrapper on-page-result-page">
-								<br><br>
 								@if (count($bookingspaces ) > 0)
 								@foreach($bookingspaces as $row)
 								<div class="package-list-item clearfix">
@@ -64,14 +64,17 @@
 												</ul>
 												<br>
 												<a href="{{ url('/website/package/invoice/print/') }}/{{ $row->invoice }}" class="btn btn-primary btn-sm">Download Pdf</a>
-												<a href="detail_package.php" class="btn btn-primary btn-sm">Perpanjang</a>
+												<!-- <a href="detail_package.php" class="btn btn-primary btn-sm">Perpanjang</a> -->
 											</div>											
-										</div><br>
+										</div>
 									</div>
 								</div>
 								@endforeach
 									@else
-										<b>No data list booking information<b>
+									<div class="alert alert-danger alert-dismissible" role="alert">
+						            	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								    	<i class="fa fa-warning"></i> No data list booking information</b>
+						            </div>
 								@endif
 								
 							

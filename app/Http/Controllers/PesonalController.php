@@ -131,7 +131,8 @@ class PesonalController extends Controller
         $editmember              = members::where('email', '=', $email)->limit(1)->get();   
         $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
         $identitas               = companies::find('1');
-        $bookingspaces           = bookingspaces::where('email', '=', $email)->paginate(5); 
+        $bookingspaces           = bookingspaces::where('codeuser', '=', $id)
+                                                ->where('email', '=', $email)->paginate(5); 
         
         return view('personal.booking', compact('sosialmedia','identitas','editmember','bookingspaces'));
     }

@@ -7,7 +7,7 @@
 										<div class="sidebar-module-inner">
 											
 											<ul class="help-list">
-												<li><span class="font600"><img src="{{ asset('upload/member') }}/{{ $edit->image }}" alt="Popular Post" />
+												<li><span class="font600"><img src="{{ asset('upload/member') }}/{{ $edit->image }}" alt="Personal Member Image" />
 												</li>
 												<li><span class="font600">Name</span>: {{ Auth::user()->name }}</li>
 												<li><span class="font600">Phone</span>: {{ $edit->phone }}</li>

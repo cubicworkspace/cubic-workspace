@@ -45,7 +45,7 @@
 								
 									<div class="row gap-10">
 										<div class="col-xs-12 col-sm-12 mb-10">
-											<button type="submit" class="btn btn-primary btn-block">Register</button>
+											<button type="submit" class="btn btn-primary btn-block">Submit</button>
 										</div>
 									</div>
 								</div>

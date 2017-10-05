@@ -252,7 +252,7 @@
 									</div>
 									<div class="content">
 										<h4>{{ $row->name}}</h4>
-										<p>"{{ $row->description }}"</p>
+										<p>"{{ strip_tags($row->description) }}"</p>
 									</div>
 								</div>
 							</div>

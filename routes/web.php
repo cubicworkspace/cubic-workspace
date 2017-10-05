@@ -109,3 +109,5 @@ Route::group(['middleware' => ['admin','auth','web','nocache']], function() {
 	Route::resource('bookingtour','BookingtourController'); 
 	//Route::resource('login','LoginController'); 
 });
+
+Route::get('test-mail', 'MailController@testMail');

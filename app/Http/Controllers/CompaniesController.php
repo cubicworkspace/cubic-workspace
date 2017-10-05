@@ -148,6 +148,7 @@ class CompaniesController extends Controller
                 $companies->description = $request->description;
                 $companies->vision = $request->vision;
                 $companies->mision = $request->mision;
+                $companies->faq     = $request->faq;
                 $companies->registerdate = date('Y-m-d H:i:s');
                 $companies->status = $request->status;
                 $companies->save();
@@ -170,6 +171,7 @@ class CompaniesController extends Controller
                 $companies->description = $request->description;
                 $companies->vision = $request->vision;
                 $companies->mision = $request->mision;
+                $companies->faq     = $request->faq;
                 $companies->registerdate = date('Y-m-d H:i:s');
                 $companies->status = $request->status;
                 $companies->save();

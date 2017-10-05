@@ -159,6 +159,11 @@
 										<td><textarea name="mision"  class="form-control" >{{ $edit->mision }}</textarea></td>
 									</tr>
 									<tr>
+										<td>Faq</td>
+										<td>:</td>
+										<td><textarea class="ckeditor form-control" name="faq" rows="6" data-error-container="#editor2_error">{{ $edit->faq }}</textarea></td>
+									</tr>
+									<tr>
 										<td>Status</td>
 										<td>:</td>
 										<td><label class="radio-inline"> 
