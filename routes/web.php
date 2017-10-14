@@ -19,6 +19,7 @@ Route::get('website/package','WebsiteController@package_list');
 Route::get('website/package/search', 'WebsiteController@package_search');
 Route::get('website/package/searchroom', 'WebsiteController@package_searchroom');
 Route::get('website/package/detail/{id}/{name}','WebsiteController@package_detail');
+Route::get('website/partnership','WebsiteController@partner');
 Route::get('website/about','WebsiteController@about');
 Route::get('website/events','WebsiteController@events');
 Route::get('website/events/detail/{id}/{title}','WebsiteController@events_detail');
@@ -61,6 +62,7 @@ Route::group(['middleware' => ['member','auth','web','nocache']], function() {
 	Route::get('personal/dashboard','PesonalController@index');
 	Route::get('personal/profile/{id}/{email}','PesonalController@profile');
 	Route::post('personal/profile/edit/{id}/{email}','PesonalController@editprofile');
+	Route::post('personal/booking/payment/{id}','PesonalController@payment');
 	Route::get('personal/booking/{id}/{email}','PesonalController@booking');
 	Route::get('website/package/booking/{id}/{name}','WebsiteController@booking');
 	Route::get('website/package/bookingroom','WebsiteController@bookingroom');

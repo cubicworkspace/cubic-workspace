@@ -59,16 +59,53 @@
 												<p class="line18">{{ $row->companyservices->information }}</p>
 												<ul class="list-info">
 													<li><span class="icon"><i class="fa fa-dot-circle-o"></i></span> <span class="font600">Type: </span> {{ $row->services->name }}</li>
-													<li><span class="icon"><i class="fa fa-flag"></i></span> <span class="font600">Status:</span> @if($row->status == 'Y') On @elseif($row->status == 'N') Off @endif </li>
-													<li><span class="icon"><i class="fa fa-calendar"></i></span> <span class="font600">Date:</span> {{ date('d F Y', strtotime($row->datein))}} - {{ date('d F Y', strtotime($row->dateout))}}</li>
+													<li><span class="icon"><i class="fa fa-flag"></i></span> <span class="font600">Status:</span> @if($row->status == 'Y') On @elseif($row->status == 'N') Off @endif 
+														@if($row->statuspayment == 'N') 
+														@if($row->uploadpayment == '')   @else , <b class="text-warning">Menunggu Verifikasi pembayaran</b>  @endif 
+														@else
+															, <b class="text-success">Pembayaran telah diverifikasi</b> 
+														@endif
+													</li>
+													<li><span class="icon"><i class="fa fa-calendar"></i></span> <span class="font600">Date:</span> {{ date('d F Y', strtotime($row->datein))}} s/d {{ date('d F Y', strtotime($row->dateout))}}</li>
 												</ul>
 												<br>
 												<a href="{{ url('/website/package/invoice/print/') }}/{{ $row->invoice }}" class="btn btn-primary btn-sm">Download Pdf</a>
-												<!-- <a href="detail_package.php" class="btn btn-primary btn-sm">Perpanjang</a> -->
-											</div>											
-										</div>
+												@if($row->statuspayment == 'N')
+												<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myKonfirmasi{{ $row->invoice }}">Konfirmasi Pembayaran</button>
+												@else
+
+												@endif
+											</div>										
+										</div><br>
 									</div>
 								</div>
+								<!-- Modal -->
+											<div class="modal fade" id="myKonfirmasi{{ $row->invoice }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+											  <div class="modal-dialog" role="document">
+											    <div class="modal-content">
+											      <div class="modal-header">
+											        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											        <h4 class="modal-title" id="myModalLabel">Konfirmasi Pembayaran Invoice: #{{ $row->invoice }}</h4>
+											      </div>
+											      <div class="modal-body">	
+												<form action="/personal/booking/payment/{{ $row->id }}" method="POST" enctype="multipart/form-data">
+													{{csrf_field()}}
+												<input type="hidden" name="id" class="form-control"  value="{{ $row->id }}"> 
+										          <div class="form-group">
+										            <label for="message-text" class="control-label">Upload bukti pembayaran:</label>
+										            <input type="file" class="form-control" id="uploadpayment" name="uploadpayment">
+										          </div>
+											      <div class="modal-footer">
+											        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											        <button type="submit" class="btn btn-primary">Konfirmasi</button>
+											      </div>
+										        </form>
+											      </div>
+											    </div>
+											  </div>
+											</div>
+											</div>
+
 								@endforeach
 									@else
 									<div class="alert alert-danger alert-dismissible" role="alert">

@@ -233,6 +233,7 @@
 									<ul class="nav navbar-nav" id="responsive-menu">
 										<li><a href="{{ url('') }}">Home</a></li>
 										<li><a href="{{ url('/website/package') }}">Package</a></li>
+										<li><a href="{{ url('/website/partnership') }}">Partnership</a></li>
 										<li><a href="{{ url('/website/about') }}">About Us</a></li>
 										<li><a href="{{ url('/website/events') }}">Event</a></li>
 										<li><a href="{{ url('/website/contact') }}">Contact us</a></li>

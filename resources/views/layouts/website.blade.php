@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,32 +9,19 @@
 	<meta name="keywords" content="{{ strip_tags($identitas->profile) }}" />
 	<meta name="author" content="{{ $identitas->author }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
-	<!-- Fav and Touch Icons -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('frontend/images/ico/apple-touch-icon-144-precomposed.png') }}">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('frontend/images/ico/apple-touch-icon-114-precomposed.png') }}">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('frontend/images/ico/apple-touch-icon-72-precomposed.png') }}">
-	<link rel="apple-touch-icon-precomposed" href="{{ asset('frontend/images/ico/apple-touch-icon-57-precomposed.png') }}">
     <link rel="shortcut icon" href="{{ asset('faviconcubic.png') }}" /> 
-
-	<!-- CSS Plugins -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/bootstrap/css/bootstrap.min.css') }}" media="screen">	
 	<link href="{{ asset('frontend/css/animate.css') }}" rel="stylesheet">
 	<link href="{{ asset('frontend/css/main.css') }}" rel="stylesheet">
 	<link href="{{ asset('frontend/css/component.css') }}" rel="stylesheet">
-	
-	<!-- CSS Font Icons -->
 	<link rel="stylesheet" href="{{ asset('frontend/icons/ionicons/css/ionicons.css') }}">
 	<link rel="stylesheet" href="{{ asset('frontend/icons/font-awesome/css/font-awesome.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('frontend/icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}">
 	<link rel="stylesheet" href="{{ asset('frontend/icons/simple-line-icons/css/simple-line-icons.css') }}">
 	<link rel="stylesheet" href="{{ asset('frontend/icons/rivolicons/style.css') }}">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-	<!-- Google Fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,300italic,300' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
 	<!-- CSS Custom -->
 	<link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">

@@ -155,6 +155,17 @@ class WebsiteController extends Controller
         return view('website.partnership', compact('sosialmedia','identitas','companypartnership','mediacompanyservices','companyservices','bookingspaces'));
     }
 
+    public function partner()
+    {
+        $sosialmedia        = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas          = companies::find('1');
+        $media              = media::find('4');
+        $header             = informasicompanies::where('categoryinfromasi', '=', 'HEADER')
+                                                 ->where('status', '=', 'Y')->limit(3)->get();
+        $companypartnership = companypartnership::where('status', '=', 'Y')->get();
+        return view('website.partner', compact('sosialmedia','identitas','media','header','companypartnership'));
+    }
+
     public function about()
     {
         $sosialmedia            = sosialmedias::where('status', '=', 'Y')->get();   

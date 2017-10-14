@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
+use Auth;
 use App\users;
 use App\members;
 use App\media;
@@ -100,7 +101,7 @@ class PesonalController extends Controller
         $member->save();
         $user->save();
             \Session::flash('success', 'Member data has been edited successfully!,');
-            return redirect('/personal/profile/'.$request->codeuser.'/'.$request->email.'/');
+            return redirect('/personal/profile/'.Auth::user()->id.'/'.Auth::user()->email.'/');
         } else {
         $member = members::find($id);
         $user = users::findOrFail($request->codeuser);
@@ -120,7 +121,7 @@ class PesonalController extends Controller
         $member->save();
         $user->save();
             \Session::flash('success', 'Member data has been edited successfully!,');
-            return redirect('/personal/profile/'.$request->codeuser.'/'.$request->email.'/');
+            return redirect('/personal/profile/'.Auth::user()->id.'/'.Auth::user()->email.'/');
 
         }
         return view('personal.profile', compact('sosialmedia','identitas','editmember','edituser'));
@@ -132,9 +133,37 @@ class PesonalController extends Controller
         $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
         $identitas               = companies::find('1');
         $bookingspaces           = bookingspaces::where('codeuser', '=', $id)
-                                                ->where('email', '=', $email)->paginate(5); 
-        
+                                                ->where('email', '=', $email)->paginate(5);      
         return view('personal.booking', compact('sosialmedia','identitas','editmember','bookingspaces'));
+    }
+
+    public function payment(Request $request, $id)
+    {
+        $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
+        $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas               = companies::find('1');
+        $bookingspaces = bookingspaces::find($id);
+        $uploadpayment = Input::file('uploadpayment');
+        if($uploadpayment) {                
+            File::delete(public_path('/upload/uploadpayment/'.$bookingspaces->uploadpayment));
+            $extention = Input::file('uploadpayment')->getClientOriginalExtension();
+            $filename = rand(11111,99999).'.'. $extention;
+            $request->file('uploadpayment')->move(
+                base_path() . '/public/upload/uploadpayment/', $filename
+            );
+        $bookingspaces->uploadpayment = $filename;
+        $bookingspaces->save();
+            \Session::flash('success', 'Thank you for uploading proof of payment!,');
+            return redirect('/personal/booking/'.Auth::user()->id.'/'.Auth::user()->email.'/');
+        } else {
+        $bookingspaces = bookingspaces::find($id);
+        $bookingspaces->uploadpayment = $filename;
+        $bookingspaces->save();
+            \Session::flash('success', 'Thank you for uploading proof of payment!,');
+            return redirect('/personal/booking/'.Auth::user()->id.'/'.Auth::user()->email.'/');
+
+        }
+        return view('personal.booking', compact('sosialmedia','identitas','bookingspaces'));
     }
 
 }
