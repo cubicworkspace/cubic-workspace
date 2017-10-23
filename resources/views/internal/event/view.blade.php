@@ -58,7 +58,7 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <div class="btn-group pull-right">
                                                         <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
                                                             <i class="fa fa-angle-down"></i>
@@ -78,19 +78,19 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Code</th>
-                                                    <th>Category Event</th>
+                                                    <!-- <th>Code</th> -->
+                                                    <!-- <th>Category Event</th> -->
                                                     <th>Title</th>
                                                     <th>Url</th>
                                                     <th>Quota</th>
-                                                    <th>Image</th>
+                                                    <!-- <th>Image</th> -->
                                                     <th>Status</th>
                                                     <th>Actions</th>
                                                 </tr>
@@ -99,19 +99,19 @@
                                             @foreach ($view as $no => $row)
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
-                                                    <td>{{ $row->codeevent }}</td>
-                                                    <td>{{ !empty($row->categoryevent->name) ? $row->categoryevent->name : '-' }} </td>
+                                                    <!-- <td>{{ $row->codeevent }}</td> -->
+                                                    <!-- <td>{{ !empty($row->categoryevent->name) ? $row->categoryevent->name : '-' }} </td> -->
                                                     <td>{{ $row->title }}</td>
                                                     <td>{{ $row->url }}</td>
                                                     <td>{{ $row->quota }}</td>
-                                                    <td>{{ $row->image }}</td>
+                                                    <!-- <td>{{ $row->image }}</td> -->
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      
 								                      <form action="/event/{{$row->id}}" method="POST">
-								                      <a href="/event/{{$row->id}}/edit" class="btn btn-warning"><i class="fa fa-pencil" ></i> Edit</a> 
+								                      <a href="/event/{{$row->id}}/edit" class="btn btn-warning" title="Edit"><i class="fa fa-pencil" ></i></a> 
 								                      {{ csrf_field() }}
 								                      {{ method_field('DELETE') }}
-								                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this data?')"><i class="fa fa-trash" ></i> Delete</button>
+								                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this data?')" title="Delete"><i class="fa fa-trash" ></i></button>
 								                      </form>
 								                    </td>
                                                 </tr>

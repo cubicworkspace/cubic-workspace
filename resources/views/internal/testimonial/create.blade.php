@@ -48,7 +48,7 @@
 						            <form action="/testimonial/@yield('editForm')" method="POST" enctype="multipart/form-data">
 									{{csrf_field()}}
 									<div class="table-responsive">
-						              <table class="table">
+						              <table class="table table-hover table-striped table-bordered">
 						            <tr>
 										<td>Name</td>
 										<td>:</td>

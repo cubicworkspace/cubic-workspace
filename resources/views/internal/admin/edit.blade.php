@@ -49,9 +49,9 @@
 									{{ csrf_field() }}
 									{{ method_field('PUT') }}
 									<div class="table-responsive">
-						              <table class="table">
+						              <table class="table table-hover table-striped table-bordered">
 									<tr>
-										<td>Codeadmin</td>
+										<td>Code Admin</td>
 										<td>:</td>
 										<td><b>{{ $edit->codeadmin }}</b></td>
 									</tr>

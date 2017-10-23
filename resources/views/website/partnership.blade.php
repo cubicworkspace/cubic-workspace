@@ -48,7 +48,7 @@
 										<div class="section-title text-left">
 											<h4>Description</h4>
 										</div>										
-										<p>{{ $companypartnership->description }}</p>
+										<p>{{  strip_tags($companypartnership->description) }}</p>
 
 									</div>
 									<div id="section-1" class="detail-content">
@@ -194,7 +194,7 @@
 											<div class="col-sm-12 col-md-12 mb-15">
 												<div class="read-more-div" data-collapsed-height="107">
 													<div class="read-more-div-inner">
-														{{ $companypartnership->faq }}
+														{{  strip_tags($companypartnership->faq) }}
 													</div>
 												</div>
 											</div>

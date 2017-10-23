@@ -102,9 +102,9 @@
 				<div class="container">
 					<style type="text/css">
 						.flex-gap-30 > .flex-columns, .flex-gap-30 > .flex-column {
-    padding-left: 115px;
-    padding-right: 15px;
-}
+						    padding-left: 115px;
+						    padding-right: 15px;
+						}
 					</style>
 					<div class="flex-row flex-align-middle flex-gap-30">
 						
@@ -122,15 +122,12 @@
 						
 						<div class="flex-columns flex-sm-12">
 							<div >
-								<form action="/website/subscriber/tambah" method="POST">
-									{{csrf_field()}}
 									<div class="input-group">
 										
 										<span class="input-group-btn">
-											<input type="submit" class="btn btn-primary" type="button" value="Register Partnership"> <i class="fa fa-long-arrow-right"></i>
+											<input type="submit"  data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-primary" type="button" value="Register Partnership"> <i class="fa fa-long-arrow-right"></i>
 										</span>
 									</div>
-								</form>
 							</div>
 						</div>
 					
@@ -147,4 +144,24 @@
 				</div>
 				
 			</div>
+
+			<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+ 				 <div class="modal-dialog modal-lg">
+   					<div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal">&times;</button>
+			                <h4 class="modal-title"><b>Register Partnership</b></h4>
+			            </div>
+			            <div class="modal-body">
+			            	<form action="/website/member/signup" method="POST">
+			                Isi disini datanya
+							</form>
+			            </div>
+			            <div class="modal-footer">
+			                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+			                <input type="submit" name="signup" value="Sign Up" class="btn btn-primary"> 
+			            </div>
+       				 </div>
+ 			 </div>
+</div>
 @endsection

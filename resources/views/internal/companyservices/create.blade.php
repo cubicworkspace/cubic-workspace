@@ -48,7 +48,7 @@
 						            <form action="/companyservices/@yield('editForm')" method="POST" enctype="multipart/form-data">
 									{{ csrf_field() }}
 									<div class="table-responsive">
-						              <table class="table">
+						              <table class="table table-hover table-striped table-bordered">
 									<tr>
 										<td>Code Company Service</td>
 										<td>:</td>
@@ -109,7 +109,7 @@
 	   								  	'placeholder' => '-- Select Company Partnership --'
 	   								 ]) !!}</td>
 									</tr>
-									</tr> -->
+									</tr>
 									<tr>
 										<td>Tag Service</td>
 										<td>:</td>

@@ -168,4 +168,16 @@ class CompanyServicesController extends Controller
          \Session::flash('warning', 'Company Services data has been successfully deleted!,');
         return redirect('/companyservices');
     }
+
+    public function delete($codecompanyservices)
+    {
+        DB::table('companyservices')->where('codecompanyservices', '=', $codecompanyservices)->delete();
+        DB::table('billingcompanyservices')->where('codecompanyservices', '=', $codecompanyservices)->delete();
+        // $companyservices = companyservices::find($codecompanyservices);
+        // $billingcompanyservices = billingcompanyservices::find($codecompanyservices);
+        // $companyservices->delete();
+        // $billingcompanyservices->delete();
+         \Session::flash('warning', 'Company Services data has been successfully deleted!,');
+        return redirect('/companyservices');
+    }
 }

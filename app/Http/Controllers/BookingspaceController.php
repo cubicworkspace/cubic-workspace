@@ -183,4 +183,30 @@ class BookingspaceController extends Controller
         \Session::flash('warning', 'Booking Space data has been successfully deleted!,');
         return redirect('/bookingspace');
     }
+
+    public function payment(Request $request, $id) {
+        $bookingspace = bookingspaces::find($id);
+        $id  = $request->id; 
+            if ($bookingspace->statuspayment == 'N') {
+                $bookingspace->statuspayment = 'Y';
+            } else {
+                $bookingspace->statuspayment = 'N';
+            }
+        $bookingspace->save();
+        \Session::flash('success', 'Booking Space data has been edited successfully!,');
+        return redirect('/bookingspace');
+        // return "d";
+    }
+
+     public function detailbookingspace($id)
+    {
+        $companypartnership     = companypartnership::all();
+        $services               = services::all();
+        $billingcompanyservices = billingcompanyservices::all();
+        $users                  = users::all();
+        $paymentmethodes         = paymentmethodes::all();
+
+        $detail = bookingspaces::find($id);
+        return view('internal.bookingspace.detail', compact('detail','companypartnership','services','billingcompanyservices','users','paymentmethodes'));
+    }
 }

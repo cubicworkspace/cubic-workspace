@@ -49,7 +49,7 @@
 									{{ csrf_field() }}
 									{{ method_field('PUT') }}
 									<div class="table-responsive">
-						              <table class="table">
+						              <table class="table table-hover table-striped table-bordered">
 									<tr>
 										<td>Code Billing</td>
 										<td>:</td>

@@ -90,6 +90,7 @@ Route::group(['middleware' => ['admin','auth','web','nocache']], function() {
 	Route::resource('city','CityController'); 
 	Route::resource('user','UserController'); 
 	Route::resource('companyservices','CompanyServicesController'); 
+	Route::get('companyservices/delete/{codecompanyservices}','CompanyServicesController@delete');
 	Route::resource('tagservices','TagServicesController'); 
 	Route::resource('services','ServicesController'); 
 	Route::resource('categoryservices','CategoryServicesController'); 
@@ -105,7 +106,9 @@ Route::group(['middleware' => ['admin','auth','web','nocache']], function() {
 	Route::resource('member','MemberController'); 
 	Route::resource('categorypaymentmethode','CategorypaymentmethodeController'); 
 	Route::resource('paymentmethode','PaymentmethodeController'); 
-	Route::resource('bookingspace','BookingspaceController'); 
+	Route::resource('bookingspace','BookingspaceController');
+	Route::get('bookingspace/payment/{id}','BookingspaceController@payment');
+	Route::get('bookingspace/detail/{id}','BookingspaceController@detailbookingspace');
 	Route::resource('historybookingspace','HistorybookingspaceController');
 	Route::resource('mediacompanyservices','MediaCompanyServicesController');  
 	Route::resource('bookingtour','BookingtourController'); 

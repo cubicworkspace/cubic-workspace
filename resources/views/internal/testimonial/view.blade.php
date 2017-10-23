@@ -58,7 +58,7 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                               <!--  <div class="col-md-6">
                                                     <div class="btn-group pull-right">
                                                         <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
                                                             <i class="fa fa-angle-down"></i>
@@ -78,7 +78,7 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
@@ -86,7 +86,7 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Name</th>
-                                                    <th>Description</th>
+                                                    <!-- <th>Description</th> -->
                                                     <th>Image</th>
                                                     <th>Status</th>
                                                     <th>Actions</th>
@@ -97,15 +97,15 @@
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->name }}</td>
-                                                    <td>{{ $row->description }}</td>
+                                                    <!-- <td>{{ $row->description }}</td> -->
                                                     <td><img src="{{ asset('upload/testimonial') }}/{{ $row->image }}" width="120"></td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      
 								                      <form action="/testimonial/{{$row->id}}" method="POST">
-								                      <a href="/testimonial/{{$row->id}}/edit" class="btn btn-warning"><i class="fa fa-pencil" ></i> Edit</a> 
+								                      <a href="/testimonial/{{$row->id}}/edit" class="btn btn-warning" title="Edit"><i class="fa fa-pencil" ></i></a> 
 								                      {{ csrf_field() }}
 								                      {{ method_field('DELETE') }}
-								                      <button type="submit" class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete this data?')"><i class="fa fa-trash" ></i> Delete</button>
+								                      <button type="submit" class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete this data?')" title="Delete"><i class="fa fa-trash" ></i></button>
 								                      </form>
 								                    </td>
                                                 </tr>

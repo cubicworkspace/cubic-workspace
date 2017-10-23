@@ -48,7 +48,7 @@
 						            <form action="/user/@yield('editForm')" id="form_sample_1" method="POST" enctype="multipart/form-data">
 									{{csrf_field()}}
 									<div class="table-responsive">
-						              <table class="table">
+						              <table class="table table-hover table-striped table-bordered">
 						            <tr>
 										<td>Code User</td>
 										<td>:</td>

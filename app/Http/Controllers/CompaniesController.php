@@ -62,8 +62,8 @@ class CompaniesController extends Controller
              'phone' => 'required',
              'email' => 'required',]);
         $companies->name = $request->name;
-        $companies->favicon = $favicon;
-        $companies->logo = $filename;
+        if(! is_null($favicon)) { $companies->favicon = $favicon; }
+        if(! is_null($filename)){ $companies->logo = $filename; }
         $companies->email = $request->email;
         $companies->phone = $request->phone;
         $companies->fax = $request->fax;
@@ -116,18 +116,12 @@ class CompaniesController extends Controller
         $companies = companies::find($id);
         $logo = Input::file('logo');
         $favicon = Input::file('favicon');
-        if($logo && $favicon) {     
+        if($logo) {     
                 File::delete(public_path('/upload/companies/'.$companies->logo)); 
                 $extention = Input::file('logo')->getClientOriginalExtension();
                 $filename =  date('YmdHis'). ".$extention";
                 $request->file('logo')->move(
                     base_path() . '/public/upload/companies/', $filename
-                );
-                File::delete(public_path('/upload/companies/'.$companies->favicon)); 
-                $extention2 = Input::file('favicon')->getClientOriginalExtension();
-                $favicon = rand(11111,99999).'.'. $extention2;
-                $request->file('favicon')->move(
-                    base_path() . '/public/upload/companies/', $favicon
                 );
 
                 $this->validate($request, [            
@@ -136,7 +130,6 @@ class CompaniesController extends Controller
                      'phone' => 'required',
                      'email' => 'required',]);
                 $companies->name = $request->name;
-                $companies->favicon = $favicon;
                 $companies->logo = $filename;
                 $companies->email = $request->email;
                 $companies->phone = $request->phone;
@@ -154,7 +147,38 @@ class CompaniesController extends Controller
                 $companies->save();
                 \Session::flash('success', 'Companies data has been edited successfully!,');
                 return redirect('/companies/1/edit');
-        } else {
+        } elseif($favicon) {
+                File::delete(public_path('/upload/companies/'.$companies->favicon)); 
+                $extention2 = Input::file('favicon')->getClientOriginalExtension();
+                $favicon = rand(11111,99999).'.'. $extention2;
+                $request->file('favicon')->move(
+                    base_path() . '/public/upload/companies/', $favicon
+                );
+
+                $this->validate($request, [            
+                     'name' => 'required',           
+                     'email' => 'required',            
+                     'phone' => 'required',
+                     'email' => 'required',]);
+                $companies->name = $request->name;
+                $companies->favicon = $favicon;
+                $companies->email = $request->email;
+                $companies->phone = $request->phone;
+                $companies->fax = $request->fax;
+                $companies->address = $request->address;
+                $companies->maps = $request->maps;
+                $companies->profile = $request->profile;
+                $companies->history = $request->history;
+                $companies->description = $request->description;
+                $companies->vision = $request->vision;
+                $companies->mision = $request->mision;
+                $companies->faq     = $request->faq;
+                $companies->registerdate = date('Y-m-d H:i:s');
+                $companies->status = $request->status;
+                $companies->save();
+                \Session::flash('success', 'Companies data has been edited successfully!,');
+                return redirect('/companies/1/edit');
+        }else {
                 $this->validate($request, [            
                      'name' => 'required',           
                      'email' => 'required',            

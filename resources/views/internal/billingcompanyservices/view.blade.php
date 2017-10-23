@@ -58,7 +58,7 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                               <!--  <div class="col-md-6">
                                                     <div class="btn-group pull-right">
                                                         <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
                                                             <i class="fa fa-angle-down"></i>
@@ -78,18 +78,18 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Code</th>
+                                                    <!-- <th>Code</th> -->
                                                     <th>Name</th>
                                                     <th>Information</th>
                                                     <th>Company Partnership</th>
-                                                    <th>Company Services</th>
+                                                    <!-- <th>Company Services</th> -->
                                                     <th>Quota</th>
                                                     <th>Status</th>
                                                     <th>Actions</th>
@@ -99,19 +99,19 @@
                                             @foreach ($view as $no => $row)
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
-                                                    <td>{{ $row->codebilling }}</td>
+                                                    <!-- <td>{{ $row->codebilling }}</td> -->
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->information }}</td>
                                                     <td>{{ !empty($row->companypartnership->name) ? $row->companypartnership->name : '-' }} </td>
-                                                    <td>{{ !empty($row->companyservices->name) ? $row->companyservices->name : '-' }} </td>
+                                                    <!-- <td>{{ !empty($row->companyservices->name) ? $row->companyservices->name : '-' }} </td> -->
                                                     <td>{{ $row->quota }}</td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      
 								                      <form action="/billingcompanyservices/{{$row->id}}" method="POST">
-								                      <a href="/billingcompanyservices/{{$row->id}}/edit" class="btn btn-warning"><i class="fa fa-pencil" ></i> Edit</a> 
+								                      <a href="/billingcompanyservices/{{$row->id}}/edit" class="btn btn-warning" title="Edit"><i class="fa fa-pencil" ></i></a> 
 								                      {{ csrf_field() }}
 								                      {{ method_field('DELETE') }}
-								                      <button type="submit" class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete this data?')"><i class="fa fa-trash" ></i> Delete</button>
+								                      <button type="submit" class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete this data?')" title="Delete"><i class="fa fa-trash" ></i></button>
 								                      </form>
 								                    </td>
                                                 </tr>

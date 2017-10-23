@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         
         $no = 1;
-        $view = users::orderBy('id', 'DESC')->get();
+        $view = users::orderBy('id', 'ASC')->get();
         return view('internal.user.view', compact('view'));
     }
 
@@ -55,9 +55,6 @@ class UserController extends Controller
              'codeuser' => 'required',
              'email' => 'required']);
         $user->codeuser = $request->codeuser;
-        $user->name = $request->name;
-        $user->user_id ='';
-        $user->provider_id ='';
         $user->name = $request->name;
         $user->lastlogin = date('Y-m-d H:i:s');
         $user->registerdate = date('Y-m-d H:i:s');
@@ -105,8 +102,6 @@ class UserController extends Controller
         $this->validate($request, [
              'email' => 'required']);
         $user->name = $request->name;
-        $user->user_id ='';
-        $user->provider_id ='';
         $user->name = $request->name;
         $user->lastlogin = date('Y-m-d H:i:s');
         $user->registerdate = date('Y-m-d H:i:s');

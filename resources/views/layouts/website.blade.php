@@ -92,7 +92,8 @@ $('.input-group.date').datepicker({
  </script>
 <script>
 $('#confirmationModal').modal('show');
-</script><!-- 
+</script>
+<!-- 
 <script type='text/javascript' src="{{ asset('frontend/js/jquery-1.8.3.js') }}"></script> -->
 <script type='text/javascript' src="{{ asset('frontend/js/bootstrap-datepicker.min.js') }}"></script>
 </body>

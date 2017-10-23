@@ -58,7 +58,7 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                               <!--  <div class="col-md-6">
                                                     <div class="btn-group pull-right">
                                                         <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
                                                             <i class="fa fa-angle-down"></i>
@@ -78,20 +78,19 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Code</th>
-                                                    <th>Service</th>
                                                     <th>Invoice</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
-                                                    <th>Phone</th>
-                                                    <th>Status</th>
+                                                    <!-- <th>Service</th> -->
+                                                    <th>Bukti</th>
+                                                    <th>Status Payment</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -99,22 +98,58 @@
                                             @foreach ($view as $no => $row)
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
-                                                    <td>{{ $row->codebookingspace }}</td>
-                                                    <td>{{ !empty($row->services->name) ? $row->services->name : '-' }}</td>
-                                                    <td>{{ $row->invoice }}</td>
+                                                    <td><b>{{ $row->invoice }}</b></td>
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->email }}</td>
-                                                    <td>{{ $row->phone }}</td>
-                                                    <td>{{ $row->status }}</td>
-                                                    <td>                      
+                                                    <!-- <td>{{ !empty($row->services->name) ? $row->services->name : '-' }}</td> -->
+                                                    <td>
+                                                        @if($row->uploadpayment == '')
+                                                         <img src="{{ asset('upload/noimage.png') }}" width="120px">
+                                                       @else
+                                                        <a data-toggle="modal" href="#bukti{{$row->id}}" title="zoom">
+                                                        <img src="{{ asset('upload/uploadpayment') }}/{{ $row->uploadpayment }}" width="120px"></a>
+                                                       @endif </td>
+                                                    <td> @if($row->statuspayment == 'Y') 
+                                                            <span class="label label-sm label-info"> Approved </span>
+                                                        @else
+                                                            <span class="label label-sm label-warning"> Pending</span> @endif </td>
+                                                    <td>
 								                      <form action="/bookingspace/{{$row->id}}" method="POST">
-								                      <a href="/bookingspace/{{$row->id}}/edit" class="btn btn-warning"><i class="fa fa-pencil" ></i> Edit</a> 
+                                                      {{ csrf_field() }}
+                                                        @if($row->statuspayment == 'N') 
+                                                            <a href="/bookingspace/payment/{{$row->id}}" class="btn btn-success" title="Payment Confirmation"><i class="fa fa-external-link"></i></a>  
+                                                        @else
+                                                            <a href="#" class="btn btn-default" title="Payment Confirmation" ><i class="fa fa-check-circle" ></i></a> 
+                                                        @endif
+
+                                                      <a href="/bookingspace/detail/{{$row->id}}/" class="btn btn-info" title="Detail"><i class="fa fa-paper-plane-o"></i></a>   
+
+								                      <a href="/bookingspace/{{$row->id}}/edit" class="btn btn-warning" title="Edit"><i class="fa fa-pencil"></i></a> 
 								                      {{ csrf_field() }}
 								                      {{ method_field('DELETE') }}
-								                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this data?')"><i class="fa fa-trash" ></i> Delete</button>
+								                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this data?')" title="Delete"><i class="fa fa-trash" ></i></button>
 								                      </form>
 								                    </td>
                                                 </tr>
+
+                                                <div class="modal fade" id="bukti{{$row->id}}" tabindex="-1" role="buki" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                                                <h4 class="modal-title">Bukti Pembayaran Invoice <b>#{{ $row->invoice }}</b></h4>
+                                                            </div>
+                                                            <div class="modal-body"> 
+                                                                <center><img src="{{ asset('upload/uploadpayment') }}/{{ $row->uploadpayment }}" width="320px"></center> </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                                                                <!-- <button type="button" class="btn green">Save changes</button> -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
                                                @endforeach
                                             </tbody>
                                         </table>

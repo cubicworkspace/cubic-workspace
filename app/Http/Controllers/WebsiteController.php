@@ -71,7 +71,7 @@ class WebsiteController extends Controller
     {
         $sosialmedia              = sosialmedias::where('status', '=', 'Y')->get();   
         $identitas                = companies::find('1');
-        $companyservices          = companyservices::paginate(10);
+        $companyservices          = companyservices::orderBy('id', 'DESC')->paginate(10);
         $count_companyservices    = companyservices::count();
         $city                     = citys::pluck('name','id');
         $services                 = services::pluck('name','id');

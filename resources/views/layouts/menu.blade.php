@@ -164,21 +164,21 @@
                                             <span class="title">Billing Company Services</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item ">
+                                   <!--  <li class="nav-item ">
                                         <a href="{{ url('/historybilling') }}" class="nav-link ">
                                             <span class="title">History Billing Company Services</span>
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li class="nav-item  ">
                                         <a href="{{ url('/bookingspace') }}" class="nav-link ">
                                             <span class="title">Booking Space</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item ">
+                                   <!--  <li class="nav-item ">
                                         <a href="{{ url('/historybookingspace') }}" class="nav-link ">
                                             <span class="title">History Booking Space</span>
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li class="nav-item ">
                                         <a href="{{ url('/bookingtour') }}" class="nav-link ">
                                             <span class="title">Booking Tour</span>
