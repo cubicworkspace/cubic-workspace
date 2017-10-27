@@ -26,7 +26,7 @@
 						<ul class="nav nav-tabs">
 						  <!-- <li><a href="{{ url('personal/dashboard') }}">Dashboard</a></li> -->
 						  <li class="active"><a href="{{ url('personal/booking') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-archive"></i> List Booking Information</a></li>
-						  <li><a href="{{ url('personal/historybooking') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-archive"></i> History Booking Information</a></li>
+						  <!-- <li><a href="{{ url('personal/historybooking') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-archive"></i> History Booking Information</a></li> -->
 						  <li><a href="{{ url('personal/profile') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-user"></i> Personal Information</a></li>
 						</ul>
 							<div class="confirmation-wrapper">
@@ -59,19 +59,24 @@
 												<p class="line18">{{ $row->companyservices->information }}</p>
 												<ul class="list-info">
 													<li><span class="icon"><i class="fa fa-dot-circle-o"></i></span> <span class="font600">Type: </span> {{ $row->services->name }}</li>
-													<li><span class="icon"><i class="fa fa-flag"></i></span> <span class="font600">Status:</span> @if($row->status == 'Y') On @elseif($row->status == 'N') Off @endif 
+													<li><span class="icon"><i class="fa fa-flag"></i></span> <span class="font600">Status:</span> 
+													@if($row->dateout > $datenow)
+														@if($row->status == 'Y') On @elseif($row->status == 'N') Off @endif 
 														@if($row->statuspayment == 'N') 
-														@if($row->uploadpayment == '')   @else , <b class="text-warning">Menunggu Verifikasi pembayaran</b>  @endif 
+														@if($row->uploadpayment == '')   @else , <b class="text-warning">Waiting for Verify payment</b>  @endif 
 														@else
-															, <b class="text-success">Pembayaran telah diverifikasi</b> 
+															, <b class="text-success">Payment has been verified</b> 
 														@endif
+													@else 
+													<b class="text-danger">expire</b>
+													@endif
 													</li>
 													<li><span class="icon"><i class="fa fa-calendar"></i></span> <span class="font600">Date:</span> {{ date('d F Y', strtotime($row->datein))}} s/d {{ date('d F Y', strtotime($row->dateout))}}</li>
 												</ul>
 												<br>
 												<a href="{{ url('/website/package/invoice/print/') }}/{{ $row->invoice }}" class="btn btn-primary btn-sm">Download Pdf</a>
 												@if($row->statuspayment == 'N')
-												<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myKonfirmasi{{ $row->invoice }}">Konfirmasi Pembayaran</button>
+												<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myKonfirmasi{{ $row->invoice }}">Payment confirmation</button>
 												@else
 
 												@endif

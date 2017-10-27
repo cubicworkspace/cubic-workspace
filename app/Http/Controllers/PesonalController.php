@@ -133,8 +133,9 @@ class PesonalController extends Controller
         $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
         $identitas               = companies::find('1');
         $bookingspaces           = bookingspaces::where('codeuser', '=', $id)
-                                                ->where('email', '=', $email)->paginate(5);      
-        return view('personal.booking', compact('sosialmedia','identitas','editmember','bookingspaces'));
+                                                ->where('email', '=', $email)->paginate(5);  
+        $datenow                 = date('Y-m-d');    
+        return view('personal.booking', compact('sosialmedia','identitas','editmember','bookingspaces','datenow'));
     }
 
     public function payment(Request $request, $id)

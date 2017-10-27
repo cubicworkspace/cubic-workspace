@@ -204,9 +204,10 @@ class BookingspaceController extends Controller
         $services               = services::all();
         $billingcompanyservices = billingcompanyservices::all();
         $users                  = users::all();
-        $paymentmethodes         = paymentmethodes::all();
+        $paymentmethodes        = paymentmethodes::all();
+        $datenow                = date('Y-m-d');    
 
         $detail = bookingspaces::find($id);
-        return view('internal.bookingspace.detail', compact('detail','companypartnership','services','billingcompanyservices','users','paymentmethodes'));
+        return view('internal.bookingspace.detail', compact('detail','companypartnership','services','billingcompanyservices','users','paymentmethodes','datenow'));
     }
 }

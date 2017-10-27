@@ -22,7 +22,7 @@
                         </div>
                         <!-- END PAGE BAR -->
                         <!-- BEGIN PAGE TITLE-->
-                        <h1 class="page-title">@yield('title')  <b>Invoice #{{ $detail->invoice }}</b> </h1>
+                        <h1 class="page-title">@yield('title') <b>Invoice #{{ $detail->invoice }}</b> </h1>
                         <!-- END PAGE TITLE-->
                         <!-- END PAGE HEADER-->
                         <div class="row">
@@ -32,21 +32,12 @@
                                     <div class="portlet-title">
                                         <div class="caption font-dark">
                                             <i class="icon-settings font-dark"></i>
-                                            <span class="caption-subject bold uppercase"> Managed @yield('title')  <b>Invoice #{{ $detail->invoice }}</b></span>
+                                            <span class="caption-subject bold uppercase"> Managed @yield('title')</span>
                                         </div>
                                     </div>
-                                    @if (count($errors)>0)
-										<div class="alert alert-danger alert-dismissible">
-						                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						                <h4><i class="icon fa fa-ban"></i> Error!</h4>
-											@foreach ($errors->all() as $error)
-							 				{{$error}}
-											@endforeach
-											
-						              </div>
-									@endif
-						            
-								<div class="row">
+                                   
+									<div class="table-responsive">
+						             
                                   <div class="col-md-6">						              
                                     <table class="table table-hover table-striped table-bordered">
 									<tr>
@@ -77,7 +68,7 @@
 									<tr>
 										<td>Payment Methode</td>
 										<td>:</td>
-										<td> <b>{{ !empty($detail->paymentmethodes->name) ? $detail->paymentmethodes->name : '-' }} </b>
+										<td> <b>{{ !empty($detail->paymentmethodes->name) ? $detail->paymentmethodes->name : '-' }}</b> </b>
 	   								 </td>
 									</tr>
 									<tr>
@@ -122,6 +113,25 @@
 										<td><b>Rp.{{ number_format($detail->price, 2) }}</b></td>
 									</tr>	
 									<tr>
+										<td>Date</td>
+										<td>:</td>
+										<td><b>{{ date('d F Y', strtotime($detail->datein)) }} s/d {{ date('d F Y', strtotime($detail->dateout)) }}</b></td>
+									</tr>								
+									<tr>
+										<td>Status</td>
+										<td>:</td>
+										<td><b>@if($detail->dateout > $datenow)
+														@if($detail->status == 'Y') On @elseif($detail->status == 'N') Off @endif 
+														@if($detail->statuspayment == 'N') 
+														@if($detail->uploadpayment == '')   @else , <b class="text-warning">Waiting for Verify payment</b>  @endif 
+														@else
+															, <b class="text-success">Payment has been verified</b> 
+														@endif
+													@else 
+													<span class="label label-sm label-danger">expire</span>
+													@endif</td>
+									</tr>	
+									<tr>
 										<td>Result</td>
 										<td>:</td>
 										<td><b>{{ $hari }} Days  * {{ number_format($detail->price, 2) }}</b></td>
@@ -156,9 +166,10 @@
 										<td>Status Payment</td>
 										<td>:</td>
 										<td>@if($detail->statuspayment == 'Y') 
-                                                        <span class="label label-sm label-info"> Approved </span>
-                                                        @else
-                                                            <span class="label label-sm label-warning"> Pending</span> @endif</td>
+                                                <span class="label label-sm label-info"> Approved </span>
+                                             @else
+                                                <span class="label label-sm label-warning"> Pending</span> 
+                                            @endif</td>
 									</tr>
 									<tr>
 										<td>Bukti</td>
@@ -173,12 +184,15 @@
 									</table>
                                 </div>
                                 <div class="col-md-12">
-                             
 									    <input class="btn btn-default" type="reset" name="batal" value="Back" onclick="location.href='/bookingspace/'"/>
-                                </table>
                             </div>
-							</div>
- 								<div class="modal fade" id="bukti{{$detail->id}}" tabindex="-1" role="buki" aria-hidden="true">
+									</div>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- END CONTENT BODY -->
+
+                    <div class="modal fade" id="bukti{{$detail->id}}" tabindex="-1" role="buki" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -196,8 +210,4 @@
                                                     </div>
                                                     <!-- /.modal-dialog -->
 
-                        </div>
-                    </div>
-                    </div>
-                    <!-- END CONTENT BODY -->
 @endsection
