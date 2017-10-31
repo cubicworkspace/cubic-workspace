@@ -73,7 +73,7 @@
 										<td>Category Informasi</td>
 										<td>:</td>
 										<td> <label class="radio-inline"> 
-						                     <input type="radio" checked="" name="categoryinfromasi" class="icheck" value="HEADER"> HEDAER
+						                     <input type="radio" checked="" name="categoryinfromasi" class="icheck" value="HEADER"> HEADER
 						                   	 </label> 
 						                     <label class="radio-inline"> 
 						                     <input type="radio"  name="categoryinfromasi" class="icheck" value="BOOKING"> BOOKING

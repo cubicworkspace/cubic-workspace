@@ -323,7 +323,7 @@ class WebsiteController extends Controller
         $bookingspace->status      = 'N';
         $bookingspace->save();
 
-        Mail::to($request->email)->send(new Reminder);
+        // Mail::to($request->email)->send(new Reminder);
         // Mail::to($mail2)->send(new OrderShipped);
         \Session::flash('thanks', '<p>Your confirmation number is <span class="text-primary font700">'.$request->invoice.'</span></p>');
         return redirect('/website/package/bookingroom/thanks/'.$request->invoice);
