@@ -99,13 +99,8 @@
                                     </li> -->
                                     <li class="divider"> </li>
                                     <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        <a href="{{ route('internal.logout') }}">
                                             <i class="icon-key"></i> Log Out </a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
                                     </li>
                                 </ul>
                             </li>
@@ -113,12 +108,9 @@
                             <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li class="dropdown dropdown-quick-sidebar-toggler">
-                                <a href="{{ route('logout') }}" class="dropdown-toggle" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <a href="{{ route('internal.logout') }}" class="dropdown-toggle">
                                     <i class="icon-logout"></i>
                                 </a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                            </form>
                             </li>
                             <!-- END QUICK SIDEBAR TOGGLER -->
                         </ul>

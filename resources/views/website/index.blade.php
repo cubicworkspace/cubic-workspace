@@ -56,14 +56,14 @@
 			</div>
 			<!-- end hero-header with windows height -->
 			
-			<div class="post-hero bg-light">
+		<!-- 	<div class="post-hero bg-light">
 			
 				<div class="container">
 					
 					<div class="row">
 					
 						<!-- informasicompanies -->
-						@foreach($header as $row)
+						<!-- @foreach($header as $row)
 						<div class="col-sm-4">
 							<div class="featured-count clearfix">
 								<div class="icon"><img src="{{ asset('upload/informasicompanies') }}/{{ $row->icon }}" /></div>
@@ -73,14 +73,14 @@
 								</div>
 							</div>
 						</div>
-						@endforeach
+						@endforeach -->
 						<!-- end informasicompanies -->
-						
+					<!-- 	
 					</div>
 					
 				</div>
 				
-			</div>
+			</div> -->
 
 			<section>
 			
@@ -132,7 +132,7 @@
 							<div class="section-title">
 							
 								<h3>Special Packages</h3>
-								<p>Of distrusts immediate enjoyment curiosity do. Marianne numerous saw thoughts the humoured.</p>
+								<!-- <p>Of distrusts immediate enjoyment curiosity do. Marianne numerous saw thoughts the humoured.</p> -->
 								
 							</div>
 							
@@ -190,7 +190,7 @@
 						
 							<div class="section-title text-left">
 							
-								<h3>Why Booking With Us ?</h3>
+								<h3>What coworkers get?</h3>
 								<p></p>
 								
 							</div>
@@ -221,7 +221,7 @@
 				
 			</section>
 			
-			<section class="bg-light">
+			<!-- <section class="bg-light">
 			
 				<div class="container">
 				
@@ -244,7 +244,7 @@
 						<div class="row">
 							
 						<!-- testimonial -->
-						@foreach($testimonial as $row)
+						<!-- @foreach($testimonial as $row)
 							<div class="col-xs-12 col-sm-12 col-md-6">
 								<div class="testimonial-item clearfix">
 									<div class="image">
@@ -258,14 +258,14 @@
 							</div>
 						@endforeach
 						<!-- end testimonial -->
-
+<!-- 
 						</div>
 						
 					</div>
 					
 				</div>
 				
-			</section>
+			</section> --> 
 			
 			<div class="newsletter-wrapper">
 			
@@ -280,7 +280,7 @@
 								</div>
 								<div class="content">
 									<h3>Signup for Newsletter</h3>
-									<p>Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but.</p>
+									<!-- <p>Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but.</p> -->
 								</div>
 							</div>
 						</div>

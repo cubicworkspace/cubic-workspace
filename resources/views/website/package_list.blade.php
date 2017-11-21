@@ -43,12 +43,12 @@
 
 								{!! Form::open(['url' => 'website/package/search', 'method' => 'GET', 'id' => 'form-pencarian']) !!}
 										<div class="form-group">
-								            {!! Form::select('codecity', $city, (! empty($id) ? $id : null), ['id' => 'codecity', 'class' => 'select2-multi form-control', 'data-placeholder' => 'Choose a Location', 'multiple']) !!}
+								{!! Form::select('codecity', $city, (! empty($id) ? $id : null), ['id' => 'codecity', 'class' => 'select2-multi form-control', 
+								'required' => 'required', 'data-placeholder' => 'Choose a Location', 'multiple']) !!}
 										</div>
 									
-										<div class="form-group">
-								            {!! Form::select('codeservices', $services, (! empty($id) ? $id : null), ['id' => 'codeservices', 'class' => 'select2-multi form-control', 'data-placeholder' => 'Choose a Type Services', 'multiple']) !!}
-											
+										<div class="form-group">						
+								  {!! Form::select('codeservices', $services, (! empty($id) ? $id : null), ['id' => 'codeservices', 'class' => 'select2-multi form-control', 'required' => 'required', 'data-placeholder' => 'Choose a Type Services', 'multiple']) !!}
 										</div>
 										
 										<!-- <div class="form-group">
@@ -62,7 +62,7 @@
 								
 								
 								
-								<div class="sidebar-inner">
+								<!-- <div class="sidebar-inner">
 									<div class="clear"></div>
 									<div class="sidebar-module">
 										<h6 class="sidebar-title">Filter Text Inside Sidebar Inner</h6>
@@ -71,7 +71,7 @@
 										</div>
 									</div>
 									<div class="clear"></div>
-								</div>
+								</div> -->
 							</aside>
 							
 							

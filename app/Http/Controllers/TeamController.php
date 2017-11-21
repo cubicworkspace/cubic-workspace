@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
-use App\teams;
+use App\Teams;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;

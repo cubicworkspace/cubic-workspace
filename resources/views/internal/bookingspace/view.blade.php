@@ -52,11 +52,11 @@
                                         <div class="table-toolbar">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <div class="btn-group">
+                                                    <!-- <div class="btn-group">
                                                         <a href="{{ url ('bookingspace/create') }}"  class="btn sbold green">Add New
                                                             <i class="fa fa-plus"></i>
                                                         </a>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                                <!--  <div class="col-md-6">
                                                     <div class="btn-group pull-right">

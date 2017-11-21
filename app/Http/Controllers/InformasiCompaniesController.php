@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\informasicompanies;
+use App\Informasicompanies;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;

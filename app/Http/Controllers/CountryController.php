@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use DB;
-use App\countrys;
+use App\Countrys;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -67,7 +67,7 @@ class CountryController extends Controller
         $country->description = $request->description;
         $country->status = $request->status;
         $country->save();
-        \Session::flash('success', 'Country data has been successfully added!,');
+        \Session::flash('success', 'Country data has been add successfully!,');
         return redirect('/country');
     }
 

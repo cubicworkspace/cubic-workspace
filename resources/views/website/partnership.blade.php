@@ -4,6 +4,7 @@
 				<div class="container">
 					<ol class="breadcrumb-list booking-step">
 						<li><a href="{{ url('/') }}">Home</a></li>
+						<li><a href="{{ url('/website/partnership') }}">Partnership</a></li>
 						<li><span>{{ $companypartnership->name }}</span></li>
 					</ol>
 					

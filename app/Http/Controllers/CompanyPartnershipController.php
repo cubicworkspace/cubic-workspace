@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\companypartnership;
-use App\countrys;
-use App\citys;
-use App\tagservices;
+use App\Companypartnership;
+use App\Countrys;
+use App\Citys;
+use App\Tagservices;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\sosialmedias;
+use App\Sosialmedias;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;

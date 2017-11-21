@@ -3,28 +3,28 @@
 namespace App\Http\Controllers;
 use DB;
 use Auth;
-use App\users;
-use App\members;
-use App\media;
-use App\categorymedia;
-use App\informasicompanies;
-use App\companypartnership;
-use App\companyservices;
-use App\testimonials;
-use App\subscribers;
-use App\citys;
-use App\services;
-use App\mediacompanyservices;
-use App\bookingtour;
-use App\bookingspaces;
-use App\billingcompanyservices;
-use App\paymentmethodes;
-use App\companies;
-use App\teams;
-use App\events;
-use App\categoryevents;
-use App\sosialmedias;
-use App\messages;
+use App\Users;
+use App\Members;
+use App\Media;
+use App\Categorymedia;
+use App\Informasicompanies;
+use App\Companypartnership;
+use App\Companyservices;
+use App\Testimonials;
+use App\Subscribers;
+use App\Citys;
+use App\Services;
+use App\Mediacompanyservices;
+use App\Bookingtour;
+use App\Bookingspaces;
+use App\Billingcompanyservices;
+use App\Paymentmethodes;
+use App\Companies;
+use App\Teams;
+use App\Events;
+use App\Categoryevents;
+use App\Sosialmedias;
+use App\Messages;
 
 use App\Http\Requests; 
 use App\Http\Requests\companyservicesRequest;
@@ -43,10 +43,6 @@ class PesonalController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('member');
-    }
 
     /**
      * Show the application dashboard.
@@ -57,7 +53,10 @@ class PesonalController extends Controller
     {
         $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
         $identitas               = companies::find('1');
-        return view('personal.dashboard', compact('sosialmedia','identitas'));
+
+            \Session::flash('success', 'Congratulations, you have successfully login as a member!,');
+            return redirect('/personal/profile/'.Auth::user()->id.'/'.Auth::user()->email.'/');
+        // return view('personal.dashboard', compact('sosialmedia','identitas'));
     }
 
     public function profile($id, $email='')
@@ -132,8 +131,9 @@ class PesonalController extends Controller
         $editmember              = members::where('email', '=', $email)->limit(1)->get();   
         $sosialmedia             = sosialmedias::where('status', '=', 'Y')->get();   
         $identitas               = companies::find('1');
-        $bookingspaces           = bookingspaces::where('codeuser', '=', $id)
-                                                ->where('email', '=', $email)->paginate(5);  
+        $bookingspaces           = bookingspaces::orderBy('id', 'DESC')
+                                        ->where('codeuser', '=', $id)
+                                        ->where('email', '=', $email)->paginate(3);  
         $datenow                 = date('Y-m-d');    
         return view('personal.booking', compact('sosialmedia','identitas','editmember','bookingspaces','datenow'));
     }

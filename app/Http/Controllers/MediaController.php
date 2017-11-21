@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 
 use DB;
-use App\media;
-use App\categorymedia;
+use App\Media;
+use App\Categorymedia;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\SocialProvider;
 use App\User;
-use App\members;
+use App\Members;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -139,7 +139,7 @@ class RegisterController extends Controller
         auth()->login($user);
 
          \Session::flash('success', 'Congratulations, you have successfully login as a member!,');
-        return redirect('/'); //redirect setelah login
+        return redirect('/');
 
     }
 

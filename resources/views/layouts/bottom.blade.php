@@ -9,7 +9,7 @@
 						<div class="col-xs-12 col-sm-5 col-md-3">
 						
 							<div class="footer-logo">
-								<img src="{{ asset('frontend/images/logo-white.png') }}" alt="Logo" />
+								<img src="{{ asset('upload/companies/')}}/{{ $identitas->logo }}" alt="Logo" />
 							</div>
 							
 							<p class="footer-address">{{ $identitas->address }} - Jawa Barat <br/> <i class="fa fa-phone"></i> {{ $identitas->phone }} <br/> <i class="fa fa-envelope-o"></i> <a href="#">{{ $identitas->email }}</a></p>

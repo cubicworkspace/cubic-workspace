@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\billingcompanyservices;
-use App\companyservices;
-use App\companypartnership;
+use App\Billingcompanyservices;
+use App\Companyservices;
+use App\Companypartnership;
 
 use Illuminate\Http\Request;
 

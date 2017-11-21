@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 
 use DB;
-use App\tagservices;
-use App\services;
+use App\Tagservices;
+use App\Services;
 
 use Illuminate\Http\Request;
 

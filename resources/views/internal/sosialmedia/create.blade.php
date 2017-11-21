@@ -45,7 +45,7 @@
 											
 						              </div>
 									@endif
-						            <form action="/sosialmedia/@yield('editForm')" method="POST" enctype="multipart/form-data">
+						            <form action="/sosialmedia" method="POST">
 									{{csrf_field()}}
 									<div class="table-responsive">
 						              <table class="table table-hover table-striped table-bordered">

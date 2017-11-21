@@ -99,7 +99,7 @@
 						
 				</div>
 				
-				<div class="bg-light section">
+				<!-- <div class="bg-light section">
 				
 					<div class="container">
 
@@ -137,18 +137,18 @@
 												<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 												<li><a href="#"><i class="fa fa-instagram"></i></a></li>
 											</ul> -->											
-										</div>										
+								<!-- 		</div>										
 									</div>								
 								</div>
-								@endforeach
-							</div>
+								@endforeach -->
+						<!-- 	</div>
 						
 						</div>
 
 					</div>
 					
-				</div>
-
+				</div> --> 
+<!-- 
 				<div class="section partner-wrapper bg-primary">
 				
 					<div class="container">
@@ -179,6 +179,6 @@
 				</div>
 				
 				
-			</div>
+			</div> -->
 			
 @endsection

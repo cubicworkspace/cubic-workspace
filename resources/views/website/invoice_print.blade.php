@@ -64,7 +64,7 @@ table th {
 
 <hr>
 
-<h1 id="header"><center><h2>CUBIC-WORKSPACE</h2></h1>
+<h1 id="header"><center><h2>WORKSHARE.ID</h2></h1>
 <div id="page-wrap">
 		<center><h2><u>INVOICE</u></h2></center>
 <div class="left">
@@ -79,7 +79,7 @@ table th {
 	</tr>
 	<tr>
 		<th bgcolor="#eee">Payment Methode</th>
-		<th>{{ $row->paymentmethodes->name }}</th>
+		<th>{{ !empty($row->paymentmethodes->name) ? $row->paymentmethodes->name : '-' }}</th>
 	</tr>
 	<tr>
 		<th bgcolor="#eee">Total Result</th>
@@ -114,7 +114,7 @@ table th {
 		
 		<div id="terms">
 		  <h5>Terms</h5>
-		<br>www.cubicworkspace.com
+		<br>www.workshare.id
 		</div>
 	
 	</div>

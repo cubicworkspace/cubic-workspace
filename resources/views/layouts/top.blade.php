@@ -12,7 +12,7 @@
 				<div id="modal-login-form-wrapper">
 					
 					<!-- Begin # Login Form -->
-					<form id="login-form" method="POST" action="{{ url('eksternal') }}">
+					<form id="login-form" method="POST" action="{{ route('login') }}">
 					{{csrf_field()}}
 					
 						<div class="modal-body pb-5">					
@@ -62,7 +62,7 @@
 						
 							<div class="row gap-10">
 								<div class="col-xs-6 col-sm-6 mb-10">
-									<button type="submit" class="btn btn-primary btn-block">Sign-in Member</button>
+									<button type="submit" class="btn btn-primary btn-block">Sign-in</button>
 								</div>
 								<div class="col-xs-6 col-sm-6 mb-10">
 									<button type="submit" class="btn btn-primary btn-block btn-inverse" data-dismiss="modal" aria-label="Close">Cancel</button>
@@ -70,7 +70,7 @@
 							</div>
 							<div class="text-left">
 								No account? 
-								<a href="{{ url('website/loginmember') }}" id="login_register_btn" class="btn btn-link">Register</a>
+								<a href="{{ url('website/loginmember') }}" class="btn btn-link">Register</a>
 							</div>
 							
 						</div>
@@ -110,7 +110,7 @@
 					<!-- End | Lost Password Form -->
 								
 					<!-- Begin | Register Form -->
-					<form id="register-form" style="display:none;" action="/website/register" method="POST">
+					<!-- <form id="register-form" style="display:none;" action="/website/register" method="POST">
 					{{csrf_field()}}
 						<div class="modal-body pb-5">
 						
@@ -150,7 +150,7 @@
 							
 						</div>
 							
-					</form>
+					</form> -->
 					<!-- End | Register Form -->
 								
 				</div>
@@ -176,8 +176,8 @@
 						
 						<div class="flex-row flex-align-middle">
 							<div class="flex-shrink flex-columns">
-								<a class="navbar-logo" href="index.php">
-									<img src="{{ asset('frontend/images/logo-white.png') }}" alt="Logo" />
+								<a class="navbar-logo" href="{{ url('/') }}">
+									<img src="{{ asset('upload/companies/')}}/{{ $identitas->logo }}" alt="Logo" />
 								</a>
 							</div>
 							<div class="flex-columns">
@@ -185,11 +185,27 @@
 								
 									<div class="navbar-mini">
 										<ul class="clearfix">
-											 @guest
+										@if(Auth::guard('web')->check())
+											<li class="dropdown bt-dropdown-click visible-xs">
+												<a id="currncy-language-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+													<i class="fa fa-cog"></i>
+												</a>
+												<ul class="dropdown-menu" aria-labelledby="language-dropdown">	
+													<li><a href="{{ url('personal/booking') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-archive"></i> Booking</a></li>
+													<li><a href="{{ url('personal/profile') }}/{{ Auth::user()->id }}/{{ Auth::user()->email }}"><i class="fa fa-user"></i> Edit Profile</a></li>
+													<li class="divider"></li>
+													
 											<li class="user-action">
-												<a data-toggle="modal" href="#loginModal" class="btn">Sign up/in</a>
+												<a href="{{ route('logout') }}" class="btn" 
+				                                            onclick="event.preventDefault();
+				                                                     document.getElementById('logout-form').submit();"><i class="fa fa-archive"></i>Logout</a>
+												<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+				                                            {{ csrf_field() }}
+				                                        </form>
 											</li>
-				                        @else
+												</ul>
+											</li>
+
 				                        	<li class="dropdown bt-dropdown-click hidden-xs">
 												<a id="language-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 													<i class="ion-social-users hidden-xss"></i> 
@@ -209,7 +225,12 @@
 				                                            {{ csrf_field() }}
 				                                        </form>
 											</li>
-				                        @endguest
+										@else
+										
+											<li class="user-action">
+												<a data-toggle="modal" href="#loginModal" class="btn">Sign up/in</a>
+											</li>
+				                        @endif
 										</ul>
 									</div>
 						

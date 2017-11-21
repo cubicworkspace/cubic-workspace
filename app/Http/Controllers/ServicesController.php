@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\services;
-use App\categoryservices;
+use App\Services;
+use App\Categoryservices;
 
 use Illuminate\Http\Request;
 

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\mediacompanyservices;
-use App\companyservices;
-use App\companypartnership;
+use App\Mediacompanyservices;
+use App\Companyservices;
+use App\Companypartnership;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Input;

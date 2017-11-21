@@ -3,28 +3,30 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\users;
-use App\members;
-use App\media;
-use App\categorymedia;
-use App\informasicompanies;
-use App\companypartnership;
-use App\companyservices;
-use App\testimonials;
-use App\subscribers;
-use App\citys;
-use App\services;
-use App\mediacompanyservices;
-use App\bookingtour;
-use App\bookingspaces;
-use App\billingcompanyservices;
-use App\paymentmethodes;
-use App\companies;
-use App\teams;
-use App\events;
-use App\categoryevents;
-use App\sosialmedias;
-use App\messages;
+use App\Users;
+use App\Members;
+use App\Media;
+use App\Categorymedia;
+use App\Informasicompanies;
+use App\Companypartnership;
+use App\Companyservices;
+use App\Testimonials;
+use App\Subscribers;
+use App\Citys;
+use App\Countrys;
+use App\Services;
+use App\Mediacompanyservices;
+use App\Bookingtour;
+use App\Bookingspaces;
+use App\Billingcompanyservices;
+use App\Paymentmethodes;
+use App\Companies;
+use App\Teams;
+use App\Events;
+use App\Categoryevents;
+use App\Sosialmedias;
+use App\Messages;
+use App\Partners;
 
 use Mail;
 use App\Mail\Reminder;
@@ -60,7 +62,7 @@ class WebsiteController extends Controller
         $specialpackages    = companyservices::where('codetagservices', '=', '5')
                                                  ->where('status', '=', 'Y')->limit(3)->get();
         $services           = informasicompanies::where('categoryinfromasi', '=', 'SERVICES')
-                                                 ->where('status', '=', 'Y')->limit(3)->get();
+                                                 ->where('status', '=', 'Y')->limit(5)->get();
         $testimonial        = testimonials::where('status', '=', 'Y')->limit(2)->get();
         $city               = citys::pluck('name','id');
         $services2          = services::pluck('name','id');
@@ -123,11 +125,11 @@ class WebsiteController extends Controller
 
     public function package_searchroom(Request $request) {
         $codecompanyservices = $request->input('codecompanyservices');
-        $datein        = $request->input('datein');
-        $dateout       = $request->input('dateout');
+        $datein        = date('Y-m-d', strtotime($request->input('datein')));
+        $dateout       = date('Y-m-d', strtotime($request->input('dateout')));
         $bookingspaces = bookingspaces::where('codecompanyservices',Input::get('codecompanyservices'))
-                                        ->where('datein',Input::get('datein'))
-                                        ->where('dateout',Input::get('dateout'))->first();
+                                        ->where('datein', $datein)
+                                        ->where('dateout',$dateout)->first();
         // $billingcompanyservices     = billingcompanyservices::where('codecompanyservices', '=', $codecompanyservices)->get();
 
         // $billingcompanyservices = DB::select("select * from billingcompanyservices WHERE codecompanyservices ='$codecompanyservices'");
@@ -157,13 +159,24 @@ class WebsiteController extends Controller
 
     public function partner()
     {
+        $companypartnerships = DB::select('select max(codecompanypartnership) as idMaks from  companypartnerships');
+        foreach($companypartnerships as $row3){}
+        $nomor  = $row3->idMaks; 
+        $noRand = (int) substr($row3->idMaks, 3, 3);
+        $noRand++;  
+        $char   = "COP";
+
+        $city = citys::pluck('name', 'id');
+        $country = countrys::pluck('name', 'id');
+
+        $no   =  $char . sprintf("%03s", $noRand);
         $sosialmedia        = sosialmedias::where('status', '=', 'Y')->get();   
         $identitas          = companies::find('1');
         $media              = media::find('4');
         $header             = informasicompanies::where('categoryinfromasi', '=', 'HEADER')
                                                  ->where('status', '=', 'Y')->limit(3)->get();
         $companypartnership = companypartnership::where('status', '=', 'Y')->get();
-        return view('website.partner', compact('sosialmedia','identitas','media','header','companypartnership'));
+        return view('website.partner', compact('sosialmedia','identitas','media','header','companypartnership','no','city','country'));
     }
 
     public function about()
@@ -192,6 +205,16 @@ class WebsiteController extends Controller
         $categoryevents         = categoryevents::where('status', '=', 'Y')->get();       
         $events                 = events::findOrFail($id);
         return view('website.event_detail', compact('sosialmedia','identitas','events','categoryevents'));
+    }
+
+    public function events_category($id)
+    {
+        $sosialmedia            = sosialmedias::where('status', '=', 'Y')->get();   
+        $identitas              = companies::find('1'); 
+        $categoryevents         = categoryevents::where('status', '=', 'Y')->get();       
+        $events                 = events::where('codecategoryevent', '=', $id)->paginate(5);
+        $count_events           = events::where('codecategoryevent', '=', $id)->count();
+        return view('website.event_category', compact('sosialmedia','identitas','events','count_events','categoryevents'));
     }
 
     public function contact()
@@ -240,7 +263,7 @@ class WebsiteController extends Controller
             $bookingtour = new bookingtour;
             $bookingtour->codecompanyservices     = $request->codecompanyservices;
             $bookingtour->codecompanypartnership  = $request->codecompanypartnership;
-            $bookingtour->date                    = $request->date;
+            $bookingtour->date                    = date('Y-m-d', strtotime($request->date));
             $bookingtour->time                    = $request->time;
             $bookingtour->email                   = $request->email;
             $bookingtour->phone                   = $request->phone;
@@ -325,6 +348,25 @@ class WebsiteController extends Controller
 
         // Mail::to($request->email)->send(new Reminder);
         // Mail::to($mail2)->send(new OrderShipped);
+                                            // $to= $request->email;
+                                            // $subject='Workshare';
+                                            // $from = 'hello@workshare.id';
+                                            // $body= 'Hai, <b>'.$request->name.'</b> <br><br>
+                                            //         Terimakasih telah melakukan bookingspaces di <b>Workshare.id</b> :<br><br>
+                                            //         Invoice : <b>'.$request->invoice.'</b> <br>
+                                            //         Nama : <b>'.$request->name.'</b> <br>
+                                            //         Email : <b>'.$request->email.'</b> <br><br><br>
+
+                                            //         <b>Download Invoice</b>: '.url.'website/package/invoice/print/'.$request->invoice.' <br>
+                                            //         Dapatkan penawaran-penawaran tempat terbaik untuk tempat kerja anda,<br><br><br>
+
+                                            //         Salam hangat <b>Workshare.id</b>.';
+
+                                            // $headers = "From: " . strip_tags($from) . "\r\n";
+                                            // $headers .= "Reply-To: ". strip_tags($from) . "\r\n";
+                                            // $headers .= "MIME-Version: 1.0\r\n";
+                                            // $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+                                            // mail($to,$subject,$body,$headers);
         \Session::flash('thanks', '<p>Your confirmation number is <span class="text-primary font700">'.$request->invoice.'</span></p>');
         return redirect('/website/package/bookingroom/thanks/'.$request->invoice);
     }
@@ -343,7 +385,7 @@ class WebsiteController extends Controller
 
         $bookingspaces          = bookingspaces::where('invoice', '=', $invoice)->limit(1)->get();
         $pdf=PDF::loadView('website.invoice_print', ['bookingspaces' => $bookingspaces]);
-        return $pdf->download($invoice.'-invoice-cubicworkspace.pdf');
+        return $pdf->download($invoice.'-invoice-workshare.pdf');
     }
 
 
@@ -398,6 +440,44 @@ class WebsiteController extends Controller
         return redirect('/website/loginmember');
     
     }
+
+    public function partnership_register(Request $request) {
+        $partners = partners::where('email',Input::get('email'))->first();
+        if (is_null($partners)) {
+            $partners = new partners;
+            $com =  new companypartnership;
+                $extention = Input::file('image')->getClientOriginalExtension();
+                $filename = rand(11111,99999).'.'. $extention;
+                $request->file('image')->move(
+                    base_path() . '/public/upload/companypartnership/', $filename
+                );
+            $partners->name = $request->name;
+            $partners->email = $request->email;
+            $partners->phone = $request->phone;
+            $partners->image = $filename;
+            $partners->address =$request->address;
+            $partners->password = Hash::make($request->password);
+
+            $com->codecompanypartnership = $request->codecompanypartnership;
+            $com->name = $request->name;
+            $com->logo = $filename;
+            $com->favicon = $filename;
+            $com->email = $request->email;
+            $com->phone = $request->phone;
+            $com->address =$request->address;
+            $com->codecountry = $request->codecountry;
+            $com->codecity = $request->codecity;
+            $com->registerdate = date('Y-m-d H:i:s');
+
+            $partners->save();
+            $com->save();
+        \Session::flash('success', 'Thank you for registering as a partnership!');
+        return redirect('/website/partnership');
+        } 
+        \Session::flash('warning', 'Your email is registered as a partnership!');
+        return redirect('/website/partnership');
+    }
+
 
     // public function dashboard()
     // {

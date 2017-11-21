@@ -45,7 +45,7 @@
 											
 						              </div>
 									@endif
-						            <form action="/bookingspace/@yield('editForm')" method="POST" enctype="multipart/form-data">
+						            <form action="/bookingspace" method="POST">
 									{{csrf_field()}}
 									<div class="table-responsive">
 						              <table class="table">

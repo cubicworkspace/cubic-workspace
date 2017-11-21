@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\companyservices;
-use App\tagservices;
-use App\companypartnership;
-use App\services;
-use App\citys;
-use App\tagcompanyservices;
-use App\billingcompanyservices;
+use App\Companyservices;
+use App\Tagservices;
+use App\Companypartnership;
+use App\Services;
+use App\Citys;
+use App\Tagcompanyservices;
+use App\Billingcompanyservices;
 use App\Http\Requests;
 use App\Http\Requests\CompanyservicesRequest;
 
@@ -25,6 +25,11 @@ class CompanyServicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index()
     {
         

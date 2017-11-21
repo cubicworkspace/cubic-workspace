@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\bookingspaces;
-use App\services;
-use App\companypartnership;
-use App\billingcompanyservices;
+use App\Bookingspaces;
+use App\Services;
+use App\Companypartnership;
+use App\Billingcompanyservices;
 use App\users;
-use App\paymentmethodes;
+use App\Paymentmethodes;
 
 
 use Illuminate\Http\Request;

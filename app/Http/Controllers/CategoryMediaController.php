@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\categorymedia;
+use App\Categorymedia;
 
 use Illuminate\Http\Request;
 

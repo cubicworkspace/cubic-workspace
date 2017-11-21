@@ -58,15 +58,15 @@
 								
 								
 								
-								<div class="confirmation-content">
+								<!-- <div class="confirmation-content">
 								
 									<div class="section-title text-left">
 										<h4>Additional Information</h4>
-									</div>
+									</div> -->
 									
-									<p>Abilities or he perfectly pretended so strangers be exquisite. Oh to another chamber pleased imagine do in. Went me rank at last loud shot an draw. Excellent so to no sincerity smallness. Removal request delight if on he we. Unaffected in we by apartments astonished to decisively themselves. Offended ten old consider speaking.</p>
+									<!-- <p>Abilities or he perfectly pretended so strangers be exquisite. Oh to another chamber pleased imagine do in. Went me rank at last loud shot an draw. Excellent so to no sincerity smallness. Removal request delight if on he we. Unaffected in we by apartments astonished to decisively themselves. Offended ten old consider speaking.</p> -->
 								
-								</div>
+								<!-- </div> -->
 								
 								<!-- <button class="btn btn-primary" onclick="location.href='/website/package/booking/{{ $companyservices->id }}/{{ str_slug($companyservices->name) }}/'"><i class="fa fa-arrow-left"></i> Back</button> -->
 								<a href="thanks.php"><button class="btn btn-primary btn-inverse"><i class="fa fa-check"></i> Submit</button></a>
@@ -86,9 +86,9 @@
 										<div class="sidebar-module-inner">
 											<p class="mb-10">Paid was hill sir high 24/7. For him precaution any advantages dissimilar.</p>
 											<ul class="help-list">
-												<li><span class="font600">Hotline</span>: +1900 12 213 21</li>
-												<li><span class="font600">Email</span>: support@tourpacker.com</li>
-												<li><span class="font600">Livechat</span>: tourpacker (Skype)</li>
+												<li><span class="font600">Hotline</span>: {{ $identitas->phone }}</li>
+												<li><span class="font600">Email</span>: {{ $identitas->email }}</li>
+												<li><span class="font600">Address</span>: {{ $identitas->address }}</li>
 											</ul>
 										</div>
 									</div>

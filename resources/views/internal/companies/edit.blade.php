@@ -11,10 +11,10 @@
                                     <a href="{{ url('/dashboard') }}">Home</a>
                                     <i class="fa fa-circle"></i>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="{{ url('/companies') }}">Companies</a>
                                     <i class="fa fa-circle"></i>
-                                </li>
+                                </li> -->
                                 <li>
                                     <span>@yield('title')</span>
                                 </li>

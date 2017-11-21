@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\citys;
-use App\countrys;
+use App\Citys;
+use App\Countrys;
 
 use Illuminate\Http\Request;
 
@@ -36,9 +36,9 @@ class CityController extends Controller
         $nomor  = $row3->idMaks; 
         $noRand = (int) substr($row3->idMaks, 3, 3);
         $noRand++;  
-        $char   = "CIT";
-        $no   =  $char . sprintf("%03s", $noRand);
-        $country = countrys::pluck('name', 'id');
+        $char       = "CIT";
+        $no         =  $char . sprintf("%03s", $noRand);
+        $country    = countrys::pluck('name', 'id');
         return view('internal.city.create', compact('no','country'));
     }
 
@@ -62,6 +62,8 @@ class CityController extends Controller
         $city->save();
         \Session::flash('success', 'City data has been successfully added!,');
         return redirect('/city');
+
+        // return 'successfully';
     }
 
     /**

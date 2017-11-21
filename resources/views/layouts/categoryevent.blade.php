@@ -19,20 +19,20 @@
 											<ul class="sidebar-category">
 												@if (count($categoryevents) > 0)
 												@foreach($categoryevents as $row)
-												<li><a href="#">{{ $row->name }}<span>(25)</span></a></li>
+												<li><a href="{{ url('website/events/category/') }}/{{ $row->id }}/{{ str_slug($row->name) }}">{{ $row->name }}</a></li>
 												@endforeach
 												@else
-					           					 <p><b>No data category events.</b></p>
-					       						@endif
+												<p><b>No data category events.</b></p>
+												@endif
 											</ul>
 										</div>
 									</div>
 									
-								
+									
 									
 									<div class="clear"></div>
 									
-									<div class="sidebar-module">
+									<!-- <div class="sidebar-module">
 										<h4 class="sidebar-title">Popular Posts</h4>
 										<div class="sidebar-module-inner">
 											
@@ -95,7 +95,7 @@
 											</ul>
 										
 										</div>
-									</div>
+									</div> -->
 									
 									<!-- <div class="clear"></div>
 									

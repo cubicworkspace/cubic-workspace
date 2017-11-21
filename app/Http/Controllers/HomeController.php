@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\users;
-use App\companyservices;
-use App\companypartnership;
-use App\messages;
+use App\Users;
+use App\Companyservices;
+use App\Companypartnership;
+use App\Messages;
 
 use Illuminate\Http\Request;
 
@@ -13,9 +13,9 @@ class HomeController extends Controller
 {
     
     public function __construct(){
-        $this->middleware('auth');
-        $this->middleware('admin');
-        $this->middleware('nocache');
+        // $this->middleware('auth');
+        // $this->middleware('admin');
+        // $this->middleware('nocache');
     }
     /**
      * Create a new controller instance.

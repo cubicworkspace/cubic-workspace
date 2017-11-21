@@ -113,8 +113,8 @@
 									
 										<div class="col-sm-6">
 										
-						<form action="/website/messages" method="POST" class="contact-form-wrapper" data-toggle="validator">
-						{{csrf_field()}}
+											<form action="/website/messages" method="POST" class="contact-form-wrapper" data-toggle="validator">
+											{{csrf_field()}}
 											<div class="form-group">
 												<label for="inputName">Your Name <span class="font10 text-danger">(required)</span></label>
 												<input id="inputName" type="text" name="name" class="form-control" data-error="Your name is required" required>
@@ -128,8 +128,8 @@
 											</div>
 											
 											<div class="form-group">
-												<label>Subject <span class="font10 text-danger">(required)</span></label>
-												<input type="text" name="subject" class="form-control"  data-error="Your Subject is required " required/>
+												<label for="inputSubject">Subject <span class="font10 text-danger">(required)</span></label>
+												<input type="text" name="subject" class="form-control"  data-error="Your Subject is required" required/>
 											</div>
 										
 										</div>

@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 */
 
 
+Auth::routes();
 /* page user */
 Route::get('/','WebsiteController@index');
 Route::get('website/package','WebsiteController@package_list');
@@ -23,6 +24,7 @@ Route::get('website/partnership','WebsiteController@partner');
 Route::get('website/about','WebsiteController@about');
 Route::get('website/events','WebsiteController@events');
 Route::get('website/events/detail/{id}/{title}','WebsiteController@events_detail');
+Route::get('website/events/category/{id}/{name}','WebsiteController@events_category');
 Route::get('website/contact','WebsiteController@contact');
 Route::post('website/subscriber/tambah','WebsiteController@subscriber');
 Route::get('website/newsletter','WebsiteController@newsletter');
@@ -31,11 +33,16 @@ Route::get('website/loginmember','WebsiteController@loginmember');
 Route::post('website/register','WebsiteController@register');
 Route::get('website/partnership/{id}/{name}','WebsiteController@partnership');
 Route::post('website/messages','WebsiteController@messages');
+Route::post('website/partnertship/register','WebsiteController@partnership_register')->name('website.partnershipregister');
+
+
+Route::get('partner','PartnershipController@index');
+
 
 Route::prefix('member')->group(function() {
-		Route::get('/login','PersonalController@index')->name('member.dashboard');
-		Route::get('/login','Auth\MemberController@showLoginForm')->name('member.login');
-		Route::post('/','Auth\MemberController@login')->name('member.login.submit');
+	Route::get('/login','PersonalController@index')->name('member.dashboard');
+	Route::get('/login','Auth\MemberController@showLoginForm')->name('member.login');
+	Route::post('/','Auth\MemberController@login')->name('member.login.submit');
 });
 /* end page user */
 
@@ -48,17 +55,12 @@ Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCa
 Route::get('/home', 'HomeController@index')->name('home');
 
 
- Route::group(['middleware' => 'web'], function() {
-	 Route::auth();
- });
-
 // Route::resource('login','LoginController'); 
 
-/* page member */
-// Route::post('eksternal','EksternalController');
-Route::get('eksternal','Controller@eksternal');
-Route::post('eksternal','Controller@login');
-Route::group(['middleware' => ['member','auth','web','nocache']], function() {
+// /* page member */
+// Route::get('eksternal','Controller@eksternal');
+// Route::post('eksternal','Controller@login');
+Route::group(['middleware' => 'auth:web', 'NoCacheMiddleware'], function() {
 	Route::get('personal/dashboard','PesonalController@index');
 	Route::get('personal/profile/{id}/{email}','PesonalController@profile');
 	Route::post('personal/profile/edit/{id}/{email}','PesonalController@editprofile');
@@ -73,11 +75,25 @@ Route::group(['middleware' => ['member','auth','web','nocache']], function() {
 });
 /* end page member */
 
-/* PAGE ADMINISTRATOR  */
-Route::get('internal','Controller@internal');
-Route::post('internal','Controller@login');
-Route::get('dashboard','InternalController@dashboard');
-Route::group(['middleware' => ['admin','auth','web','nocache']], function() {
+
+Route::get('/partner', 'Auth\PartnerLoginController@showLoginForm')->name('partner.login');
+Route::post('/partner', 'Auth\PartnerLoginController@login')->name('partner.login.submit');
+Route::get('/patner/logout', 'Auth\PartnerLoginController@logout')->name('partner.logout');
+Route::group(['middleware' => 'auth:partner', 'NoCacheMiddleware'], function() {	
+	Route::get('/partner/dashboard','PartnerController@index')->name('partner.dashboard');
+	Route::post('/partner/editid/','PartnerController@editid')->name('partner.editid');
+	Route::post('/partner/editprofile/','PartnerController@editprofile')->name('partner.editprofile');
+	Route::get('/partner/companyservices','PartnerController@companyservices')->name('partner.companyservices');
+});
+
+
+
+/* PAGE ADMINISTRATOR  */	
+Route::get('/internal', 'Auth\AdminLoginController@showLoginForm')->name('internal.login');
+Route::post('/internal', 'Auth\AdminLoginController@login')->name('internal.login.submit');
+Route::get('/logout', 'Auth\AdminLoginController@logout')->name('internal.logout');
+Route::group(['middleware' => 'auth:admin', 'NoCacheMiddleware'], function() {	
+	Route::get('/dashboard','InternalController@index')->name('internal.dashboard');
 	Route::resource('admin','AdminController'); 
 	Route::resource('categoryadmin','CategoryAdminController'); 
 	Route::resource('adminpartnership','AdminPartnershipController'); 
@@ -112,7 +128,4 @@ Route::group(['middleware' => ['admin','auth','web','nocache']], function() {
 	Route::resource('historybookingspace','HistorybookingspaceController');
 	Route::resource('mediacompanyservices','MediaCompanyServicesController');  
 	Route::resource('bookingtour','BookingtourController'); 
-	//Route::resource('login','LoginController'); 
 });
-
-Route::get('test-mail', 'MailController@testMail');

@@ -45,7 +45,7 @@
 											
 						              </div>
 									@endif
-						            <form action="/user/@yield('editForm')" id="form_sample_1" method="POST" enctype="multipart/form-data">
+						            <form action="/user" id="form_sample_1" method="POST">
 									{{csrf_field()}}
 									<div class="table-responsive">
 						              <table class="table table-hover table-striped table-bordered">

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\paymentmethodes;
-use App\categorypaymentmethodes;
+use App\Paymentmethodes;
+use App\Categorypaymentmethodes;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;

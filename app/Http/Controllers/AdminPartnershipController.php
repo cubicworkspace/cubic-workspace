@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\adminspartnerships;
-use App\companypartnership;
+use App\Adminspartnerships;
+use App\Companypartnership;
 use App\users;
 
 use Illuminate\Http\Request;

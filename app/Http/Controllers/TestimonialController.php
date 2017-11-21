@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
-use App\testimonials;
+use App\Testimonials;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;

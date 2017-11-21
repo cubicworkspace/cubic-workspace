@@ -17,7 +17,8 @@
 						<div class="col-sm-6 col-md-6" role="main">	
 							<div class="section-title text-left">
 							<!-- Begin # Login Form -->
-							<form id="login-form" method="POST" action="{{ url('eksternal') }}">
+							   @guest
+							<form id="login-form" method="POST" action="{{ route('login') }}">
 							{{csrf_field()}}							
 								<div class="modal-body pb-5">					
 									<h3 class="text-center heading mt-10 mb-20">Sign-in Member</h3>
@@ -50,6 +51,7 @@
 									</div>
 								</div>
 							</form>
+							   @endguest
 							</div>
 						</div>
 						<div class="col-sm-6 col-md-6" role="main">
@@ -103,14 +105,9 @@
 									</div>
 									
 							</form>
-							<!-- End | Register Form -->			
-
-								
+							<!-- End | Register Form -->									
 									
-							</div>
-									
-								
-							
+							</div>							
 						</div>
 						
 				

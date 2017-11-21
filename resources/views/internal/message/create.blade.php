@@ -45,7 +45,7 @@
 											
 						              </div>
 									@endif
-						            <form action="/message/@yield('editForm')" method="POST" enctype="multipart/form-data">
+						            <form action="/message" method="POST">
 									{{csrf_field()}}
 									<div class="table-responsive">
 						              <table class="table table-hover table-striped table-bordered">
@@ -60,7 +60,7 @@
 										<td><input type="email" name="email"  class="form-control" ></td>
 									</tr>
 									<tr>
-										<td>subject</td>
+										<td>Subject</td>
 										<td>:</td>
 										<td><input type="text" name="subject"  class="form-control" ></td>
 									</tr>
