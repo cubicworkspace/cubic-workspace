@@ -29,20 +29,24 @@ class PartnerLoginController extends Controller
 	{
 		$this->validate($request, [
 			'email' => 'required|email',
-			'password' => 'required|min:6'
+			'password' => 'required'
 		]);
 
 		if(Auth::guard('partner')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
 
 			return redirect()->intended(route('partner.dashboard'));
 		}
-			return redirect()->back()->withInput($request->only('email', 'remember'));
+       		 \Session::flash('error', 'Email or password does not match!,');
+			return redirect('partner');
 		
 	}
 
-	public function logout()
+	public function logout(Request $request)
 	{
 		Auth::guard('partner')->logout();
+        $request->session()->flush();
+ 
+        $request->session()->regenerate();
 		// return 'telah keluar partner';
 		return redirect('/partner');
 	}

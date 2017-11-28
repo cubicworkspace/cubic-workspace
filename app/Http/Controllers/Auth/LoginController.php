@@ -37,9 +37,18 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => ['logout', 'userLogout']]);
     }
 
-    public function userLogout()
+    public function index ()
     {
-        Auth::guard('web')->logout();
+        return 'a';
+    }
+    
+    public function userLogout(Request $request)
+    {
+        Auth::guard('web')->logout(); 
+        $request->session()->flush();
+ 
+        $request->session()->regenerate();
+ 
         return redirect('/');
     }   
 }

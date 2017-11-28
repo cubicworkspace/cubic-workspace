@@ -50,19 +50,19 @@
 									<div class="table-responsive">
 						              <table class="table table-hover table-striped table-bordered">
 									<tr>
-										<td>Codeadmin</td>
+										<td>Name</td>
 										<td>:</td>
-										<td><input type="text" value="{{ $no }}" name="codeadmin"  class="form-control" ></td>
+										<td><input type="text" name="name"  class="form-control" required ></td>
 									</tr>
 									<tr>
-										<td>User</td>
+										<td>Email</td>
 										<td>:</td>
-										<td>
-	   								 {!! Form::select('codeuser', $user, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
-	   								  	'placeholder' => '-- Select Users --'
-	   								 ]) !!}
-									</td>
+										<td><input type="email" name="email"  class="form-control" required ></td>
+									</tr>
+									<tr>
+										<td>Password</td>
+										<td>:</td>
+										<td><input type="password" name="password"  class="form-control" required ></td>
 									</tr>
 									<tr>
 										<td>Phone</td>
@@ -74,6 +74,16 @@
 										<td>:</td>
 										<td><input type="file" name="image" required  class="form-control" ></td>
 									</tr>
+						              <tr>
+										<td>Category Admin</td>
+										<td>:</td>
+										<td> <select class="form-control" id="id"  name="codecategoryadmin">
+	   												 @foreach($categoryadmin as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
+									</tr>
 									<tr>
 										<td>Status</td>
 										<td>:</td>
@@ -83,16 +93,6 @@
 						                     <label class="radio-inline"> 
 						                     <input type="radio"  name="status" id="N" class="icheck" value="N"> N
 						                   </label> </td>
-									</tr>
-									<tr>
-										<td>Category Admin</td>
-										<td>:</td>
-										<td>
-	   								 {!! Form::select('codecategoryadmin', $categoryadmin, null,
-	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
-	   								  	'placeholder' => '-- Select Category Admin --'
-	   								 ]) !!}
-									</td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

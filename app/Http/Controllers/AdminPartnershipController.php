@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\Adminspartnerships;
+use App\Partners;
 use App\Companypartnership;
-use App\users;
+use App\Users;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class AdminPartnershipController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +24,7 @@ class AdminPartnershipController extends Controller
     public function index()
     {
         $no = 1;
-        $view = adminspartnerships::orderBy('id', 'DESC')->get();
+        $view = partners::orderBy('id', 'DESC')->get();
         return view('internal.adminpartnership.view', compact('view'));
     }
 
@@ -35,8 +36,8 @@ class AdminPartnershipController extends Controller
     public function create()
     {
         $user = users::pluck('name', 'id');
-         $companypartnership = companypartnership::pluck('name', 'id');
-        return view('internal.adminpartnership.create', compact('no','user','companypartnership'));
+        $partners = partners::pluck('name', 'id');
+        return view('internal.adminpartnership.create', compact('no','user','partners'));
     }
 
     /**
@@ -47,26 +48,23 @@ class AdminPartnershipController extends Controller
      */
     public function store(Request $request)
     {
-        $adminpartnership = new adminspartnerships;
+        $partners = new partners;
         $extention = Input::file('image')->getClientOriginalExtension();
         $filename =  date('YmdHis'). ".$extention";
         $request->file('image')->move(
-            base_path() . '/public/upload/adminpartnership/', $filename
+            base_path() . '/public/upload/companypartnership/', $filename
         );
 
-        $this->validate($request, [
-             'codecompanypartnership' => 'required',
-             'phone' => 'required',
-             'codeuser' => 'required',
-             'address' => 'required']);
-        $adminpartnership->codecompanypartnership = $request->codecompanypartnership;
-        $adminpartnership->phone = $request->phone;
-        $adminpartnership->address = $request->address;
-        $adminpartnership->codeuser = $request->codeuser;
-        $adminpartnership->image = $filename;
-        $adminpartnership->status = $request->status;
-        $adminpartnership->save();
-        \Session::flash('success', 'Admin Partnership data has been successfully added!,');
+        $partners->name = $request->name;
+        $partners->email = $request->email;
+        $partners->password =  Hash::make($request->password);
+        $partners->re_password = $request->password;
+        $partners->phone = $request->phone;
+        $partners->address = $request->address;
+        $partners->image = $filename;
+        $partners->status = $request->status;
+        $partners->save();
+        \Session::flash('success', 'Partners data has been successfully added!,');
         return redirect('/adminpartnership');
     }
 
@@ -91,7 +89,7 @@ class AdminPartnershipController extends Controller
     {
         $user = users::all();
         $companypartnership = companypartnership::all();
-        $edit = adminspartnerships::find($id);
+        $edit = partners::find($id);
         return view('internal.adminpartnership.edit', compact('edit','user','companypartnership'));
     }
 
@@ -104,48 +102,53 @@ class AdminPartnershipController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $adminpartnership = adminspartnerships::find($id);
-        $image = Input::file('image');
-        if($image) {     
-            File::delete(public_path('/upload/adminpartnership/'.$adminpartnership->image)); 
-            $extention = Input::file('image')->getClientOriginalExtension();  
-            $filename =  date('YmdHis'). ".$extention";
-            $request->file('image')->move(
-                base_path() . '/public/upload/adminpartnership/', $filename
-            );
-                $this->validate($request, [
-                     'codecompanypartnership' => 'required',
-                     'phone' => 'required',
-                     'codeuser' => 'required',
-                     'address' => 'required']);
-                $adminpartnership->codecompanypartnership = $request->codecompanypartnership;
-                $adminpartnership->phone = $request->phone;
-                $adminpartnership->address = $request->address;
-                $adminpartnership->codeuser = $request->codeuser;
-                $adminpartnership->image = $filename;
-                $adminpartnership->status = $request->status;
-                $adminpartnership->save();
-                \Session::flash('success', 'Admin Partnership data has been edited successfully!,');
-                return redirect('/adminpartnership');
+       $partners = partners::find($id);
+       $image = Input::file('image');
+       if($image) {     
+        File::delete(public_path('/upload/companypartnership/'.$partners->image)); 
+        $extention = Input::file('image')->getClientOriginalExtension();  
+        $filename =  date('YmdHis'). ".$extention";
+        $request->file('image')->move(
+            base_path() . '/public/upload/companypartnership/', $filename
+        );
+        $partners->name = $request->name;
+        $partners->email = $request->email;
+        if($partners->password = Hash::make('password') && $partners->re_password = ('password')) {
+            $partners->password = bcrypt($request->password);
+            $partners->re_password = $request->password;
         } else {
+            $partners->password = array_except($request->password);
+            $partners->re_password = $request->password;
 
-            $adminpartnership = adminspartnerships::find($id);
-                $image = Input::file('image');
-                $this->validate($request, [
-                     'codecompanypartnership' => 'required',
-                     'phone' => 'required',
-                     'codeuser' => 'required',
-                     'address' => 'required']);
-                $adminpartnership->codecompanypartnership = $request->codecompanypartnership;
-                $adminpartnership->phone = $request->phone;
-                $adminpartnership->address = $request->address;
-                $adminpartnership->codeuser = $request->codeuser;
-                $adminpartnership->status = $request->status;
-                $adminpartnership->save();
-                \Session::flash('success', 'Admin Partnership data has been edited successfully!,');
-                return redirect('/adminpartnership');
         }
+        $partners->phone = $request->phone;
+        $partners->address = $request->address;
+        $partners->phone = $request->phone;
+        $partners->image = $filename;
+        $partners->status = $request->status;
+        $partners->save();
+        \Session::flash('success', 'Partners data has been edited successfully!,');
+        return redirect('/adminpartnership');
+    } else {
+        $partners->name = $request->name;
+        $partners->email = $request->email;   
+        if($partners->password = Hash::make('password') && $partners->re_password = ('password')) {
+            $partners->password = bcrypt($request->password);
+            $partners->re_password = $request->password;
+        } else {
+            $partners->password = array_except($request->password);
+            $partners->re_password = $request->password;
+
+        }
+        $partners->phone = $request->phone;
+        $partners->address = $request->address;
+        $partners->phone = $request->phone;
+        $partners->status = $request->status;
+        $partners->save();
+        \Session::flash('success', 'Partners data has been edited successfully!,');
+        return redirect('/adminpartnership');
     }
+}
 
     /**
      * Remove the specified resource from storage.
@@ -155,10 +158,10 @@ class AdminPartnershipController extends Controller
      */
     public function destroy($id)
     {
-        $adminpartnership = adminspartnerships::find($id);
-        File::delete(public_path('/upload/adminpartnership/'.$adminpartnership->image));
-        $adminpartnership->delete();
-         \Session::flash('warning', 'Admin Partnership data has been successfully deleted!,');
+        $partners = partners::find($id);
+        File::delete(public_path('/upload/companypartnership/'.$partners->image));
+        $partners->delete();
+        \Session::flash('warning', 'Partners data has been successfully deleted!,');
         return redirect('/adminpartnership');
     }
 }

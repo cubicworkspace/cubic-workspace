@@ -80,7 +80,24 @@
 										<td>:</td>
 										<td><input type="number" name="quotauser" value="{{ $edit->quotauser }}"  class="form-control" ></td>
 									</tr>
-									
+									@if ($edit->image)
+									<tr>
+										<td>Image</td>
+										<td>:</td>
+										<td><img src="{{ asset('upload/mediacompanyservices') }}/{{ $edit->image }}" width="80"></td>
+									</tr>
+									<tr>
+										<td>Edit Image</td>
+										<td>:</td>
+										<td><input type="file" name="image"  class="form-control" ></td>
+									</tr>
+								@else
+									<tr>
+										<td>Image</td>
+										<td>:</td>
+										<td><input type="file" name="image"  class="form-control" ></td>
+									</tr>
+								@endif
 									<tr>
 										<td>City</td>
 										<td>:</td>
@@ -96,17 +113,17 @@
 										<td>Status</td>
 										<td>:</td>
 										<td><label class="radio-inline"> 
-						                     <input type="radio" name="status" id="Y" value="Y" {{ $y = ($edit->status=='Y')?'checked':''}}> Y
+						                     <input type="radio" name="statusbooking" value="bulan" {{ $y = ($edit->statusbooking=='bulan')?'checked':''}}> Bulanan
 						                    </label> 
 						                     <label class="radio-inline"> 
-						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
+						                     <input type="radio"  name="statusbooking" value="hari"  {{ $n = ($edit->statusbooking=='hari')?'checked':''}}> Harian
 						                   </label></td>
 									</tr>
 						            
 						            <tr>
 										<td>Company Partnership</td>
 										<td>:</td>
-										<td> <select class="form-control" id="id" value="name" name="codecompanypartnership">
+										<td> <select class="form-control" name="codecompanypartnership">
 													<option value="{{ !empty($edit->companypartnership->id) ? $edit->companypartnership->id : '' }}">{{ !empty($edit->companypartnership->name) ? $edit->companypartnership->name : '-- Select Company Partnership --' }} </option>
 	   												 @foreach($companypartnership as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
@@ -117,8 +134,8 @@
 									<tr>
 										<td>Tag Service</td>
 										<td>:</td>
-										<td> <select class="form-control" id="id" value="name" name="codetagservices">
-													<option value="{{ !empty($edit->services->id) ? $edit->services->id : '' }}">{{ !empty($edit->tagservices->name) ? $edit->tagservices->name : '-- Select Tag Services --' }} </option>
+										<td> <select class="form-control"  name="codetagservices">
+													<option value="{{ !empty($edit->tagservices->id) ? $edit->tagservices->id : '' }}">{{ !empty($edit->tagservices->name) ? $edit->tagservices->name : '-- Select Tag Services --' }} </option>
 	   												 @foreach($tagservices as  $key => $value)
 	   								 						<option value="{{ $key }}">{{ $value }}</option>
 	   												 @endforeach
@@ -128,13 +145,24 @@
 									<tr>
 										<td>Service</td>
 										<td>:</td>
-										<td> <select class="form-control" id="id" value="name" name="codeservices">
+										<td> <select class="form-control" name="codeservices">
 													<option value="{{ !empty($edit->services->id) ? $edit->services->id : '' }}">{{ !empty($edit->services->name) ? $edit->services->name : '-- Select Services --' }} </option>
 	   												 @foreach($services as $row)
 	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
 	   												 @endforeach
 	   								 		</select>
 	   								 </td>
+									</tr>
+									
+									<tr>
+										<td>Status Aktif</td>
+										<td>:</td>
+										<td><label class="radio-inline"> 
+						                     <input type="radio" name="status" id="Y" value="Y" {{ $y = ($edit->status=='Y')?'checked':''}}> Yes
+						                    </label> 
+						                     <label class="radio-inline"> 
+						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> No
+						                   </label></td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

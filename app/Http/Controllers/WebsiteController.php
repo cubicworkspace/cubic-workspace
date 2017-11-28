@@ -60,7 +60,7 @@ class WebsiteController extends Controller
         $topbasecamp        = companypartnership::where('codetagservices', '=', '3')
                                                  ->where('status', '=', 'Y')->limit(4)->get();
         $specialpackages    = companyservices::where('codetagservices', '=', '5')
-                                                 ->where('status', '=', 'Y')->limit(3)->get();
+                                                 ->where('status', '=', 'Y')->get();
         $services           = informasicompanies::where('categoryinfromasi', '=', 'SERVICES')
                                                  ->where('status', '=', 'Y')->limit(5)->get();
         $testimonial        = testimonials::where('status', '=', 'Y')->limit(2)->get();
@@ -73,7 +73,7 @@ class WebsiteController extends Controller
     {
         $sosialmedia              = sosialmedias::where('status', '=', 'Y')->get();   
         $identitas                = companies::find('1');
-        $companyservices          = companyservices::orderBy('id', 'DESC')->paginate(10);
+        $companyservices          = companyservices::orderBy('id', 'DESC')->paginate(5);
         $count_companyservices    = companyservices::count();
         $city                     = citys::pluck('name','id');
         $services                 = services::pluck('name','id');
@@ -299,6 +299,7 @@ class WebsiteController extends Controller
         $data = ([
             "codecompanyservices" => $request->input('id'), 
             "price" => $request->input('price'), 
+            "statusbooking" => $request->input('statusbooking'), 
             "codeuser" => $request->input('codeuser'), 
             "datein" => $request->input('datein'), 
             "dateout" => $request->input('dateout'), 
@@ -420,11 +421,12 @@ class WebsiteController extends Controller
             $user->registerdate = date('Y-m-d H:i:s');
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
+            $user->re_password = $request->password;
 
             $member->codeuser = $request->codeuser;
             $member->email = $request->email;
             $member->institution = $request->institution;
-            $member->birthday = $request->birthday;
+            $member->birthday =  date('Y-m-d', strtotime($request->birthday));
             $member->phone = $request->phone;
             $member->address =$request->address;
             $member->image = $filename;
@@ -457,6 +459,7 @@ class WebsiteController extends Controller
             $partners->image = $filename;
             $partners->address =$request->address;
             $partners->password = Hash::make($request->password);
+            $partners->re_password = $request->password;
 
             $com->codecompanypartnership = $request->codecompanypartnership;
             $com->name = $request->name;
@@ -467,6 +470,7 @@ class WebsiteController extends Controller
             $com->address =$request->address;
             $com->codecountry = $request->codecountry;
             $com->codecity = $request->codecity;
+            $com->status = 'N';
             $com->registerdate = date('Y-m-d H:i:s');
 
             $partners->save();

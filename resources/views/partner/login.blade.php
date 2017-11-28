@@ -37,6 +37,7 @@
                         <p>{{ strip_tags($identitas->description) }}</p>
                         <form action="{{ route('partner.login') }}" class="login-form" method="post">
                          {{ csrf_field() }}
+                         @include('layouts.flashpartner')
                           @if ($errors->has('email'))
                             <div class="alert alert-danger" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -68,9 +69,10 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-8 text-right">
-                                    <div class="forgot-password">
+<!--                                     <div class="forgot-password">
                                         <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
-                                    </div>
+                                    </div> -->
+                                    <a href="{{ url('/') }}"  class="btn green btn-outline">View Website</a>
                                     <button class="btn green" type="submit">Login</button>
                                 </div>
                             </div>

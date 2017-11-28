@@ -101,7 +101,7 @@ table th {
 		  <tr class="item-row">
 		      <td class="item-name"><div class="delete-wpr">{{ $row->companyservices->name }}</div></td>
 		      <td class="description">{{ date('d F Y', strtotime($row->datein)) }} - {{ date('d F Y', strtotime($row->dateout)) }}</td>
-		      <td>{{ number_format($row->price, 2) }}</td>
+		      <td>{{ number_format($row->price, 2) }} {{ $row->statusbooking }}</td>
 		      <td>{{ $hari }} Days </td>
 		      <td><span class="price">Rp {{ number_format($row->totalprice, 2) }}</span></td>
 		  </tr>

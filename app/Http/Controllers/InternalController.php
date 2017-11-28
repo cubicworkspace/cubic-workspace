@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Companies;
 
 class InternalController extends Controller
 {
@@ -23,6 +24,7 @@ class InternalController extends Controller
      */
     public function index()
     {
-        return view('internal.dashboard');
+        $identitas          = companies::find('1');
+        return view('internal.dashboard', compact('identitas'));
     }
 }

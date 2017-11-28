@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Companies;
 use Auth;
 
 
@@ -18,7 +19,8 @@ class AdminLoginController extends Controller
 
 	public function showLoginForm() 
 	{
-		return view('internal.login');
+        $identitas          = companies::find('1');
+		return view('internal.login', compact('identitas'));
 	}
 
 	public function login(Request $request)

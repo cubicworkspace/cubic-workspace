@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 /* page user */
-Route::get('/','WebsiteController@index');
+Route::get('/','WebsiteController@index')->name('website.index');
 Route::get('website/package','WebsiteController@package_list');
 Route::get('website/package/search', 'WebsiteController@package_search');
 Route::get('website/package/searchroom', 'WebsiteController@package_searchroom');
@@ -83,7 +83,16 @@ Route::group(['middleware' => 'auth:partner', 'NoCacheMiddleware'], function() {
 	Route::get('/partner/dashboard','PartnerController@index')->name('partner.dashboard');
 	Route::post('/partner/editid/','PartnerController@editid')->name('partner.editid');
 	Route::post('/partner/editprofile/','PartnerController@editprofile')->name('partner.editprofile');
+	Route::post('/partner/editprofilepassword/','PartnerController@editprofilepassword')->name('partner.editprofilepassword');
 	Route::get('/partner/companyservices','PartnerController@companyservices')->name('partner.companyservices');
+	Route::get('/partner/companyservices/add','PartnerController@companyservices_add')->name('partner.companyservices_add');
+	Route::post('/partner/companyservices/addaction','PartnerController@companyservices_add_action')->name('partner.companyservices_add_action');
+	Route::get('/partner/companyservices/edit/{id}','PartnerController@companyservices_edit')->name('partner.companyservices_edit');
+	Route::post('/partner/companyservices/editaction','PartnerController@companyservices_edit_action')->name('partner.companyservices_edit_action');
+	Route::get('/partner/companyservices/delete/{codecompanyservices}','PartnerController@companyservices_delete')->name('partner.companyservices_delete');
+	Route::get('/partner/bookingspace','PartnerController@bookingspace')->name('partner.bookingspace');
+	Route::get('/partner/bookingspace/detail/{id}','PartnerController@bookingspace_detail');
+	Route::get('/partner/bookingspace/print','PartnerController@bookingspace_print')->name('partner.bookingspace_print');
 });
 
 
@@ -102,6 +111,8 @@ Route::group(['middleware' => 'auth:admin', 'NoCacheMiddleware'], function() {
 	Route::resource('companies','CompaniesController');
 	Route::resource('informasicompanies','InformasiCompaniesController');  
 	Route::resource('companypartnership','CompanyPartnershipController'); 
+	Route::get('companypartnership/verified/{id}','CompanyPartnershipController@verified');
+	Route::get('companypartnership/unverified/{id}','CompanyPartnershipController@unverified');
 	Route::resource('country','CountryController'); 
 	Route::resource('city','CityController'); 
 	Route::resource('user','UserController'); 

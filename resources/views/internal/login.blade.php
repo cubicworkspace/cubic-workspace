@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Login Cubic Workspace</title>
+<title>Login Adminsitrator | {{ $identitas->name }}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1" name="viewport" />
-<meta content="Preview page of Metronic Admin Theme #1 for " name="description" />
-<meta content="" name="author" />
+<meta name="description" content="{{ strip_tags($identitas->description) }}" />
+<meta name="keywords" content="{{ strip_tags($identitas->profile) }}" />
+<meta name="author" content="{{ $identitas->author }}">
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
 <link href="{{ asset('backend/global/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
@@ -35,7 +36,7 @@
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="{{ url('internal')}}">
-                <img src="{{ asset('backend/pages/img/logo-big.png') }}" alt="" /> </a>
+                <center><img src="{{ asset('upload/companies/')}}/{{ $identitas->logo }}" alt="Logo" width="260" /></center> </a>
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
@@ -43,7 +44,7 @@
             <!-- BEGIN LOGIN FORM -->
             <form class="login-form"  method="POST" action="{{ route('internal.login.submit') }}">
                         {{ csrf_field() }}        
-                <h3 class="form-title font-green">Sign In</h3>
+                <h3 class="form-title font-green">Login</h3>
                          @if ($errors->has('email'))
                                           <div class="alert alert-danger alert-dismissible" role="alert">
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -71,7 +72,7 @@
             </form>
             <!-- END LOGIN FORM -->
         </div>
-        <div class="copyright"> 2017 © www.cubicworkspace.com </div>
+        <div class="copyright"> 2017 © {{ $identitas->name }} </div>
     </body>
 
 </html>

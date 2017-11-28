@@ -46,7 +46,7 @@
                 <!-- BEGIN LOGO -->
                <div class="page-logo">
                     <a href="{{ route('partner.dashboard') }}">
-                        <img src="{{ asset('upload/companies/')}}/{{ $identitas->logo }}" alt="logo" class="logo-default" width="135" /> </a>
+                        <img src="{{ asset('upload/companies/')}}/{{ $identitas->logo }}" alt="" class="logo-default" width="135" /> </a>
                     <div class="menu-toggler sidebar-toggler">
                         <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
                     </div>
@@ -58,7 +58,7 @@
                 <!-- BEGIN PAGE ACTIONS -->
                 <!-- DOC: Remove "hide" class to enable the page header actions -->
                 <div class="page-actions">
-                    <div class="btn-group">
+                   <!--  <div class="btn-group">
                         <button type="button" class="btn btn-circle btn-outline red dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-plus"></i>&nbsp;
                             <span class="hidden-sm hidden-xs">New&nbsp;</span>&nbsp;
@@ -91,7 +91,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- END PAGE ACTIONS -->
                 <!-- BEGIN PAGE TOP -->
@@ -104,16 +104,16 @@
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li class="dropdown dropdown-user">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <img alt="" class="img-circle" src="{{ asset('backend/layouts/layout2/img/avatar3_small.jpg') }}" />
+                                    <img alt="" class="img-circle" src="{{ asset('upload/companypartnership') }}/{{ Auth::user()->image }}" />
                                     <span class="username username-hide-on-mobile"> {{ Auth::user()->name }} </span>
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
-                                        <a href="page_user_profile_1.html">
+                                        <a href="{{ route('partner.dashboard') }}">
                                             <i class="icon-user"></i> My Profile </a>
                                     </li>
-                                    <li>
+                                <!--     <li>
                                         <a href="app_calendar.html">
                                             <i class="icon-calendar"></i> My Calendar </a>
                                     </li>
@@ -128,11 +128,11 @@
                                             <i class="icon-rocket"></i> My Tasks
                                             <span class="badge badge-success"> 7 </span>
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li class="divider"> </li>
                                     <li>
-                                        <a href="page_user_lock_1.html">
-                                            <i class="icon-lock"></i> Lock Screen </a>
+                                        <a href="{{ url('/') }}" target="_blank">
+                                            <i class="icon-globe"></i> View Website </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('partner.logout') }}">
@@ -169,17 +169,16 @@
                     <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
                     <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                     <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                        <li class="nav-item 
-                            {{ Request::segment(1) === 'partner/dashboard' ? 'start active open' : null }} ">
-                            <a href="{{ route('partner.dashboard') }}" class="nav-link nav-toggle">
+                        <li class="nav-item {{ Request::segment(1) === '/partner/dashboard' ? 'active' : null }}">
+                            <a href="{{ url('/partner/dashboard') }}" class="nav-link nav-toggle">
                                 <i class="icon-home"></i>
                                 <span class="title">Dashboard</span>
                                 <span class="selected"></span>
                                 <span class="arrow open"></span>
                             </a>
                         </li>
-                        <li class="nav-item {{ Request::segment(1) === 'partner.companyservices' ? 'start active open' : null }}">
-                            <a href="{{ route('partner.companyservices') }}" class="nav-link nav-toggle">
+                        <li class="nav-item {{ Request::segment(1) === '/partner/companyservices' ? 'active' : null }}">
+                            <a href="{{ url('/partner/companyservices') }}" class="nav-link nav-toggle">
                                 <i class="icon-layers"></i>
                                 <span class="title">Company Services</span>
                                 <span class="arrow"></span>
@@ -187,66 +186,24 @@
                         </li>
                         <li class="nav-item  ">
                             <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-puzzle"></i>
-                                <span class="title">Components</span>
+                                <i class="icon-camera"></i>
+                                <span class="title">Media Company Services</span>
+                                <span class="arrow"></span>
+                            </a>                           
+                        </li>
+                        <li class="nav-item {{ Request::segment(1) === '/partner/bookingspace' ? 'active' : null }}">
+                            <a href="{{ route('partner.bookingspace') }}" class="nav-link nav-toggle">
+                                <i class="icon-docs"></i>
+                                <span class="title">Booking Spaces</span>
                                 <span class="arrow"></span>
                             </a>                           
                         </li>
                         <li class="nav-item  ">
                             <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-settings"></i>
-                                <span class="title">Form Stuff</span>
+                                <i class="glyphicon glyphicon-calendar"></i>
+                                <span class="title">Booking Tour</span>
                                 <span class="arrow"></span>
                             </a>                           
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-bulb"></i>
-                                <span class="title">Elements</span>
-                                <span class="arrow"></span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-briefcase"></i>
-                                <span class="title">Tables</span>
-                                <span class="arrow"></span>
-                            </a>                           
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="?p=" class="nav-link nav-toggle">
-                                <i class="icon-wallet"></i>
-                                <span class="title">Portlets</span>
-                                <span class="arrow"></span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-bar-chart"></i>
-                                <span class="title">Charts</span>
-                                <span class="arrow"></span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-pointer"></i>
-                                <span class="title">Maps</span>
-                                <span class="arrow"></span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-layers"></i>
-                                <span class="title">Page Layouts</span>
-                                <span class="arrow"></span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-feed"></i>
-                                <span class="title">Sidebar Layouts</span>
-                                <span class="arrow"></span>
-                            </a>
                         </li>
                     </ul>
                     <!-- END SIDEBAR MENU -->
@@ -292,7 +249,7 @@
             <script src="{{ asset('backend/global/scripts/datatable.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
-            <!-- 
+            
             <script src="{{ asset('backend/global/plugins/amcharts/amcharts/amcharts.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/amcharts/amcharts/serial.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/amcharts/amcharts/pie.js') }}" type="text/javascript"></script>
@@ -303,17 +260,16 @@
             <script src="{{ asset('backend/global/plugins/amcharts/ammap/ammap.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/amcharts/ammap/maps/js/worldLow.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/amcharts/amstockcharts/amstock.js') }}" type="text/javascript"></script>
- -->            
-         <!--    <script src="{{ asset('backend/global/plugins/fullcalendar/fullcalendar.min.js') }}" type="text/javascript"></script>
+            
             <script src="{{ asset('backend/global/plugins/horizontal-timeline/horizontal-timeline.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/flot/jquery.flot.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/flot/jquery.flot.resize.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/flot/jquery.flot.categories.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js') }}" type="text/javascript"></script>
-            <script src="{{ asset('backend/global/plugins/jquery.sparkline.min.js') }}" type="text/javascript"></script> -->
+            <script src="{{ asset('backend/global/plugins/jquery.sparkline.min.js') }}" type="text/javascript"></script>
 
-            <!-- 
-            <script src="{{ asset('backend/global/plugins/jqvmap/jqvmap/jquery.vmap.js') }}" type="text/javascript"></script>
+            
+            <!-- <script src="{{ asset('backend/global/plugins/jqvmap/jqvmap/jquery.vmap.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js') }}" type="text/javascript"></script>
@@ -322,12 +278,14 @@
             <script src="{{ asset('backend/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js') }}" type="text/javascript"></script> -->
             <!-- END PAGE LEVEL PLUGINS -->
             <!-- BEGIN THEME GLOBAL SCRIPTS -->
+            <!-- <script src="{{ asset('backend/pages/scripts/components-editors.min.js') }}" type="text/javascript"></script> -->
             <script src="{{ asset('backend/global/scripts/app.min.js') }}" type="text/javascript"></script>
-            <script src="{{ asset('backend/pages/scripts/table-datatables-colreorder.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('backend/pages/scripts/table-datatables-managed.min.js') }}" type="text/javascript"></script>
             <!-- END THEME GLOBAL SCRIPTS -->
             <!-- BEGIN PAGE LEVEL SCRIPTS -->
             <script src="{{ asset('backend/pages/scripts/profile.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('backend/pages/scripts/dashboard.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('backend/global/plugins/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
             <!-- END PAGE LEVEL SCRIPTS -->
             <!-- BEGIN THEME LAYOUT SCRIPTS -->
             <script src="{{ asset('backend/layouts/layout2/scripts/layout.min.js') }}" type="text/javascript"></script>
@@ -347,6 +305,9 @@
             <script>
                 $('#confirmationModal').modal('show');
             </script>
+            <script src="{{ asset('backend/global/plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('backend/global/plugins/jquery-validation/js/additional-methods.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('backend/pages/scripts/form-validation.min.js') }}" type="text/javascript"></script>
     </body>
 
 </html>

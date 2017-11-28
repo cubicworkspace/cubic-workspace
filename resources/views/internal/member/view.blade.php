@@ -85,9 +85,9 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <!-- <th>Code User</th> -->
+                                                    <th>Name</th>
                                                     <th>Institution</th>
-                                                    <th>Birthday</th>
+                                                    <th>Address</th>
                                                     <th>Phone</th>
                                                     <th>Actions</th>
                                                 </tr>
@@ -96,10 +96,10 @@
                                             @foreach ($view as $no => $row)
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
-                                                    <!-- <td>{{ $row->codeuser }}</td> -->
+                                                    <td>{{ $row->user->name }}</td>
                                                     <td>{{ $row->institution }}</td>
-                                                    <td>{{ $row->birthday }}</td>
-                                                    <td>{{ $row->status }}</td>
+                                                    <td>{{ $row->address }}</td>
+                                                    <td>{{ $row->phone }}</td>
                                                     <td>                      
 								                      <form action="/member/{{$row->id}}" method="POST">
 								                      <a href="/member/{{$row->id}}/edit" class="btn btn-warning" title="Edit"><i class="fa fa-pencil" ></i></a> 

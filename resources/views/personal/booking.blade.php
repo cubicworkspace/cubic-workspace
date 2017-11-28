@@ -47,8 +47,12 @@
 								@if (count($bookingspaces ) > 0)
 								@foreach($bookingspaces as $row)
 								<div class="package-list-item clearfix">
-									<div class="image">
-										<img src="{{ asset('upload/companypartnership') }}/{{ $row->companypartnership->favicon }}" alt="Tour Package" />
+									<div class="image">							
+										@if($row->companyservices->image == '')
+										<img src="{{ asset('upload/noimage.png') }}" alt="{{ $row->companyservices->name }}" />
+										@else
+											<img src="{{ asset('upload/mediacompanyservices') }}/{{ $row->companyservices->image }}"  alt="{{ $row->companyservices->name }}">
+										@endif
 										<div class="absolute-in-image">
 										</div>
 									</div>

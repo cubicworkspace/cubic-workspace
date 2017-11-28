@@ -11,8 +11,8 @@
 					
 						<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 						
-							<h1 class="hero-title">{{ $media->name}}</h1>
-							<p class="lead">{{ $media->writer }}</p>
+							<h1 class="hero-title">{{ $identitas->name}}</h1>
+							<p class="lead">{{ strip_tags($identitas->description) }}</p>
 
 						</div>
 						
@@ -105,7 +105,7 @@
 					<!-- top basecamp -->
 					@foreach($topbasecamp as $row)
 					<div class="grid-item" data-colspan="5" data-rowspan="6">
-							<a href="{{ url('/website/partnership') }}/{{ $row->id }}/{{ str_slug($row->name) }}" class="top-destination-image-bg" style="background-image:url('{{ asset('upload/companypartnership') }}/{{ $row->favicon }}');">
+							<a href="{{ url('/website/partnership') }}/{{ $row->id }}/{{ str_slug($row->name) }}" class="top-destination-image-bg" style="background-image:url('{{ asset('upload/companypartnership') }}/{{ $row->logo }}');">
 								<div class="relative">
 									<h4>{{ $row->name }}</h4>
 									<span>{{ $row->city->name }} - {{ $row->country->name }}</span>
@@ -150,21 +150,25 @@
 								<div class="package-grid-item"> 
 									<a href="{{ url('/website/package/detail') }}/{{ $row->id }}/{{ str_slug($row->name) }}">
 										<div class="image">
-											<img src="{{ asset('upload/companypartnership') }}/{{ $row->companypartnership->favicon }}" alt="Tour Package" />
+											@if($row->image == '')
+											<img src="{{ asset('upload/noimage.png') }}" alt="{{ $row->name }}" />
+											@else
+											<img src="{{ asset('upload/mediacompanyservices') }}/{{ $row->image }}" alt="{{ $row->name }}" />
+											@endif
 											<div class="absolute-in-image">
-												<div class="duration"><span>{{ $row->companypartnership->name }}  - {{ $row->quota }}</span></div>
+												<div class="duration"><span>{{ $row->companypartnership->name }} </span></div>
 											</div>
 										</div>
 										<div class="content clearfix">
 											<h5>{{ $row->name }}</h5>
 											<div class="rating-wrapper">
 												<div class="raty-wrapper">
-													Lokasi : {{ $row->companypartnership->address }} <span> / 7 review</span>
+													{{ $row->companypartnership->address }} 
 												</div>
 											</div>
 											<div class="absolute-in-content">
 												<span class="btn"><i class="fa fa-heart-o"></i></span>
-												<div class="price">Rp {{ number_format($row->price, 2) }}</div>
+												<div class="price">Rp {{ number_format($row->price, 2) }} <br>/ <span>{{ $row->statusbooking }}</span></div>
 											</div>
 										</div>
 									</a>

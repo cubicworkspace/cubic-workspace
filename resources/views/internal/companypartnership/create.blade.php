@@ -54,11 +54,22 @@
 										<td>:</td>
 										<td><input type="text" name="codecompanypartnership"  class="form-control" value="{{ $no }}" ></td>
 									</tr>
-						            <tr>
+									<tr>
+										<td>Partner</td>
+										<td>:</td>
+										<td><select class="form-control" name="codepartner">
+										<option value="">-- Select Partner--</option>
+											 @foreach($partners as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   										</select>
+									</td>
+									</tr>
+									<!-- <tr>
 										<td>Name</td>
 										<td>:</td>
-										<td><input type="text" name="name"  class="form-control" ></td>
-									</tr>
+										<td><input type="text" name="name" required  class="form-control" ></td>
+									</tr> -->
 									<tr>
 										<td>Favicon</td>
 										<td>:</td>
@@ -69,7 +80,7 @@
 										<td>:</td>
 										<td><input type="file" name="logo" required  class="form-control" ></td>
 									</tr>
-						            <tr>
+						           <!--  <tr>
 										<td>Email</td>
 										<td>:</td>
 										<td><input type="email" name="email"  class="form-control" ></td>
@@ -78,17 +89,17 @@
 										<td>Phone</td>
 										<td>:</td>
 										<td><input type="text" name="phone"  class="form-control" ></td>
-									</tr>
+									</tr> -->
 									<tr>
 										<td>Fax</td>
 										<td>:</td>
 										<td><input type="text" name="fax"  class="form-control" ></td>
-									</tr>
+									</tr><!-- 
 									<tr>
 										<td>Address</td>
 										<td>:</td>
 										<td><textarea name="address"  class="form-control" ></textarea></td>
-									</tr>
+									</tr> -->
 									<tr>
 										<td>Maps</td>
 										<td>:</td>
@@ -162,10 +173,10 @@
 										<td>Status</td>
 										<td>:</td>
 										<td> <label class="radio-inline"> 
-						                     <input type="radio" checked="" name="status" id="Y" class="icheck" value="Y"> Y
+						                     <input type="radio" checked="" name="status" id="Y" class="icheck" value="Y"> Verified
 						                    </label> 
 						                     <label class="radio-inline"> 
-						                     <input type="radio"  name="status" id="N" class="icheck" value="N"> N
+						                     <input type="radio"  name="status" id="N" class="icheck" value="N"> Unverified
 						                   </label> </td>
 									</tr>
 									<tr>

@@ -41,15 +41,15 @@
 								<input type="hidden" name="{{ $name }}" value="{{  $booking[] = $row }}">
 								@endforeach
 									<ul class="book-sum-list">
-										<li><span class="font600">Booking Number: </span>{{ $booking[10] }}</li>
+										<li><span class="font600">Booking Number: </span>{{ $booking[11] }}</li>
 										<li><span class="font600">Space : </span>{{ $companyservices->name }}</li>
 										<li><span class="font600">Type : </span>{{ $companyservices->services->name }}</li>
-										<li><span class="font600">User Name: </span>{{ $booking[5] }}</li>
-										<li><span class="font600">Billing Email: </span>{{ $booking[6] }}</li>
-										<li><span class="font600">Phone: </span>{{ $booking[7] }}</li>
-										<li><span class="font600">Start Date: </span> {{ date('d F Y', strtotime($booking[3])) }}</li>
-										<li><span class="font600">End Date: </span>{{ date('d F Y', strtotime($booking[4])) }}</li>
-										<li><span class="font600">Pricing: </span>Rp {{ number_format($companyservices->price, 2) }}</li>
+										<li><span class="font600">User Name: </span>{{ $booking[6] }}</li>
+										<li><span class="font600">Billing Email: </span>{{ $booking[7] }}</li>
+										<li><span class="font600">Phone: </span>{{ $booking[8] }}</li>
+										<li><span class="font600">Start Date: </span> {{ date('d F Y', strtotime($booking[4])) }}</li>
+										<li><span class="font600">End Date: </span>{{ date('d F Y', strtotime($booking[5])) }}</li>
+										<li><span class="font600">Pricing: </span>Rp {{ number_format($companyservices->price, 2) }} / {{ $companyservices->statusbooking }}</li>
 										<li><span class="font600">Result : </span>{{ $hari }} Days * {{ number_format($companyservices->price, 2) }}</li>
 										<li><span class="font600">Total Payment: </span>Rp {{ number_format($total, 2) }}</li>
 									</ul>

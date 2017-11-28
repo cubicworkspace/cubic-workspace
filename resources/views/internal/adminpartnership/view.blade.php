@@ -85,11 +85,11 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Name User</th>
                                                     <th>Name Company</th>
+                                                    <th>Email</th><!-- 
                                                     <th>Phone</th>
                                                     <th>Status</th>
-                                                    <th>Address</th>
+                                                    <th>Address</th> -->
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -97,11 +97,11 @@
                                             @foreach ($view as $no => $row)
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
-                                                    <td>{{ !empty($row->user->name) ? $row->user->name : '-' }} </td>
-                                                    <td>{{ !empty($row->companypartnership->name) ? $row->companypartnership->name : '-' }} </td>
+                                                    <td>{{ $row->name }} </td>
+                                                    <td>{{ $row->email }} </td><!-- 
                                                     <td>{{ $row->phone }}</td>
                                                     <td>{{ $row->status }}</td>
-                                                    <td>{{ $row->address }}</td>
+                                                    <td>{{ $row->address }}</td> -->
                                                     <td>                      
 								                      <form action="/adminpartnership/{{$row->id}}" method="POST">
 								                      <a href="/adminpartnership/{{$row->id}}/edit" class="btn btn-warning" title="Edit"><i class="fa fa-pencil" ></i></a> 

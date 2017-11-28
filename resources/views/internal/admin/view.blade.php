@@ -1,5 +1,5 @@
 @extends('layouts.internal')
-@section('title','Admin')
+@section('title','Admins')
 @section('content')  
  <!-- BEGIN CONTENT BODY -->
                     <div class="page-content">
@@ -32,22 +32,22 @@
                                         </div>
                                     </div>
                                       @if (Session::has('success'))
-						                    <div class="alert alert-success alert-dismissible" role="alert">
-						                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						                    <i class="fa fa-check-circle"></i> {!! session('success') !!}
-						                  </div>
-						            @elseif (Session::has('warning'))
-						                  <div class="alert alert-warning alert-dismissible" role="alert">
-						                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						                    <i class="fa fa-warning"></i> {!! session('warning') !!}
-						                  </div>
-						            @elseif (Session::has('error'))
-						                  <div class="alert alert-danger alert-dismissible" role="alert">
-						                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						                    <i class="fa fa-times-circle"></i> {!! session('error') !!}
-						                  </div>
+                                            <div class="alert alert-success alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <i class="fa fa-check-circle"></i> {!! session('success') !!}
+                                          </div>
+                                    @elseif (Session::has('warning'))
+                                          <div class="alert alert-warning alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <i class="fa fa-warning"></i> {!! session('warning') !!}
+                                          </div>
+                                    @elseif (Session::has('error'))
+                                          <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <i class="fa fa-times-circle"></i> {!! session('error') !!}
+                                          </div>
 
-						            @endif
+                                    @endif
                                     <div class="portlet-body">
                                         <div class="table-toolbar">
                                             <div class="row">
@@ -85,11 +85,9 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Code</th>
-                                                    <th>Name User</th>
-                                                    <th>Category Admin</th>
-                                                    <th>Phone</th>
-                                                    <th>Status</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Status</th>                                                    
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -97,19 +95,17 @@
                                             @foreach ($view as $no => $row)
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
-                                                    <td>{{ $row->codeadmin }}</td>
-                                                    <td>{{ !empty($row->user->name) ? $row->user->name : '-' }} </td>
-                                                    <td>{{ !empty($row->categoryadmin->name) ? $row->categoryadmin->name : '-' }} </td>
-                                                    <td>{{ $row->phone }}</td>
+                                                    <td>{{ $row->name }}</td>
+                                                    <td>{{ $row->email }}</td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>                      
-								                      <form action="/admin/{{$row->id}}" method="POST">
-								                      <a href="/admin/{{$row->id}}/edit" class="btn btn-warning" title="Edit"><i class="fa fa-pencil" ></i></a> 
-								                      {{ csrf_field() }}
-								                      {{ method_field('DELETE') }}
-								                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this data?')" title="Delete"><i class="fa fa-trash" ></i></button>
-								                      </form>
-								                    </td>
+                                                      <form action="/admin/{{$row->id}}" method="POST">
+                                                      <a href="/admin/{{$row->id}}/edit" class="btn btn-warning" title="Edit"><i class="fa fa-pencil" ></i></a> 
+                                                      {{ csrf_field() }}
+                                                      {{ method_field('DELETE') }}
+                                                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this data?')" title="Delete"><i class="fa fa-trash" ></i></button>
+                                                      </form>
+                                                    </td>
                                                 </tr>
                                                @endforeach
                                             </tbody>

@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Companypartnership extends Model
 {
-    public function adminspartnership() {
-   		return $this->belongsTo(Adminspartnerships::class);
+    public function partner() {
+        return $this->belongsTo('App\Partners', 'codepartner');
 	}
 	
     public function city() {

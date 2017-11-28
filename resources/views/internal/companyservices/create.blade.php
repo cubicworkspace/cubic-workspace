@@ -45,7 +45,7 @@
 											
 						              </div>
 									@endif
-						            <form action="/companyservices" method="POST">
+						            <form action="/companyservices" method="POST" enctype="multipart/form-data">
 									{{ csrf_field() }}
 									<div class="table-responsive">
 						              <table class="table table-hover table-striped table-bordered">
@@ -81,6 +81,11 @@
 									</tr>
 									
 									<tr>
+										<td>Image</td>
+										<td>:</td>
+										<td><input type="file" name="image" required  class="form-control" ></td>
+									</tr>
+									<tr>
 										<td>City</td>
 										<td>:</td>
 										<td>
@@ -90,14 +95,15 @@
 	   								 ]) !!}
 									</td>
 									</tr>
+									</tr>
 									<tr>
-										<td>Status</td>
+										<td>Status Booking</td>
 										<td>:</td>
 										<td> <label class="radio-inline"> 
-						                     <input type="radio" checked="" name="status" id="Y" class="icheck" value="Y"> Y
+						                     <input type="radio" checked="" name="statusbooking" id="bulan" class="icheck" value="bulan"> Bulanan
 						                    </label> 
 						                     <label class="radio-inline"> 
-						                     <input type="radio"  name="status" id="N" class="icheck" value="N"> N
+						                     <input type="radio"  name="statusbooking" id="hari" class="icheck" value="hari"> Harian
 						                   </label> </td>
 									</tr>
 						            <tr>
@@ -127,6 +133,16 @@
 	   								  ['class' => 'form-control', 'id' => 'id','value' => 'name',
 	   								  	'placeholder' => '-- Select Services --'
 	   								 ]) !!}</td>
+									</tr>
+									<tr>
+										<td>Status Aktif</td>
+										<td>:</td>
+										<td> <label class="radio-inline"> 
+						                     <input type="radio" checked="" name="status" id="Y" class="icheck" value="Y"> Yes
+						                    </label> 
+						                     <label class="radio-inline"> 
+						                     <input type="radio"  name="status" id="N" class="icheck" value="N"> No
+						                   </label> </td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

@@ -149,7 +149,7 @@
 																<h4 class="modal-title" id="myModalLabel">Set Date</h4>
 															</div>
 															<div class="modal-body">
-																@if($companyservices->statusbooking == 'PERHARI')
+																@if($companyservices->statusbooking == 'hari')
 																<p>Start Mouth</p>
 																<div class="form-group">
 																	<div class="input-group date">

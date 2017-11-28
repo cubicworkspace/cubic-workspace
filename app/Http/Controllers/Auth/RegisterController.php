@@ -122,7 +122,7 @@ class RegisterController extends Controller
             $member = new members;
             $member->email = $socialUser->getEmail();
             $member->institution = '-';
-            $member->birthday = date('Y-m-d H:i:s');
+            $member->birthday = date('Y-m-d');
             $member->phone = '-';
             $member->address = '-';
             $member->description = '-';

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 21, 2017 at 03:10 AM
+-- Generation Time: Nov 09, 2017 at 05:10 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.0.24
 
@@ -48,7 +48,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `codecategoryadmin`, `codeadmin`, `phone`, `image`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(44, 'Nava', 'admin@admin.com', '$2y$10$lVlJenLkWQapOjB93f604u.dJihIfupp1uaOql0KRoVlRAPdTL0OS', '', '', '', '', 'Y', 'lf9oXHqu5hQl0E9MAFc2aFIPEChs9i6LfPemifGKb6ileII3fQaYhf8Gmh4q', '2017-11-08 05:39:07', '2017-11-08 05:39:07');
+(44, 'Nava', 'admin@admin.com', '$2y$10$lVlJenLkWQapOjB93f604u.dJihIfupp1uaOql0KRoVlRAPdTL0OS', '', '', '', '', 'Y', 'HbT8ZRAd9KvLYc2gpXfx52KKUfS1EtGvew1bT1KQZj8tyvrTuOpIxc1Jgorb', '2017-11-08 05:39:07', '2017-11-08 05:39:07');
 
 -- --------------------------------------------------------
 
@@ -145,11 +145,7 @@ INSERT INTO `bookingspaces` (`id`, `codebookingspace`, `codecompanyservices`, `c
 (18, 'CBS014', '23', '7', '', '4', '38', '2', '23881', 'Nava Gia Ginasta', 'nava.webdevelopers@gmail.com', '0', '0', 0, 0, 4000000, 4000000, '2017-11-07', '2017-11-08', 0, 0, '', '', 'N', '2017-11-07 13:02:10', 'N', '2017-11-07 09:02:10', '2017-11-07 09:02:10'),
 (19, 'CBS014', '23', '7', '', '4', '38', '2', '23881', 'Nava Gia Ginasta', 'nava.webdevelopers@gmail.com', '0', '0', 0, 0, 4000000, 4000000, '2017-11-07', '2017-11-08', 0, 0, '', '', 'N', '2017-11-07 13:02:10', 'N', '2017-11-07 09:02:10', '2017-11-07 09:02:10'),
 (20, 'CBS015', '22', '8', '', '6', '37', '2', '61584', 'Krisnanta Yudha Pratama', 'the_gunheal@yahoo.co.id', '085740172949', 'bandung', 0, 0, 750000, 2250000, '2017-11-08', '2017-11-11', 0, 0, '', '', 'N', '2017-11-07 13:06:59', 'N', '2017-11-07 09:06:59', '2017-11-07 09:06:59'),
-(21, 'CBS016', '34', '7', '', '2', '38', '2', '45276', 'Nava Gia Ginasta', 'nava.webdevelopers@gmail.com', '0877777111', 'Bandung', 0, 0, 650000, 10400000, '2017-11-08', '2017-11-24', 0, 0, '', '', 'N', '2017-11-08 03:17:28', 'N', '2017-11-08 00:17:28', '2017-11-08 00:17:28'),
-(22, 'CBS017', '34', '7', '', '2', '43', '2', '79622', 'Nava Gia Ginasta', 'navagiaginasta@gmail.com', '-', '-', 0, 0, 650000, 5200000, '2017-11-14', '2017-11-22', 0, 0, '', '67907.png', 'N', '2017-11-14 15:32:16', 'N', '2017-11-14 08:32:16', '2017-11-16 19:56:15'),
-(23, 'CBS018', '35', '7', '', '2', '43', '2', '86735', 'Nava Gia', 'navagiaginasta@gmail.com', '0223111000', '-', 0, 0, 3500000, 101500000, '2017-11-01', '2017-11-30', 0, 0, '', '50300.jpg', 'Y', '2017-11-19 19:35:18', 'N', '2017-11-19 12:35:18', '2017-11-19 12:39:11'),
-(24, 'CBS019', '34', '7', '', '2', '43', '2', '72421', 'Nava Gia', 'navagiaginasta@gmail.com', '0223111000', '-', 0, 0, 650000, 650000, '2017-11-01', '2017-11-02', 0, 0, '', '', 'N', '2017-11-19 19:47:53', 'N', '2017-11-19 12:47:53', '2017-11-19 12:47:53'),
-(25, 'CBS020', '34', '7', '', '2', '38', '2', '92037', 'Nava Gia Ginasta', 'nava.webdevelopers@gmail.com', '0223111000', '-', 0, 0, 650000, 97500000, '2017-02-01', '2017-07-01', 0, 0, '', '', 'N', '2017-11-20 15:31:39', 'N', '2017-11-20 08:31:39', '2017-11-20 08:31:39');
+(21, 'CBS016', '34', '7', '', '2', '38', '2', '45276', 'Nava Gia Ginasta', 'nava.webdevelopers@gmail.com', '0877777111', 'Bandung', 0, 0, 650000, 10400000, '2017-11-08', '2017-11-24', 0, 0, '', '', 'N', '2017-11-08 03:17:28', 'N', '2017-11-08 00:17:28', '2017-11-08 00:17:28');
 
 -- --------------------------------------------------------
 
@@ -175,11 +171,20 @@ CREATE TABLE `bookingtours` (
 --
 
 INSERT INTO `bookingtours` (`id`, `codecompanyservices`, `codecompanypartnership`, `email`, `phone`, `date`, `time`, `status`, `created_at`, `updated_at`) VALUES
-(25, 35, 7, 'admin@cubic.co.id', '0223111000', '2017-11-30', '00:00', 'N', '2017-11-20 01:18:04', '2017-11-20 01:18:04'),
-(26, 35, 7, 'admin@cubic.co.id', '0223111000', '2017-10-01', '00:12', 'N', '2017-11-20 01:28:31', '2017-11-20 01:28:31'),
-(27, 35, 7, 'admin@cubic.co.idzzzz', '22111', '2017-12-01', '02:22', 'N', '2017-11-20 01:29:07', '2017-11-20 01:29:07'),
-(28, 34, 7, 'admin@cubic.co.id', '0223111000', '1970-01-01', '10:20', 'N', '2017-11-20 08:05:30', '2017-11-20 08:05:30'),
-(29, 35, 7, 'navagiaginasta@m.com', '0223111000', '2017-11-20', '10:11', 'N', '2017-11-20 08:10:00', '2017-11-20 08:10:00');
+(6, 5, 10, 'navagiaginasta@gmail.com', '087820033395', '2017-09-23', '09:11', 'N', '2017-09-23 01:57:54', '2017-09-23 01:57:54'),
+(7, 14, 7, 'navagiaginasta@gmail.com', '87820033395', '2017-09-29', '01:22', 'N', '2017-09-23 02:05:40', '2017-09-23 02:05:40'),
+(8, 5, 10, 'navagiaginasta@gmail.com', '87820033395', '2017-09-02', '02:00', 'N', '2017-09-23 02:19:32', '2017-09-23 02:19:32'),
+(9, 5, 10, 'ex@gmail.com', '87820033395', '2017-09-09', '03:33', 'N', '2017-09-23 02:20:44', '2017-09-23 02:20:44'),
+(10, 5, 10, 'navagiaginasta@gmail.com', '087820033395', '2017-09-09', '03:03', 'N', '2017-09-23 02:21:20', '2017-09-23 02:21:20'),
+(11, 8, 9, 'navagiaginasta@gmail.com', '087820033395', '2017-09-08', '00:11', 'N', '2017-09-23 02:22:48', '2017-09-23 02:22:48'),
+(12, 8, 9, 'navagiaginasta@gmail.com', '87820033395', '2017-09-29', '16:22', 'N', '2017-09-23 02:31:34', '2017-09-23 02:31:34'),
+(13, 8, 9, 'navagiaginasta@gmail.com', 'e', '2017-09-08', '00:01', 'N', '2017-09-23 02:32:13', '2017-09-23 02:32:13'),
+(14, 8, 9, 'admin@example.com', '87820033395', '2017-09-23', '14:03', 'N', '2017-09-23 02:32:57', '2017-09-23 02:32:57'),
+(15, 13, 7, 'navagiaginasta@gmail.com', '87820033395', '2017-09-04', '01:01', 'N', '2017-09-23 02:33:51', '2017-09-23 02:33:51'),
+(16, 5, 10, 'aliando@gmail.com', '010101', '0000-00-00', '02:02', 'N', '2017-09-24 03:56:59', '2017-09-24 03:56:59'),
+(17, 5, 10, 'kp@gmail.com', '0899999', '0000-00-00', '10:20', 'N', '2017-09-26 23:26:48', '2017-09-26 23:26:48'),
+(18, 33, 9, 'navagiaginasta@gmail.com', '87820033395', '0000-00-00', '01:10', 'N', '2017-10-27 00:38:39', '2017-10-27 00:38:39'),
+(19, 22, 8, 'nantayp@gmail.com', '085740172949', '0000-00-00', '12:00', 'N', '2017-11-07 09:04:26', '2017-11-07 09:04:26');
 
 -- --------------------------------------------------------
 
@@ -360,7 +365,7 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`id`, `name`, `favicon`, `logo`, `email`, `phone`, `fax`, `address`, `maps`, `profile`, `history`, `description`, `vision`, `mision`, `faq`, `registerdate`, `status`, `author`, `created_at`, `updated_at`) VALUES
-(1, 'Workshare', '14675.png', '20171119194241.png', 'workspace@gmail.com', '087877693842', '-', 'Jl. Naripan no.53 Bandung', '-6.9202047, 107.6138110', '<p>Workshare adalah platform yang menghubungkan rekan kerja dan ruang kerja di seluruh dunia.</p>', 'Workshare mulai beroperasi pada bulan November 2017.', '<p>Workspace merupakan platfroom penyediakan coworking space, office room, meeting room, dan virtual office dengan kemudahan sistem booking dan pembayaran.</p>', '- Menjadi salah satu perusahaan agen ruang kerja coworking terbaik di Indonesia\r\n- Berkontribusi untuk meningkatkan pertumbuhan dan perkembangan wirausaha\r\ndi Indonesia', '- Berikan kenyamanan dan kenyamanan bagi pengusaha dan pemilik tempat kerja\r\n- Membawa pelayanan terbaik\r\n- Bangun ekosistem bisnis yang membuat pengusaha indonesia berkembang', '<p>faq</p>', '2018-11-19', 'Y', 'navagiaginasta@gmail.com | 087820033395', '2017-08-21 17:00:00', '2017-11-19 12:42:41');
+(1, 'Workshare', '14675.png', '20171109124342.png', 'workspace@gmail.com', '087877693842', '-', 'Jl. Naripan no.53 Bandung', '-6.9202047, 107.6138110', '<p>Workshare adalah platform yang menghubungkan rekan kerja dan ruang kerja di seluruh dunia.</p>', 'Workshare mulai beroperasi pada bulan November 2017.', '<p>Workspace merupakan platfroom penyediakan coworking space, office room, meeting room, dan virtual office dengan kemudahan sistem booking dan pembayaran.</p>', '- Menjadi salah satu perusahaan agen ruang kerja coworking terbaik di Indonesia\r\n- Berkontribusi untuk meningkatkan pertumbuhan dan perkembangan wirausaha\r\ndi Indonesia', '- Berikan kenyamanan dan kenyamanan bagi pengusaha dan pemilik tempat kerja\r\n- Membawa pelayanan terbaik\r\n- Bangun ekosistem bisnis yang membuat pengusaha indonesia berkembang', '<p>faq</p>', '2018-11-09', 'Y', 'navagiaginasta@gmail.com | 087820033395', '2017-08-21 17:00:00', '2017-11-09 05:43:56');
 
 -- --------------------------------------------------------
 
@@ -373,7 +378,6 @@ CREATE TABLE `companypartnerships` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codecompanypartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codetagservices` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codepartner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `favicon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -400,11 +404,9 @@ CREATE TABLE `companypartnerships` (
 -- Dumping data for table `companypartnerships`
 --
 
-INSERT INTO `companypartnerships` (`id`, `name`, `codecompanypartnership`, `codetagservices`, `codepartner`, `favicon`, `logo`, `email`, `phone`, `fax`, `address`, `maps`, `codecountry`, `codecity`, `profile`, `history`, `description`, `vision`, `mision`, `faq`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
-(7, 'Workspace . 53', 'COP001', '3', '', 'workspace53_1.jpg', '46122.jpg', 'workspace53bdg@gmail.com', '087877693842', '0', 'Jl. Naripan no.53', '-6.920577, 107.615890', '2', '3', '1', '-', '-', '-', '-', '<p>1</p>', '1', '2017-11-19 19:33:45', 'Y', '2017-09-12 00:37:53', '2017-11-19 12:33:45'),
-(8, 'Postcard', 'COP002', '3', '', 'Postcard.jpg', '47616.jpg', 'postcard@gmail.com', '087820033395', '87820033395', 'Jl. WR Supratman no.29', '-6.9057208,107.6088645', '2', '3', '-', '-', '-', '-', '-', '<p>-</p>', '-', '2017-11-06 09:25:53', 'Y', '2017-09-12 06:32:41', '2017-11-06 05:25:53'),
-(16, 'CO & CO', 'COP003', '3', '19', '35011.jpg', '23570.png', 'coco@gmail.com', '0223111000', '', 'Bandung', '-6.897141, 107.613727', '2', '3', '', '', '', '', '', '', '', '2017-11-19 19:31:32', 'Y', '2017-11-15 01:54:52', '2017-11-19 12:31:32'),
-(17, 'Bandung Digital Valley (BDV)', 'COP004', '3', '', '97279.jpg', '33699.jpg', 'bdv@gmail.com', '0223111000', '-', 'Gegerkalong', '-6.870076, 107.586559', '2', '3', 'Profile', 'History', 'Description', 'Visi', 'Misi', '<p>-</p>', 'Information', '2017-11-19 19:29:13', 'Y', '2017-11-19 12:24:32', '2017-11-19 12:29:13');
+INSERT INTO `companypartnerships` (`id`, `name`, `codecompanypartnership`, `codetagservices`, `favicon`, `logo`, `email`, `phone`, `fax`, `address`, `maps`, `codecountry`, `codecity`, `profile`, `history`, `description`, `vision`, `mision`, `faq`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
+(7, 'Workspace . 53', 'COP001', '3', 'workspace53_1.jpg', '46122.jpg', 'workspace53bdg@gmail.com', '087877693842', ' 	0', 'Jl. Naripan no.53', '-6.873364, 107.575632', '2', '3', '1', '-', '-', '-', '-', '<p>1</p>', '1', '2017-11-06 07:51:08', 'Y', '2017-09-12 00:37:53', '2017-11-06 03:51:08'),
+(8, 'Postcard', 'COP002', '3', 'Postcard.jpg', '47616.jpg', 'postcard@gmail.com', '087820033395', '87820033395', 'Jl. WR Supratman no.29', '-6.9057208,107.6088645', '2', '3', '-', '-', '-', '-', '-', '<p>-</p>', '-', '2017-11-06 09:25:53', 'Y', '2017-09-12 06:32:41', '2017-11-06 05:25:53');
 
 -- --------------------------------------------------------
 
@@ -424,7 +426,6 @@ CREATE TABLE `companyservices` (
   `price` int(11) NOT NULL,
   `quotauser` int(11) NOT NULL,
   `information` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `statusbooking` enum('PERBULAN','PERHARI') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'PERBULAN',
   `registerdate` datetime NOT NULL,
   `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -435,14 +436,14 @@ CREATE TABLE `companyservices` (
 -- Dumping data for table `companyservices`
 --
 
-INSERT INTO `companyservices` (`id`, `name`, `codecompanyservices`, `codecompanypartnership`, `codetagservices`, `codeservices`, `codecity`, `quota`, `price`, `quotauser`, `information`, `statusbooking`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
-(20, 'Postcard Cafe 1', 'COS001', '8', '2', '4', '3', 1, 10000000, 20, 'Office room 1', 'PERBULAN', '2017-11-07 10:59:19', 'Y', '2017-10-03 07:16:47', '2017-11-07 06:59:19'),
-(21, 'Team tables', 'COS002', '8', '5', '4', '3', 4, 22000000, 5, 'Information', 'PERBULAN', '2017-11-07 11:10:30', 'Y', '2017-10-03 07:18:13', '2017-11-07 07:10:30'),
-(22, 'Individual', 'COS003', '17', '5', '6', '2', 10, 750000, 10, 'Individual', 'PERBULAN', '2017-11-19 19:45:06', 'Y', '2017-10-03 07:19:17', '2017-11-19 12:45:06'),
-(23, 'Workspace 53', 'COS004', '7', '5', '4', '3', 2, 4000000, 10, 'Office room 1', 'PERBULAN', '2017-11-07 11:10:14', 'Y', '2017-10-03 07:40:45', '2017-11-07 07:10:14'),
-(33, 'Postcard Cafe 2', 'COS005', '17', '2', '4', '3', 1, 5500000, 9, 'Office room 2', 'PERBULAN', '2017-11-19 19:44:31', 'Y', '2017-10-22 05:47:53', '2017-11-19 12:44:31'),
-(34, 'Individual desk', 'COS006', '7', '5', '2', '3', 10, 650000, 10, 'Individual desk', 'PERBULAN', '2017-11-07 11:16:34', 'Y', '2017-11-07 07:16:34', '2017-11-07 07:16:34'),
-(35, 'Team tables', 'COS007', '7', '2', '2', '3', 2, 3500000, 10, 'Team tables', 'PERHARI', '2017-11-07 11:17:25', 'Y', '2017-11-07 07:17:25', '2017-11-07 07:17:25');
+INSERT INTO `companyservices` (`id`, `name`, `codecompanyservices`, `codecompanypartnership`, `codetagservices`, `codeservices`, `codecity`, `quota`, `price`, `quotauser`, `information`, `registerdate`, `status`, `created_at`, `updated_at`) VALUES
+(20, 'Postcard Cafe 1', 'COS001', '8', '2', '4', '3', 1, 10000000, 20, 'Office room 1', '2017-11-07 10:59:19', 'Y', '2017-10-03 07:16:47', '2017-11-07 06:59:19'),
+(21, 'Team tables', 'COS002', '8', '5', '4', '3', 4, 22000000, 5, 'Information', '2017-11-07 11:10:30', 'Y', '2017-10-03 07:18:13', '2017-11-07 07:10:30'),
+(22, 'Individual', 'COS003', '8', '5', '6', '2', 10, 750000, 10, 'Individual', '2017-11-07 11:10:40', 'Y', '2017-10-03 07:19:17', '2017-11-07 07:10:40'),
+(23, 'Workspace 53', 'COS004', '7', '5', '4', '3', 2, 4000000, 10, 'Office room 1', '2017-11-07 11:10:14', 'Y', '2017-10-03 07:40:45', '2017-11-07 07:10:14'),
+(33, 'Postcard Cafe 2', 'COS005', '8', '2', '4', '3', 1, 5500000, 9, 'Office room 2', '2017-11-07 11:00:28', 'Y', '2017-10-22 05:47:53', '2017-11-07 07:00:28'),
+(34, 'Individual desk', 'COS006', '7', '5', '2', '3', 10, 650000, 10, 'Individual desk', '2017-11-07 11:16:34', 'Y', '2017-11-07 07:16:34', '2017-11-07 07:16:34'),
+(35, 'Team tables', 'COS007', '7', '2', '2', '3', 2, 3500000, 10, 'Team tables', '2017-11-07 11:17:25', 'Y', '2017-11-07 07:17:25', '2017-11-07 07:17:25');
 
 -- --------------------------------------------------------
 
@@ -466,7 +467,8 @@ CREATE TABLE `countrys` (
 --
 
 INSERT INTO `countrys` (`id`, `name`, `codecountry`, `flag`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Indonesia', 'COU001', '55988.png', 'Indonesia', 'N', '2017-08-22 11:40:21', '2017-09-12 00:51:13');
+(2, 'Indonesia', 'COU001', '55988.png', 'Indonesia', 'N', '2017-08-22 11:40:21', '2017-09-12 00:51:13'),
+(3, 'India1', 'COU002', '13488.PNG', 'India1', 'N', '2017-09-26 09:30:59', '2017-11-07 05:11:29');
 
 -- --------------------------------------------------------
 
@@ -651,8 +653,7 @@ INSERT INTO `mediacompanyservices` (`id`, `name`, `codecompanyservices`, `codeco
 (3, 'MEDIA COMPANY SERVICES3', 22, 7, '20171027075811.jpg', 'Y', '2017-10-27 07:58:11', '2017-10-27 00:58:11'),
 (4, 'MEDIA COMPANY SERVICES3', 21, 7, '20171027075628.jpg', 'Y', '2017-10-27 07:56:28', '2017-10-27 00:56:28'),
 (5, 'MEDIA COMPANY SERVICES4', 23, 8, '20170920170731.jpg', 'Y', '2017-10-03 16:00:35', '2017-10-03 09:00:35'),
-(6, 'Special Packages5', 35, 17, '20171119192741.jpg', 'Y', '2017-11-19 19:27:41', '2017-11-19 12:27:41'),
-(7, 'Bandung Digital Valley (BDV)', 20, 17, '20171119192639.jpg', 'Y', '2017-11-19 12:26:39', '2017-11-19 12:26:39');
+(6, 'Special Packages5', 33, 9, '20171022124849.jpg', 'Y', '2017-10-22 05:48:49', '2017-10-22 05:48:49');
 
 -- --------------------------------------------------------
 
@@ -692,7 +693,7 @@ INSERT INTO `members` (`id`, `codeuser`, `email`, `institution`, `birthday`, `ph
 (7, '', 'the_gunheal@yahoo.co.id', '-', '2017-11-07 12:11:05', '-', '-', '', '-', '-', '2017-11-07 12:11:05', '2017-11-07 12:11:05', 'N', '2017-11-07 08:11:05', '2017-11-07 08:11:05'),
 (8, '', 'the_gunheal@yahoo.co.id', '-', '2017-11-07 12:17:14', '-', '-', '', '-', '-', '2017-11-07 12:17:14', '2017-11-07 12:17:14', 'N', '2017-11-07 08:17:14', '2017-11-07 08:17:14'),
 (9, '', 'nava.webdevelopers@gmail.com', '-', '2017-11-07 12:19:50', '-', '-', '', '-', '-', '2017-11-07 12:19:50', '2017-11-07 12:19:50', 'N', '2017-11-07 08:19:50', '2017-11-07 08:19:50'),
-(10, '43', 'navagiaginasta@gmail.com', '-', '2017-11-07 13:25:14', '087820033395', '-', '', '-', '-', '2017-11-07 13:25:14', '2017-11-07 13:25:14', 'N', '2017-11-07 09:25:14', '2017-11-16 19:55:45'),
+(10, '', 'navagiaginasta@gmail.com', '-', '2017-11-07 13:25:14', '-', '-', '', '-', '-', '2017-11-07 13:25:14', '2017-11-07 13:25:14', 'N', '2017-11-07 09:25:14', '2017-11-07 09:25:14'),
 (11, '', 'navagiaginasta@gmail.com', '-', '2017-11-07 13:39:21', '-', '-', '', '-', '-', '2017-11-07 13:39:21', '2017-11-07 13:39:21', 'N', '2017-11-07 09:39:21', '2017-11-07 09:39:21'),
 (12, '', 'nantayp@gmail.com', '-', '2017-11-07 13:39:43', '-', '-', '', '-', '-', '2017-11-07 13:39:43', '2017-11-07 13:39:43', 'N', '2017-11-07 09:39:43', '2017-11-07 09:39:43'),
 (13, '', 'navagiaginasta@gmail.com', '-', '2017-11-07 13:41:14', '-', '-', '', '-', '-', '2017-11-07 13:41:14', '2017-11-07 13:41:14', 'N', '2017-11-07 09:41:14', '2017-11-07 09:41:14'),
@@ -700,9 +701,7 @@ INSERT INTO `members` (`id`, `codeuser`, `email`, `institution`, `birthday`, `ph
 (15, '', 'navagiaginasta@gmail.com', '-', '2017-11-08 02:21:12', '-', '-', '', '-', '-', '2017-11-08 02:21:12', '2017-11-08 02:21:12', 'N', '2017-11-07 23:21:12', '2017-11-07 23:21:12'),
 (16, '', 'ketutadiwijanarko@gmail.com', '-', '2017-11-08 02:29:20', '-', '-', '', '-', '-', '2017-11-08 02:29:20', '2017-11-08 02:29:20', 'N', '2017-11-07 23:29:20', '2017-11-07 23:29:20'),
 (17, 'USR009', 'agus1@gmail.com', 'bandung', '11/08/2017', '0988686868', 'bdg', '25901.jpg', '-', '-', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Y', '2017-11-08 06:53:04', '2017-11-08 06:53:04'),
-(18, '', 'nava.webdevelopers@gmail.com', '-', '2017-11-09 08:03:11', '-', '-', '', '-', '-', '2017-11-09 08:03:11', '2017-11-09 08:03:11', 'N', '2017-11-09 01:03:11', '2017-11-09 01:03:11'),
-(19, '', 'nava.webdevelopers@gmail.com', '-', '2017-11-14 10:27:07', '-', '-', '', '-', '-', '2017-11-14 10:27:07', '2017-11-14 10:27:07', 'N', '2017-11-14 03:27:07', '2017-11-14 03:27:07'),
-(20, 'USR010', 'agg@gmail.com', 'n', '11/15/2017', '0878200033395', 'bdg', '27097.png', '1', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Y', '2017-11-15 00:58:17', '2017-11-15 00:58:17');
+(18, '', 'nava.webdevelopers@gmail.com', '-', '2017-11-09 08:03:11', '-', '-', '', '-', '-', '2017-11-09 08:03:11', '2017-11-09 08:03:11', 'N', '2017-11-09 01:03:11', '2017-11-09 01:03:11');
 
 -- --------------------------------------------------------
 
@@ -750,6 +749,7 @@ CREATE TABLE `migrations` (
 
 CREATE TABLE `partners` (
   `id` int(10) UNSIGNED NOT NULL,
+  `codecompanypartnership` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -766,9 +766,8 @@ CREATE TABLE `partners` (
 -- Dumping data for table `partners`
 --
 
-INSERT INTO `partners` (`id`, `name`, `email`, `password`, `phone`, `image`, `address`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(10, 'cubic', 'admin@cubic.co.id', '$2y$10$ZXsGCKQN1xxlWdcklg.sguZuPelPA/BKPf8Xteu1TBSJ4N.JiNC/K', '', '', '', 'Y', 'jBBGP5j8HHNg61cSJxfkJRC2FF1Nezx787iO2nTGTKDgvNVcBO5gcLBg1wVq', '2017-11-09 02:10:07', '2017-11-09 02:10:07'),
-(19, 'PT.NAVA WEB', 'navaweb@gmail.com', '$2y$10$gvvPXiBFwJ93LqTmKbc50OeIGsrldZe6AFPLFJVKGAUlfNC5pae2G', '087820033395', '66140.jpg', 'Bandung', 'Y', 'xnC3palY6QqeHwikIbX4X2opfiNeNRGSw2rII7XV9mlfscf3knTn2fdYloHX', '2017-11-15 01:54:52', '2017-11-15 01:54:52');
+INSERT INTO `partners` (`id`, `codecompanypartnership`, `name`, `email`, `password`, `phone`, `image`, `address`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(10, '', 'cubic', 'admin@cubic.co.id', '$2y$10$ZXsGCKQN1xxlWdcklg.sguZuPelPA/BKPf8Xteu1TBSJ4N.JiNC/K', '', '', '', 'Y', 'goZs2dAat7ExRi8VpOucHi1UdyP698OnHhvsAwVgN8Hl7PsFckLwOReVFm1d', '2017-11-09 02:10:07', '2017-11-09 02:10:07');
 
 -- --------------------------------------------------------
 
@@ -849,8 +848,7 @@ INSERT INTO `social_providers` (`id`, `user_id`, `provider_id`, `provider`, `cre
 (28, 42, '110546214135486559339', 'google', '2017-11-07 09:53:52', '2017-11-07 09:53:52'),
 (29, 43, '112227416377852186762', 'google', '2017-11-07 23:21:12', '2017-11-07 23:21:12'),
 (30, 44, '109368980972916730456', 'google', '2017-11-07 23:29:20', '2017-11-07 23:29:20'),
-(31, 38, '1399194833534278', 'facebook', '2017-11-09 01:03:11', '2017-11-09 01:03:11'),
-(32, 38, '104059642855903038031', 'google', '2017-11-14 03:27:07', '2017-11-14 03:27:07');
+(31, 38, '1399194833534278', 'facebook', '2017-11-09 01:03:11', '2017-11-09 01:03:11');
 
 -- --------------------------------------------------------
 
@@ -1043,12 +1041,11 @@ INSERT INTO `users` (`id`, `name`, `codeuser`, `email`, `password`, `remember_to
 (32, 'Krishna YF', 'USR007', 'nantayp@gmail.com', '$2y$10$EZSG9HQ2mNI5HwboTsaVyO0Ggqc3QwR.UogzMa.f8xRHLraleEKJm', 'onb1KtexBBMSz4RWO60ZOtDRuOJWHiuodCrOSgV1refGG0d6o9OazO5F0qyC', 'USER', '2017-10-13 07:43:03', '2017-10-03 21:53:34', '2017-10-03 21:53:34', '2017-10-03 21:53:34'),
 (33, 'Ketut Adi Wijanarko', 'USR008', 'ketut95@gmail.com', '$2y$10$DT9ZwUayejyOIaX.ijFIHu1NqJGs2j8.SWIAJDCDdGKtByn4CrZYS', NULL, 'USER', '2017-10-04 22:20:00', '2017-10-04 22:20:00', '2017-10-04 22:20:01', '2017-10-04 22:20:01'),
 (37, 'Krisnanta Yudha Pratama', '', 'the_gunheal@yahoo.co.id', '', 'JQUJkZBiw49By0ucpAlBhNSI0MceYWze2cHHtRDjZSrlWKx4ssccv87XXN30', 'USER', '2017-11-07 13:10:14', '0000-00-00 00:00:00', '2017-11-07 08:17:14', '2017-11-07 08:17:14'),
-(38, 'Nava Gia Ginasta', '', 'nava.webdevelopers@gmail.com', '', 'boFFROe5H48WZfJF8s16lz9ow7OXnDK5nxiqyVUNgdfSnR0uYVODBziDg81F', 'USER', '2017-11-20 16:09:31', '0000-00-00 00:00:00', '2017-11-07 08:19:49', '2017-11-07 08:19:49'),
+(38, 'Nava Gia Ginasta', '', 'nava.webdevelopers@gmail.com', '', 'Fp6gJx0yd36qjZDudXpZT9Ui6mTxbwbcFG3LKwwiSMVqvNgHC5PVQQtGEE5t', 'USER', '2017-11-09 09:40:51', '0000-00-00 00:00:00', '2017-11-07 08:19:49', '2017-11-07 08:19:49'),
 (42, 'Intan Damayanti', '', 'intandamay30@gmail.com', '', 'roJ78X5JQZtMZOJtY2DnHRIRcEIiZFs9liV8gI2rj3S1RBqnUFUDBxtgTxwR', 'USER', '2017-11-08 02:43:30', '0000-00-00 00:00:00', '2017-11-07 09:53:52', '2017-11-07 09:53:52'),
-(43, 'Nava Gia', '', 'navagiaginasta@gmail.com', '', 'Y7wRScpUIEJTb7jTm1kLnarZ7MPAmFbZmarTvPEC8A60k48cCr1NEcVIKJBi', 'USER', '2017-11-19 19:41:12', '0000-00-00 00:00:00', '2017-11-07 23:21:12', '2017-11-16 19:55:28'),
+(43, 'Nava Gia Ginasta', '', 'navagiaginasta@gmail.com', '', 'rrrlXyOZYhLxkHPEBbtd0tNa51nAzpRXvL9FaXbrYTFIch9sMFabW2cqIgxm', 'USER', '2017-11-09 13:03:04', '0000-00-00 00:00:00', '2017-11-07 23:21:12', '2017-11-07 23:21:12'),
 (44, 'Ketut Adi', '', 'ketutadiwijanarko@gmail.com', '', NULL, 'USER', '2017-11-08 02:29:20', '0000-00-00 00:00:00', '2017-11-07 23:29:20', '2017-11-07 23:29:20'),
-(45, 'agus', 'USR009', 'agus1@gmail.com', '$2y$10$4XgBTzbFgOB85rs6kFR7HeAwt0C1/dtGoULHdA9FETCqJsina.Nra', '8m2zgoEMiHaPHHoqYchLCREr03dxKHWPUk7qOgR3CPw9KMMmqC4Djsp1XZis', 'USER', '2017-11-08 14:33:46', '2017-11-08 06:53:04', '2017-11-08 06:53:04', '2017-11-08 06:53:04'),
-(46, 'agus', 'USR010', 'agg@gmail.com', '$2y$10$vJk.agOQIyUU.d/juwUXB.plVIBegQc1M4Tc0YCdwCL7n2I2aR706', NULL, 'USER', '2017-11-15 00:58:17', '2017-11-15 00:58:17', '2017-11-15 00:58:17', '2017-11-15 00:58:17');
+(45, 'agus', 'USR009', 'agus1@gmail.com', '$2y$10$4XgBTzbFgOB85rs6kFR7HeAwt0C1/dtGoULHdA9FETCqJsina.Nra', '8m2zgoEMiHaPHHoqYchLCREr03dxKHWPUk7qOgR3CPw9KMMmqC4Djsp1XZis', 'USER', '2017-11-08 14:33:46', '2017-11-08 06:53:04', '2017-11-08 06:53:04', '2017-11-08 06:53:04');
 
 --
 -- Indexes for dumped tables
@@ -1126,10 +1123,7 @@ ALTER TABLE `companies`
 -- Indexes for table `companypartnerships`
 --
 ALTER TABLE `companypartnerships`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `email` (`email`(191)),
-  ADD KEY `codepartner` (`codepartner`(191)),
-  ADD KEY `codepartner_2` (`codepartner`(191));
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `companyservices`
@@ -1291,13 +1285,13 @@ ALTER TABLE `billingcompanyservices`
 -- AUTO_INCREMENT for table `bookingspaces`
 --
 ALTER TABLE `bookingspaces`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `bookingtours`
 --
 ALTER TABLE `bookingtours`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `categoryadmins`
@@ -1345,7 +1339,7 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `companypartnerships`
 --
 ALTER TABLE `companypartnerships`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `companyservices`
@@ -1357,13 +1351,13 @@ ALTER TABLE `companyservices`
 -- AUTO_INCREMENT for table `countrys`
 --
 ALTER TABLE `countrys`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `historybillingcompanyservices`
@@ -1393,13 +1387,13 @@ ALTER TABLE `media`
 -- AUTO_INCREMENT for table `mediacompanyservices`
 --
 ALTER TABLE `mediacompanyservices`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -1417,7 +1411,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `partners`
 --
 ALTER TABLE `partners`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `paymentmethodes`
@@ -1435,7 +1429,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `social_providers`
 --
 ALTER TABLE `social_providers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `sosialmedias`
@@ -1471,7 +1465,7 @@ ALTER TABLE `testimonials`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

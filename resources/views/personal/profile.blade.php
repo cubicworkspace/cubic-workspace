@@ -63,11 +63,14 @@
 									<div class="form-group"> 
 										<input type="text" name="institution" class="form-control" placeholder="Institution" value="{{ $edit->institution }}" required=""> 
 									</div>
-									<div class="form-group"> 
-										<div class="input-group date">
-											 <input type="text" name="birthday" class="form-control" placeholder="Birthday" value="{{ $edit->birthday }}" required><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-										</div>
+								<!-- 	<div class="form-group"> 
+										{{ $edit->birthday }}
 									</div>
+									<div class="form-group">
+										<div class="input-group date datemonth" >
+											<input type="text" name="date" class="form-control" placeholder="dd/mm/yyyy" ><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+										</div>
+									</div> -->
 									<div class="form-group"> 
 										<input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ $edit->phone }}" required=""> 
 									</div>

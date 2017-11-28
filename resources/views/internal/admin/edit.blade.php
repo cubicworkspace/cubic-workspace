@@ -50,21 +50,20 @@
 									{{ method_field('PUT') }}
 									<div class="table-responsive">
 						              <table class="table table-hover table-striped table-bordered">
-									<tr>
-										<td>Code Admin</td>
+						            <tr>
+										<td>Name</td>
 										<td>:</td>
-										<td><b>{{ $edit->codeadmin }}</b></td>
+										<td><input type="text" name="name" value="{{ $edit->name }}" class="form-control"></td>
 									</tr>
-						              <tr>
-										<td>User</td>
+						            <tr>
+										<td>Email</td>
 										<td>:</td>
-										<td> <select class="form-control" id="id" value="name" name="codeuser">
-	   								 				<option value="{{ !empty($edit->user->name) ? $edit->user->name : '' }}">{{ !empty($edit->user->name) ? $edit->user->name : '-- Select Users --' }} </option>
-	   												 @foreach($user as $row)
-	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
-	   												 @endforeach
-	   								 		</select>
-	   								 </td>
+										<td><input type="text" name="email" value="{{ $edit->email }}" class="form-control"></td>
+									</tr>
+						            <tr>
+										<td>Password</td>
+										<td>:</td>
+										<td><input type="password" name="password" class="form-control"><span class="alert-danger">*Leave passwords by default</span></td>
 									</tr>
 									<tr>
 										<td>Phone</td>
@@ -86,7 +85,7 @@
 									<tr>
 										<td>Image</td>
 										<td>:</td>
-										<td><input type="file" name="image"  value="{{ $edit->image }}" class="form-control" ></td>
+										<td><input type="file" name="image"  class="form-control" ></td>
 									</tr>
 								@endif
 									<tr>

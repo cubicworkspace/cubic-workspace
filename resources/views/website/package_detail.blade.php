@@ -216,7 +216,7 @@
 												<h4>Availability</h4>
 											</div>
 											<div class="row mb-20">
-												@if($companyservices->statusbooking == 'PERHARI')
+												@if($companyservices->statusbooking == 'hari')
 												<div class="col-sm-6">
 													<p>Start Mouth</p>
 													<div class="form-group">
@@ -330,9 +330,9 @@
 														</div>
 													</div>
 													<div class="col-sm-6">
-														<div class="form-group">
+														<div class="form-group ">
 															<p>Time</p>
-															<input name="time" class="form-control" placeholder="Timw" required type="Time"> 
+															<input name="time" class="form-control" placeholder="Time" required type="time"> 
 														</div>
 													</div>
 													<div class="col-sm-12">

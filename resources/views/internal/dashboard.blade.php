@@ -17,7 +17,7 @@
                         <!-- END PAGE TITLE-->
                         <!-- END PAGE HEADER-->
                         <div class="note note-info">
-                            <p> Hello <strong>{{ Auth::user()->name }} [{{ Auth::user()->status }}]</strong>, Welcome to the administrator page of Cubic Workspace </p>
+                            <p> Hello <strong>{{ Auth::user()->name }}</strong>, Welcome to the administrator page of {{ $identitas->name }} </p>
                         </div>
                         <!-- BEGIN DASHBOARD STATS 1-->
                         <div class="row">

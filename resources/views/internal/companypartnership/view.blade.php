@@ -86,11 +86,11 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Code</th>
-                                                    <th>Name</th>
+                                                    <th>Partner</th>
                                                     <th>Country</th>
                                                     <th>City</th>
                                                     <!-- <th width="20%">Description</th> -->
-                                                    <th>Status</th>
+                                                    <th>Verified Account</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -99,13 +99,24 @@
                                                 <tr class="odd gradeX">
                                                     <td>{{ ++$no }}</td>
                                                     <td>{{ $row->codecompanypartnership }}</td>
-                                                    <td>{{ $row->name }}</td>
+                                                    <td>{{ !empty($row->partner->name) ? $row->partner->name : '-' }} </td>
                                                     <td>{{ !empty($row->country->name) ? $row->country->name : '-' }} </td>
                                                     <td>{{ !empty($row->city->name) ? $row->city->name : '-' }} </td>
                                                     <!-- <td>{{ $row->description }}</td> -->
-                                                    <td>{{ $row->status }}</td>
-                                                    <td>                      
+                                                    <td> @if($row->status == 'Y') 
+                                                            <span class="label label-sm label-info"> verified </span>
+                                                        @else
+                                                            <span class="label label-sm label-warning"> unverified</span> @endif</td>
+                                                    <td>
+
 								                      <form action="/companypartnership/{{$row->id}}" method="POST">
+                                                        @if($row->status == 'Y')
+                                                            <a href="/companypartnership/unverified/{{$row->id}}" class="btn btn-default" title="Unverified"><i class="fa fa-close"></i></a>
+                                                        @else
+                                                            <a href="/companypartnership/verified/{{$row->id}}" class="btn btn-success" title="Verified"><i class="fa fa-check"></i></a>
+
+                                                        @endif
+
 								                      <a href="/companypartnership/{{$row->id}}/edit" class="btn btn-warning" title="Edit"><i class="fa fa-pencil" ></i></a> 
 								                      {{ csrf_field() }}
 								                      {{ method_field('DELETE') }}

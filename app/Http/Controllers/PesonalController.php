@@ -89,9 +89,9 @@ class PesonalController extends Controller
         // } else {
         // $user->password = array_except($request->password);
         // }
-        $member->codeuser = $request->codeuser;
+        $member->codeuser = $request->id;
         $member->institution = $request->institution;
-        $member->birthday = $request->birthday;
+        $member->birthday = date('Y-m-d', strtotime($request->birthday));
         $member->phone = $request->phone;
         $member->address = $request->address;
         $member->image = $filename;
@@ -112,7 +112,7 @@ class PesonalController extends Controller
         // }
         $member->codeuser = $request->codeuser;
         $member->institution = $request->institution;
-        $member->birthday = $request->birthday;
+        $member->birthday = date('Y-m-d', strtotime($request->birthday));
         $member->phone = $request->phone;
         $member->address = $request->address;
         $member->description = $request->description;

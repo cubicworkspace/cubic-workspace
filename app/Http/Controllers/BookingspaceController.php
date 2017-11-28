@@ -155,9 +155,9 @@ class BookingspaceController extends Controller
         $bookingspace->quota = $request->quota;
         $bookingspace->quotauser = $request->quotauser;
         $bookingspace->price = $request->price;
-        $bookingspace->totalprice = $request->totalprice;
-        $bookingspace->datein = date('Y-m-d H:i:s');
-        $bookingspace->dateout = date('Y-m-d H:i:s');
+        // $bookingspace->totalprice = $request->totalprice;
+        // $bookingspace->datein = date('Y-m-d H:i:s');
+        // $bookingspace->dateout = date('Y-m-d H:i:s');
         $bookingspace->currentquotauser = $request->currentquotauser;
         $bookingspace->nowquotauser = $request->nowquotauser;
         $bookingspace->information = $request->information;

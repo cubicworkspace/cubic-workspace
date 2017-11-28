@@ -7,6 +7,7 @@ use App\Companypartnership;
 use App\Countrys;
 use App\Citys;
 use App\Tagservices;
+use App\Partners;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -38,15 +39,16 @@ class CompanyPartnershipController extends Controller
     {
         $companypartnerships = DB::select('select max(codecompanypartnership) as idMaks from  companypartnerships');
         foreach($companypartnerships as $row3){}
-        $nomor  = $row3->idMaks; 
+            $nomor  = $row3->idMaks; 
         $noRand = (int) substr($row3->idMaks, 3, 3);
         $noRand++;  
         $char   = "COP";
         $no   =  $char . sprintf("%03s", $noRand);
+        $partners = partners::all();
         $city = citys::pluck('name', 'id');
         $country = countrys::pluck('name', 'id');
         $tagservices = tagservices::where('choosetagservices', '=', 'PARTNERSHIP')->pluck('name', 'id');
-        return view('internal.companypartnership.create', compact('no','country','city','tagservices'));
+        return view('internal.companypartnership.create', compact('no','country','city','tagservices','partners'));
     }
 
     /**
@@ -56,7 +58,7 @@ class CompanyPartnershipController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         $companypartnership = new companypartnership;
         $extention = Input::file('logo')->getClientOriginalExtension();
         $filename = rand(11111,99999).'.'. $extention;
@@ -69,20 +71,16 @@ class CompanyPartnershipController extends Controller
             base_path() . '/public/upload/companypartnership/', $favicon
         );
 
-        $this->validate($request, [            
-             'name' => 'required',           
-             'email' => 'required',            
-             'phone' => 'required',
-             'email' => 'required',]);
-        $companypartnership->name = $request->name;
+            // $companypartnership->name = $request->name;
+        $companypartnership->codepartner = $request->codepartner; 
         $companypartnership->codecompanypartnership = $request->codecompanypartnership;
         $companypartnership->favicon = $favicon;
         $companypartnership->logo = $filename;
         $companypartnership->codetagservices = $request->codetagservices;
-        $companypartnership->email = $request->email;
-        $companypartnership->phone = $request->phone;
+        // $companypartnership->email = $request->email;
+        // $companypartnership->phone = $request->phone;
         $companypartnership->fax = $request->fax;
-        $companypartnership->address = $request->address;
+        // $companypartnership->address = $request->address;
         $companypartnership->maps = $request->maps;
         $companypartnership->codecountry = $request->codecountry;
         $companypartnership->codecity = $request->codecity;
@@ -122,9 +120,10 @@ class CompanyPartnershipController extends Controller
         
         $country = countrys::all();
         $city = citys::all();
+        $partners = partners::all();
         $edit = companypartnership::find($id);
         $tagservices = tagservices::where('choosetagservices', '=', 'PARTNERSHIP')->pluck('name', 'id');
-        return view('internal.companypartnership.edit', compact('edit','country','city','tagservices'));
+        return view('internal.companypartnership.edit', compact('edit','country','city','tagservices','partners'));
     }
 
     /**
@@ -152,20 +151,15 @@ class CompanyPartnershipController extends Controller
             $request->file('favicon')->move(
                 base_path() . '/public/upload/companypartnership/', $favicon
             );
-
-            $this->validate($request, [            
-                 'name' => 'required',           
-                 'email' => 'required',            
-                 'phone' => 'required',
-                 'email' => 'required',]);
-            $companypartnership->name = $request->name;
+            $companypartnership->codepartner = $request->codepartner; 
+            // $companypartnership->name = $request->name;
             $companypartnership->favicon = $favicon;
             $companypartnership->logo = $filename;
             $companypartnership->codetagservices = $request->codetagservices;
-            $companypartnership->email = $request->email;
-            $companypartnership->phone = $request->phone;
+            // $companypartnership->email = $request->email;
+            // $companypartnership->phone = $request->phone;
             $companypartnership->fax = $request->fax;
-            $companypartnership->address = $request->address;
+            // $companypartnership->address = $request->address;
             $companypartnership->maps = $request->maps;
             $companypartnership->codecountry = $request->codecountry;
             $companypartnership->codecity = $request->codecity;
@@ -183,17 +177,13 @@ class CompanyPartnershipController extends Controller
             return redirect('/companypartnership');
         } else {
 
-            $this->validate($request, [            
-                 'name' => 'required',           
-                 'email' => 'required',            
-                 'phone' => 'required',
-                 'email' => 'required',]);
-            $companypartnership->name = $request->name;
-            $companypartnership->email = $request->email;
-            $companypartnership->phone = $request->phone;
+            $companypartnership->codepartner = $request->codepartner; 
+            // $companypartnership->name = $request->name;
+            // $companypartnership->email = $request->email;
+            // $companypartnership->phone = $request->phone;
             $companypartnership->codetagservices = $request->codetagservices;
             $companypartnership->fax = $request->fax;
-            $companypartnership->address = $request->address;
+            // $companypartnership->address = $request->address;
             $companypartnership->maps = $request->maps;
             $companypartnership->codecountry = $request->codecountry;
             $companypartnership->codecity = $request->codecity;
@@ -218,6 +208,8 @@ class CompanyPartnershipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function destroy($id)
     {
         $companypartnership = companypartnership::find($id);
@@ -226,5 +218,33 @@ class CompanyPartnershipController extends Controller
         $companypartnership->delete();
         \Session::flash('warning', 'Company Partnership data has been successfully deleted!,');
         return redirect('/companypartnership');
+    }
+
+    public function verified(Request $request, $id) {
+        $companypartnership =  companypartnership::find($id);
+        $id  = $request->id; 
+        if ($companypartnership->status == 'N') {
+            $companypartnership->status = 'Y';
+        } else {
+            $companypartnership->status = 'N';
+        }
+        $companypartnership->save();
+        \Session::flash('success', 'Company partnership data has been verified successfully!,');
+        return redirect('/companypartnership');
+        // return "d";
+    }
+
+    public function unverified(Request $request, $id) {
+        $companypartnership =  companypartnership::find($id);
+        $id  = $request->id; 
+        if ($companypartnership->status == 'Y') {
+            $companypartnership->status = 'N';
+        } else {
+            $companypartnership->status = 'Y';
+        }
+        $companypartnership->save();
+        \Session::flash('success', 'Company partnership data has been unverified successfully!,');
+        return redirect('/companypartnership');
+        // return "d";
     }
 }

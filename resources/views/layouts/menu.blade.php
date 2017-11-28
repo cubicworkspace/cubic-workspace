@@ -8,7 +8,7 @@
                             </li>
 
                             <li class="nav-item  ">
-                                <a href="{{ url('/home') }}" class="nav-link nav-toggle">
+                                <a href="{{ url('/dashboard') }}" class="nav-link nav-toggle">
                                     <i class="icon-home"></i>
                                     <span class="title">Dashboard</span>
                                 </a>
@@ -111,13 +111,13 @@
                                     <span class="title">Company Services</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                          <!--   <li class="nav-item">
                                 <a href="{{ url('/mediacompanyservices') }}" class="nav-link nav-toggle">
                                     <i class="icon-camera"></i>
                                     <span class="title">Media Company Services</span>
                                 </a>
                             </li> 
-
+ -->
                             <li class="nav-item 
                             {{ Request::segment(1) === 'tagservices' ? 'active' : null }}
                             {{ Request::segment(1) === 'services' ? 'active' : null }}
@@ -189,7 +189,7 @@
 
 
 
-                            <li class="nav-item  
+                            <!-- <li class="nav-item  
                             {{ Request::segment(1) === 'paymentmethode' ? 'active' : null }}
                             {{ Request::segment(1) === 'categorypaymentmethode' ? 'active' : null }}
                             ">
@@ -294,7 +294,7 @@
                                     <i class="glyphicon glyphicon-phone"></i>
                                     <span class="title">Social Media</span>
                                 </a>
-                            </li>
+                            </li> -->
 
 </ul>
 <!-- END SIDEBAR MENU -->

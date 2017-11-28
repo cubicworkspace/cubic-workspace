@@ -69,7 +69,7 @@
 										<td>Password</td>
 										<td>:</td>
 										<td><input type="password" name="password" class="form-control"><span class="alert-danger">*Leave passwords by default</span></td>
-									</tr>
+									</tr><!-- 
 									<tr>
 										<td>Status</td>
 										<td>:</td>
@@ -82,7 +82,7 @@
 						                     <label class="radio-inline"> 
 						                     <input type="radio"  name="status" id="ADMIN" class="icheck" value="ADMIN" {{ $ADM = ($edit->status=='ADMIN')?'checked':''}}> ADMIN
 						                   </label> </td>
-									</tr>
+									</tr> -->
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>
 									    <input class="btn btn-default" type="reset" name="batal" value="Cancel" onclick="location.href='/user/'"/></td>

@@ -89,6 +89,7 @@
                                                     <th>Name</th>
                                                     <th>Email</th>
                                                     <!-- <th>Service</th> -->
+                                                    <th>Partnership</th>
                                                     <th>Bukti</th>
                                                     <th>Status Payment</th>
                                                     <th>Actions</th>
@@ -101,7 +102,7 @@
                                                     <td><b>{{ $row->invoice }}</b></td>
                                                     <td>{{ $row->name }}</td>
                                                     <td>{{ $row->email }}</td>
-                                                    <!-- <td>{{ !empty($row->services->name) ? $row->services->name : '-' }}</td> -->
+                                                    <td>{{ !empty($row->companypartnership->name) ? $row->companypartnership->name : '-' }}</td>
                                                     <td>
                                                         @if($row->uploadpayment == '')
                                                          <img src="{{ asset('upload/noimage.png') }}" width="120px">

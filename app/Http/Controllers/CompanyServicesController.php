@@ -16,6 +16,9 @@ use App\Http\Requests\CompanyservicesRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyServicesController extends Controller
 {
@@ -67,7 +70,13 @@ class CompanyServicesController extends Controller
      */
     public function store(Request $request)
     {
+
         $companyservices = new companyservices;
+        $extention = Input::file('image')->getClientOriginalExtension();
+        $filename = rand(11111,99999).'.'. $extention;
+        $request->file('image')->move(
+            base_path() . '/public/upload/mediacompanyservices/', $filename
+        );
         $billingcompanyservices = new billingcompanyservices;
         $this->validate($request, [            
              'name' => 'required']);
@@ -80,6 +89,8 @@ class CompanyServicesController extends Controller
         $companyservices->codetagservices = $request->codetagservices;
         $companyservices->quota = $request->quota;
         $companyservices->price = $request->price;
+        $companyservices->image = $filename;
+        $companyservices->statusbooking = $request->statusbooking;
         $companyservices->quotauser = $request->quotauser;
         $companyservices->information = $request->information;
         $companyservices->registerdate = date('Y-m-d H:i:s');
@@ -139,6 +150,14 @@ class CompanyServicesController extends Controller
         $companyservices = companyservices::find($id);
         $this->validate($request, [            
              'name' => 'required']);
+        $image = Input::file('image');
+    if($image) {     
+        File::delete(public_path('/upload/mediacompanyservices/'.$companyservices->image));  
+        $extention = Input::file('image')->getClientOriginalExtension();
+        $filename = rand(11111,99999).'.'. $extention;
+        $request->file('image')->move(
+            base_path() . '/public/upload/mediacompanyservices/', $filename
+        );
         $companyservices->name = $request->name;
         $companyservices->codeservices = $request->codeservices;
         $companyservices->codetagservices = $request->codetagservices;
@@ -147,17 +166,37 @@ class CompanyServicesController extends Controller
         $companyservices->information = $request->information;
         $companyservices->quota = $request->quota;
         $companyservices->price = $request->price;
+        $companyservices->image = $filename;
+        $companyservices->statusbooking = $request->statusbooking;
         $companyservices->quotauser = $request->quotauser;
         $companyservices->information = $request->information;
         $companyservices->registerdate = date('Y-m-d H:i:s');
         $companyservices->status = $request->status;
         $companyservices->save();
-        //    if (! is_null($request->input('tag_services'))) {
-        //     $companyservices->tagservices()->sync($request->input('tag_services'));
-        // }
+        \Session::flash('success', 'Company Services data has been edited successfully!,');
+        return redirect('/companyservices');
+
+     } else {
+
+        $companyservices->name = $request->name;
+        $companyservices->codeservices = $request->codeservices;
+        $companyservices->codetagservices = $request->codetagservices;
+        $companyservices->codecity = $request->codecity;
+        $companyservices->codecompanypartnership = $request->codecompanypartnership;
+        $companyservices->information = $request->information;
+        $companyservices->quota = $request->quota;
+        $companyservices->price = $request->price;
+        $companyservices->statusbooking = $request->statusbooking;
+        $companyservices->quotauser = $request->quotauser;
+        $companyservices->information = $request->information;
+        $companyservices->registerdate = date('Y-m-d H:i:s');
+        $companyservices->status = $request->status;
+        $companyservices->save();
 
         \Session::flash('success', 'Company Services data has been edited successfully!,');
         return redirect('/companyservices');
+
+     }
     }
 
     /**
@@ -178,10 +217,6 @@ class CompanyServicesController extends Controller
     {
         DB::table('companyservices')->where('codecompanyservices', '=', $codecompanyservices)->delete();
         DB::table('billingcompanyservices')->where('codecompanyservices', '=', $codecompanyservices)->delete();
-        // $companyservices = companyservices::find($codecompanyservices);
-        // $billingcompanyservices = billingcompanyservices::find($codecompanyservices);
-        // $companyservices->delete();
-        // $billingcompanyservices->delete();
          \Session::flash('warning', 'Company Services data has been successfully deleted!,');
         return redirect('/companyservices');
     }

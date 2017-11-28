@@ -137,7 +137,7 @@
 										<div class="col-sm-6">
 										
 											<div class="form-group">
-												<label for="inputMessage">Message <span class="font10 text-danger">(required)</span></label>
+												<label for="inputSubject">Message <span class="font10 text-danger">(required)</span></label>
 												<textarea id="inputMessage" name="description" class="form-control" rows="9" data-minlength="50" data-error="Your message is required and must not less than 50 characters" required></textarea>
 												<div class="help-block with-errors"></div>
 											</div>

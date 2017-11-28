@@ -50,16 +50,27 @@
 									{{ method_field('PUT') }}
 									<div class="table-responsive">
 						              <table class="table table-hover table-striped table-bordered">
-									<tr>
+								<!-- 	<tr>
 										<td>Code Company Partnership</td>
 										<td>:</td>
 										<td><b>{{ $edit->codecompanypartnership}}</b></td>
+									</tr> -->							
+									<tr>
+										<td>Partner</td>
+										<td>:</td>
+										<td> <select class="form-control" id="id" value="name" name="codepartner">
+										<option value="{{ !empty($edit->partner->id) ? $edit->partner->id : '' }}">{{ !empty($edit->city->name) ? $edit->partner->name : '-- Select partner --' }} </option>
+	   												 @foreach($partners as $row)
+	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
+	   												 @endforeach
+	   								 		</select>
+	   								 </td>
 									</tr>
-						            <tr>
+						          <!--   <tr>
 										<td>Name</td>
 										<td>:</td>
 										<td><input type="text" name="name" value="{{ $edit->name }}" class="form-control" ></td>
-									</tr>
+									</tr> -->
 									@if ($edit->favicon)
 									<tr>
 										<td>Favicon</td>
@@ -96,7 +107,7 @@
 										<td><input type="file" name="logo" class="form-control" ></td>
 									</tr>
 									@endif
-						            <tr>
+						            <!-- <tr>
 										<td>Email</td>
 										<td>:</td>
 										<td><input type="email" name="email" value="{{ $edit->email }}" class="form-control" ></td>
@@ -105,17 +116,17 @@
 										<td>Phone</td>
 										<td>:</td>
 										<td><input type="text" name="phone" value="{{ $edit->phone }}" class="form-control" ></td>
-									</tr>
+									</tr> -->
 									<tr>
 										<td>Fax</td>
 										<td>:</td>
 										<td><input type="text" name="fax" value="{{ $edit->fax }}" class="form-control" ></td>
 									</tr>
-									<tr>
+									<!-- <tr>
 										<td>Address</td>
 										<td>:</td>
 										<td><textarea name="address" class="form-control" >{{ $edit->address }}</textarea></td>
-									</tr>
+									</tr> -->
 									<tr>
 										<td>Maps</td>
 										<td>:</td>
@@ -192,10 +203,10 @@
 										<td>Status</td>
 										<td>:</td>
 										<td><label class="radio-inline"> 
-						                     <input type="radio" name="status" id="Y" value="Y" {{ $y = ($edit->status=='Y')?'checked':''}}> Y
+						                     <input type="radio" name="status" id="Y" value="Y" {{ $y = ($edit->status=='Y')?'checked':''}}> Verified
 						                    </label> 
 						                     <label class="radio-inline"> 
-						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
+						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> Unverified
 						                   </label></td>
 									</tr>
 									<tr>

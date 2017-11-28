@@ -51,15 +51,19 @@
 									<div class="table-responsive">
 						            <table class="table table-hover table-striped table-bordered">
 						            <tr>
-										<td>User</td>
+										<td>Name</td>
 										<td>:</td>
-										<td> <select class="form-control" id="id" value="name" name="codeuser">
-										<option value="{{ !empty($edit->user->id) ? $edit->user->id : '' }}">{{ !empty($edit->user->name) ? $edit->user->name : '-- Select Category Users --' }} </option>
-	   												 @foreach($user as $row)
-	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
-	   												 @endforeach
-	   								 		</select>
-	   								 </td>
+										<td><input type="text" name="name" value="{{ $edit->name }}" class="form-control" required></td>
+									</tr>
+									<tr>
+										<td>Email</td>
+										<td>:</td>
+										<td><input type="email" name="email"  value="{{ $edit->email}}" class="form-control" required></td>
+									</tr>
+						            <tr>
+										<td>Password</td>
+										<td>:</td>
+										<td><input type="password" name="password" class="form-control"><span class="alert-danger">*Leave passwords by default</span></td>
 									</tr>
 						            <tr>
 										<td>Address</td>
@@ -75,7 +79,7 @@
 									<tr>
 										<td>Image</td>
 										<td>:</td>
-										<td><img src="{{ asset('upload/adminpartnership') }}/{{ $edit->image }}" width="80"></td>
+										<td><img src="{{ asset('upload/companypartnership') }}/{{ $edit->image }}" width="80"></td>
 									</tr>
 									<tr>
 										<td>Edit Image</td>
@@ -98,17 +102,6 @@
 						                     <label class="radio-inline"> 
 						                     <input type="radio"  name="status" id="N" value="N"  {{ $n = ($edit->status=='N')?'checked':''}}> N
 						                   </label></td>
-									</tr>
-									<tr>
-										<td>Company Partnership</td>
-										<td>:</td>
-										<td> <select class="form-control" id="id" value="name" name="codecompanypartnership">
-													<option value="{{ !empty($edit->companypartnership->id) ? $edit->companypartnership->id : '' }}">{{ !empty($edit->companypartnership->name) ? $edit->companypartnership->name : '-- Select Company Partnership --' }} </option>
-	   												 @foreach($companypartnership as $row)
-	   								 						<option value="{{ $row->id }}">{{ $row->name }}</option>
-	   												 @endforeach
-	   								 		</select>
-	   								 </td>
 									</tr>
 									<tr>
 										<td colspan="3"><button type="submit" class="btn btn-success">Save Data</button>

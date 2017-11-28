@@ -36,6 +36,7 @@ return [
     |
     */
 
+    
     'guards' => [
         'web' => [
             'driver' => 'session',
@@ -47,33 +48,26 @@ return [
             'provider' => 'users',
         ],
 
-        'admin' =>  [
-            'driver'   => 'session',
+        'admin' => [
+            'driver' => 'session',
             'provider' => 'admins',
         ],
-        
+
         'admin-api' => [
             'driver' => 'token',
             'provider' => 'admins',
         ],
 
-
-        'member' =>  [
-            'driver'   => 'session',
-            'provider' => 'member',
+        'partner' => [
+            'driver' => 'session',
+            'provider' => 'partners',
         ],
 
-        'member-api' =>  [
-            'driver'   => 'session',
-            'provider' => 'member',
-        ],
-     
-        'adminpartnership' =>  [
-            'driver'   => 'session',
-            'provider' => 'adminpartnership',
+        'partner-api' => [
+            'driver' => 'token',
+            'provider' => 'partners',
         ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -91,6 +85,7 @@ return [
     |
     */
 
+   
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
@@ -98,20 +93,12 @@ return [
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Users::class,
+            'model' => App\Admin::class,
         ],
-
-     
-        'member' =>  [
+        'partners' => [
             'driver' => 'eloquent',
-            'model'  => App\Users::class,
+            'model' => App\Partner::class,
         ],
-     
-        'adminpartnership' =>  [
-            'driver' => 'eloquent',
-            'model'  => App\Users::class,
-        ],
-
 
         // 'users' => [
         //     'driver' => 'database',
@@ -142,6 +129,11 @@ return [
         ],
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 15,
+        ],
+        'partners' => [
+            'provider' => 'partners',
             'table' => 'password_resets',
             'expire' => 15,
         ],

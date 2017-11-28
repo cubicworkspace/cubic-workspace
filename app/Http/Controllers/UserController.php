@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\users;
+use App\Users;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
